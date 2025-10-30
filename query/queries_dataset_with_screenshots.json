@@ -1,0 +1,114 @@
+[
+  {
+    "id": "AudioRecorderRecordAudio_0",
+    "task_template": "AudioRecorderRecordAudio",
+    "variation_id": 0,
+    "query": "Record an audio clip using Audio Recorder app and save it.",
+    "template_string": "Record an audio clip using Audio Recorder app and save it.",
+    "params": {
+      "seed": 3147620742
+    },
+    "complexity": 1.2,
+    "app_names": [
+      "audio recorder"
+    ],
+    "seed": 3147620742,
+    "screenshot_png": null,
+    "screenshot_npy": null,
+    "screenshot_shape": null,
+    "error": "Failed to inspect recordings directory, {device_constants.AUDIORECORDER_DATA}, for Audio Recorder task. Check to make sure Audio Recorder app is correctly installed."
+  },
+  {
+    "id": "AudioRecorderRecordAudioWithFileName_0",
+    "task_template": "AudioRecorderRecordAudioWithFileName",
+    "variation_id": 0,
+    "query": "Record an audio clip and save it with name \"2023_06_24_training.m4a\" using Audio Recorder app.",
+    "template_string": "Record an audio clip and save it with name \"{file_name}\" using Audio Recorder app.",
+    "params": {
+      "file_name": "2023_06_24_training.m4a",
+      "text": "",
+      "seed": 2823693415
+    },
+    "complexity": 2,
+    "app_names": [
+      "audio recorder"
+    ],
+    "seed": 2823693415,
+    "screenshot_png": "AudioRecorderRecordAudioWithFileName_0.png",
+    "screenshot_npy": "AudioRecorderRecordAudioWithFileName_0.npy",
+    "screenshot_shape": [
+      2400,
+      1080,
+      3
+    ]
+  },
+  {
+    "id": "BrowserDraw_0",
+    "task_template": "BrowserDraw",
+    "variation_id": 0,
+    "query": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then create a drawing using the three colors shown at the top and hit submit.",
+    "template_string": "",
+    "params": {
+      "browser_task_seed": 1272722570,
+      "seed": 3482995433
+    },
+    "complexity": 2,
+    "app_names": [
+      "chrome"
+    ],
+    "seed": 3482995433,
+    "screenshot_png": "BrowserDraw_0.png",
+    "screenshot_npy": "BrowserDraw_0.npy",
+    "screenshot_shape": [
+      2400,
+      1080,
+      3
+    ]
+  },
+  {
+    "id": "BrowserMaze_0",
+    "task_template": "BrowserMaze",
+    "variation_id": 0,
+    "query": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then navigate the X to the bottom-right cell, by using the direction buttons.",
+    "template_string": "",
+    "params": {
+      "browser_task_seed": 3363251393,
+      "seed": 4248383845
+    },
+    "complexity": 2,
+    "app_names": [
+      "chrome"
+    ],
+    "seed": 4248383845,
+    "screenshot_png": "BrowserMaze_0.png",
+    "screenshot_npy": "BrowserMaze_0.npy",
+    "screenshot_shape": [
+      2400,
+      1080,
+      3
+    ]
+  },
+  {
+    "id": "BrowserMultiply_0",
+    "task_template": "BrowserMultiply",
+    "variation_id": 0,
+    "query": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then click the button 5 times, remember the numbers displayed, and enter their product in the form.",
+    "template_string": "",
+    "params": {
+      "browser_task_seed": 1738711086,
+      "seed": 1017042057
+    },
+    "complexity": 2.2,
+    "app_names": [
+      "chrome"
+    ],
+    "seed": 1017042057,
+    "screenshot_png": "BrowserMultiply_0.png",
+    "screenshot_npy": "BrowserMultiply_0.npy",
+    "screenshot_shape": [
+      2400,
+      1080,
+      3
+    ]
+  }
+]
