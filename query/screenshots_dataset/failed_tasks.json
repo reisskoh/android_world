@@ -1,7 +1,0 @@
-[
-  {
-    "id": "AudioRecorderRecordAudio_0",
-    "task_name": "AudioRecorderRecordAudio",
-    "error": "Failed to inspect recordings directory, {device_constants.AUDIORECORDER_DATA}, for Audio Recorder task. Check to make sure Audio Recorder app is correctly installed."
-  }
-]

@@ -1,0 +1,38 @@
+
+  {
+    "episode_id":13,
+    "goal":"On cruisedeals, I would like to view the cruise schedules for a four-night trip from New York to Canada.",
+    "screenshots_b64":[
+    ],
+    "actions":[
+      {
+        "action_type":"open_app",
+        "app_name":"CruiseDeals",
+        "direction":null,
+        "text":null,
+        "x":null,
+        "y":null
+      },
+      {
+        "action_type":"click",
+        "app_name":null,
+        "direction":null,
+        "text":null,
+        "x":313.0,
+        "y":708.0
+      },
+      {
+        "action_type":"scroll",
+        "app_name":null,
+        "direction":"down",
+        "text":null,
+        "x":null,
+        "y":null
+      }
+    ],
+    "step_instructions":[
+      "Open the cruisedeals app",
+      "Click on the suggested searched result",
+      "Swipe up to view schedules"
+    ]
+  }

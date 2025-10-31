@@ -1,0 +1,13 @@
+Dataset: smolagents/android-control
+Split: train
+Total examples: 12232
+Sample size: 10
+
+Features:
+  - episode_id: Value('int64')
+  - goal: Value('string')
+  - screenshots_b64: List(Value('string'))
+  - actions: List({'action_type': Value('string'), 'app_name': Value('string'), 'direction': Value('string'), 'text': Value('string'), 'x': Value('int64'), 'y': Value('int64')})
+  - step_instructions: List(Value('string'))
+
+Column names: ['episode_id', 'goal', 'screenshots_b64', 'actions', 'step_instructions']
