@@ -43,7 +43,20 @@ def load_episode_from_dataset(dataset_name, episode_id, split='train'):
             print(f"Found episode {episode_id} at index {idx}")
             return episode
 
-    print(f"Episode {episode_id} not found in dataset")
+    # Episode not found - show some available IDs
+    print(f"\nEpisode {episode_id} not found in dataset")
+    print("Note: Episode IDs are not sequential and have gaps.")
+
+    # Collect first 30 episode IDs to show examples
+    available_ids = []
+    for idx, episode in enumerate(dataset):
+        if idx >= 30:
+            break
+        available_ids.append(episode.get('episode_id'))
+
+    print(f"\nFirst 30 available episode IDs:")
+    print(sorted(available_ids))
+
     return None
 
 
@@ -153,6 +166,14 @@ def visualize_episode_step(episode, step_idx, save_dir=None):
         output_path = os.path.join(save_dir, f"episode_{episode_id}_step_{step_idx:02d}.png")
         plt.savefig(output_path, dpi=150, bbox_inches='tight')
         print(f"Saved visualization to: {output_path}")
+
+        # Save raw screenshot to 'image' subdirectory
+        if screenshot:
+            image_dir = os.path.join(save_dir, "image")
+            os.makedirs(image_dir, exist_ok=True)
+            image_path = os.path.join(image_dir, f"episode_{episode_id}_step_{step_idx:02d}.png")
+            screenshot.save(image_path)
+            print(f"Saved raw image to: {image_path}")
     else:
         plt.show()
 
@@ -272,8 +293,11 @@ def main():
     # CONFIGURE THESE PARAMETERS
     # ========================================================================
 
-    # Episode ID to visualize
-    EPISODE_ID = 1
+    # Episode ID range to visualize (start, end) - set to None to use single EPISODE_ID
+    EPISODE_ID_RANGE = (11, 1111)  # Will process all available IDs in this range
+
+    # Single Episode ID (only used if EPISODE_ID_RANGE is None)
+    EPISODE_ID = 1111
 
     # HuggingFace dataset name
     DATASET_NAME = 'smolagents/android-control'
@@ -285,7 +309,7 @@ def main():
     # 'interactive' - Navigate through steps with keyboard
     # 'all' - Generate and save all steps as images
     # 'single' - Show a single step
-    MODE = 'interactive'
+    MODE = 'all'
 
     # If MODE is 'single', which step to show (0-indexed)
     SINGLE_STEP_INDEX = 0
@@ -297,32 +321,75 @@ def main():
     # END CONFIGURATION
     # ========================================================================
 
-    # Load episode
-    print(f"Loading episode {EPISODE_ID} from dataset '{DATASET_NAME}'...")
-    episode = load_episode_from_dataset(DATASET_NAME, EPISODE_ID, SPLIT)
+    # Determine which episode IDs to process
+    if EPISODE_ID_RANGE is not None:
+        start_id, end_id = EPISODE_ID_RANGE
+        target_episode_ids = set(range(start_id, end_id + 1))
+        print(f"Processing episode ID range: {start_id} to {end_id}")
+        print(f"Searching for episodes in this range...")
+        print("="*60)
+    else:
+        target_episode_ids = {EPISODE_ID}
 
-    if episode is None:
-        print(f"Error: Episode {EPISODE_ID} not found in dataset")
+    # Load dataset and process episodes one by one (memory efficient)
+    from datasets import load_dataset
+    print(f"Loading dataset '{DATASET_NAME}' from HuggingFace cache...")
+    try:
+        dataset = load_dataset(DATASET_NAME, split=SPLIT)
+        print(f"Dataset loaded successfully. Total episodes: {len(dataset)}")
+    except Exception as e:
+        print(f"Error loading dataset: {e}")
         return
 
-    print(f"Successfully loaded episode {EPISODE_ID}")
-    print(f"Goal: {episode.get('goal', 'No goal specified')}")
-    print(f"Number of steps: {len(episode.get('actions', []))}")
-    print()
+    # Process episodes as we iterate (don't load all into memory)
+    processed_count = 0
+    for idx, episode in enumerate(dataset):
+        ep_id = episode.get('episode_id')
 
-    # Visualize based on mode
-    if MODE == 'interactive':
-        print("Starting interactive visualization...")
-        print("Use arrow keys or n/p to navigate, q to quit")
-        visualize_episode_interactive(episode)
-    elif MODE == 'all':
-        visualize_all_steps(episode, SAVE_DIR)
-        print(f"\nAll visualizations saved to: {SAVE_DIR}")
-    elif MODE == 'single':
-        visualize_episode_step(episode, SINGLE_STEP_INDEX)
-    else:
-        print(f"Error: Unknown mode '{MODE}'")
-        print("Valid modes: 'interactive', 'all', 'single'")
+        # Skip if not in our target range
+        if ep_id not in target_episode_ids:
+            continue
+
+        processed_count += 1
+
+        print(f"\n{'='*60}")
+        print(f"Processing Episode {ep_id} ({processed_count} found)")
+        print(f"Goal: {episode.get('goal', 'No goal specified')}")
+        print(f"Number of steps: {len(episode.get('actions', []))}")
+        print('='*60)
+
+        # Visualize based on mode
+        if MODE == 'interactive':
+            if EPISODE_ID_RANGE is not None:
+                print(f"Warning: Interactive mode with range will show episodes one by one")
+            print("Starting interactive visualization...")
+            print("Use arrow keys or n/p to navigate, q to quit")
+            visualize_episode_interactive(episode)
+        elif MODE == 'all':
+            # Create subdirectory for each episode if processing a range
+            if EPISODE_ID_RANGE is not None:
+                save_dir = f"{SAVE_DIR}/episode_{ep_id}"
+            else:
+                save_dir = SAVE_DIR
+            visualize_all_steps(episode, save_dir)
+            print(f"Visualizations saved to: {save_dir}")
+        elif MODE == 'single':
+            visualize_episode_step(episode, SINGLE_STEP_INDEX)
+        else:
+            print(f"Error: Unknown mode '{MODE}'")
+            print("Valid modes: 'interactive', 'all', 'single'")
+            return
+
+    # Summary
+    if processed_count == 0:
+        print(f"\nNo episodes found in the specified range.")
+        if EPISODE_ID_RANGE is None:
+            print(f"Episode {EPISODE_ID} not found in dataset")
+    elif EPISODE_ID_RANGE is not None:
+        print(f"\n{'='*60}")
+        print(f"Batch complete! Processed {processed_count} episodes")
+        print(f"Results saved to: {SAVE_DIR}")
+        print('='*60)
 
 
 if __name__ == '__main__':
