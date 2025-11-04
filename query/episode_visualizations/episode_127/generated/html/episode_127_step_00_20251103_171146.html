@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #fff;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 30px;
+            margin: 15px;
+            padding: 10px 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .search-bar .menu-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #888;
+        }
+        
+        .search-bar .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #4285f4;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .contacts-list {
+            padding: 0 15px;
+        }
+        
+        .contact-group {
+            margin-bottom: 20px;
+        }
+        
+        .group-header {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .contact-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .contact-detail {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .contact-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .add-button {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4285f4;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .nav-item.active {
+            color: #4285f4;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .alphabet-scroll {
+            position: absolute;
+            right: 5px;
+            top: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .alphabet-scroll .letter {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .alphabet-scroll .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>12:32</span>
+        <div class="icons">
+            <span>📧</span>
+            <span>🔒</span>
+            <span>▶️</span>
+            <span>📅</span>
+        </div>
+        <div class="icons">
+            <span>📶</span>
+            <span>🔋 100%</span>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="menu-icon">≡</div>
+        <input type="text" placeholder="Search for people">
+        <div class="avatar">C</div>
+    </div>
+    
+    <div class="contacts-list">
+        <div class="contact-group">
+            <div class="group-header">C</div>
+            <div class="contact-item">
+                <div class="contact-avatar" style="background-color: #81d4fa;">CS</div>
+                <div class="contact-info">
+                    <div class="contact-name">Contacts+ Support</div>
+                    <div class="contact-detail">support@contactsplus.com</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-group">
+            <div class="group-header">N</div>
+            <div class="contact-item">
+                <div class="contact-avatar" style="background-color: #81d4fa;">N</div>
+                <div class="contact-info">
+                    <div class="contact-name">Naveen</div>
+                    <div class="contact-detail">95604 13371</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-group">
+            <div class="group-header">R</div>
+            <div class="contact-item">
+                <div class="contact-avatar" style="background-color: #80cbc4;">RS</div>
+                <div class="contact-info">
+                    <div class="contact-name">Rahul Sharma</div>
+                    <div class="contact-detail">abcd</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-group">
+            <div class="group-header">T</div>
+            <div class="contact-item">
+                <div class="contact-avatar">
+                    <img src="https://via.placeholder.com/50" alt="Tapomay">
+                </div>
+                <div class="contact-info">
+                    <div class="contact-name">Tapomay</div>
+                    <div class="contact-detail">97167 18580</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="alphabet-scroll">
+        <div class="letter">R</div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    
+    <div class="add-button">+</div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon">👥</div>
+            <div>Contacts</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">📞</div>
+            <div>Call</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">💬</div>
+            <div>Message</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">✅</div>
+            <div>Tasks</div>
+        </div>
+    </div>
+</body>
+</html>

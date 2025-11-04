@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thoughts of the Day</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #121212;
+            font-size: 14px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .save-btn {
+            color: #9080ff;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .title-input {
+            padding: 20px;
+            font-size: 24px;
+            color: white;
+            background-color: #222;
+            border: none;
+            outline: none;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .audio-visualizer {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .visualizer-container {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0 20px;
+        }
+        
+        .visualizer-bar {
+            width: 4px;
+            background-color: #555;
+            margin: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .keyboard {
+            background-color: #f0f0f0;
+            padding: 10px 0;
+            border-top: 1px solid #ccc;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #e8e8e8;
+        }
+        
+        .keyboard-top button {
+            background: none;
+            border: none;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .keyboard-top .globe {
+            width: 30px;
+            height: 30px;
+            background-color: #c5c5ff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+        
+        .suggestions {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #e8e8e8;
+        }
+        
+        .suggestion {
+            padding: 5px 10px;
+            background-color: #fff;
+            border-radius: 15px;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .keyboard-keys {
+            padding: 10px 15px;
+        }
+        
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .key {
+            width: 45px;
+            height: 45px;
+            background-color: #fff;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 4px;
+            font-size: 20px;
+            color: #000;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .key:active {
+            background-color: #e0e0e0;
+        }
+        
+        .key.wide {
+            width: 60px;
+        }
+        
+        .key.double {
+            width: 90px;
+        }
+        
+        .key.special {
+            background-color: #e0e0e0;
+        }
+        
+        .key.enter {
+            background-color: #c5c5ff;
+            color: #000;
+        }
+        
+        .keyboard-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+        }
+        
+        .keyboard-bottom .key {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .key.double {
+            width: 100px;
+        }
+        
+        .keyboard-bottom .key.special {
+            background-color: #d0d0d0;
+        }
+        
+        .keyboard-bottom .key.enter {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        
+        .keyboard-bottom .key.emoji {
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom .key.space {
+            width: 200px;
+            background-color: #fff;
+        }
+        
+        .keyboard-bottom .key.backspace {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .keyboard-bottom .key.backspace::before {
+            content: "⌫";
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .key.check {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #c5c5ff;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom .key.check::before {
+            content: "✓";
+        }
+        
+        .keyboard-bottom .key.down {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .keyboard-bottom .key.down::before {
+            content: "∨";
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>6:03</div>
+        <div>
+            <span>ib</span>
+            <span>●</span>
+            <span>□</span>
+            <span>ovo</span>
+            <span>•</span>
+        </div>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="save-btn">Save</div>
+    </div>
+    
+    <input type="text" class="title-input" value="Thoughts of the day" />
+    
+    <div class="audio-visualizer">
+        <div class="visualizer-container">
+            <!-- Generate visualizer bars -->
+            <div class="visualizer-bar" style="height: 30px;"></div>
+            <div class="visualizer-bar" style="height: 40px;"></div>
+            <div class="visualizer-bar" style="height: 50px;"></div>
+            <div class="visualizer-bar" style="height: 60px;"></div>
+            <div class="visualizer-bar" style="height: 70px;"></div>
+            <div class="visualizer-bar" style="height: 80px;"></div>
+            <div class="visualizer-bar" style="height: 90px;"></div>
+            <div class="visualizer-bar" style="height: 100px;"></div>
+            <div class="visualizer-bar" style="height: 110px;"></div>
+            <div class="visualizer-bar" style="height: 120px;"></div>
+            <div class="visualizer-bar" style="height: 130px;"></div>
+            <div class="visualizer-bar" style="height: 140px;"></div>
+            <div class="visualizer-bar" style="height: 150px;"></div>
+            <div class="visualizer-bar" style="height: 160px;"></div>
+            <div class="visualizer-bar" style="height: 170px;"></div>
+            <div class="visualizer-bar" style="height: 180px;"></div>
+            <div class="visualizer-bar" style="height: 170px;"></div>
+            <div class="visualizer-bar" style="height: 160px;"></div>
+            <div class="visualizer-bar" style="height: 150px;"></div>
+            <div class="visualizer-bar" style="height: 140px;"></div>
+            <div class="visualizer-bar" style="height: 130px;"></div>
+            <div class="visualizer-bar" style="height: 120px;"></div>
+            <div class="visualizer-bar" style="height: 110px;"></div>
+            <div class="visualizer-bar" style="height: 100px;"></div>
+            <div class="visualizer-bar" style="height: 90px;"></div>
+            <div class="visualizer-bar" style="height: 80px;"></div>
+            <div class="visualizer-bar" style="height: 70px;"></div>
+            <div class="visualizer-bar" style="height: 60px;"></div>
+            <div class="visualizer-bar" style="height: 50px;"></div>
+            <div class="visualizer-bar" style="height: 40px;"></div>
+            <div class="visualizer-bar" style="height: 30px;"></div>
+        </div>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <button class="globe">□□</button>
+            <div>day</div>
+            <div>days</div>
+            <div>day's</div>
+            <button>🎤</button>
+        </div>
+        
+        <div class="suggestions">
+            <div class="suggestion">day</div>
+            <div class="suggestion">days</div>
+            <div class="suggestion">day's</div>
+        </div>
+        
+        <div class="keyboard-keys">
+            <div class="row">
+                <div class="key">q</div>
+                <div class="key">w</div>
+                <div class="key">e</div>
+                <div class="key">r</div>
+                <div class="key">t</div>
+                <div class="key">y</div>
+                <div class="key">u</div>
+                <div class="key">i</div>
+                <div class="key">o</div>
+                <div class="key">p</div>
+            </div>
+            <div class="row">
+                <div class="key">a</div>
+                <div class="key">s</div>
+                <div class="key">d</div>
+                <div class="key">f</div>
+                <div class="key">g</div>
+                <div class="key">h</div>
+                <div class="key">j</div>
+                <div class="key">k</div>
+                <div class="key">l</div>
+            </div>
+            <div class="row">
+                <div class="key special">⇧</div>
+                <div class="key">z</div>
+                <div class="key">x</div>
+                <div class="key">c</div>
+                <div class="key">v</div>
+                <div class="key">b</div>
+                <div class="key">n</div>
+                <div class="key">m</div>
+                <div class="key special">⌫</div>
+            </div>
+        </div>
+        
+        <div class="keyboard-bottom">
+            <div class="key special">?123</div>
+            <div class="key special">,</div>
+            <div class="key emoji">😊</div>
+            <div class="key space"></div>
+            <div class="key special">.</div>
+            <div class="key check"></div>
+        </div>
+    </div>
+</body>
+</html>

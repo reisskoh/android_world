@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Description</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header .close {
+            font-size: 24px;
+            color: #ffffff;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .header .actions {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header .share, .header .heart {
+            font-size: 24px;
+        }
+        
+        .header .heart {
+            color: #e74c3c;
+        }
+        
+        .section {
+            padding: 20px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .travel-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .travel-info .icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .travel-info p {
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        
+        .add-destination {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        .criteria-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .criteria-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .criteria-list {
+            list-style: none;
+        }
+        
+        .criteria-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .criteria-item:last-child {
+            border-bottom: none;
+        }
+        
+        .criteria-label {
+            font-size: 16px;
+            color: #cccccc;
+        }
+        
+        .criteria-value {
+            font-size: 16px;
+            text-align: right;
+        }
+        
+        .criteria-value.checked {
+            color: #ffffff;
+            font-size: 20px;
+        }
+        
+        .criteria-value a {
+            color: #4d90fe;
+            text-decoration: none;
+        }
+        
+        .criteria-value .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #333;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .powered-by {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .powered-by .logo {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+        }
+        
+        .footer {
+            display: flex;
+            padding: 15px 20px;
+            background-color: #1e1e1e;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-button {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .call-button {
+            background-color: #333;
+            color: #ffffff;
+        }
+        
+        .message-button {
+            background-color: #64ffda;
+            color: #000000;
+            margin-left: 10px;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 15px;
+            background-color: #1e1e1e;
+            font-size: 14px;
+        }
+        
+        .status-bar .left {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .status-bar .right {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="left">
+            <span>1:36</span>
+            <span>M</span>
+            <span>M</span>
+            <span>⚠️</span>
+            <span>⚙️</span>
+        </div>
+        <div class="right">
+            <span>📶</span>
+            <span>🔋 100%</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="close">×</div>
+        <h1>Description</h1>
+        <div class="actions">
+            <div class="share">🔗</div>
+            <div class="heart">❤️</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">Travel time (e.g. to office, kita...)</h2>
+        <div class="travel-info">
+            <div class="icon">📷</div>
+            <p>Let us calculate the travel time to your selected locations.</p>
+        </div>
+        <button class="add-destination">Add destination</button>
+    </div>
+    
+    <div class="criteria-section">
+        <h2 class="criteria-title">Main criteria</h2>
+        <ul class="criteria-list">
+            <li class="criteria-item">
+                <span class="criteria-label">Apartment type:</span>
+                <span class="criteria-value">Raised ground floor</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Floor:</span>
+                <span class="criteria-value">1 of 5</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Bathrooms:</span>
+                <span class="criteria-value">1</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Vacant:</span>
+                <span class="criteria-value">1.11.2023</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Pets:</span>
+                <span class="criteria-value">No</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Garage/Parking space:</span>
+                <span class="criteria-value">Underground garage</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Number of garages/Parking spaces:</span>
+                <span class="criteria-value">1</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Balcony/Terrace:</span>
+                <span class="criteria-value checked">✓</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Cellar:</span>
+                <span class="criteria-value checked">✓</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Elevator:</span>
+                <span class="criteria-value checked">✓</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Fitted kitchen:</span>
+                <span class="criteria-value checked">✓</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Guest toilet:</span>
+                <span class="criteria-value checked">✓</span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Credit report:</span>
+                <span class="criteria-value"><a href="#">Apply online</a></span>
+            </li>
+            <li class="criteria-item">
+                <span class="criteria-label">Internet:</span>
+                <span class="criteria-value">
+                    up to 250 MBit/s <span class="info-icon">i</span><br>
+                    <a href="#">See rates</a>
+                </span>
+            </li>
+        </ul>
+        <div class="powered-by">
+            <span>powered by</span>
+            <span class="logo">T</span>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <button class="footer-button call-button">
+            <span>📞</span>
+            <span>Call</span>
+        </button>
+        <button class="footer-button message-button">
+            <span>✉️</span>
+            <span>Message</span>
+        </button>
+    </div>
+</body>
+</html>

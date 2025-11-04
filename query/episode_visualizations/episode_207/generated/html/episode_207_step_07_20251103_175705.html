@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #1e1e1e;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .document-title {
+            color: #6699ff;
+            font-size: 16px;
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header-icon {
+            color: #ffffff;
+            font-size: 20px;
+        }
+        
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .date {
+            font-size: 28px;
+            color: #999999;
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+        
+        .recipient {
+            font-size: 36px;
+            color: #6699ff;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .address {
+            font-size: 18px;
+            color: #999999;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+        
+        .toolbar {
+            background-color: #1e1e1e;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+        
+        .toolbar-button {
+            background-color: #2d2d2d;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .toolbar-button.active {
+            background-color: #444;
+        }
+        
+        .keyboard {
+            background-color: #1e1e1e;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .key {
+            background-color: #2d2d2d;
+            color: #ffffff;
+            border: none;
+            padding: 15px 10px;
+            border-radius: 8px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50px;
+        }
+        
+        .key.wide {
+            grid-column: span 2;
+        }
+        
+        .key.function {
+            background-color: #444;
+            color: #ffffff;
+        }
+        
+        .key.backspace {
+            background-color: #ffcccb;
+            color: #000;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+        
+        .keyboard-top .key {
+            padding: 8px;
+            font-size: 16px;
+        }
+        
+        .keyboard-top .key:nth-child(1) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(2) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(3) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(4) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(5) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(6) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(7) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(8) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(9) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(10) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(11) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(12) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(13) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(14) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(15) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(16) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(17) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(18) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(19) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(20) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(21) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(22) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(23) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(24) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(25) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(26) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(27) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(28) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(29) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(30) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(31) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(32) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(33) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(34) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(35) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(36) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(37) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(38) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(39) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(40) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(41) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(42) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(43) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(44) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(45) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(46) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(47) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(48) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(49) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(50) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(51) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(52) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(53) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(54) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(55) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(56) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(57) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(58) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(59) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(60) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(61) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(62) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(63) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(64) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(65) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(66) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(67) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(68) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(69) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(70) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(71) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(72) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(73) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(74) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(75) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(76) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(77) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(78) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(79) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(80) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(81) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(82) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(83) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(84) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(85) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(86) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(87) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(88) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(89) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(90) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(91) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(92) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(93) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(94) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(95) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(96) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(97) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(98) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(99) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(100) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(101) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(102) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(103) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(104) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(105) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(106) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(107) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(108) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(109) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(110) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(111) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(112) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(113) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(114) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(115) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(116) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(117) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(118) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(119) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(120) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(121) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(122) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(123) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(124) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(125) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(126) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(127) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(128) {
+            grid-column: span 1;
+        }
+        
+        .keyboard-top .key:nth-child(129) {
+            grid-column: span 1;
+        }

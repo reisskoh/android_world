@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Storage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            height: 20px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: #333;
+            font-size: 12px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .storage-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .storage-dropdown {
+            margin-left: 5px;
+            font-size: 18px;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .menu-icon, .more-icon {
+            font-size: 24px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        
+        .breadcrumb-icon {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+        
+        .file-list {
+            padding: 0;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .file-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .file-info {
+            flex: 1;
+        }
+        
+        .file-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .file-size {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .select-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .folder-icon {
+            background-color: #f0c850;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-icon {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .video-icon::after {
+            content: "▶";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 4px;
+            border-radius: 50%;
+        }
+        
+        .text-icon {
+            background-color: #4267b2;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .image-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .apk-icon {
+            background-color: #4caf50;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .apk-icon::after {
+            content: "A";
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>3:27</span>
+        <span style="margin-left: 10px;">🔔🔔</span>
+    </div>
+    
+    <div class="header">
+        <div class="header-left">
+            <div class="back-arrow">←</div>
+            <div class="storage-title">Main storage</div>
+            <div class="storage-dropdown">▼</div>
+        </div>
+        <div class="header-right">
+            <div class="menu-icon">≡</div>
+            <div class="more-icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="breadcrumb">
+        <div class="breadcrumb-item">
+            <div class="breadcrumb-icon">🏠</div>
+        </div>
+        <div class="breadcrumb-item">
+            <div class="breadcrumb-icon">›</div>
+        </div>
+        <div class="breadcrumb-item">
+            <div class="breadcrumb-icon">📱</div>
+        </div>
+        <div class="breadcrumb-item">
+            <div class="breadcrumb-icon">›</div>
+        </div>
+        <div class="breadcrumb-item">
+            <span>Download</span>
+        </div>
+    </div>
+    
+    <div class="file-list">
+        <div class="file-item">
+            <div class="folder-icon">📁</div>
+            <div class="file-info">
+                <div class="file-name">Favorite Song</div>
+                <div class="file-size">0 items</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="folder-icon">📁</div>
+            <div class="file-info">
+                <div class="file-name">Flowers</div>
+                <div class="file-size">7 items</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="folder-icon">📁</div>
+            <div class="file-info">
+                <div class="file-name">MEGA Downloads</div>
+                <div class="file-size">0 items</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="folder-icon">📁</div>
+            <div class="file-info">
+                <div class="file-name">TeraBox</div>
+                <div class="file-size">1 item</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="video-icon">
+                <img src="https://via.placeholder.com/40x40/4a90e2/ffffff?text=V" alt="Video">
+            </div>
+            <div class="file-info">
+                <div class="file-name">beach waves.mp4</div>
+                <div class="file-size">3.29 MB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="video-icon">
+                <img src="https://via.placeholder.com/40x40/4a90e2/ffffff?text=V" alt="Video">
+            </div>
+            <div class="file-info">
+                <div class="file-name">beach-1.mp4</div>
+                <div class="file-size">1.78 MB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="video-icon">
+                <img src="https://via.placeholder.com/40x40/4a90e2/ffffff?text=V" alt="Video">
+            </div>
+            <div class="file-info">
+                <div class="file-name">beach.mp4</div>
+                <div class="file-size">1.78 MB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="text-icon">≡</div>
+            <div class="file-info">
+                <div class="file-name">Copy of screenshot-1.txt</div>
+                <div class="file-size">0.91 MB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="text-icon">≡</div>
+            <div class="file-info">
+                <div class="file-name">Copy of screenshot.txt</div>
+                <div class="file-size">0.91 MB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="image-icon">
+                <img src="https://via.placeholder.com/40x40/2c3e50/ffffff?text=I" alt="Image">
+            </div>
+            <div class="file-info">
+                <div class="file-name">images~2.jpeg</div>
+                <div class="file-size">22.48 kB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="image-icon">
+                <img src="https://via.placeholder.com/40x40/2c3e50/ffffff?text=I" alt="Image">
+            </div>
+            <div class="file-info">
+                <div class="file-name">Maki-zushi.jpg</div>
+                <div class="file-size">197 kB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="apk-icon">A</div>
+            <div class="file-info">
+                <div class="file-name">showcase_android_prod_arm64-v8a.apk</div>
+                <div class="file-size">178 MB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="image-icon">
+                <img src="https://via.placeholder.com/40x40/2c3e50/ffffff?text=I" alt="Image">
+            </div>
+            <div class="file-info">
+                <div class="file-name">Taj Mahal.jpeg</div>
+                <div class="file-size">39.52 kB</div>
+            </div>
+            <div class="select-checkbox"></div>
+        </div>
+    </div>
+</body>
+</html>

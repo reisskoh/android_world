@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document (1) - Saved</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            background-color: #121212;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-bar .left {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .status-bar .right {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header {
+            background-color: #1e1e1e;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header .left {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header .right {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header .icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 20px;
+        }
+        
+        .header .icon.active {
+            background-color: #444;
+            border-radius: 4px;
+        }
+        
+        .document {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .document h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #aaaaaa;
+        }
+        
+        .document p {
+            margin: 10px 0;
+            color: #cccccc;
+        }
+        
+        .document .address {
+            margin-top: 20px;
+        }
+        
+        .document .address span {
+            display: block;
+            margin: 5px 0;
+        }
+        
+        .document .address .underline {
+            border-bottom: 1px dotted #ff6b6b;
+        }
+        
+        .cursor {
+            width: 10px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 5px;
+            margin: 0 5px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .toolbar {
+            background-color: #1e1e1e;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .toolbar .tool {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 20px;
+            border-radius: 4px;
+        }
+        
+        .toolbar .tool.active {
+            background-color: #444;
+        }
+        
+        .keyboard {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .key {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2d2d2d;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .key.wide {
+            width: 60px;
+        }
+        
+        .key.extra-wide {
+            width: 100px;
+        }
+        
+        .key.function {
+            background-color: #444;
+        }
+        
+        .key.enter {
+            background-color: #e0b0b0;
+            color: #000;
+        }
+        
+        .footer {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #333;
+        }
+        
+        .footer .icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="left">
+            <span>10:55</span>
+            <span>🌙</span>
+            <span>📁</span>
+            <span>⭕</span>
+            <span>▶️</span>
+        </div>
+        <div class="right">
+            <span>📍</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="left">
+            <div class="icon">✓</div>
+        </div>
+        <div class="right">
+            <div class="icon">✏️</div>
+            <div class="icon">☁️</div>
+            <div class="icon">🔍</div>
+            <div class="icon active">📄</div>
+            <div class="icon">↩️</div>
+            <div class="icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="document">
+        <h1>12<sup>th</sup> August 2023</h1>
+        <p>To ,</p>
+        <p>The director</p>
+        <p>Travel best tour</p>
+        <div class="address">
+            <span class="underline">Vaishali,</span>
+            <span class="underline">gaziabad,</span>
+            <span class="underline">Uttarpradesh</span>
+            <span>pin code -</span>
+            <span>845673</span>
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 10px;">
+            <div class="cursor"></div>
+        </div>
+    </div>
+    
+    <div class="toolbar">
+        <div class="tool active">B</div>
+        <div class="tool">I</div>
+        <div class="tool">U</div>
+        <div class="tool">✏️</div>
+        <div class="tool active">A</div>
+        <div class="tool">•••</div>
+        <div class="tool">1 2 3</div>
+        <div class="tool">→</div>
+        <div class="tool">▲</div>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-row">
+            <div class="key function">🌐</div>
+            <div class="key function">😊</div>
+            <div class="key function">GIF</div>
+            <div class="key function">G</div>
+            <div class="key function">⚙️</div>
+            <div class="key function">🎨</div>
+            <div class="key function">🎤</div>
+        </div>
+        <div class="keyboard-row">
+            <div class="key">q</div>
+            <div class="key">w</div>
+            <div class="key">e</div>
+            <div class="key">r</div>
+            <div class="key">t</div>
+            <div class="key">y</div>
+            <div class="key">u</div>
+            <div class="key">i</div>
+            <div class="key">o</div>
+            <div class="key">p</div>
+        </div>
+        <div class="keyboard-row">
+            <div class="key">a</div>
+            <div class="key">s</div>
+            <div class="key">d</div>
+            <div class="key">f</div>
+            <div class="key">g</div>
+            <div class="key">h</div>
+            <div class="key">j</div>
+            <div class="key">k</div>
+            <div class="key">l</div>
+        </div>
+        <div class="keyboard-row">
+            <div class="key">⇧</div>
+            <div class="key">z</div>
+            <div class="key">x</div>
+            <div class="key">c</div>
+            <div class="key">v</div>
+            <div class="key">b</div>
+            <div class="key">n</div>
+            <div class="key">m</div>
+            <div class="key">⌫</div>
+        </div>
+        <div class="keyboard-row">
+            <div class="key function">?123</div>
+            <div class="key">,</div>
+            <div class="key">😊</div>
+            <div class="key extra-wide">␣</div>
+            <div class="key">.</div>
+            <div class="key enter">↩️</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="icon">↓</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .search-bar {
+            flex: 1;
+            margin: 0 15px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .search-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icon {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px 0 15px;
+            color: #333;
+            text-transform: uppercase;
+        }
+        
+        .photo-search-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .photo-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #333;
+            background: white;
+        }
+        
+        .photo-btn i {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .recent-searches {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .search-item {
+            text-align: center;
+            width: 80px;
+        }
+        
+        .search-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 5px;
+        }
+        
+        .search-item p {
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        .edit-btn {
+            color: #ff4d6d;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .most-searched {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .view-all-btn {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .articles {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .article-item {
+            width: 100px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .article-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .keyboard {
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .keyboard-top i {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 5px 0;
+        }
+        
+        .key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .key:active {
+            background-color: #444;
+        }
+        
+        .key-space {
+            width: 200px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .key-enter {
+            width: 60px;
+            height: 60px;
+            background-color: #cce5ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .key-shift {
+            width: 60px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .key-123 {
+            width: 60px;
+            height: 60px;
+            background-color: #4d4d4d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        
+        .keyboard-bottom i {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .key-123 {
+            background-color: #4d4d4d;
+        }
+        
+        .keyboard-bottom .key-enter {
+            background-color: #cce5ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="search-bar">Search for brands & products</div>
+        <div class="search-icons">
+            <div class="icon">📷</div>
+            <div class="icon">🎤</div>
+        </div>
+    </div>
+    
+    <div class="section-title">Photo Search</div>
+    <div class="photo-search-buttons">
+        <div class="photo-btn">
+            <i>📷</i> Click a photo
+        </div>
+        <div class="photo-btn">
+            <i>🖼️</i> Select a photo
+        </div>
+    </div>
+    
+    <div class="section-title">Recent Searches</div>
+    <div class="recent-searches">
+        <div class="search-item">
+            <img src="https://via.placeholder.com/60/8B0000/FFFFFF?text=Shoes" alt="duke loafer">
+            <p>duke loafer</p>
+        </div>
+        <div class="search-item">
+            <img src="https://via.placeholder.com/60/CCCCCC/333333?text=Loafer" alt="Loafer">
+            <p>Loafer</p>
+        </div>
+        <div class="search-item">
+            <img src="https://via.placeholder.com/60/CCCCCC/333333?text=Search" alt="Loafers">
+            <p>Loafers</p>
+        </div>
+        <div class="search-item">
+            <img src="https://via.placeholder.com/60/FFFFFF/000000?text=Shoes" alt="Shoes For Men">
+            <p>Shoes For Men</p>
+        </div>
+        <div class="search-item">
+            <img src="https://via.placeholder.com/60/FFC0CB/333333?text=Boots" alt="Hiking Boots">
+            <p>Hiking Boots</p>
+        </div>
+    </div>
+    <div class="edit-btn">EDIT</div>
+    
+    <div class="most-searched">
+        <div class="section-title">Most Searched Articles</div>
+        <div class="view-all-btn">View All</div>
+    </div>
+    <div class="articles">
+        <div class="article-item">
+            <img src="https://via.placeholder.com/100/FFD700/000000?text=Article1" alt="Article 1">
+        </div>
+        <div class="article-item">
+            <img src="https://via.placeholder.com/100/FF6347/FFFFFF?text=Article2" alt="Article 2">
+        </div>
+        <div class="article-item">
+            <img src="https://via.placeholder.com/100/32CD32/FFFFFF?text=Article3" alt="Article 3">
+        </div>
+        <div class="article-item">
+            <img src="https://via.placeholder.com/100/4682B4/FFFFFF?text=Article4" alt="Article 4">
+        </div>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <i>🔢</i>
+            <i>😊</i>
+            <span>GIF</span>
+            <i>⚙️</i>
+            <i>🌐</i>
+            <i>🎨</i>
+            <i>🎤</i>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key">Q</div>
+            <div class="key">W</div>
+            <div class="key">E</div>
+            <div class="key">R</div>
+            <div class="key">T</div>
+            <div class="key">Y</div>
+            <div class="key">U</div>
+            <div class="key">I</div>
+            <div class="key">O</div>
+            <div class="key">P</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key">A</div>
+            <div class="key">S</div>
+            <div class="key">D</div>
+            <div class="key">F</div>
+            <div class="key">G</div>
+            <div class="key">H</div>
+            <div class="key">J</div>
+            <div class="key">K</div>
+            <div class="key">L</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key-shift">↑</div>
+            <div class="key">Z</div>
+            <div class="key">X</div>
+            <div class="key">C</div>
+            <div class="key">V</div>
+            <div class="key">B</div>
+            <div class="key">N</div>
+            <div class="key">M</div>
+            <div class="key">⌫</div>
+        </div>
+        
+        <div class="keyboard-bottom">
+            <div class="key-123">?123</div>
+            <div class="key">,</div>
+            <div class="key">😊</div>
+            <div class="key-space"></div>
+            <div class="key">.</div>
+            <div class="key-enter">✓</div>
+        </div>
+    </div>
+</body>
+</html>

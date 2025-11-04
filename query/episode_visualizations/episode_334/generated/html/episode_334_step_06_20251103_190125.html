@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            background-color: #fff;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .status-bar span {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-icons i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .email-field label {
+            width: 80px;
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .email-field input {
+            flex: 1;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .recipient-suggestion {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #e74c3c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .avatar i {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .recipient-info {
+            flex: 1;
+        }
+        
+        .recipient-info h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .recipient-info p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .keyboard {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .keyboard-top button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #d0c9f5;
+            border: none;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-top .icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        
+        .keyboard-row button {
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border: none;
+            background: none;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        
+        .keyboard-bottom button {
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            background-color: #d0c9f5;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .space {
+            width: 60%;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #c7c2e0;
+        }
+        
+        .keyboard-bottom .enter {
+            background-color: #d0c9f5;
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .symbol {
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #d0c9f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .emoji {
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #d0c9f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .at {
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #d0c9f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .shift {
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #d0c9f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .backspace {
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #d0c9f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .dot {
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #d0c9f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .enter {
+            width: 60px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #d0c9f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .shift i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .backspace i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .dot i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .enter i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .symbol i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .emoji i {
+            font-size: 20px;
+        }
+        
+        .keyboard-bottom .at i

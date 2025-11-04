@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercises</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #333;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .exercise-list {
+            padding: 0;
+        }
+        
+        .exercise-item {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .exercise-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .exercise-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            color: #ff7733;
+        }
+        
+        .exercise-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .exercise-time {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 150px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 5px;
+            left: 10px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .stat-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            color: #4CAF50;
+        }
+        
+        .pace-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            color: #2196F3;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #2196F3;
+            font-size: 24px;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 15px;
+            background-color: white;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>8:47</div>
+        <div>
+            <span>🔒</span>
+            <span>📡</span>
+            <span>🔍</span>
+            <span>•</span>
+        </div>
+        <div>
+            <span>📍</span>
+            <span>➖</span>
+            <span>📶</span>
+            <span>🔋 98%</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="header-title">Exercises</div>
+    </div>
+    
+    <div class="exercise-list">
+        <div class="exercise-item">
+            <div class="exercise-header">
+                <div class="exercise-icon">🏃</div>
+                <div class="exercise-title">Walk</div>
+            </div>
+            <div class="exercise-time">Today at 8:07 AM</div>
+            <div class="map-container">
+                <div class="map-image">
+                    <img src="https://via.placeholder.com/480x150/ffffff/cccccc?text=Map+Placeholder" alt="Map">
+                </div>
+                <div class="map-overlay">
+                    5 AM Consultants<br>Temporarily closed
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-icon">📍</div>
+                    <div>0.08 km</div>
+                </div>
+                <div class="stat-item">
+                    <div class="pace-icon">👟</div>
+                    <div>197'02" pace</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-header">
+                <div class="exercise-icon">🏃</div>
+                <div class="exercise-title">Walk</div>
+            </div>
+            <div class="exercise-time">Mon at 9:25 PM</div>
+            <div class="map-container">
+                <div class="map-image">
+                    <img src="https://via.placeholder.com/480x150/ffffff/cccccc?text=Map+Placeholder" alt="Map">
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-icon">📍</div>
+                    <div>0.02 km</div>
+                </div>
+                <div class="stat-item">
+                    <div class="pace-icon">👟</div>
+                    <div>29411'37" pace</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="exercise-item">
+            <div class="exercise-header">
+                <div class="exercise-icon">🏃</div>
+                <div class="exercise-title">Walk</div>
+            </div>
+            <div class="exercise-time">Mon at 9:18 PM</div>
+            <div class="map-container">
+                <div class="map-image">
+                    <img src="https://via.placeholder.com/480x150/ffffff/cccccc?text=Map+Placeholder" alt="Map">
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-icon">📍</div>
+                    <div>0.02 km</div>
+                </div>
+                <div class="stat-item">
+                    <div class="pace-icon">👟</div>
+                    <div>172'17" pace</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="loading">)</div>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Rain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #2d2d2d;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-bar .time {
+            font-size: 16px;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/480x200/2c7a7b/ffffff?text=Forest+Rain') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .header .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .header .nav-icons {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 24px;
+        }
+        
+        .header .action-icons {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 15px;
+            font-size: 24px;
+        }
+        
+        .play-button {
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+            width: 70px;
+            height: 70px;
+            background-color: #66c5c5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .play-button::after {
+            content: '▶';
+            color: white;
+            font-size: 24px;
+            transform: translateX(2px);
+        }
+        
+        .duration-selector {
+            background-color: #2d2d2d;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .duration-selector .label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .duration-selector .options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .duration-selector .option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .duration-selector .option.selected {
+            background-color: #444;
+        }
+        
+        .duration-selector .unit {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .download-section {
+            background-color: #252525;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .download-section .label {
+            font-size: 16px;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #66c5c5;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .description {
+            padding: 20px;
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .session-header {
+            padding: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .session-item {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .session-item .number {
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .session-item .title {
+            font-size: 16px;
+            flex: 1;
+            margin: 0 15px;
+        }
+        
+        .session-item .duration {
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: #1a1a1a;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span class="time">3:21</span>
+        <div class="icons">
+            <span>🎧</span>
+            <span>↑</span>
+            <span>Caln</span>
+            <span>☁️</span>
+        </div>
+        <div class="icons">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="nav-icons">←</div>
+        <div class="action-icons">
+            <span>+</span>
+            <span>🔗</span>
+        </div>
+        <div class="title">Forest Rain</div>
+        <div class="play-button"></div>
+    </div>
+    
+    <div class="duration-selector">
+        <span class="label">I HAVE</span>
+        <div class="options">
+            <div class="option selected">5</div>
+            <div class="option">10</div>
+            <div class="option">20</div>
+        </div>
+        <span class="unit">MINUTES</span>
+    </div>
+    
+    <div class="download-section">
+        <span class="label">Download</span>
+        <label class="toggle-switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+    
+    <div class="description">
+        Relax to the background sounds of rain.
+    </div>
+    
+    <div class="session-header">SESSION</div>
+    
+    <div class="session-item">
+        <span class="number">1</span>
+        <span class="title">Forest Rain</span>
+        <span class="duration">5:06</span>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

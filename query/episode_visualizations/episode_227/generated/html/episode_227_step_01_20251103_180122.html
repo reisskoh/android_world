@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Article</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #666;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #fff;
+        }
+        
+        .header-icon {
+            font-size: 24px;
+            color: #000;
+        }
+        
+        .back-arrow {
+            font-size: 28px;
+        }
+        
+        .article-content {
+            padding: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+        }
+        
+        .read-more {
+            color: #4285F4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .disclaimer {
+            text-align: right;
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .source-info {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .source-logo {
+            width: 40px;
+            height: 40px;
+            background-color: #4285F4;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        
+        .source-details {
+            flex: 1;
+        }
+        
+        .source-name {
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .verified-badge {
+            width: 16px;
+            height: 16px;
+            margin-left: 5px;
+            color: #000;
+        }
+        
+        .followers {
+            font-size: 14px;
+            color: #666;
+            margin-top: 2px;
+        }
+        
+        .follow-button {
+            background-color: #000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .reactions {
+            padding: 20px 15px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .reaction-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .reaction-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        
+        .reaction-count {
+            background-color: #eee;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .reaction-options {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .reaction-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 30%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .reaction-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .recommended-stories {
+            padding: 20px 15px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .story-item {
+            display: flex;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .story-text {
+            flex: 1;
+            padding-right: 10px;
+        }
+        
+        .story-title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+        
+        .story-image {
+            width: 80px;
+            height: 60px;
+            background-color: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #555;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            z-index: 1000;
+            max-width: 80%;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>3:26</span>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="header-icon back-arrow">‹</div>
+        <div class="header-icon">🗨️</div>
+        <div class="header-icon">🔗 1</div>
+        <div class="header-icon">⋮</div>
+    </div>
+    
+    <div class="article-content">
+        <p>the India World Cup. Pakistan Prime Minister Shehbaz Sharif is expected to make the final call after receiving recommendations from a 14-member panel. Zaka Asharaf, who is heading Pakistan Cricket Board's (PCB) management committee, met a high-level panel formed by the Pakistan Prime Minister on Thursday.</p>
+        <br>
+        <p>Read more news like this on <a href="#" class="read-more">HindustanTimes.com</a></p>
+    </div>
+    
+    <div class="disclaimer">
+        <span>Disclaimer ▾</span>
+    </div>
+    
+    <div class="source-info">
+        <div class="source-logo">HT</div>
+        <div class="source-details">
+            <div class="source-name">Hindustan Times <span class="verified-badge">✓</span></div>
+            <div class="followers">3.2M Followers</div>
+        </div>
+        <button class="follow-button">Follow</button>
+    </div>
+    
+    <div class="reactions">
+        <div class="reaction-header">
+            <div class="reaction-title">Your reaction?</div>
+            <div class="reaction-count">2</div>
+        </div>
+        <div class="reaction-options">
+            <div class="reaction-option">
+                <div class="reaction-icon">😊</div>
+                <div>50%</div>
+            </div>
+            <div class="reaction-option">
+                <div class="reaction-icon">😞</div>
+                <div>0%</div>
+            </div>
+            <div class="reaction-option">
+                <div class="reaction-icon">😠</div>
+                <div>50%</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="recommended-stories">
+        <div class="section-title">Recommended Stories</div>
+        <div class="story-item">
+            <div class="story-text">
+                <div class="story-title">Tamim Iqbal Steps Down as Bangladesh Captain</div>
+            </div>
+            <div class="story-image">
+                <img src="https://via.placeholder.com/80x60" alt="Cricket player">
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast">
+        Story has been removed from Saved list
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

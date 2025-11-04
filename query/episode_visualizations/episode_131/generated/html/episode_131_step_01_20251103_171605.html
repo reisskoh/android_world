@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #2c3e50;
+        }
+        
+        .status-bar {
+            background-color: #1a2b6b;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header {
+            background-color: #1a2b6b;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+        }
+        
+        .share-icon {
+            font-size: 24px;
+        }
+        
+        .route-info {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .date-passenger {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .journey-card {
+            background-color: white;
+            margin: 15px 20px;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .journey-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .outbound {
+            display: flex;
+            align-items: center;
+            color: #5d8bd3;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .check-icon {
+            background-color: #5d8bd3;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+        
+        .journey-time {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .journey-route {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #5d8bd3;
+        }
+        
+        .journey-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .db-logo {
+            background-color: #e60000;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .train-icon {
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        
+        .duration-transfers {
+            color: #5d8bd3;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 20px 15px;
+            color: #1a2b6b;
+        }
+        
+        .class-options {
+            display: flex;
+            gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .class-option {
+            flex: 1;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #5d8bd3;
+            background-color: #e6f0fa;
+            text-align: center;
+        }
+        
+        .class-option.selected {
+            background-color: #d0e4f7;
+            border-color: #1a2b6b;
+        }
+        
+        .class-option.unselected {
+            background-color: white;
+            border-color: #ddd;
+        }
+        
+        .class-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #5d8bd3;
+        }
+        
+        .fare-section {
+            margin: 25px 20px 15px;
+        }
+        
+        .fare-options {
+            display: flex;
+            gap: 15px;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .fare-option {
+            flex: 1;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #5d8bd3;
+            background-color: #e6f0fa;
+            text-align: center;
+        }
+        
+        .fare-option.selected {
+            background-color: #d0e4f7;
+            border-color: #1a2b6b;
+        }
+        
+        .fare-option.unselected {
+            background-color: white;
+            border-color: #ddd;
+        }
+        
+        .fare-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #5d8bd3;
+        }
+        
+        .fare-features {
+            font-size: 14px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        
+        .fare-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .fare-feature-icon {
+            margin-right: 5px;
+            color: #5d8bd3;
+        }
+        
+        .fare-price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #5d8bd3;
+            margin-top: 10px;
+        }
+        
+        .fare-terms {
+            margin: 25px 20px;
+        }
+        
+        .terms-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1a2b6b;
+        }
+        
+        .terms-content {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #2c3e50;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: #1a2b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>1:20</div>
+        <div>📶 📱 📧 🧭</div>
+        <div>📶 🔋 100%</div>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div>
+            <div class="route-info">Gothenbur... → Groningen</div>
+            <div class="date-passenger">Sun, Nov 5, 1 passenger</div>
+        </div>
+        <div class="share-icon">🔗</div>
+    </div>
+    
+    <div class="journey-card">
+        <div class="journey-header">
+            <div class="outbound">
+                <div class="check-icon">✓</div>
+                OUTBOUND
+            </div>
+            <div>▼</div>
+        </div>
+        <div class="journey-time">Sun, Nov 05 8:40 AM - 10:25 PM</div>
+        <div class="journey-route">Gothenburg Centralstation > Groningen, Hoofdstation</div>
+        <div class="journey-details">
+            <div>
+                <span class="db-logo">DB</span>
+                <span class="train-icon">🚂</span>
+            </div>
+            <div class="duration-transfers">13h 45m • 5 transfers</div>
+        </div>
+    </div>
+    
+    <div class="section-title">Select your class</div>
+    
+    <div class="class-options">
+        <div class="class-option selected">
+            <div class="class-name">2nd Class</div>
+            <div class="price">+$0</div>
+        </div>
+        <div class="class-option unselected">
+            <div class="class-name">1st Class</div>
+            <div class="price">+$136.75</div>
+        </div>
+    </div>
+    
+    <div class="section-title">Fare conditions</div>
+    
+    <div class="fare-options">
+        <div class="fare-option selected">
+            <div class="fare-title">Flex fare Europe</div>
+            <div class="fare-features">
+                <div class="fare-feature">
+                    <span class="fare-feature-icon">🔒</span>
+                    Fully refundable
+                </div>
+                <div class="fare-feature">
+                    <span class="fare-feature-icon">🔄</span>
+                    Fully exchangeable
+                </div>
+            </div>
+            <div class="fare-price">+$0</div>
+        </div>
+        <div class="fare-option unselected">
+            <div style="color: #bbb; text-align: center; padding: 20px;">
+                There is only 1 fare available for this journey
+            </div>
+        </div>
+    </div>
+    
+    <div class="fare-terms">
+        <div class="terms-title">Fare terms</div>
+        <div class="terms-content">
+            <strong>Flex fare Europe</strong><br>
+            Ticket is valid for trains on the chosen route on departure date. An ICE ticket is valid on all DB trains, an IC/EC ticket on Intercity and Eurocity trains and on local trains.<br>
+            This ticket can be refunded or exchanged for free up until the day before departure. A €19 fee applies for refunds or exchanges requested on the departure date.
+        </div>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

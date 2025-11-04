@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Workouts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #333;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .filter-btn:after {
+            content: '▼';
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        
+        .workout-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .workout-item {
+            display: flex;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .workout-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .workout-info {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .workout-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .workout-meta {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .play-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-icon:after {
+            content: '▶';
+            font-size: 10px;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #f5f5f5;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-icon {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-left">
+            <span>8:45</span>
+            <span class="status-icon">🔒</span>
+            <span class="status-icon">📷</span>
+            <span class="status-icon">🔄</span>
+            <span class="status-icon">🔍</span>
+        </div>
+        <div class="status-right">
+            <span class="status-icon">📍</span>
+            <span class="status-icon">➖</span>
+            <span class="status-icon">📶</span>
+            <span class="status-icon">🔋</span>
+            <span>97%</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <span class="back-arrow">←</span>
+        <h1 class="title">Diamond</h1>
+    </div>
+    
+    <div class="filters">
+        <button class="filter-btn">Available to you</button>
+        <button class="filter-btn">Duration</button>
+        <button class="filter-btn">Workout type</button>
+    </div>
+    
+    <div class="workout-list">
+        <div class="workout-item">
+            <img src="https://via.placeholder.com/120x120" alt="Leg day challenge" class="workout-image">
+            <div class="workout-info">
+                <div class="workout-title">Leg day challenge</div>
+                <div class="workout-meta">
+                    <span class="play-icon"></span>
+                    <span>32 min • Workout</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workout-item">
+            <img src="https://via.placeholder.com/120x120" alt="Dumbbell arm farm challenge" class="workout-image">
+            <div class="workout-info">
+                <div class="workout-title">Dumbbell arm farm challenge</div>
+                <div class="workout-meta">
+                    <span class="play-icon"></span>
+                    <span>19 min • Workout</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workout-item">
+            <img src="https://via.placeholder.com/120x120" alt="Dumbbell bootcamp basics" class="workout-image">
+            <div class="workout-info">
+                <div class="workout-title">Dumbbell bootcamp basics</div>
+                <div class="workout-meta">
+                    <span class="play-icon"></span>
+                    <span>18 min • Workout</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workout-item">
+            <img src="https://via.placeholder.com/120x120" alt="Kettlebell core crusher" class="workout-image">
+            <div class="workout-info">
+                <div class="workout-title">Kettlebell core crusher</div>
+                <div class="workout-meta">
+                    <span class="play-icon"></span>
+                    <span>15 min • Workout</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workout-item">
+            <img src="https://via.placeholder.com/120x120" alt="Upper body AMRAP pump" class="workout-image">
+            <div class="workout-info">
+                <div class="workout-title">Upper body AMRAP pump</div>
+                <div class="workout-meta">
+                    <span class="play-icon"></span>
+                    <span>21 min • Workout</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workout-item">
+            <img src="https://via.placeholder.com/120x120" alt="Upper body blast" class="workout-image">
+            <div class="workout-info">
+                <div class="workout-title">Upper body blast</div>
+                <div class="workout-meta">
+                    <span class="play-icon"></span>
+                    <span>8 min • Workout</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workout-item">
+            <img src="https://via.placeholder.com/120x120" alt="HIIT hero workout" class="workout-image">
+            <div class="workout-info">
+                <div class="workout-title">HIIT hero workout</div>
+                <div class="workout-meta">
+                    <span class="play-icon"></span>
+                    <span>7 min • Workout</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

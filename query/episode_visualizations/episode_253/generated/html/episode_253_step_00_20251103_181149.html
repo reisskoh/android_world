@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Review Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .product-image {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #ddd;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            margin: 0 10px;
+        }
+        
+        .quantity-control button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        
+        .quantity-control span {
+            margin: 0 15px;
+            font-size: 16px;
+        }
+        
+        .add-to-cart {
+            border: 2px solid #4267B2;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .add-to-cart svg {
+            width: 24px;
+            height: 24px;
+            fill: #4267B2;
+        }
+        
+        .accordion {
+            background-color: white;
+            margin: 10px 0;
+        }
+        
+        .accordion-item {
+            border-bottom: 2px solid #4267B2;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        
+        .accordion-content {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .rating-section {
+            margin: 20px 0;
+        }
+        
+        .rating-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .rating-header .stars {
+            display: flex;
+            margin: 0 10px;
+        }
+        
+        .rating-header .stars img {
+            width: 20px;
+            height: 20px;
+            margin-right: 2px;
+        }
+        
+        .rating-bars {
+            margin: 15px 0;
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .rating-label {
+            width: 60px;
+            font-size: 14px;
+        }
+        
+        .rating-progress {
+            flex: 1;
+            height: 8px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            margin: 0 10px;
+        }
+        
+        .rating-progress.filled {
+            background-color: #7cb342;
+        }
+        
+        .view-all-reviews {
+            color: #4267B2;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 15px 0;
+            display: block;
+        }
+        
+        .review-section {
+            margin: 20px 0;
+        }
+        
+        .review-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .review-rating {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .review-rating .stars {
+            display: flex;
+            margin-left: 10px;
+        }
+        
+        .review-rating .stars img {
+            width: 16px;
+            height: 16px;
+            margin-right: 2px;
+        }
+        
+        .review-content {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: #333;
+        }
+        
+        .review-author {
+            font-size: 14px;
+            color: #777;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .review-form {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .review-form-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .product-name {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #4267B2;
+        }
+        
+        .nav-item svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .whatsapp-button {
+            position: fixed;
+            bottom: 70px;
+            left: 15px;
+            background-color: #25D366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-button svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>12:23</span>
+        <div>
+            <span>ovo</span>
+            <span>99</span>
+            <span>⬇</span>
+        </div>
+    </div>
+    
+    <div class="product-header">
+        <div class="product-image">
+            <img src="https://via.placeholder.com/40" alt="Racquet">
+        </div>
+        <div class="quantity-control">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+        </div>
+        <div class="add-to-cart">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M19 11h-1.4l-1.2-1.2c-1.2-1.2-2.8-1.8-4.4-1.8s-3.2.6-4.4 1.8L6.4 11H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm-7 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm7-2H5v-8h14v8z"/>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="accordion">
+        <div class="accordion-item">
+            <span>DETAILS</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+            </svg>
+        </div>
+        <div class="accordion-item">
+            <span>MORE INFORMATION</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+            </svg>
+        </div>
+        <div class="accordion-item">
+            <span>REVIEWS (1)</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+            </svg>
+        </div>
+    </div>
+    
+    <div class="accordion-content">
+        <div class="rating-section">
+            <div class="rating-header">
+                <span style="font-size: 24px; font-weight: bold;">5</span>
+                <div class="stars">
+                    <img src="https://via.placeholder.com/20/FFD700/FFD700" alt="Star">
+                    <img src="https://via.placeholder.com/20/FFD700/FFD700" alt="Star">
+                    <img src="https://via.placeholder.com/20/FFD700/FFD700" alt="Star">
+                    <img src="https://via.placeholder.com/20/FFD700/FFD700" alt="Star">
+                    <img src="https://via.placeholder.com/20/FFD700/FFD700" alt="Star">
+                </div>
+                <span>1 Reviews</span>
+            </div>
+            
+            <div class="rating-bars">
+                <div class="rating-bar">
+                    <span class="rating-label">5 star</span>
+                    <div class="rating-progress filled" style="width: 80%"></div>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-label">4 star</span>
+                    <div class="rating-progress" style="width: 20%"></div>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-label">3 star</span>
+                    <div class="rating-progress" style="width: 10%"></div>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-label">2 star</span>
+                    <div class="rating-progress" style="width: 5%"></div>
+                </div>
+                <div class="rating-bar">
+                    <span class="rating-label">1 star</span>
+                    <div class="rating-progress" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <a href="#" class="view-all-reviews">View all 1 reviews</a>
+        </div>
+        
+        <div class="review-section">
+            <h3>Most Helpful Customer Reviews</h3>
+            
+            <div class="review-item">
+                <div class="review-rating">
+                    <span>Value</span>
+                    <div class="stars">
+                        <img src="https://via.placeholder.com/16/FFD700/FFD700" alt="Star">
+                        <img src="https://via.placeholder.com/16/FFD700/FFD700" alt="Star">
+                        <img src="https://via.placeholder.com/16/FFD700/FFD700" alt="Star">
+                        <img src="https://via.placeholder.com/16/FFD700/FFD700" alt="Star">
+                        <img src="https://via.placeholder.com/16/FFD700/FFD700" alt="Star">
+                    </div>
+                </div>
+                
+                <div class="review-title">NICE RACQUET</div>
+                
+                <div class="review-content">
+                    Good one nice colour light weight racquet with head heavy balance....just go for this racquet without any doubts
+                </div>
+                
+                <div class="review-author">By Vasudev guttal on 10/21/21</div>
+            </div>
+        </div>
+        
+        <div class="review-form">
+            <div class="review-form-title">YOU'RE REVIEWING:</div>
+            <div class="product-name">YONEX ASTROX 88D PLAY BADMINTON RACKET</div>
+        </div>
+    </div>
+    
+    <div class="whatsapp-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67-.149-.198 0-.521.074-.793.372-.273.299-1.088.967-1.335 1.166-.273.199-.57.199-.793.074-.224-.124-1.015-.742-1.929-1.409-.914-.668-1.607-1.212-1.88-1.485-.273-.273-.396-.521-.396-.793s.123-.521.396-.793c.273-.273.521-.669.793-.967.273-.299.521-.669.793-.967.273-.299.521-.521.793-.793.273-.273.521-.521.793-.793l.397-.397c.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.273.521-.521.793-.793.273-.

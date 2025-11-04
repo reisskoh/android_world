@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharing Interface</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 20px;
+            color: #aaa;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-left: 10px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #aaa;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            color: #ffffff;
+            border-bottom: 3px solid #3b82f6;
+        }
+        
+        .hide-markdown {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .hide-markdown input {
+            margin-right: 8px;
+            accent-color: #3b82f6;
+        }
+        
+        .content {
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            margin: 15px 20px;
+        }
+        
+        .content h2 {
+            font-size: 20px;
+            margin: 0 0 5px 0;
+            color: #ffffff;
+        }
+        
+        .content p {
+            margin: 5px 0;
+            color: #aaa;
+            font-size: 16px;
+        }
+        
+        .share-panel {
+            background-color: #1e1e1e;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            box-shadow: 0 -5px 10px rgba(0,0,0,0.3);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .share-header {
+            text-align: center;
+            padding: 10px 0;
+            border-top: 4px solid #555;
+            margin-bottom: 15px;
+        }
+        
+        .share-title {
+            font-size: 18px;
+            margin: 0 0 5px 0;
+            color: #ffffff;
+        }
+        
+        .share-subtitle {
+            font-size: 16px;
+            color: #aaa;
+            margin: 0;
+        }
+        
+        .share-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background-color: transparent;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .action-btn:hover {
+            background-color: #333;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .app-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .app-name {
+            font-size: 14px;
+            color: #ffffff;
+            margin: 0;
+        }
+        
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+        
+        .contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4ade80;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .contact-icon span {
+            font-size: 30px;
+            color: #111;
+            font-weight: bold;
+        }
+        
+        .contact-name {
+            font-size: 14px;
+            color: #ffffff;
+            margin: 0;
+        }
+        
+        .contact-title {
+            font-size: 12px;
+            color: #aaa;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="tabs">
+            <div class="tab active">Text</div>
+            <div class="tab">Image</div>
+        </div>
+    </div>
+    
+    <div class="hide-markdown">
+        <input type="checkbox" id="hide-markdown">
+        <label for="hide-markdown">Hide Markdown</label>
+    </div>
+    
+    <div class="content">
+        <h2>Weeding plan</h2>
+        <p>Due Date: Jul 19, 12:30pm</p>
+        <p>From TickTick: www.ticktick.com</p>
+    </div>
+    
+    <div class="share-panel">
+        <div class="share-header">
+            <h3 class="share-title">Weeding plan</h3>
+            <p class="share-subtitle">Due Date: Jul 19, 12:30pm...</p>
+        </div>
+        
+        <div class="share-actions">
+            <button class="action-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9"></path>
+                </svg>
+                Copy
+            </button>
+            <button class="action-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 12c2 0 4-1.34 4-3s-2-3-4-3-4 1.34-4 3 2 3 4 3z"></path>
+                    <path d="M12 12v6"></path>
+                    <path d="M12 18c2 0 4-1.34 4-3s-2-3-4-3-4 1.34-4 3 2 3 4 3z"></path>
+                </svg>
+                Nearby
+            </button>
+        </div>
+        
+        <div class="contact">
+            <div class="contact-icon">
+                <span>W</span>
+                <div class="badge">💬</div>
+            </div>
+            <p class="contact-name">Wm Company</p>
+            <p class="contact-title">Hr No</p>
+        </div>
+        
+        <div class="apps-grid">
+            <div class="app-item">
+                <div class="app-icon">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEyIDZsLTUuNSA1LjVMMTIgMTdsNS41LTUuNUwxMiA2eiIvPjxwYXRoIGZpbGw9IiMzNGE4NTMiIGQ9Ik0xMiA2bDUuNSA1LjVMMTIgMTdsLTUuNS01LjVMMTIgNnoiLz48cGF0aCBmaWxsPSIjZmZlMDAwIiBkPSJNMTIgNmwtNS41IDUuNUwxMiAxN2w1LjUtNS41TDEyIDZ6Ii8+PHBhdGggZmlsbD0iIzQwNzBlZCIgZD0iTTEy

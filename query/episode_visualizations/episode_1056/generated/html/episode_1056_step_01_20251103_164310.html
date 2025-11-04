@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #d3d3d3;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-bar span {
+            font-size: 16px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .menu-icon div {
+            width: 24px;
+            height: 3px;
+            background-color: #333;
+        }
+        
+        .menu-icon .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #e74c3c;
+            margin-left: 16px;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-icons i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .shipping-info {
+            text-align: center;
+            padding: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .member-perk {
+            background-color: #f5f0e6;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .member-perk h2 {
+            color: #e74c3c;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .member-perk h3 {
+            color: #e74c3c;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .member-perk p {
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .member-perk .countdown {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .info-icon {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .featured-product {
+            position: relative;
+            margin: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .featured-product img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .product-title {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            padding: 10px;
+        }
+        
+        .popular-categories {
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .footer {
+            height: 50px;
+            background-color: black;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>8:46</span>
+        <div>
+            <span>ovo</span>
+            <span>88°</span>
+            <span>fc</span>
+        </div>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="dot"></div>
+        </div>
+        <div class="header-icons">
+            <i>🔍</i>
+            <i>👤</i>
+            <i>❤️</i>
+            <i>🛒</i>
+        </div>
+    </div>
+    
+    <div class="shipping-info">
+        Free Shipping over $40
+    </div>
+    
+    <div class="member-perk">
+        <div class="info-icon">i</div>
+        <h2>Member perk: 20% off</h2>
+        <h3>$100 + free shipping</h3>
+        <p>Not a member? Join today & get an extra 10% off on top!</p>
+        <p>It's go time!</p>
+        <div class="countdown">04:43:33</div>
+    </div>
+    
+    <div class="featured-product">
+        <img src="https://via.placeholder.com/440x600?text=Model+Image" alt="Model wearing white knit">
+        <div class="product-title">Uber-cozy knits</div>
+    </div>
+    
+    <div class="popular-categories">
+        Popular categories
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background-color: #121212;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 16px;
+            color: #fff;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .create-section {
+            padding: 20px;
+        }
+        
+        .create-label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .location-selector {
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .location-text {
+            font-size: 16px;
+        }
+        
+        .dropdown-arrow {
+            font-size: 16px;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 0 16px;
+        }
+        
+        .template-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .template-preview {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background-color: #fff;
+        }
+        
+        .template-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .template-title {
+            padding: 12px 16px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #000;
+            text-align: center;
+        }
+        
+        .blank-doc {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        
+        .welcome-tour {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
+        
+        .tour-arrow {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #2b579a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        
+        .tour-arrow::after {
+            content: "→";
+            font-size: 24px;
+            color: #2b579a;
+        }
+        
+        .tour-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2b579a;
+            line-height: 1.2;
+        }
+        
+        .notes-preview {
+            padding: 16px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .notes-title {
+            color: #800000;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .list-preview {
+            padding: 16px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .list-title {
+            color: #0057b8;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .journal-preview {
+            padding: 16px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .journal-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .journal-image {
+            width: 100%;
+            height: 100px;
+            background-color: #eee;
+            margin: 8px 0;
+        }
+        
+        .outline-preview {
+            padding: 16px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .outline-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: #000;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="header-title">New</div>
+    </div>
+    
+    <div class="create-section">
+        <div class="create-label">Create in</div>
+        <div class="location-selector">
+            <div class="location-text">This device > Documents</div>
+            <div class="dropdown-arrow">▼</div>
+        </div>
+        
+        <div class="templates-grid">
+            <!-- Blank Document -->
+            <div class="template-card">
+                <div class="template-preview blank-doc">
+                    <div style="width: 80%; height: 80%; background-color: #f5f5f5;"></div>
+                </div>
+                <div class="template-title">Blank document</div>
+            </div>
+            
+            <!-- Welcome to Word -->
+            <div class="template-card">
+                <div class="template-preview welcome-tour">
+                    <div class="tour-arrow"></div>
+                    <div class="tour-text">Take a tour</div>
+                </div>
+                <div class="template-title">Welcome to Word</div>
+            </div>
+            
+            <!-- Take Notes -->
+            <div class="template-card">
+                <div class="template-preview notes-preview">
+                    <div class="notes-title">Take Notes</div>
+                    <ul style="margin-top: 8px; padding-left: 20px;">
+                        <li>To take notes, just tap here and start typing.</li>
+                        <li>Or, easily create a digital notebook for all your notes that automatically syncs across your devices, using the free OneNote app.</li>
+                    </ul>
+                    <div style="margin-top: 8px; font-size: 10px;">
+                        To learn more and get OneNote, visit <a href="#" style="color: #800000;">www.onenote.com</a>.
+                    </div>
+                </div>
+                <div class="template-title">Take Notes</div>
+            </div>
+            
+            <!-- Make a List -->
+            <div class="template-card">
+                <div class="template-preview list-preview">
+                    <div class="list-title">Make a List...</div>
+                    <ol style="margin-top: 8px; padding-left: 20px;">
+                        <li>To write your list, just tap here and start typing.</li>
+                        <li>Or, easily create a digital notebook for lists and all your notes that automatically syncs across your devices, using the free OneNote app.</li>
+                    </ol>
+                    <div style="margin-top: 8px; font-size: 10px;">
+                        To learn more and get OneNote, visit <a href="#" style="color: #0057b8;">www.onenote.com</a>.
+                    </div>
+                </div>
+                <div class="template-title">Make a List</div>
+            </div>
+            
+            <!-- Write a Journal -->
+            <div class="template-card">
+                <div class="template-preview journal-preview">
+                    <div class="journal-title">Title</div>
+                    <div style="height: 2px; background-color: #ff6600; margin: 8px 0;"></div>
+                    <div style="font-weight: bold; margin: 8px 0;">Heading 1</div>
+                    <div style="margin: 8px 0; font-size: 10px;">
+                        To get started right away, just tap any placeholder text (such as this) and start typing.
+                    </div>
+                    <div style="margin: 8px 0; font-size: 10px;">
+                        To apply any text formatting you see on this page with just a tap, on the Home tab of the ribbon, check out Styles.
+                    </div>
+                    <div class="journal-image" style="background: linear-gradient(45deg, #4a90e2, #8bc34a);"></div>
+                    <div style="margin: 8px 0; font-size: 10px;">
+                        Want to insert a picture from your files or add a shape or text box? You got it! On the Insert tab of the ribbon, just tap the option you need.
+                    </div>
+                </div>
+                <div class="template-title">Write a Journal</div>
+            </div>
+            
+            <!-- Create an Outline -->
+            <div class="template-card">
+                <div class="template-preview outline-preview">
+                    <div style="text-align: right; font-size: 10px; margin-bottom: 8px;">Date</div>
+                    <div style="font-weight: bold; font-size: 14px; margin-bottom: 8px;">TITLE</div>
+                    <div style="margin: 8px 0;">
+                        <div style="font-weight: bold; margin-bottom: 4px;">1. HEADING 1</div>
+                        <div style="font-size: 10px; margin-bottom: 4px;">
+                            To get started right away, just tap any placeholder text (such as this) and start typing.
+                        </div>
+                        <div style="margin-left: 16px; margin-bottom: 4px;">
+                            A. Heading 2
+                        </div>
+                        <div style="margin-left: 32px; margin-bottom: 4px;">
+                            i. To easily apply any text formatting you see in this outline with just a tap, on the Home tab of the ribbon, check out Styles.
+                        </div>
+                        <div style="margin-left: 32px; margin-bottom: 4px;">
+                            ii. For example, this paragraph uses Heading 3 style.
+                        </div>
+                    </div>
+                    <div style="margin: 8px 0;">
+                        <div style="font-weight: bold; margin-bottom: 4px;">2. HEADING 1</div>
+                        <div style="font-size: 10px; margin-bottom: 4px;">
+                            Want to insert a picture from your files or add a shape, text box, or table? You got it! On the Insert tab of the ribbon, just tap the option you need.
+                        </div>
+                        <div style="font-size: 10px;">
+                            Find even more easy-to-use tools on the Insert tab, such as to add a hyperlink or insert a comment.
+                        </div>
+                    </div>
+                </div>
+                <div class="template-title">Create an Outline</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

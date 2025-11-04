@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-left, .header-right {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .field-label {
+            width: 80px;
+            font-size: 16px;
+        }
+        
+        .field-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .dropdown {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .subject-field {
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .subject-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            padding: 5px 0;
+        }
+        
+        .attachment {
+            margin: 20px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .attachment-preview {
+            width: 100%;
+            height: 150px;
+            background-color: #1a3d4f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .attachment-info {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+        }
+        
+        .file-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #e74c3c;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .file-details {
+            flex: 1;
+            margin-left: 10px;
+        }
+        
+        .file-name {
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+        }
+        
+        .file-size {
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .remove-btn {
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .status-text {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .steps-info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .calories-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .calories-value {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .drop-icon {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="header-icon">←</div>
+        </div>
+        <div class="header-right">
+            <div class="header-icon">📎</div>
+            <div class="header-icon">➤</div>
+            <div class="header-icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">From</div>
+        <div class="field-input">fabiotexeira00123@gmail.com</div>
+        <div class="dropdown">∨</div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">To</div>
+        <div class="field-input"></div>
+        <div class="dropdown">∨</div>
+    </div>
+    
+    <div class="subject-field">
+        <input type="text" class="subject-input" placeholder="Subject">
+    </div>
+    
+    <div class="attachment">
+        <div class="attachment-preview">
+            <div class="steps-info">of 117 steps taken</div>
+            <div class="circle">
+                <div class="drop-icon">💧</div>
+            </div>
+            <div class="calories-info">
+                <div class="calories-value">+15</div>
+                <div>of 519 calories burned</div>
+            </div>
+        </div>
+        <div class="attachment-info">
+            <div class="file-icon">🖼️</div>
+            <div class="file-details">
+                <div class="file-name">fitbitshare_1272361138.PNG</div>
+                <div class="file-size">96 KB</div>
+            </div>
+            <div class="remove-btn">✕</div>
+        </div>
+    </div>
+</body>
+</html>

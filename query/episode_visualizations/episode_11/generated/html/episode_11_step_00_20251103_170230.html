@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .header h1 {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header-icons .icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .header-icons .star {
+            background-color: #f0f8ff;
+            color: #4a90e2;
+        }
+        
+        .section {
+            margin: 20px 0;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title .add-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            margin-bottom: 8px;
+        }
+        
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .task-text {
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .promotion {
+            background-color: #fff;
+            border: 1px solid #4a90e2;
+            border-radius: 20px;
+            padding: 8px 15px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 250px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .promotion span {
+            color: #4a90e2;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .promotion .close {
+            color: #4a90e2;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .input-container {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            border-radius: 25px;
+            padding: 0 15px;
+            margin-top: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .home-icon {
+            color: #4a90e2;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .input-field {
+            flex-grow: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .input-field::placeholder {
+            color: #999;
+        }
+        
+        .bottom-bar {
+            height: 5px;
+            background-color: #999;
+            border-radius: 2.5px;
+            margin: 20px auto;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>7:56</div>
+        <div>📶 📲</div>
+    </div>
+    
+    <div class="header">
+        <div class="header-icons">
+            <div class="icon">
+                <div style="width: 20px; height: 20px; border: 2px solid #999; border-radius: 4px;"></div>
+            </div>
+        </div>
+        <h1>ALL TASKS</h1>
+        <div class="header-icons">
+            <div class="icon star">⭐</div>
+            <div class="icon">⋯</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">
+            Today
+            <div class="add-btn">+</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">
+            Tomorrow
+            <div class="add-btn">+</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">
+            Upcoming
+            <div class="add-btn">+</div>
+        </div>
+        <div class="task-item">
+            <div class="task-checkbox"></div>
+            <div class="task-text">Boxing classes</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">
+            Someday
+            <div class="add-btn">+</div>
+        </div>
+    </div>
+    
+    <div class="promotion">
+        <span>3 Days Only - 50% Off!</span>
+        <div class="close">X</div>
+    </div>
+    
+    <div class="input-container">
+        <div class="home-icon">🏠</div>
+        <input type="text" class="input-field" placeholder="I want to...">
+    </div>
+    
+    <div class="bottom-bar"></div>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women in Islam by Hakki Yilmaz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            flex-grow: 1;
+            margin: 0 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .search-icon, .mic-icon {
+            font-size: 24px;
+            color: #aaa;
+            margin: 0 10px;
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px 20px;
+            overflow-x: auto;
+        }
+        
+        .filter-button {
+            background-color: #2d2d2d;
+            color: #aaa;
+            border: 1px solid #444;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .filter-button:after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+        }
+        
+        .book-list {
+            padding: 0 20px;
+        }
+        
+        .book-item {
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            align-items: flex-start;
+        }
+        
+        .book-cover {
+            width: 100px;
+            height: 140px;
+            background-color: #fff;
+            border-radius: 4px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .book-info {
+            flex-grow: 1;
+        }
+        
+        .book-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            line-height: 1.2;
+        }
+        
+        .book-author {
+            font-size: 14px;
+            color: #aaa;
+            margin: 0 0 5px 0;
+        }
+        
+        .book-meta {
+            font-size: 14px;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+        }
+        
+        .star {
+            color: #ffd700;
+            font-size: 14px;
+            margin-left: 2px;
+        }
+        
+        .status {
+            font-size: 14px;
+            margin-top: 5px;
+            color: #888;
+        }
+        
+        .status.purchased {
+            color: #4CAF50;
+        }
+        
+        .status.free {
+            color: #2196F3;
+        }
+        
+        .status.price {
+            color: #FF9800;
+        }
+        
+        .status-text {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .status-text.purchased {
+            color: #4CAF50;
+        }
+        
+        .status-text.free {
+            color: #2196F3;
+        }
+        
+        .status-text.price {
+            color: #FF9800;
+        }
+        
+        .book-cover-text {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .book-cover-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .book-cover-author {
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .status-text.purchased {
+            color: #4CAF50;
+        }
+        
+        .status-text.free {
+            color: #2196F3;
+        }
+        
+        .status-text.price {
+            color: #FF9800;
+        }
+        
+        .book-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="back-button">←</button>
+        <div class="title">WOMEN IN ISLAM by Hakki Y...</div>
+        <div class="search-icon">🔍</div>
+        <div class="mic-icon">🎤</div>
+    </div>
+    
+    <div class="filters">
+        <button class="filter-button">Format</button>
+        <button class="filter-button">Price</button>
+        <button class="filter-button">Price drops</button>
+        <button class="filter-button">Family sh</button>
+    </div>
+    
+    <div class="book-list">
+        <div class="book-item">
+            <div class="book-cover">
+                <div class="book-cover-text">
+                    <div class="book-cover-title">WOMAN IN ISLAM</div>
+                    <div class="book-cover-author">HAKKI YILMAZ</div>
+                </div>
+            </div>
+            <div class="book-info">
+                <div class="book-title">WOMAN IN ISLAM</div>
+                <div class="book-author">Hakki Yilmaz</div>
+                <div class="book-meta">
+                    Ebook 4.0 <span class="rating">★</span>
+                </div>
+                <div class="status-text purchased">Purchased</div>
+            </div>
+        </div>
+        
+        <div class="book-item">
+            <div class="book-cover">
+                <div class="book-cover-text">
+                    <div class="book-cover-title">WAR/BATTLE IN ISLAM</div>
+                    <div class="book-cover-author">HAKKI YILMAZ</div>
+                </div>
+            </div>
+            <div class="book-info">
+                <div class="book-title">WAR/BATTLE IN ISLAM</div>
+                <div class="book-author">Hakki Yilmaz</div>
+                <div class="book-meta">
+                    Ebook 4.6 <span class="rating">★</span>
+                </div>
+                <div class="status-text free">Free</div>
+            </div>
+        </div>
+        
+        <div class="book-item">
+            <div class="book-cover">
+                <div class="book-cover-text">
+                    <div class="book-cover-title">ARTICLES ABOUT THE RELIGION OF ISLAM</div>
+                    <div class="book-cover-author">HAKKI YILMAZ</div>
+                </div>
+            </div>
+            <div class="book-info">
+                <div class="book-title">ARTICLES ABOUT THE RELIGION OF ISLAM</div>
+                <div class="book-author">Hakki Yilmaz</div>
+                <div class="book-meta">
+                    Ebook 4.9 <span class="rating">★</span>
+                </div>
+                <div class="status-text free">Free</div>
+            </div>
+        </div>
+        
+        <div class="book-item">
+            <div class="book-cover">
+                <div class="book-cover-text">
+                    <div class="book-cover-title">MARY AND JESUS IN THE QURAN</div>
+                    <div class="book-cover-author">HAKKI YILMAZ</div>
+                </div>
+            </div>
+            <div class="book-info">
+                <div class="book-title">MARY AND JESUS IN THE QURAN</div>
+                <div class="book-author">Hakki Yilmaz</div>
+                <div class="book-meta">
+                    Ebook 5.0 <span class="rating">★</span>
+                </div>
+                <div class="status-text free">Free</div>
+            </div>
+        </div>
+        
+        <div class="book-item">
+            <div class="book-cover">
+                <div class="book-cover-text">
+                    <div class="book-cover-title">THE QUR'AN</div>
+                    <div class="book-cover-author">HAKKI YILMAZ</div>
+                </div>
+            </div>
+            <div class="book-info">
+                <div class="book-title">The Division By Division English Interpretation of THE QUR'AN in Th...</div>
+                <div class="book-author">Hakki Yilmaz</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

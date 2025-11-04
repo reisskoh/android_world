@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMart Ready</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            background-color: #2e7d32;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header-icons img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .menu-icon {
+            font-size: 28px;
+            color: #333;
+        }
+        
+        .logo {
+            height: 40px;
+        }
+        
+        .cart-icon {
+            font-size: 28px;
+            color: #4caf50;
+        }
+        
+        /* Search Bar */
+        .search-bar {
+            padding: 15px 20px;
+            background-color: white;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            padding: 10px 15px;
+        }
+        
+        .search-icon {
+            color: #666;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            color: #333;
+            outline: none;
+        }
+        
+        .mic-icon {
+            color: #4caf50;
+            font-size: 20px;
+        }
+        
+        /* Delivery Info */
+        .delivery-info {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #e8f5e9;
+            border-bottom: 1px solid #c8e6c9;
+        }
+        
+        .location {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        
+        .location-icon {
+            color: #4caf50;
+            margin-right: 5px;
+            font-size: 18px;
+        }
+        
+        .location-text {
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .location-pin {
+            color: #4caf50;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        
+        .delivery-text {
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .delivery-time {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .clock-icon {
+            color: #4caf50;
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        
+        /* Banner */
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .banner-text {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        .shop-now-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* Category Navigation */
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .category-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .view-all {
+            color: #4caf50;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .arrow-icon {
+            margin-left: 5px;
+            font-size: 16px;
+        }
+        
+        /* Categories Grid */
+        .categories-grid {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 15px;
+            background-color: white;
+        }
+        
+        .category-item {
+            width: 20%;
+            padding: 15px 5px;
+            text-align: center;
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .category-name {
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        /* Winter Store Banner */
+        .winter-store {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .winter-store img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .winter-store-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+        }
+        
+        .winter-store-desc {
+            position: absolute;
+            bottom: 60px;
+            left: 20px;
+            color: white;
+            font-size: 14px;
+            text-align: left;
+            max-width: 60%;
+        }
+        
+        .winter-shop-now-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: white;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #4caf50;
+        }
+        
+        .nav-item.active .nav-icon {
+            color: #4caf50;
+        }
+        
+        /* Pagination dots */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: white;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+        
+        .dot.active {
+            background-color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-icons">
+            <span>11:03</span>
+            <img src="https://via.placeholder.com/24" alt="Search">
+            <img src="https://via.placeholder.com/24" alt="YouTube">
+            <img src="https://via.placeholder.com/24" alt="YouTube">
+            <img src="https://via.placeholder.com/24" alt="Search">
+        </div>
+        <div class="header-icons">
+            <img src="https://via.placeholder.com/24" alt="WiFi">
+            <img src="https://via.placeholder.com/24" alt="Battery">
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="menu-icon">☰</div>
+        <img src="https://via.placeholder.com/120x40/2e7d32/ffffff?text=DMart+Ready" alt="DMart Ready" class="logo">
+        <div class="cart-icon">🛒</div>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-container">
+            <div class="search-icon">🔍</div>
+            <input type="text" class="search-input" placeholder="Aapko Kya Chahiye?">
+            <div class="mic-icon">🎤</div>
+        </div>
+    </div>
+    
+    <!-- Delivery Info -->
+    <div class="delivery-info">
+        <div class="location">
+            <div class="location-icon">📍</div>
+            <div class="location-text">411006</div>
+            <div class="location-pin">▼</div>
+        </div>
+        <div class="delivery-text">
+            <div>Earliest <span style="color: #4caf50;">Home Delivery</span> time slot available</div>
+            <div class="delivery-time">
+                <div class="clock-icon">⏰</div>
+                <div>Tomorrow 07:00 AM - 10:00 AM</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Banner -->
+    <div class="banner">
+        <img src="https://via.placeholder.com/480x250/f8d7da/333333?text=Women+Hygiene" alt="Women Hygiene">
+        <div class="banner-text">Women Hygiene</div>
+        <div class="shop-now-btn">SHOP NOW</div>
+    </div>
+    
+    <!-- Pagination Dots -->
+    <div class="pagination">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+    </div>
+    
+    <!-- Category Navigation -->
+    <div class="category-header">
+        <div class="category-title">Popular Categories</div>
+        <div class="view-all">View All <div class="arrow-icon">→</div></div>
+    </div>
+    
+    <!-- Categories Grid -->
+    <div class="categories-grid">
+        <div class="category-item">
+            <img src="https://via.placeholder.com/60/ffeb3b/333333?text=Pooja" alt="Pooja Needs" class="category-icon">
+            <div class="category-name">Pooja Needs</div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/60/8bc34a/ffffff?text=Tea" alt="Tea" class="category-icon">
+            <div class="category-name">Tea</div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/60/795548/ffffff?text=Choc" alt="Chocolates" class="category-icon">
+            <div class="category-name">Chocolates</div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/60/ff9800/ffffff?text=Drinks" alt="Soft Drinks" class="category-icon">
+            <div class="category-name">Soft Drinks</div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/60/2196f3/ffffff?text=Tooth" alt="Toothpaste" class="category-icon">
+            <div class="category-name">Toothpaste</div>
+        </div>
+    </div>
+    
+    <!-- Winter Store Banner -->
+    <div class="winter-store">
+        <img src="https://via.placeholder.com/480x300/b3e5fc/333333?text=Winter+Store" alt="The Winter Store">
+        <div class="winter-store-text">THE WINTER STORE</div>
+        <div class="winter-store-desc">Get hot beverages, blankets, appliances, skin care & more.</div>
+        <div class="winter-shop-now-btn">SHOP NOW</div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🧩</div>
+            <div>Category</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">💰</div>
+            <div>50% Off</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">👤</div>
+            <div>My Account</div>
+        </div>
+    </div>
+</body>
+</html>

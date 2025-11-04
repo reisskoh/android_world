@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where to?</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0a0a0f;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            background-color: #000;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header {
+            padding: 20px 20px 10px;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 20px 0 30px;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin: 0 20px 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background-color: #1a1a25;
+            border: 2px solid #4dcaf7;
+            border-radius: 10px;
+            padding: 12px 15px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .clear-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .cancel-btn {
+            color: #888;
+            font-size: 16px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .multi-city-btn {
+            background-color: #1a1a25;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin: 0 20px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .multi-city-btn img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .section {
+            padding: 20px;
+            border-bottom: 1px solid #2d2d3a;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .section-subtitle {
+            color: #888;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .globe-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .keyboard {
+            background-color: #1a1a25;
+            padding: 10px 0;
+            border-top: 1px solid #2d2d3a;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 15px;
+        }
+        
+        .keyboard-top button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .keyboard-keys {
+            padding: 10px 15px;
+        }
+        
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d3a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .key.wide {
+            width: 60px;
+        }
+        
+        .key.space {
+            width: 200px;
+        }
+        
+        .key.enter {
+            width: 60px;
+            background-color: #d0d0e0;
+            color: #000;
+            border-radius: 20px;
+        }
+        
+        .key.shift {
+            width: 50px;
+        }
+        
+        .key.numeric {
+            width: 50px;
+            background-color: #888;
+        }
+        
+        .keyboard-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+        }
+        
+        .keyboard-bottom button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .keyboard-bottom .down-arrow {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>10:32</div>
+        <div>
+            <span>📶</span>
+            <span>📡</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <button class="close-btn">×</button>
+        <h1>Where to?</h1>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" value="Hawaii." placeholder="Where to?">
+            <button class="clear-btn">×</button>
+            <button class="cancel-btn">Cancel</button>
+        </div>
+        
+        <button class="multi-city-btn">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDZsLTQuNSA0LjVMMTAgMTJhMSAxIDAgMCAxIDEgMWwxLjUtMS41TDEyIDZ6bTAgMjB2LTJhMSAxIDAgMCAxIDEtMWwxLjUtMS41TDEyIDE4eiIvPjwvc3ZnPg==" alt="Airplane">
+            Multi-city search
+        </button>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">Everywhere</div>
+        <div class="section-subtitle">
+            <img class="globe-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDZsLTQuNSA0LjVMMTAgMTJhMSAxIDAgMCAxIDEgMWwxLjUtMS41TDEyIDZ6bTAgMjB2LTJhMSAxIDAgMCAxIDEtMWwxLjUtMS41TDEyIDE4eiIvPjwvc3ZnPg==" alt="Globe">
+            Explore great value destinations
+        </div>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <button>🔢</button>
+            <button>😊</button>
+            <button>GIF</button>
+            <button>⚙️</button>
+            <button>🌐</button>
+            <button>🎨</button>
+            <button>🎤</button>
+        </div>
+        
+        <div class="keyboard-keys">
+            <div class="row">
+                <div class="key">q</div>
+                <div class="key">w</div>
+                <div class="key">e</div>
+                <div class="key">r</div>
+                <div class="key">t</div>
+                <div class="key">y</div>
+                <div class="key">u</div>
+                <div class="key">i</div>
+                <div class="key">o</div>
+                <div class="key">p</div>
+            </div>
+            <div class="row">
+                <div class="key">a</div>
+                <div class="key">s</div>
+                <div class="key">d</div>
+                <div class="key">f</div>
+                <div class="key">g</div>
+                <div class="key">h</div>
+                <div class="key">j</div>
+                <div class="key">k</div>
+                <div class="key">l</div>
+            </div>
+            <div class="row">
+                <div class="key shift">⇧</div>
+                <div class="key">z</div>
+                <div class="key">x</div>
+                <div class="key">c</div>
+                <div class="key">v</div>
+                <div class="key">b</div>
+                <div class="key">n</div>
+                <div class="key">m</div>
+                <div class="key">⌫</div>
+            </div>
+            <div class="row">
+                <div class="key numeric">?123</div>
+                <div class="key">,</div>
+                <div class="key">😊</div>
+                <div class="key space"></div>
+                <div class="key">.</div>
+                <div class="key enter">✓</div>
+            </div>
+        </div>
+        
+        <div class="keyboard-bottom">
+            <button class="down-arrow">↓</button>
+        </div>
+    </div>
+</body>
+</html>

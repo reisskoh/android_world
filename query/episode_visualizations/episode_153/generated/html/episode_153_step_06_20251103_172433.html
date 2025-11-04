@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Venice Italy</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0d0d15;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #0d0d15;
+            font-size: 14px;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #2d2d3d;
+        }
+        
+        .back-button {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            padding: 5px 0;
+        }
+        
+        .clear-button {
+            color: #6699ff;
+            font-size: 24px;
+        }
+        
+        .search-results {
+            padding: 15px;
+        }
+        
+        .result-item {
+            padding: 15px;
+            border-bottom: 1px solid #2d2d3d;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .location-icon {
+            margin-right: 10px;
+            font-size: 20px;
+            color: #999;
+        }
+        
+        .result-text {
+            flex: 1;
+        }
+        
+        .result-title {
+            font-weight: 500;
+            font-size: 16px;
+            margin: 0 0 5px 0;
+        }
+        
+        .result-subtitle {
+            font-size: 14px;
+            color: #ccc;
+            margin: 0;
+        }
+        
+        .keyboard {
+            background-color: #1a1a1a;
+            padding: 10px 15px;
+            border-top: 1px solid #2d2d3d;
+        }
+        
+        .keyboard-top-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-wide-key {
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-letter-key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-space {
+            width: 60%;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-search {
+            width: 60px;
+            height: 60px;
+            background-color: #cce0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #0d0d15;
+        }
+        
+        .keyboard-delete {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-shift {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-numbers {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-emoji {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-mic {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-gif {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .keyboard-settings {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-google {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-palette {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .keyboard-bottom-left {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+        }
+        
+        .keyboard-bottom-right {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+        }
+        
+        .keyboard-bottom-center {
+            width: 40%;
+        }
+        
+        .keyboard-bottom-key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-space {
+            width: 60%;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-search {
+            width: 60px;
+            height: 60px;
+            background-color: #cce0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #0d0d15;
+        }
+        
+        .keyboard-bottom-delete {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-shift {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-numbers {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-emoji {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-mic {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-gif {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .keyboard-bottom-settings {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-google {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-palette {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .keyboard-bottom-left {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+        }
+        
+        .keyboard-bottom-right {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+        }
+        
+        .keyboard-bottom-center {
+            width: 40%;
+        }
+        
+        .keyboard-bottom-key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-space {
+            width: 60%;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-search {
+            width: 60px;
+            height: 60px;
+            background-color: #cce0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #0d0d15;
+        }
+        
+        .keyboard-bottom-delete {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-shift {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-numbers {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-emoji {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-mic {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-gif {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .keyboard-bottom-settings {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-google {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-palette {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .keyboard-bottom-left {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+        }
+        
+        .keyboard-bottom-right {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+        }
+        
+        .keyboard-bottom-center {
+            width: 40%;
+        }
+        
+        .keyboard-bottom-key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-space {
+            width: 60%;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .keyboard-bottom-search {
+            width: 60px;
+            height: 60px;
+            background-color: #cce0ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #0d0d15;
+        }
+        
+        .keyboard-bottom-delete {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;

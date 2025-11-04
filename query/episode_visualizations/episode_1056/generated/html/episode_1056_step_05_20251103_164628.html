@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Pants Filter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            height: 44px;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            color: white;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #fff;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .filter-icon {
+            font-size: 24px;
+            color: #999;
+        }
+        
+        .filter-list {
+            padding: 20px;
+        }
+        
+        .filter-item {
+            padding: 15px 0;
+            font-size: 16px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .filter-item:last-child {
+            border-bottom: none;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            background-color: #fff;
+            border-top: 1px solid #e0e0e0;
+            padding: 15px 20px;
+            gap: 10px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .cancel-btn {
+            border: 1px solid #333;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        .apply-btn {
+            background-color: #e0e0e0;
+            color: #666;
+            border: none;
+        }
+        
+        .home-indicator {
+            height: 5px;
+            background-color: #000;
+            width: 40px;
+            margin: 10px auto;
+            border-radius: 2.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>8:48</div>
+        <div>● ovo 88° fc •</div>
+        <div>📶 🔋</div>
+    </div>
+    
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="title">track pants</div>
+        <div class="filter-icon">≡</div>
+    </div>
+    
+    <div class="filter-list">
+        <div class="filter-item">View all (566)</div>
+        <div class="filter-item">Women (62)</div>
+        <div class="filter-item">Divided (38)</div>
+        <div class="filter-item">Men (170)</div>
+        <div class="filter-item">Baby (85)</div>
+        <div class="filter-item">Kids (334)</div>
+        <div class="filter-item">Sport (54)</div>
+        <div class="filter-item">SALE (77)</div>
+    </div>
+    
+    <div class="footer">
+        <div class="btn cancel-btn">Cancel</div>
+        <div class="btn apply-btn">Apply</div>
+    </div>
+    
+    <div class="home-indicator"></div>
+</body>
+</html>

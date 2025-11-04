@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Screen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #181818;
+            border-bottom: 1px solid #282828;
+        }
+        
+        .close-btn {
+            font-size: 30px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .content {
+            position: relative;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/480x800/121212/121212') no-repeat center center;
+            background-size: cover;
+            filter: blur(10px);
+            z-index: -1;
+        }
+        
+        .edit-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            color: black;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: 500;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .album-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .album-art {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .song-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .artist-name {
+            font-size: 18px;
+            color: #b3b3b3;
+            margin-bottom: 15px;
+        }
+        
+        .spotify-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+        
+        .spotify-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #1DB954;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .spotify-icon::after {
+            content: "•";
+            color: black;
+            font-size: 12px;
+        }
+        
+        .bottom-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #181818;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .drag-handle {
+            width: 40px;
+            height: 4px;
+            background-color: #555;
+            border-radius: 2px;
+            margin: 0 auto 15px;
+        }
+        
+        .share-options {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+        }
+        
+        .share-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .option-icon {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: black;
+        }
+        
+        .option-label {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .status-left {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .status-right {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-left">
+            <span>8:34</span>
+            <span>Q</span>
+            <span>T</span>
+            <span>●</span>
+            <span>M</span>
+        </div>
+        <div class="status-right">
+            <span>⊖</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <button class="close-btn">×</button>
+        <div class="header-title">Share</div>
+        <div style="width: 30px;"></div> <!-- Spacer for alignment -->
+    </div>
+    
+    <div class="content">
+        <div class="background-image"></div>
+        <button class="edit-btn">Edit</button>
+        
+        <div class="album-container">
+            <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=REAL+LOVE" alt="Album Art" class="album-art">
+            <div class="song-title">Real Love</div>
+            <div class="artist-name">Martin Garrix, Lloyiso</div>
+            <div class="spotify-logo">
+                <div class="spotify-icon"></div>
+                <span>Spotify</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-sheet">
+        <div class="drag-handle"></div>
+        <div class="share-options">
+            <div class="share-option">
+                <div class="option-icon">🔗</div>
+                <div class="option-label">Copy link</div>
+            </div>
+            <div class="share-option">
+                <div class="option-icon">💬</div>
+                <div class="option-label">SMS</div>
+            </div>
+            <div class="share-option">
+                <div class="option-icon">⋯</div>
+                <div class="option-label">More</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

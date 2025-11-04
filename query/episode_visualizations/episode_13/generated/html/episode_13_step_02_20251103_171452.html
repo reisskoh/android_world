@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney Cruise Line</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 200px;
+            background-image: url('https://via.placeholder.com/480x200');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 10px 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .price-section {
+            display: flex;
+            padding: 15px 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .price-info {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .price {
+            color: #4CAF50;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .price-per-day {
+            color: #4CAF50;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .divider {
+            width: 1px;
+            background-color: #ddd;
+            height: 60px;
+        }
+        
+        .cabin-prices {
+            flex: 1;
+            text-align: right;
+            padding: 10px;
+        }
+        
+        .cabin-price {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        
+        .cabin-price span:first-child {
+            color: #666;
+        }
+        
+        .cabin-price span:last-child {
+            font-weight: bold;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .info-item:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+        
+        .info-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #555;
+        }
+        
+        .info-text {
+            font-size: 18px;
+            color: #555;
+        }
+        
+        .itinerary-section {
+            padding: 15px 20px;
+            background-color: white;
+        }
+        
+        .itinerary-title {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .day-item {
+            margin-bottom: 15px;
+        }
+        
+        .day-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .day-location {
+            font-size: 18px;
+            color: #555;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .check-availability {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 15px 0;
+            color: white;
+        }
+        
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .footer-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .footer-item.active {
+            color: #FF4081;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Disney Cruise Line</h1>
+        <div class="menu-icon">⋮</div>
+    </div>
+    
+    <div class="hero-image">
+        <div class="hero-text">4 Night Halloween On The High Seas Canada (New York Roundtrip)</div>
+    </div>
+    
+    <div class="price-section">
+        <div class="price-info">
+            <div class="price">$190.00</div>
+            <div class="price-per-day">price per day</div>
+        </div>
+        <div class="divider"></div>
+        <div class="cabin-prices">
+            <div class="cabin-price"><span>Cabin</span><span>$762</span></div>
+            <div class="cabin-price"><span>Balcony</span><span>$858</span></div>
+            <div class="cabin-price"><span>Suite</span><span>n/a</span></div>
+        </div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon">🚢</div>
+        <div class="info-text">Disney Dream</div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon">📅</div>
+        <div class="info-text">October 17, 2023</div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon">⏰</div>
+        <div class="info-text">4 Days</div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div class="info-text">New York, New York</div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon">🗓️</div>
+        <div class="info-text">Itinerary</div>
+    </div>
+    
+    <div class="itinerary-section">
+        <div class="day-item">
+            <div class="day-label">Day: 1</div>
+            <div class="day-location">New York, New York</div>
+        </div>
+        <div class="day-item">
+            <div class="day-label">Day: 2</div>
+            <!-- Additional days would go here -->
+        </div>
+    </div>
+    
+    <button class="check-availability">Check Availability</button>
+    
+    <div class="footer">
+        <div class="footer-item">
+            <div class="footer-icon">⭐</div>
+            <div>Top Deals</div>
+        </div>
+        <div class="footer-item active">
+            <div class="footer-icon">🔍</div>
+            <div>Cruise Search</div>
+        </div>
+        <div class="footer-item">
+            <div class="footer-icon">ℹ️</div>
+            <div>Contact Us</div>
+        </div>
+    </div>
+</body>
+</html>

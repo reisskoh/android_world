@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #dce0e8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background-color: #3a4d6a;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .header-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .ad-banner {
+            background-color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            margin: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .ad-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        
+        .ad-content {
+            flex: 1;
+        }
+        
+        .ad-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .ad-subtitle {
+            color: #0066ff;
+            font-size: 14px;
+        }
+        
+        .ad-close {
+            font-size: 20px;
+            color: #888;
+            margin-right: 5px;
+        }
+        
+        .ad-arrow {
+            width: 40px;
+            height: 40px;
+            background-color: #0066ff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .reminder-list {
+            margin: 0 15px;
+        }
+        
+        .reminder-item {
+            background-color: #dce0e8;
+            padding: 15px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+        
+        .reminder-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .reminder-date {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .reminder-frequency {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .reminder-time {
+            text-align: right;
+            color: #3a4d6a;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .fab {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background-color: #3a4d6a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .tab-bar {
+            display: flex;
+            background-color: #dce0e8;
+            padding: 15px 0;
+            border-top: 1px solid #bdc3c7;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .tab.active {
+            border-bottom: 2px solid black;
+        }
+        
+        .status-bar {
+            background-color: #3a4d6a;
+            color: white;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>2:53</div>
+        <div>📶 🔋</div>
+    </div>
+    
+    <div class="header">
+        <div class="header-title">
+            <div class="header-icon">☰</div>
+            Reminder
+        </div>
+        <div class="header-actions">
+            <div>🔍</div>
+            <div>≡</div>
+        </div>
+    </div>
+    
+    <div class="ad-banner">
+        <div class="ad-icon">
+            <div class="ad-close">ℹ️</div>
+            <div class="ad-close">×</div>
+        </div>
+        <div class="ad-content">
+            <div class="ad-title">Luxury Decorative Lighting</div>
+            <div class="ad-subtitle">The White Teak Company - Premium...</div>
+        </div>
+        <div class="ad-arrow">➡️</div>
+    </div>
+    
+    <div class="reminder-list">
+        <div class="reminder-item">
+            <div class="reminder-title">Reading</div>
+            <div class="reminder-date">17/06/2023 8:00 am</div>
+            <div class="reminder-frequency">Every Day</div>
+            <div class="reminder-time">in 5 days</div>
+        </div>
+        
+        <div class="reminder-item">
+            <div class="reminder-title">Dbw team meeting</div>
+            <div class="reminder-date">18/06/2023 1:53 am</div>
+            <div class="reminder-frequency">One Time</div>
+            <div class="reminder-time">in 6 days</div>
+        </div>
+        
+        <div class="reminder-item">
+            <div class="reminder-title">Nbc News</div>
+            <div class="reminder-date">19/06/2023 8:00 am</div>
+            <div class="reminder-frequency">One Time</div>
+            <div class="reminder-time">in 7 days</div>
+        </div>
+        
+        <div class="reminder-item">
+            <div class="reminder-title">Learning</div>
+            <div class="reminder-date">20/06/2023 7:00 am</div>
+            <div class="reminder-frequency">One Time</div>
+            <div class="reminder-time">in 8 days</div>
+        </div>
+        
+        <div class="reminder-item">
+            <div class="reminder-title">Yoga</div>
+            <div class="reminder-date">29/06/2023 9:15 pm</div>
+            <div class="reminder-frequency">One Time</div>
+            <div class="reminder-time">in 17 days</div>
+        </div>
+    </div>
+    
+    <div class="fab">+</div>
+    
+    <div class="tab-bar">
+        <div class="tab active">ACTIVE</div>
+        <div class="tab">COMPLETED</div>
+    </div>
+</body>
+</html>

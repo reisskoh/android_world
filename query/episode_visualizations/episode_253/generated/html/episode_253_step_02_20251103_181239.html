@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item - Powerlock Everlast Boxing Gloves</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .menu-icon span {
+            height: 3px;
+            background-color: #333;
+            width: 100%;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .watched-badge {
+            background-color: #e63946;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 15px 20px 0;
+            display: inline-block;
+        }
+        
+        .image-counter {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .dot-indicator {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+        }
+        
+        .dot.active {
+            background-color: #333;
+        }
+        
+        .favorite-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .favorite-icon {
+            color: #3a6aff;
+            font-size: 24px;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .seller-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .seller-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+        
+        .seller-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .seller-details {
+            flex: 1;
+        }
+        
+        .seller-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .feedback {
+            color: #333;
+            text-decoration: underline;
+        }
+        
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .shipping {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .delivery {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .condition {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .condition-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .condition-value {
+            color: #333;
+        }
+        
+        .info-icon {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .buy-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #3a6aff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .nav-arrow {
+            font-size: 24px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="title">Item</div>
+        <div class="header-icons">
+            <div class="icon">🔍</div>
+            <div class="icon">🛒</div>
+            <div class="icon">🔗</div>
+            <div class="icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="watched-badge">2 WATCHED IN THE LAST 24 HOURS</div>
+    
+    <div class="image-container">
+        <img src="https://via.placeholder.com/480x480?text=Boxing+Gloves" alt="Powerlock Everlast boxing gloves" class="product-image">
+        <div class="image-counter">1 of 9</div>
+        <div class="favorite-btn">
+            <div class="favorite-icon">♡</div>
+        </div>
+    </div>
+    
+    <div class="dot-indicator">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    
+    <div class="product-info">
+        <h1 class="product-title">Powerlock Everlast boxing gloves 10 oz XL</h1>
+        
+        <div class="seller-info">
+            <div class="seller-avatar">
+                <img src="https://via.placeholder.com/40x40?text=Cat" alt="Seller avatar">
+            </div>
+            <div class="seller-details">
+                <div class="seller-name">monte21 (822)</div>
+                <div class="feedback">100% positive feedback</div>
+            </div>
+            <div class="nav-arrow">›</div>
+        </div>
+        
+        <div class="price">$55.00</div>
+        <div class="shipping">+ $25.21 Shipping</div>
+        <div class="delivery">Est. delivery Tue, Aug 22 - Thu, Sep 14</div>
+        
+        <div class="condition">
+            <div class="condition-label">Condition</div>
+            <div class="condition-value">Used</div>
+            <div class="info-icon">i</div>
+        </div>
+        
+        <button class="buy-button">Buy It Now</button>
+    </div>
+</body>
+</html>

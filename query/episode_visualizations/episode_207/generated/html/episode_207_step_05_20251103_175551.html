@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background-color: #121212;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            margin-right: 15px;
+            color: white;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .create-section {
+            padding: 20px;
+        }
+        
+        .create-label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .location-selector {
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .location-text {
+            font-size: 16px;
+        }
+        
+        .dropdown-arrow {
+            font-size: 16px;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 0 20px 20px 20px;
+        }
+        
+        .template-card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .template-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .template-preview {
+            height: 250px;
+            background-color: white;
+            padding: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .template-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .template-title {
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* Template specific styles */
+        .basic-resume {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 12px;
+        }
+        
+        .basic-resume .header {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .basic-resume .section {
+            margin-bottom: 10px;
+        }
+        
+        .bold-resume {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 12px;
+            border: 3px solid #d4af37;
+        }
+        
+        .bold-resume .header {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+            border-bottom: 2px solid black;
+            padding-bottom: 3px;
+        }
+        
+        .business-paper {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 12px;
+        }
+        
+        .business-paper .header1 {
+            color: #0078d4;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .business-paper .header2 {
+            color: #0078d4;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .business-paper .quote {
+            font-style: italic;
+            margin: 10px 0;
+        }
+        
+        .business-paper .footer {
+            background-color: #0078d4;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #121212;
+            padding: 5px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .status-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .status-time {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-time">10:50</div>
+        <div class="status-icons">
+            <span>🌙</span>
+            <span>📁</span>
+            <span>●</span>
+            <span>▶</span>
+            <span>•</span>
+        </div>
+        <div class="status-icons">
+            <span>📍</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-button">←</div>
+        <div class="header-title">New</div>
+    </div>
+    
+    <div class="create-section">
+        <div class="create-label">Create in</div>
+        <div class="location-selector">
+            <div class="location-text">This device > Documents</div>
+            <div class="dropdown-arrow">▼</div>
+        </div>
+    </div>
+    
+    <div class="templates-grid">
+        <!-- Basic Resume -->
+        <div class="template-card">
+            <div class="template-preview basic-resume">
+                <div style="height: 10px; background-color: #555; margin-bottom: 10px;"></div>
+                <div class="header">FIRST NAME LAST NAME</div>
+                <div style="font-size: 10px; margin-bottom: 15px;">Address | Phone | Email</div>
+                <div class="section">
+                    <div style="font-weight: bold; margin-bottom: 5px;">Skills summary</div>
+                    <div>To get started right away, just tap any placeholder text (such as this) and start typing.</div>
+                </div>
+                <div class="section">
+                    <div style="font-weight: bold; margin-bottom: 5px;">Education</div>
+                    <div>Degree / Date of Graduation</div>
+                    <div>You might want to include here a brief summary of relevant coursework, awards, and honors.</div>
+                </div>
+                <div class="section">
+                    <div style="font-weight: bold; margin-bottom: 5px;">Experience</div>
+                    <div>Name of Employer</div>
+                    <div>Job Title / Dates of Employment</div>
+                    <div>This is the place for a brief summary of your key responsibilities and most stellar accomplishments.</div>
+                </div>
+                <div class="section">
+                    <div style="font-weight: bold; margin-bottom: 5px;">Awards and Acknowledgements</div>
+                    <div>Type of Award / Award Description</div>
+                    <div>Are you president of your fraternity or sorority, head of the condo board, or a team lead for your favorite charity? You're a natural leader—tell it like it is!</div>
+                </div>
+            </div>
+            <div class="template-title">Basic Resume</div>
+        </div>
+        
+        <!-- Basic Cover Letter -->
+        <div class="template-card">
+            <div class="template-preview">
+                <div style="height: 10px; background-color: #555; margin-bottom: 10px;"></div>
+                <div class="header">YOUR NAME</div>
+                <div style="font-size: 10px; margin-bottom: 15px;">Address | Telephone | Email</div>
+                <div style="margin: 20px 0;">Date</div>
+                <div style="margin: 5px 0;">Recipient</div>
+                <div style="margin: 5px 0;">Title</div>
+                <div style="margin: 5px 0;">Company</div>
+                <div style="margin: 5px 0;">Street Address</div>
+                <div style="margin: 5px 0;">City, ST ZIP Code</div>
+                <div style="margin: 20px 0; font-weight: bold;">Dear Recipient:</div>
+                <div style="margin: 10px 0;">To get started right away, just tap any placeholder text (such as this) and start typing.</div>
+                <div style="margin: 10px 0;">Wondering what to include in your cover letter? It's a good idea to include key points about why you're a great fit for the company and the best choice for the specific job. Of course, don't forget to ask for the interview—but keep it brief! A cover letter shouldn't read like a novel, no matter how great a plot you've got.</div>
+                <div style="margin: 20px 0;">Sincerely,</div>
+                <div style="margin: 10px 0; font-weight: bold;">Your Name</div>
+            </div>
+            <div class="template-title">Basic Cover Letter</div>
+        </div>
+        
+        <!-- Bold Resume -->
+        <div class="template-card">
+            <div class="template-preview bold-resume">
+                <div style="height: 10px; background-color: #555; margin-bottom: 10px;"></div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div style="width: 15px; height: 25px; background-color: #000; margin-right: 10px;"></div>
+                    <div class="header">NAME</div>
+                </div>
+                <div style="font-size: 10px; margin-bottom: 15px;">Address | Phone | Email</div>
+                <div class="section">
+                    <div class="header">OBJECTIVE</div>
+                    <div>To get started right away, just tap any placeholder text (such as this) and start typing.</div>
+                </div>
+                <div class="section">
+                    <div class="header">EXPERIENCE</div>
+                    <div>Name of Employer</div>
+                    <div>Job Title / Dates of Employment</div>
+                    <div>• This is the place for a brief summary of your key responsibilities and most stellar accomplishments.</div>
+                    <div>• To easily apply any text formatting you see in this document with just a tap, on the Home tab of the ribbon, check out Styles. This text uses the List Bullet style.</div>
+                </div>
+                <div class="section">
+                    <div class="header">EDUCATION</div>
+                    <div>You might want to include your GPA here and a brief summary of relevant coursework, awards, and honors.</div>
+                </div>
+                <div class="section">
+                    <div class="header">AWARDS AND ACKNOWLEDGEMENTS</div>
+                    <div>• You delivered that big presentation to rave reviews. Don't be shy about it now! This is the place to show how well you work and play with others.</div>
+                    <div>• Are you president of your fraternity or sorority, head of the condo board, or a team lead for your favorite charity? You're a natural leader—tell it like it is!</div>
+                </div>
+            </div>
+            <div class="template-title">Bold Resume</div>
+        </div>
+        
+        <!-- Bold Cover Letter -->
+        <div class="template-card">
+            <div class="template-preview bold-resume">
+                <div style="height: 10px; background-color: #555; margin-bottom: 10px;"></div>
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <div style="width: 15px; height: 25px; background-color: #000; margin-right: 10px;"></div>
+                    <div class="header">YOUR NAME</div>
+                </div>
+                <div style="font-size: 10px; margin-bottom: 15px;">Address | Telephone | Email</div>
+                <div style="margin: 20px 0;">Date</div>
+                <div style="margin: 5px 0;">Recipient</div>
+                <div style="margin: 5px 0;">Title</div>
+                <div style="margin: 5px 0;">Company</div>
+                <div style="margin: 5px 0;">Street Address</div>
+                <div style="margin: 5px 0;">City, ST ZIP Code</div>
+                <div style="margin: 20px 0; font-weight: bold;">Dear Recipient:</div>
+                <div style="margin: 10px 0;">To get started right away, just tap any placeholder text (such as this) and start typing.</div>
+                <div style="margin: 10px 0;">Wondering what to include in your cover letter? It's a good idea to include key points about why you're a great fit for the company and the best choice for the specific job. Of course, don't forget to ask for the interview—but keep it brief! A cover letter shouldn't read like a novel, no matter how great a plot you've got.</div>
+                <div style="margin: 20px 0;">Sincerely,</div>
+                <div style="margin: 10px 0; font-weight: bold;">Your Name</div>
+            </div>
+            <div class="template-title">Bold Cover Letter</div>
+        </div>
+        
+        <!-- Business Paper -->
+        <div class="template-card">
+            <div class="template-preview business-paper">
+                <div style="margin: 20px 0; font-weight: bold; color: #0078d4;">HEADING 1</div>
+                <div>To get started right away, just tap any placeholder text (such as this) and start typing.</div>
+                <div style="margin: 20px 0; font-weight: bold; color: #0078d4;">HEADING 2</div>
+                <div>View and edit this document in Word on your computer, tablet, or phone. You can edit text; easily insert content such as pictures, shapes, and tables; and seamlessly save the document to the cloud from Word on your Windows, Mac, Android, or iOS device.</div>
+                <div style="margin: 15px 0; font-style: italic; font-weight: bold;">"Quote"</div>
+                <div>Use styles to easily format your Word documents in no time:</div>
+                <div style="margin: 10px 0 0 20px;">
+                    <div>• For example, this text uses the List Bullet style.</div>
+                    <div>• On the Home tab of the ribbon, check out Styles to apply the formatting you want with just a tap.</div>
+                </div>
+                <div class="footer">Address | City, St Zip Code</div>
+            </div>
+            <div class="template-title">Business Paper</div>
+        </div>
+        
+        <!-- Business Letter -->
+        <div class="template-card">
+            <div class="template-preview business-paper">
+                <div style="margin: 20px 0;">Date</div>
+                <div style="margin: 20px 0; font-weight: bold; color: #0078d4; font-size: 16px;">RECIPIENT NAME</div>
+                <div style="margin: 5px 0; font-size: 12px;">ADDRESS | CITY, ST ZIP CODE</div>
+                <div style="margin: 15px 0;">To get started right away, just tap any placeholder text (such as this) and start typing.</div>
+                <div style="margin: 10px 0;">Use styles to easily format your Word documents in no time. For example, this text uses Normal style. To apply any text formatting you see in this document with just a tap, on the Home tab of the ribbon, check out Styles.</div>
+                <div style="margin: 20px 0;">SINCERELY,</div>
+                <div style="margin: 10px 0; font-weight: bold;">YOUR NAME</div>
+                <div class="footer">Address | City, St Zip Code</div>
+            </div>
+            <div class="template-title">Business Letter</div>
+        </div>
+    </div>
+</body>
+</html>

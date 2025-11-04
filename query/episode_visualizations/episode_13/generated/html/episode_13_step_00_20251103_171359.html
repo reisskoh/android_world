@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Mobile Interface</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #121212;
+        }
+        
+        .header-icon {
+            font-size: 24px;
+        }
+        
+        .profile-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #d35400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .tab-count {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #666;
+        }
+        
+        .menu-dots {
+            font-size: 28px;
+            line-height: 1;
+        }
+        
+        .google-logo {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .google-logo img {
+            width: 250px;
+            height: auto;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #2d2d2d;
+            border-radius: 25px;
+            padding: 0 15px;
+            margin: 20px 20px 30px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 12px 0;
+            font-size: 16px;
+        }
+        
+        .search-input::placeholder {
+            color: #aaa;
+        }
+        
+        .search-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .search-icon {
+            font-size: 20px;
+            color: #aaa;
+        }
+        
+        .shortcuts {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .shortcut {
+            width: 48%;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .shortcut img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+        }
+        
+        .shortcut-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        
+        .quick-access {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .quick-access-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 20%;
+        }
+        
+        .quick-access-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #2d2d2d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .quick-access-icon img {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .quick-access-label {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .discover-section {
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .discover-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .discover-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .settings-icon {
+            font-size: 20px;
+        }
+        
+        .discover-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #1e1e1e;
+            border-radius: 12px;
+        }
+        
+        .discover-content {
+            flex: 1;
+            margin-right: 15px;
+        }
+        
+        .discover-title-text {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .discover-description {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        
+        .discover-meta {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .discover-meta img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .discover-image {
+            width: 100px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .discover-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .discover-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .action-icon {
+            font-size: 20px;
+            color: #aaa;
+        }
+        
+        .full-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 20px 30px;
+        }
+        
+        .full-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 20px;
+            background-color: #121212;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .status-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            height: 5px;
+            background-color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-info">
+            <span>12:34</span>
+            <span>👻</span>
+            <span>32°</span>
+            <span>M</span>
+        </div>
+        <div class="status-icons">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="header-icon">🏠</div>
+        <div class="profile-circle">C</div>
+        <div class="tab-count">1</div>
+        <div class="menu-dots">⋮</div>
+    </div>
+    
+    <div class="google-logo">
+        <h1 style="font-size: 80px; margin: 0; font-weight: 300;">Google</h1>
+    </div>
+    
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search or type web address">
+        <div class="search-icons">
+            <div class="search-icon">🎤</div>
+            <div class="search-icon">📷</div>
+        </div>
+    </div>
+    
+    <div class="shortcuts">
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/150/333/fff?text=News" alt="News">
+            <div class="shortcut-label">News</div>
+        </div>
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/150/333/fff?text=Recipes" alt="Recipes">
+            <div class="shortcut-label">Recipes</div>
+        </div>
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/150/333/fff?text=Films" alt="Films">
+            <div class="shortcut-label">Films</div>
+        </div>
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/150/333/fff?text=Auto+mobile" alt="Auto mobile">
+            <div class="shortcut-label">Auto mobile</div>
+        </div>
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/150/333/fff?text=Mu" alt="Music">
+            <div class="shortcut-label">Mu</div>
+        </div>
+    </div>
+    
+    <div class="quick-access">
+        <div class="quick-access-item">
+            <div class="quick-access-icon">
+                <img src="https://via.placeholder.com/30/4267B2/fff?text=f" alt="Facebook">
+            </div>
+            <div class="quick-access-label">Facebook</div>
+        </div>
+        <div class="quick-access-item">
+            <div class="quick-access-icon">
+                <img src="https://via.placeholder.com/30/1877F2/fff?text=C" alt="Cricbuzz">
+            </div>
+            <div class="quick-access-label">Cricbuzz.c...</div>
+        </div>
+        <div class="quick-access-item">
+            <div class="quick-access-icon">
+                <img src="https://via.placeholder.com/30/FF0000/fff?text=You" alt="YouTube">
+            </div>
+            <div class="quick-access-label">YouTube</div>
+        </div>
+        <div class="quick-access-item">
+            <div class="quick-access-icon">
+                <img src="https://via.placeholder.com/30/FFFFFF/000?text=W" alt="Wikipedia">
+            </div>
+            <div class="quick-access-label">Wikipedia</div>
+        </div>
+    </div>
+    
+    <div class="discover-section">
+        <div class="discover-header">
+            <div class="discover-title">Discover</div>
+            <div class="settings-icon">⚙️</div>
+        </div>
+        
+        <div class="discover-item">
+            <div class="discover-content">
+                <div class="discover-title-text">IGNOU Marksheet 2023</div>
+                <div class="discover-description">Download, Check Online Dispatch Status @ www.ignou.ac.in</div>
+                <div class="discover-meta">
+                    <img src="https://via.placeholder.com/20/333/fff?text=I" alt="IGNOU">
+                    <span>ignou · 2d</span>
+                </div>
+            </div>
+            <div class="discover-image">
+                <img src="https://via.placeholder.com/100/333/fff?text=IGNOU+Mark" alt="IGNOU Marksheet">
+            </div>
+        </div>
+        
+        <div class="discover-actions">
+            <div class="action-icon">🔗</div>
+            <div class="action-icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="full-image">
+        <img src="https://via.placeholder.com/480/333/fff?text=City+View" alt="City View">
+    </div>
+    
+    <div class="bottom-bar"></div>
+</body>
+</html>

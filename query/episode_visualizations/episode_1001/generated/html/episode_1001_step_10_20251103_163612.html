@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Permission</title>
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: #000;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        
+        .selected-count {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .month-section {
+            padding: 15px;
+            background-color: #000;
+            border-bottom: 1px solid #333;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4px;
+            padding: 4px;
+        }
+        
+        .photo-item {
+            position: relative;
+            height: 0;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+            background-color: #333;
+        }
+        
+        .photo-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .selection-circle {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .selection-circle.selected {
+            background-color: #4285F4;
+        }
+        
+        .selection-circle.selected::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .video-indicator {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .permission-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            padding: 20px;
+            width: 80%;
+            max-width: 350px;
+            text-align: center;
+        }
+        
+        .modal-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .modal-images {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+        
+        .modal-image {
+            width: 45%;
+            height: 60px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .deny-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+        }
+        
+        .allow-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+        }
+        
+        .bottom-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: #000;
+            border-top: 1px solid #333;
+        }
+        
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            width: 45%;
+        }
+        
+        .action-btn i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .copy-btn {
+            border: 1px solid #444;
+            color: #888;
+        }
+        
+        .move-btn {
+            background-color: #4285F4;
+            color: white;
+        }
+        
+        .action-btn span {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>6:15</div>
+        <div>
+            <span>🔒</span>
+            <span>🔍</span>
+            <span>📁</span>
+        </div>
+        <div>📶 100%</div>
+    </div>
+    
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="selected-count">2</div>
+    </div>
+    
+    <div class="month-section">
+        <h3>September</h3>
+    </div>
+    
+    <div class="gallery-grid">
+        <div class="photo-item">
+            <img src="https://via.placeholder.com/100/FFD700/000000?text=Video" alt="Video">
+            <div class="selection-circle"></div>
+            <div class="video-indicator">
+                <span>0:12</span>
+                <span>▶</span>
+            </div>
+        </div>
+        <div class="photo-item">
+            <img src="https://via.placeholder.com/100/333333/FFFFFF?text=Photo" alt="Photo">
+            <div class="selection-circle"></div>
+        </div>
+        <div class="photo-item">
+            <img src="https://via.placeholder.com/100/333333/FFFFFF?text=Photo" alt="Photo">
+            <div class="selection-circle selected"></div>
+        </div>
+        <div class="photo-item">
+            <img src="https://via.placeholder.com/100/333333/FFFFFF?text=Photo" alt="Photo">
+            <div class="selection-circle selected"></div>
+        </div>
+    </div>
+    
+    <div class="month-section">
+        <h3>August</h3>
+    </div>
+    
+    <div class="gallery-grid">
+        <div class="photo-item">
+            <img src="https://via.placeholder.com/100/666666/FFFFFF?text=Photo" alt="Photo">
+            <div class="selection-circle"></div>
+        </div>
+        <div class="photo-item">
+            <img src="https://via.placeholder.com/100/666666/FFFFFF?text=Photo" alt="Photo">
+            <div class="selection-circle"></div>
+        </div>
+        <div class="photo-item">
+            <img src="https://via.placeholder.com/100/666666/FFFFFF?text=Photo" alt="Photo">
+            <div class="selection-circle"></div>
+        </div>
+    </div>
+    
+    <div class="month-section">
+        <h3>July</h3>
+    </div>
+    
+    <div class="gallery-grid">
+        <div class="photo-item">
+            <img src="https://via.placeholder.com/100/333333/FFFFFF?text=Photo" alt="Photo">
+            <div class="selection-circle"></div>
+        </div>
+    </div>
+    
+    <div class="permission-modal">
+        <div class="modal-content">
+            <div class="modal-title">Allow Gallery to modify 2 photos?</div>
+            <div class="modal-images">
+                <div class="modal-image">
+                    <img src="https://via.placeholder.com/100/333333/FFFFFF?text=Photo" alt="Photo">
+                </div>
+                <div class="modal-image">
+                    <img src="https://via.placeholder.com/100/333333/FFFFFF?text=Photo" alt="Photo">
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn deny-btn">Deny</button>
+                <button class="modal-btn allow-btn">Allow</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-bar">
+        <div class="action-btn copy-btn">
+            <span>📋</span>
+            <span>Copy</span>
+        </div>
+        <div class="action-btn move-btn">
+            <span>📁→</span>
+            <span>Move</span>
+        </div>
+    </div>
+</body>
+</html>

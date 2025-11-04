@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Group</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #121212;
+            font-size: 14px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .header-title {
+            font-size: 22px;
+            font-weight: 500;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            margin: 15px 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        
+        .add-button {
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .location-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .remove-button {
+            color: #ff4d4d;
+            font-size: 20px;
+            margin-right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .home-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            color: white;
+        }
+        
+        .location-info {
+            flex: 1;
+        }
+        
+        .location-name {
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .edit-icon {
+            font-size: 16px;
+            margin-left: 5px;
+            color: #aaa;
+        }
+        
+        .location-country {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 2px;
+        }
+        
+        .drag-handle {
+            font-size: 24px;
+            color: #aaa;
+            margin-left: 10px;
+        }
+        
+        .bottom-spacer {
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>9:29</div>
+        <div>
+            <span>🔔</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <button class="back-button">←</button>
+        <div class="header-title">Main Group</div>
+        <div style="width: 24px;"></div> <!-- Placeholder for right side -->
+    </div>
+    
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Enter name of city or timezone">
+        <button class="add-button">+</button>
+    </div>
+    
+    <div class="location-item">
+        <button class="remove-button">×</button>
+        <div class="home-icon">🏠</div>
+        <div class="location-info">
+            <div class="location-name">
+                Dawson Creek
+                <span class="edit-icon">✏️</span>
+            </div>
+            <div class="location-country">Canada</div>
+        </div>
+        <div class="drag-handle">≡</div>
+    </div>
+    
+    <div class="bottom-spacer"></div>
+</body>
+</html>

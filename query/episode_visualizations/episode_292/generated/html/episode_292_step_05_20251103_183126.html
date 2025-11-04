@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Composition</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            font-size: 14px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-button {
+            color: white;
+            font-size: 24px;
+            padding: 5px 10px;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .field-label {
+            width: 60px;
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .email-input {
+            flex: 1;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .recipient-chip {
+            display: flex;
+            align-items: center;
+            background-color: #4a4a4a;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 5px;
+            font-size: 14px;
+        }
+        
+        .recipient-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #6c757d;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            font-size: 12px;
+        }
+        
+        .subject-field {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .subject-input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            color: #aaa;
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        
+        .message-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .message-text {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            line-height: 1.5;
+            resize: none;
+        }
+        
+        .keyboard {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .keyboard-key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+        
+        .keyboard-key.wide {
+            width: 60px;
+        }
+        
+        .keyboard-key.extra-wide {
+            width: 100px;
+        }
+        
+        .keyboard-key.special {
+            background-color: #4a4a4a;
+        }
+        
+        .keyboard-key.enter {
+            background-color: #e0e0e0;
+            color: #000;
+        }
+        
+        .keyboard-top-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        
+        .keyboard-top-button {
+            width: 30px;
+            height: 30px;
+            background-color: #2d2d2d;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>11:28</div>
+        <div>
+            <span>●</span>
+            <span>●</span>
+            <span>●</span>
+            <span>76%</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="header-button">←</div>
+        <div>
+            <div class="header-button">📎</div>
+            <div class="header-button">➤</div>
+            <div class="header-button">⋮</div>
+        </div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">From</div>
+        <div class="email-input">fabiotexeira00123@gmail.com</div>
+        <div class="header-button">∨</div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">To</div>
+        <div class="email-input">
+            <div class="recipient-chip">
+                <div class="recipient-avatar">t</div>
+                <div>tiago121@gmail.com</div>
+            </div>
+        </div>
+        <div class="header-button">∨</div>
+    </div>
+    
+    <div class="subject-field">
+        <input type="text" class="subject-input" placeholder="Subject">
+    </div>
+    
+    <div class="message-body">
+        <textarea class="message-text" placeholder="Type your message here...">Iguazu Falls Brazilian Side Guided Tour With Transport
+I think you'll love this activity on Klook
+https://s.klook.com/c/VX506N4rXD</textarea>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top-row">
+            <div class="keyboard-top-button">□</div>
+            <div class="keyboard-top-button">😊</div>
+            <div class="keyboard-top-button">GIF</div>
+            <div class="keyboard-top-button">⚙️</div>
+            <div class="keyboard-top-button">G</div>
+            <div class="keyboard-top-button">🎨</div>
+            <div class="keyboard-top-button">🎤</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">q</div>
+            <div class="keyboard-key">w</div>
+            <div class="keyboard-key">e</div>
+            <div class="keyboard-key">r</div>
+            <div class="keyboard-key">t</div>
+            <div class="keyboard-key">y</div>
+            <div class="keyboard-key">u</div>
+            <div class="keyboard-key">i</div>
+            <div class="keyboard-key">o</div>
+            <div class="keyboard-key">p</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">a</div>
+            <div class="keyboard-key">s</div>
+            <div class="keyboard-key">d</div>
+            <div class="keyboard-key">f</div>
+            <div class="keyboard-key">g</div>
+            <div class="keyboard-key">h</div>
+            <div class="keyboard-key">j</div>
+            <div class="keyboard-key">k</div>
+            <div class="keyboard-key">l</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key special">⇧</div>
+            <div class="keyboard-key">z</div>
+            <div class="keyboard-key">x</div>
+            <div class="keyboard-key">c</div>
+            <div class="keyboard-key">v</div>
+            <div class="keyboard-key">b</div>
+            <div class="keyboard-key">n</div>
+            <div class="keyboard-key">m</div>
+            <div class="keyboard-key special">⌫</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key special">?123</div>
+            <div class="keyboard-key special">@</div>
+            <div class="keyboard-key special">😊</div>
+            <div class="keyboard-key extra-wide"></div>
+            <div class="keyboard-key special">.</div>
+            <div class="keyboard-key enter">→</div>
+        </div>
+    </div>
+</body>
+</html>

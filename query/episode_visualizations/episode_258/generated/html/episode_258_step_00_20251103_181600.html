@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Settings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            height: 44px;
+            background-color: #c0c0c0;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background-color: #fff;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #333;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .section-title {
+            padding: 20px 20px 10px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #333;
+        }
+        
+        .option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .option-label {
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .radio-button {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #999;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .radio-button.selected {
+            border-color: #ff6b35;
+        }
+        
+        .radio-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ff6b35;
+            border-radius: 50%;
+            display: none;
+        }
+        
+        .radio-button.selected .radio-dot {
+            display: block;
+        }
+        
+        .footer {
+            height: 34px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .home-indicator {
+            width: 120px;
+            height: 5px;
+            background-color: #c0c0c0;
+            border-radius: 2.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>9:19</span>
+        <span style="margin-left: 10px;">●</span>
+        <span style="margin-left: 5px;">%</span>
+        <span style="margin-left: 5px;">👻</span>
+        <span style="margin-left: 5px;">👻</span>
+        <span style="margin-left: auto;">📶</span>
+        <span style="margin-left: 5px;">🔋</span>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="header-title">Display</div>
+    </div>
+    
+    <div class="section-title">DARK THEME</div>
+    
+    <div class="option">
+        <div class="option-label">Use System Default</div>
+        <div class="radio-button">
+            <div class="radio-dot"></div>
+        </div>
+    </div>
+    
+    <div class="option">
+        <div class="option-label">Light</div>
+        <div class="radio-button selected">
+            <div class="radio-dot"></div>
+        </div>
+    </div>
+    
+    <div class="option">
+        <div class="option-label">Dark</div>
+        <div class="radio-button">
+            <div class="radio-dot"></div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="home-indicator"></div>
+    </div>
+</body>
+</html>

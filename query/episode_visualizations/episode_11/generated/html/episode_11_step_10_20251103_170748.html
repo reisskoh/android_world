@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #121212;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .back-btn {
+            font-size: 24px;
+            color: #ffffff;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .icon {
+            font-size: 24px;
+            color: #ffffff;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .field-label {
+            width: 80px;
+            font-size: 16px;
+            color: #cccccc;
+        }
+        
+        .field-value {
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .to-field {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .to-label {
+            width: 80px;
+            font-size: 16px;
+            color: #cccccc;
+        }
+        
+        .to-input {
+            flex: 1;
+            font-size: 16px;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            outline: none;
+        }
+        
+        .dropdown-icon {
+            font-size: 20px;
+            color: #cccccc;
+        }
+        
+        .subject-field {
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .subject-input {
+            width: 100%;
+            font-size: 16px;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            outline: none;
+            font-weight: 500;
+        }
+        
+        .email-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .email-content {
+            font-size: 16px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        
+        .keyboard {
+            background-color: #1a1a1a;
+            padding: 10px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-top .icon {
+            font-size: 20px;
+            color: #ffffff;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        
+        .key {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 3px;
+            font-size: 20px;
+            color: #ffffff;
+        }
+        
+        .key-wide {
+            width: 60px;
+        }
+        
+        .key-space {
+            width: 180px;
+        }
+        
+        .key-enter {
+            width: 60px;
+            background-color: #e0c0c0;
+            color: #000;
+        }
+        
+        .key-shift {
+            width: 50px;
+        }
+        
+        .key-backspace {
+            width: 50px;
+        }
+        
+        .key-numeric {
+            width: 50px;
+            background-color: #b09090;
+        }
+        
+        .key-at {
+            width: 50px;
+        }
+        
+        .key-emoji {
+            width: 50px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            background-color: #121212;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-icon {
+            font-size: 20px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="back-btn">←</div>
+            <div class="header-title">Compose</div>
+        </div>
+        <div class="header-right">
+            <div class="icon">📎</div>
+            <div class="icon">➤</div>
+            <div class="icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">From</div>
+        <div class="field-value">dbwscratch.test.id6@gmail.com</div>
+    </div>
+    
+    <div class="to-field">
+        <div class="to-label">To</div>
+        <input type="text" class="to-input" placeholder="">
+        <div class="dropdown-icon">∨</div>
+    </div>
+    
+    <div class="subject-field">
+        <input type="text" class="subject-input" placeholder="Subject">
+    </div>
+    
+    <div class="email-body">
+        <div class="email-content">
+Weeding plan
+Due Date:Jul 19, 12:30pm
+
+From TickTick:
+www.ticktick.com
+        </div>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <div class="icon">□□</div>
+            <div class="icon">😊</div>
+            <div class="icon">GIF</div>
+            <div class="icon">G</div>
+            <div class="icon">⚙️</div>
+            <div class="icon">🎨</div>
+            <div class="icon">🎤</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key">q</div>
+            <div class="key">w</div>
+            <div class="key">e</div>
+            <div class="key">r</div>
+            <div class="key">t</div>
+            <div class="key">y</div>
+            <div class="key">u</div>
+            <div class="key">i</div>
+            <div class="key">o</div>
+            <div class="key">p</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key">a</div>
+            <div class="key">s</div>
+            <div class="key">d</div>
+            <div class="key">f</div>
+            <div class="key">g</div>
+            <div class="key">h</div>
+            <div class="key">j</div>
+            <div class="key">k</div>
+            <div class="key">l</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key key-shift">⇧</div>
+            <div class="key">z</div>
+            <div class="key">x</div>
+            <div class="key">c</div>
+            <div class="key">v</div>
+            <div class="key">b</div>
+            <div class="key">n</div>
+            <div class="key">m</div>
+            <div class="key key-backspace">⌫</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key key-numeric">?123</div>
+            <div class="key key-at">@</div>
+            <div class="key key-emoji">😊</div>
+            <div class="key key-space"></div>
+            <div class="key">.</div>
+            <div class="key key-enter">→</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-icon">∨</div>
+    </div>
+</body>
+</html>

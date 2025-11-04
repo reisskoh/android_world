@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .close-btn {
+            font-size: 30px;
+            color: #fff;
+            background: none;
+            border: none;
+        }
+        
+        .trip-type {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            border-bottom: 2px solid #333;
+        }
+        
+        .trip-type button {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 16px;
+            padding: 10px 15px;
+            text-transform: uppercase;
+        }
+        
+        .trip-type button.active {
+            color: #fff;
+            border-bottom: 2px solid #fff;
+        }
+        
+        .input-field {
+            background-color: #222;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .input-field i {
+            font-size: 20px;
+            color: #888;
+        }
+        
+        .input-field span {
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .swap-btn {
+            background-color: #2a7a7a;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .passenger-class {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .passenger-count {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .passenger-count span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        
+        .class-selector {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #2a7a7a;
+            font-size: 16px;
+        }
+        
+        .search-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #2a7a7a;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .status-bar span {
+            font-size: 16px;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>10:30</span>
+        <div class="icons">
+            <span>▶</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <button class="close-btn">×</button>
+    </div>
+    
+    <div class="trip-type">
+        <button>Roundtrip</button>
+        <button class="active">One-way</button>
+        <button>Multi-city</button>
+    </div>
+    
+    <div class="input-field">
+        <i>✈</i>
+        <span>Miami International</span>
+    </div>
+    
+    <div class="input-field">
+        <i>✈</i>
+        <span>Barcelona</span>
+        <div class="swap-btn">↑↓</div>
+    </div>
+    
+    <div class="input-field">
+        <i>📅</i>
+        <span>Mon, Nov 6</span>
+    </div>
+    
+    <div class="passenger-class">
+        <div class="passenger-count">
+            <span>1 👤</span>
+            <span>0 👤</span>
+            <span>0 👶</span>
+        </div>
+        <div class="class-selector">
+            First Class ▼
+        </div>
+    </div>
+    
+    <div class="search-btn">🔍</div>
+</body>
+</html>

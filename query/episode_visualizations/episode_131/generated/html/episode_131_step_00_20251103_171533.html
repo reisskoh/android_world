@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #1a2b6b;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header {
+            background-color: #1a2b6b;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+        }
+        
+        .share-icon {
+            font-size: 24px;
+        }
+        
+        .route-info {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .date-passenger {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .transport-options {
+            background-color: #c0c0c0;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .transport-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .transport-icon {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .transport-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .transport-duration {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .journey-container {
+            background-color: white;
+            border-radius: 20px 20px 0 0;
+            margin-top: -20px;
+            padding: 20px 20px 0 20px;
+            box-shadow: 0 -5px 10px rgba(0,0,0,0.05);
+        }
+        
+        .journey-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a2b6b;
+            margin-bottom: 5px;
+        }
+        
+        .transfer-count {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .journey-list {
+            padding: 10px 0;
+        }
+        
+        .journey-item {
+            display: flex;
+            padding: 15px 0;
+            position: relative;
+        }
+        
+        .journey-time {
+            width: 100px;
+            text-align: right;
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a2b6b;
+        }
+        
+        .journey-duration {
+            width: 100px;
+            text-align: right;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .journey-icon {
+            width: 30px;
+            text-align: center;
+            font-size: 20px;
+            margin: 0 10px;
+        }
+        
+        .journey-details {
+            flex: 1;
+        }
+        
+        .station-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a2b6b;
+            margin-bottom: 5px;
+        }
+        
+        .train-info {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .transfer-info {
+            font-size: 14px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        
+        .transfer-icon {
+            margin-right: 5px;
+            font-size: 14px;
+        }
+        
+        .timeline {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #888;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 14px;
+            width: 4px;
+            height: 4px;
+            background-color: #1a2b6b;
+            border-radius: 50%;
+        }
+        
+        .timeline-dashed {
+            position: absolute;
+            left: 15px;
+            width: 2px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #888,
+                #888 2px,
+                transparent 2px,
+                transparent 6px
+            );
+        }
+        
+        .price-section {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .total-price {
+            font-size: 16px;
+            color: #1a2b6b;
+            margin-bottom: 10px;
+        }
+        
+        .select-button {
+            background-color: #e76f51;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: #1a2b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>1:20</div>
+        <div>📶 📧 📱</div>
+        <div>📶 🔋 100%</div>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div>
+            <div class="route-info">Gothenbur... → Groningen</div>
+            <div class="date-passenger">Sun, Nov 5, 1 passenger</div>
+        </div>
+        <div class="share-icon">🔗</div>
+    </div>
+    
+    <div class="transport-options">
+        <div class="transport-option">
+            <div class="transport-icon">🚆</div>
+            <div class="transport-price">$309</div>
+            <div class="transport-duration">13h45m</div>
+        </div>
+        <div class="transport-option">
+            <div class="transport-icon">🚌</div>
+            <div class="transport-price">$79</div>
+            <div class="transport-duration">15h35m</div>
+        </div>
+        <div class="transport-option">
+            <div class="transport-icon">✈️</div>
+            <div class="transport-price">-</div>
+        </div>
+    </div>
+    
+    <div class="journey-container">
+        <div class="journey-title">Journey details</div>
+        <div class="transfer-count">5 Transfers</div>
+        
+        <div class="journey-list">
+            <div class="journey-item">
+                <div class="timeline"></div>
+                <div class="timeline-dot" style="top: 20px;"></div>
+                <div class="journey-time">8:40 AM</div>
+                <div class="journey-duration">3h49m</div>
+                <div class="journey-icon">🚆</div>
+                <div class="journey-details">
+                    <div class="station-name">Gothenburg Centralstation</div>
+                    <div class="train-info">Deutsche Bahn | R 1063</div>
+                </div>
+            </div>
+            
+            <div class="journey-item">
+                <div class="timeline-dashed" style="top: 0; height: 100%;"></div>
+                <div class="timeline-dot" style="top: 20px;"></div>
+                <div class="journey-time">12:29 PM</div>
+                <div class="journey-duration"></div>
+                <div class="journey-icon">○</div>
+                <div class="journey-details">
+                    <div class="station-name">Copenhagen Central Station</div>
+                    <div class="transfer-info">
+                        <span class="transfer-icon">⇄</span>
+                        <span>Transfer, 0h27m</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="journey-item">
+                <div class="timeline"></div>
+                <div class="timeline-dot" style="top: 20px;"></div>
+                <div class="journey-time">12:56 PM</div>
+                <div class="journey-duration">1h42m</div>
+                <div class="journey-icon">🚆</div>
+                <div class="journey-details">
+                    <div class="station-name">Copenhagen Central Station</div>
+                    <div class="train-info">Deutsche Bahn | ICL 47</div>
+                </div>
+            </div>
+            
+            <div class="journey-item">
+                <div class="timeline-dashed" style="top: 0; height: 100%;"></div>
+                <div class="timeline-dot" style="top: 20px;"></div>
+                <div class="journey-time">2:38 PM</div>
+                <div class="journey-duration"></div>
+                <div class="journey-icon">○</div>
+                <div class="journey-details">
+                    <div class="station-name">Fredericia Station</div>
+                    <div class="transfer-info">
+                        <span class="transfer-icon">⇄</span>
+                        <span>Transfer, 0h07m</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="journey-item">
+                <div class="timeline"></div>
+                <div class="timeline-dot" style="top: 20px;"></div>
+                <div class="journey-time">2:45 PM</div>
+                <div class="journey-duration">3h18m</div>
+                <div class="journey-icon">🚆</div>
+                <div class="journey-details">
+                    <div class="station-name">Fredericia Station</div>
+                    <div class="train-info">Deutsche Bahn | IC 385</div>
+                </div>
+            </div>
+            
+            <div class="journey-item">
+                <div class="timeline-dashed" style="top: 0; height: 100%;"></div>
+                <div class="timeline-dot" style="top: 20px;"></div>
+                <div class="journey-time">6:03 PM</div>
+                <div class="journey-duration"></div>
+                <div class="journey-icon">○</div>
+                <div class="journey-details">
+                    <div class="station-name">Hamburg Hbf</div>
+                    <div class="transfer-info">
+                        <span class="transfer-icon">⇄</span>
+                        <span>Transfer, 0h12m</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="journey-item">
+                <div class="timeline"></div>
+                <div class="timeline-dot" style="top: 20px;"></div>
+                <div class="journey-time">6:15 PM</div>
+                <div class="journey-duration">1h09m</div>
+                <div class="journey-icon">🚆</div>
+                <div class="journey-details">
+                    <div class="station-name">Hamburg Hbf</div>
+                    <div class="train-info">metronom | ME 82033</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="price-section">
+        <div class="total-price">One-way total price for 1 adult</div>
+        <button class="select-button">
+            <span>Select this journey</span>
+            <span>$309</span>
+        </button>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

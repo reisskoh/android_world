@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditate App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #1E222D;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #1E222D;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .header {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2D3340;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .search-icon {
+            font-size: 24px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: #2D3340;
+            padding: 15px 0;
+            border-bottom: 2px solid #5AC8FA;
+        }
+        
+        .tab {
+            color: #A0A5B0;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 15px;
+        }
+        
+        .tab.active {
+            color: white;
+            border-bottom: 2px solid #5AC8FA;
+        }
+        
+        .section-title {
+            padding: 20px 20px 10px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .continue-listening {
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: #2D3340;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin-right: 15px;
+            width: 320px;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .play-button {
+            background-color: #87CECB;
+            color: white;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .play-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .duration {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            background-color: rgba(0,0,0,0.5);
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+        
+        .add-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255,255,255,0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .afternoon-section {
+            padding: 0 20px;
+        }
+        
+        .afternoon-title {
+            font-size: 22px;
+            font-weight: 600;
+            padding: 20px 0 10px;
+        }
+        
+        .afternoon-cards {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            gap: 15px;
+        }
+        
+        .afternoon-card {
+            width: 160px;
+            background-color: #2D3340;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .afternoon-card-image {
+            width: 100%;
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .crown-icon {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #D8A7B1;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .afternoon-card-title {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .habit-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background-color: #2D3340;
+            border-top: 1px solid #3A404D;
+        }
+        
+        .habit-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .bell-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .habit-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .setup-button {
+            background-color: #D8A7B1;
+            color: white;
+            border-radius: 8px;
+            padding: 8px 15px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #2D3340;
+            padding: 15px 0;
+            border-top: 1px solid #3A404D;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-text {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .active-nav {
+            color: #5AC8FA;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>3:19</span>
+        <div>
+            <span>🎧</span>
+            <span>↑</span>
+            <span>Calm</span>
+            <span>☁️</span>
+        </div>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <h1>Meditate</h1>
+        <div class="search-icon">🔍</div>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab">ON THE GO</div>
+        <div class="tab active">SERIES</div>
+        <div class="tab">TEACHERS</div>
+    </div>
+    
+    <div class="section-title">Continue listening</div>
+    
+    <div class="continue-listening">
+        <div class="card">
+            <div class="card-image" style="background-image: url('https://via.placeholder.com/320x200?text=Sharpen+Focus')">
+                <div class="add-button">+</div>
+                <div class="duration">5 mins</div>
+            </div>
+            <div class="card-content">
+                <div class="card-title">Sharpen Focus</div>
+                <div class="play-button">
+                    <span class="play-icon">▶</span>
+                    Day 2
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="afternoon-section">
+        <div class="afternoon-title">For your afternoon</div>
+        <div class="afternoon-cards">
+            <div class="afternoon-card">
+                <div class="afternoon-card-image" style="background-image: url('https://via.placeholder.com/160x120?text=Mountains')">
+                    <div class="crown-icon">👑</div>
+                    <div class="add-button">+</div>
+                </div>
+                <div class="afternoon-card-title">10 Minute Meditation</div>
+            </div>
+            <div class="afternoon-card">
+                <div class="afternoon-card-image" style="background-image: url('https://via.placeholder.com/160x120?text=Plants')">
+                    <div class="add-button">+</div>
+                </div>
+                <div class="afternoon-card-title">31 Day Fresh Start</div>
+            </div>
+            <div class="afternoon-card">
+                <div class="afternoon-card-image" style="background-image: url('https://via.placeholder.com/160x120?text=Sky')">
+                    <div class="add-button">+</div>
+                </div>
+                <div class="afternoon-card-title">Find Calm</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="habit-section">
+        <div class="habit-content">
+            <div class="bell-icon">🔔</div>
+            <div class="habit-text">Build a daily habit</div>
+        </div>
+        <div class="setup-button">SET UP</div>
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item active-nav">
+            <div class="nav-icon">▶</div>
+            <div class="nav-text">Meditate</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">👤</div>
+            <div class="nav-text">Me</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">⋯</div>
+            <div class="nav-text">More</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #222;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .status-bar {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #111;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .document-title {
+            color: #5a8bff;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icon {
+            color: #fff;
+            font-size: 20px;
+        }
+        
+        .icon.active {
+            background-color: #444;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .date {
+            font-size: 24px;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        
+        .recipient {
+            font-size: 36px;
+            color: #5a8bff;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .address {
+            font-size: 18px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+        
+        .instructions {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .footer-toolbar {
+            background-color: #111;
+            border-top: 1px solid #333;
+            display: flex;
+            padding: 10px 15px;
+            overflow-x: auto;
+        }
+        
+        .toolbar-button {
+            color: #fff;
+            font-size: 20px;
+            padding: 8px 12px;
+            margin: 0 4px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .toolbar-button.active {
+            background-color: #ff4444;
+            color: #fff;
+        }
+        
+        .toolbar-separator {
+            width: 1px;
+            height: 24px;
+            background-color: #333;
+            margin: 0 8px;
+        }
+        
+        .toolbar-more {
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>10:51</div>
+        <div>🌙 📱 ▶️ •</div>
+        <div>📍 📶 🔋</div>
+    </div>
+    
+    <div class="header">
+        <div class="icon">✓</div>
+        <div class="document-title">Document (1)</div>
+        <div class="header-icons">
+            <div class="icon">✏️</div>
+            <div class="icon">☁️</div>
+            <div class="icon">🔍</div>
+            <div class="icon active">📄</div>
+            <div class="icon">↩️</div>
+            <div class="icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="date">Date</div>
+        <div class="recipient">RECIPIENT NAME</div>
+        <div class="address">ADDRESS | CITY, ST<br>ZIP CODE</div>
+        <div class="instructions">
+            To get started right away, just tap any placeholder text (such as this) and start typing.
+        </div>
+        <div class="instructions">
+            Use styles to easily format your Word documents in no time. For example, this text uses Normal style. To apply any text formatting you see in this document with just a tap, on the Home tab of the ribbon. check out Styles.
+        </div>
+    </div>
+    
+    <div class="footer-toolbar">
+        <div class="toolbar-button">B</div>
+        <div class="toolbar-button">I</div>
+        <div class="toolbar-button">U</div>
+        <div class="toolbar-button">✏️</div>
+        <div class="toolbar-button active">A</div>
+        <div class="toolbar-separator"></div>
+        <div class="toolbar-button">•••</div>
+        <div class="toolbar-button">1<br>2<br>3</div>
+        <div class="toolbar-button">→</div>
+        <div class="toolbar-more">▲</div>
+    </div>
+</body>
+</html>

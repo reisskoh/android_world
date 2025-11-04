@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background-color: #666;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        
+        .header-title {
+            font-size: 18px;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icon-btn {
+            font-size: 24px;
+        }
+        
+        .breadcrumb {
+            background-color: #666;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .breadcrumb .home {
+            font-size: 20px;
+            margin-right: 5px;
+        }
+        
+        .breadcrumb .arrow {
+            margin: 0 5px;
+            font-size: 16px;
+        }
+        
+        .file-list {
+            padding: 10px 0;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .file-item.selected {
+            background-color: #8a9eff;
+        }
+        
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .file-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .file-info {
+            flex: 1;
+        }
+        
+        .file-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .file-size {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #999;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .checkbox.checked {
+            background-color: #2196F3;
+            border-color: #2196F3;
+        }
+        
+        .checkbox.checked::after {
+            content: "✓";
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .footer {
+            background-color: #666;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .footer-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .footer-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .folder-icon {
+            background-color: #e6c229;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .video-icon {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        
+        .video-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 5px;
+        }
+        
+        .text-icon {
+            background-color: #3f51b5;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .image-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .image-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .apk-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #2196F3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="close-btn">×</div>
+            <div class="header-title">1/16</div>
+        </div>
+        <div class="header-right">
+            <div class="icon-btn">□</div>
+            <div class="icon-btn">↔</div>
+        </div>
+    </div>
+    
+    <div class="breadcrumb">
+        <div class="home">🏠</div>
+        <div class="arrow">></div>
+        <div class="device">📱</div>
+        <div class="arrow">></div>
+        <div class="folder">Download</div>
+    </div>
+    
+    <div class="file-list">
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="folder-icon">📁</div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">Favorite Song</div>
+                <div class="file-size">0 items</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item selected">
+            <div class="file-icon">
+                <div class="folder-icon">📁</div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">Flowers</div>
+                <div class="file-size">7 items</div>
+            </div>
+            <div class="checkbox checked"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="folder-icon">📁</div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">MEGA Downloads</div>
+                <div class="file-size">0 items</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="folder-icon">📁</div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">TeraBox</div>
+                <div class="file-size">1 item</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="video-icon">
+                    <img src="https://via.placeholder.com/40x40/87CEEB/FFFFFF?text=Video" alt="Video">
+                    <div class="play-overlay">▶</div>
+                </div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">beach waves.mp4</div>
+                <div class="file-size">3.29 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="video-icon">
+                    <img src="https://via.placeholder.com/40x40/87CEEB/FFFFFF?text=Video" alt="Video">
+                    <div class="play-overlay">▶</div>
+                </div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">beach-1.mp4</div>
+                <div class="file-size">1.78 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="video-icon">
+                    <img src="https://via.placeholder.com/40x40/87CEEB/FFFFFF?text=Video" alt="Video">
+                    <div class="play-overlay">▶</div>
+                </div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">beach.mp4</div>
+                <div class="file-size">1.78 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="text-icon">≡</div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">Copy of screenshot-1.txt</div>
+                <div class="file-size">0.91 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="text-icon">≡</div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">Copy of screenshot.txt</div>
+                <div class="file-size">0.91 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="image-icon">
+                    <img src="https://via.placeholder.com/40x40/2E8B57/FFFFFF?text=Img" alt="Image">
+                </div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">images~2.jpeg</div>
+                <div class="file-size">22.48 kB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="image-icon">
+                    <img src="https://via.placeholder.com/40x40/FFD700/FFFFFF?text=Img" alt="Image">
+                </div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">Maki-zushi.jpg</div>
+                <div class="file-size">197 kB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon">
+                <div class="apk-icon">🤖</div>
+            </div>
+            <div class="file-info">
+                <div class="file-name">showcase_android_prod_arm64-v8a.apk</div>
+                <div class="file-size">1.78 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-btn">
+            <div class="footer-icon">📋</div>
+            <div>Copy</div>
+        </div>
+        <div class="footer-btn">
+            <div class="footer-icon">✂️</div>
+            <div>Move</div>
+        </div>
+        <div class="footer-btn">
+            <div class="footer-icon">I</div>
+            <div>Rename</div>
+        </div>
+        <div class="footer-btn">
+            <div class="footer-icon">🗑️</div>
+            <div>Delete</div>
+        </div>
+        <div class="footer-btn">
+            <div class="footer-icon">⋮</div>
+            <div>More</div>
+        </div>
+    </div>
+</body>
+</html>

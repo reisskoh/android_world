@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Fair Event</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-top: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .settings-icon {
+            font-size: 24px;
+        }
+        
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #666;
+            margin: 0 5px;
+        }
+        
+        .dot.active {
+            background-color: #fff;
+        }
+        
+        .form-section {
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #666;
+            border-radius: 8px;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .textarea-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #666;
+            border-radius: 8px;
+            background-color: #000;
+            color: #999;
+            font-size: 16px;
+            min-height: 120px;
+            resize: none;
+        }
+        
+        .location-field {
+            display: flex;
+            align-items: center;
+        }
+        
+        .location-input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #666;
+            border-radius: 8px;
+            background-color: #000;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .search-icon {
+            margin-left: 10px;
+            font-size: 20px;
+            color: #999;
+        }
+        
+        .toggle-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+        
+        .toggle-label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #666;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .next-button {
+            width: 90%;
+            margin: 20px auto;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            background-color: #2E6D57;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .status-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-icons span {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-icons">
+            <span>1:55</span>
+            <span>👻</span>
+            <span>⭕</span>
+            <span>🔍</span>
+            <span>LR</span>
+        </div>
+        <div class="status-icons">
+            <span>🔔</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="title">EMPLOYMENT FAIR EVENT</div>
+        <div class="settings-icon">⚙️</div>
+    </div>
+    
+    <div class="progress-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    
+    <div class="form-section">
+        <div class="label">Title</div>
+        <input type="text" class="input-field" value="EMPLOYMENT FAIR EVENT">
+    </div>
+    
+    <div class="form-section">
+        <div class="label">Description (optional)</div>
+        <textarea class="textarea-field" placeholder="Here you can include things like an agenda, instructions, or other details"></textarea>
+    </div>
+    
+    <div class="form-section">
+        <div class="label">Location (optional)</div>
+        <div class="location-field">
+            <input type="text" class="location-input" placeholder="Where will this happen?">
+            <div class="search-icon">🔍</div>
+        </div>
+    </div>
+    
+    <div class="toggle-section">
+        <div class="toggle-label">Video conferencing</div>
+        <label class="toggle-switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+    
+    <div class="next-button">Next</div>
+</body>
+</html>

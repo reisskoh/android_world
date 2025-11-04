@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Drawings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            font-size: 14px;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #2d2d2d;
+            border-radius: 25px;
+            margin: 15px;
+            padding: 10px 15px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 5px;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .filters {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 15px;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+        
+        .filter-btn img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .profiles {
+            background-color: #ffffff;
+            color: #000;
+        }
+        
+        .aesthetic {
+            background-color: #d4f5e8;
+            color: #000;
+        }
+        
+        .design {
+            background-color: #d4e8f5;
+            color: #000;
+        }
+        
+        .settings {
+            background-color: #2d2d2d;
+            color: white;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 0 10px 70px 10px;
+        }
+        
+        .image-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .share-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .share-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .more-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .more-btn img {
+            width: 15px;
+            height: 15px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-text {
+            font-size: 12px;
+        }
+        
+        .nav-item.active {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>11:09</div>
+        <div>
+            <span>●</span>
+            <span>●</span>
+            <span>●</span>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="back-arrow">←</div>
+        <input type="text" value="flower drawings" readonly>
+    </div>
+    
+    <div class="filters">
+        <div class="filter-btn settings">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMjBjNS41MjUgMCAxMC00LjQ3NSAxMC0xMC0zLjg3NSAwLTcuMDQyLTIuMjE4LTguNDM4LTUuNTYyLTIuMjE4LTMuMzQ0LTUuNTYyLTUuNTYyLTguNDM4LTUuNTYyQzQuNDc1IDQgMCA4LjQ3NSAwIDE0YzAgMy44NzUgMi4yMTggNy4wNDIgNS41NjIgOC40MzhDMTAgMjAgMTIgMjAgMTIgMjB6bTAgLTJjLTIuNzYgMC01LTIuMjQtNS01czIuMjQtNSA1LTUgNSAyLjI0IDUgNXMyLjI0IDAgNSAyLjI1IDUgNXMtMi4yNCA1LTUgNXptMCAyYzAgMS4xLjkgMiAyIDIgMS4xIDAgMi0uOSAyLTJzLS45LTItMi0yLTEuMSAwLTItLjktMiAydjB6Ii8+PC9zdmc+" alt="Settings">
+        </div>
+        <div class="filter-btn profiles">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMjBjNS41MjUgMCAxMC00LjQ3NSAxMC0xMC0zLjg3NSAwLTcuMDQyLTIuMjE4LTguNDM4LTUuNTYyLTIuMjE4LTMuMzQ0LTUuNTYyLTUuNTYyLTguNDM4LTUuNTYyQzQuNDc1IDQgMCA4LjQ3NSAwIDE0YzAgMy44NzUgMi4yMTggNy4wNDIgNS41NjIgOC40MzhDMTAgMjAgMTIgMjAgMTIgMjB6bTAgLTJjLTIuNzYgMC01LTIuMjQtNS01czIuMjQtNSA1LTUgNSAyLjI0IDUgNXMyLjI0IDAgNSAyLjI1IDUgNXMtMi4yNCA1LTUgNXptMCAyYzAgMS4xLjkgMiAyIDIgMS4xIDAgMi0uOSAyLTJzLS45LTItMi0yLTEuMSAwLTItLjktMiAydjB6Ii8+PC9zdmc+" alt="Profile">
+            Profiles
+        </div>
+        <div class="filter-btn aesthetic">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMjBjNS41MjUgMCAxMC00LjQ3NSAxMC0xMC0zLjg3NSAwLTcuMDQyLTIuMjE4LTguNDM4LTUuNTYyLTIuMjE4LTMuMzQ0LTUuNTYyLTUuNTYyLTguNDM4LTUuNTYyQzQuNDc1IDQgMCA4LjQ3NSAwIDE0YzAgMy44NzUgMi4yMTggNy4wNDIgNS41NjIgOC40MzhDMTAgMjAgMTIgMjAgMTIgMjB6bTAgLTJjLTIuNzYgMC01LTIuMjQtNS01czIuMjQtNSA1LTUgNSAyLjI0IDUgNXMyLjI0IDAgNSAyLjI1IDUgNXMtMi4yNCA1LTUgNXptMCAyYzAgMS4xLjkgMiAyIDIgMS4xIDAgMi0uOSAyLTJzLS45LTItMi0yLTEuMSAwLTItLjktMiAydjB6Ii8+PC9zdmc+" alt="Aesthetic">
+            Aesthetic
+        </div>
+        <div class="filter-btn design">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMjBjNS41MjUgMCAxMC00LjQ3NSAxMC0xMC0zLjg3NSAwLTcuMDQyLTIuMjE4LTguNDM4LTUuNTYyLTIuMjE4LTMuMzQ0LTUuNTYyLTUuNTYyLTguNDM4LTUuNTYyQzQuNDc1IDQgMCA4LjQ3NSAwIDE0YzAgMy44NzUgMi4yMTggNy4wNDIgNS41NjIgOC40MzhDMTAgMjAgMTIgMjAgMTIgMjB6bTAgLTJjLTIuNzYgMC01LTIuMjQtNS01czIuMjQtNSA1LTUgNSAyLjI0IDUgNXMyLjI0IDAgNSAyLjI1IDUgNXMtMi4yNCA1LTUgNXptMCAyYzAgMS4xLjkgMiAyIDIgMS4xIDAgMi0uOSAyLTJzLS45LTItMi0yLTEuMSAwLTItLjktMiAydjB6Ii8+PC9zdmc+" alt="Design">
+            Design
+        </div>
+    </div>
+    
+    <div class="grid">
+        <!-- Image 1 -->
+        <div class="image-card">
+            <img src="https://via.placeholder.com/400x600/333/fff?text=Flower+Drawing+1" alt="Flower Drawing">
+            <div class="share-btn">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMTZjLTIuMjEgMC00LS44NC01LjEzLTEuNTljLjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3LjE0LjEyLjI4LjI0LjQxLjM3LjEzLjEzLjI3LjI1LjQxLjM3L

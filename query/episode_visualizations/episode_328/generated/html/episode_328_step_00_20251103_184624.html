@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #121212;
+            border-bottom: 1px solid #333;
+        }
+        .header .icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #2d2d2d;
+            border-radius: 24px;
+            padding: 8px 15px;
+            margin: 15px;
+        }
+        .search-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 5px;
+        }
+        .search-bar .search-icon {
+            margin-right: 10px;
+            color: #999;
+        }
+        .search-bar .voice-icon {
+            margin: 0 5px;
+            color: #4285F4;
+        }
+        .search-bar .camera-icon {
+            margin-left: 5px;
+            color: #34A853;
+        }
+        .nav {
+            display: flex;
+            padding: 10px 15px;
+            border-bottom: 1px solid #333;
+        }
+        .nav-item {
+            padding: 10px 15px;
+            font-weight: bold;
+            color: #999;
+            margin-right: 20px;
+        }
+        .nav-item.active {
+            color: #4285F4;
+            border-bottom: 2px solid #4285F4;
+        }
+        .google-logo {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+        }
+        .language-options {
+            text-align: center;
+            padding: 15px;
+            color: #999;
+        }
+        .language-options a {
+            color: #4285F4;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .trending {
+            padding: 20px 15px;
+        }
+        .trending h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .trending-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        .trending-item .trend-icon {
+            margin-right: 15px;
+            color: #999;
+        }
+        .trending-item .title {
+            flex: 1;
+        }
+        .trending-item .subtitle {
+            font-size: 14px;
+            color: #999;
+        }
+        .trending-item .thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            background-color: #333;
+            margin-left: 10px;
+        }
+        .more-options {
+            position: absolute;
+            right: 15px;
+            top: 135px;
+            color: #999;
+            font-size: 24px;
+        }
+        .user-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #6200ea;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        .nav-icons .icon {
+            margin: 0 10px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="icon">🏠</div>
+        <div class="search-bar">
+            <div class="search-icon">🔍</div>
+            <input type="text" value="google.com/?sa=X&ved=">
+            <div class="voice-icon">🎤</div>
+            <div class="camera-icon">📷</div>
+        </div>
+        <div class="nav-icons">
+            <div class="icon">➕</div>
+            <div class="icon">4</div>
+            <div class="icon">⬆️</div>
+        </div>
+    </div>
+    
+    <div class="nav">
+        <div class="nav-item">☰</div>
+        <div class="nav-item active">ALL</div>
+        <div class="nav-item">IMAGES</div>
+        <div class="nav-icons">
+            <div class="icon">🔔</div>
+            <div class="icon">🟩</div>
+            <div class="user-icon">C</div>
+        </div>
+    </div>
+    
+    <div class="google-logo">Google</div>
+    
+    <div class="search-bar">
+        <div class="search-icon">🔍</div>
+        <input type="text" placeholder="">
+        <div class="voice-icon">🎤</div>
+        <div class="camera-icon">📷</div>
+    </div>
+    
+    <div class="language-options">
+        <div>Google offered in:</div>
+        <div>
+            <a>हिन्दी</a>
+            <a>বাংলা</a>
+            <a>తెలుగు</a>
+            <a>मराठी</a>
+            <a>தமிழ்</a>
+            <a>ગુજરાતી</a>
+            <a>ಕನ್ನಡ</a>
+            <a>മലയാളം</a>
+            <a>ਪੰਜਾਬੀ</a>
+        </div>
+    </div>
+    
+    <div class="trending">
+        <h2>Trending searches</h2>
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="title">
+                <div>yeh rishta kya kehlata hai</div>
+                <div class="subtitle">Indian drama series</div>
+            </div>
+            <div class="thumbnail"></div>
+        </div>
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="title">prathamastami 2023 odisha</div>
+        </div>
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="title">inox india ipo</div>
+        </div>
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="title">ssc cgl result issue</div>
+        </div>
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="title">yeh hai chahatein written episode</div>
+        </div>
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="title">khanapara teer shillong teer results</div>
+        </div>
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="title">nemanja matić</div>
+        </div>
+    </div>
+    
+    <div class="more-options">⋮</div>
+</body>
+</html>

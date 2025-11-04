@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Interface</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-left: 10px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .tab.active {
+            color: #fff;
+            border-bottom: 2px solid #4285f4;
+        }
+        
+        .hide-markdown {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            color: #aaa;
+        }
+        
+        .hide-markdown input {
+            margin-right: 5px;
+        }
+        
+        .content {
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            margin: 10px 20px;
+            flex: 1;
+        }
+        
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .due-date {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .source {
+            font-size: 14px;
+            color: #888;
+            margin-top: 20px;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 0;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .share-btn {
+            background-color: #333;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            margin-top: -30px;
+            z-index: 10;
+        }
+        
+        .share-btn img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+        
+        .share-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .share-label {
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .share-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="tabs">
+            <div class="tab active">Text</div>
+            <div class="tab">Image</div>
+        </div>
+    </div>
+    
+    <div class="hide-markdown">
+        <input type="checkbox" id="hide-markdown">
+        <label for="hide-markdown">Hide Markdown</label>
+    </div>
+    
+    <div class="content">
+        <div class="title">Weeding plan</div>
+        <div class="due-date">Due Date: Jul 19, 12:30pm</div>
+        <div class="source">From TickTick: www.ticktick.com</div>
+    </div>
+    
+    <div class="footer">
+        <div class="share-item">
+            <img src="https://via.placeholder.com/40/1DA1F2/FFFFFF?text=TW" alt="Twitter" class="share-icon">
+            <div class="share-label">Twitter</div>
+        </div>
+        <div class="share-item">
+            <img src="https://via.placeholder.com/40/DB4437/FFFFFF?text=G+" alt="Google+" class="share-icon">
+            <div class="share-label">Google+</div>
+        </div>
+        <div class="share-item">
+            <img src="https://via.placeholder.com/40/4285F4/FFFFFF?text=E" alt="Email" class="share-icon">
+            <div class="share-label">Email</div>
+        </div>
+        <div class="share-item">
+            <img src="https://via.placeholder.com/40/FF9800/FFFFFF?text=CL" alt="Copy Link" class="share-icon">
+            <div class="share-label">Copy Link</div>
+        </div>
+        <div class="share-item">
+            <img src="https://via.placeholder.com/40/4CD964/FFFFFF?text=..." alt="More" class="share-icon">
+            <div class="share-label">More</div>
+        </div>
+    </div>
+    
+    <div class="share-btn">
+        <img src="https://via.placeholder.com/24/FFFFFF/000000?text=✓" alt="Share">
+        <span>Share</span>
+    </div>
+</body>
+</html>

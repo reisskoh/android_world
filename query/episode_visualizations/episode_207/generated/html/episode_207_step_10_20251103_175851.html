@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document (1)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            background-color: #1e1e1e;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #1e1e1e;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-icons i {
+            font-size: 20px;
+        }
+        
+        .document-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .address {
+            color: #999;
+            font-size: 16px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        .letter-body {
+            margin-bottom: 40px;
+        }
+        
+        .signature {
+            margin-top: 60px;
+            text-transform: uppercase;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .footer {
+            background-color: #1e1e1e;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .footer-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .highlight {
+            text-decoration: underline;
+            text-decoration-color: #ff6b6b;
+            text-decoration-thickness: 2px;
+        }
+        
+        /* Icons using simple unicode characters */
+        .icon-back { content: "←"; }
+        .icon-cloud { content: "☁️"; }
+        .icon-search { content: "🔍"; }
+        .icon-menu { content: "⋮"; }
+        .icon-print { content: "🖨️"; }
+        .icon-headings { content: "📋"; }
+        .icon-edit { content: "✏️"; }
+        .icon-share { content: "🔗"; }
+        .icon-audio { content: "🔊"; }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>11:00</div>
+        <div>🍕🌙🛒⭕•</div>
+        <div>📍📶🔋</div>
+    </div>
+    
+    <div class="header">
+        <div class="header-title">Document (1)</div>
+        <div class="header-icons">
+            <span class="icon-cloud">☁️</span>
+            <span class="icon-search">🔍</span>
+            <span class="icon-menu">⋮</span>
+        </div>
+    </div>
+    
+    <div class="document-content">
+        <div class="address">
+            ADDRESS | CITY, ST<br>
+            ZIP CODE
+        </div>
+        
+        <div class="letter-body">
+            <p>Dear Sir,</p>
+            <p>I am writing to apply for the senior executive <span class="highlight">Postion</span> at travel best tour I am confident that I have the skills and experience required for this role and I would be grateful asset to your team.</p>
+        </div>
+        
+        <div class="signature">
+            BASU CHOUDHARY
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-item">
+            <span class="icon-print">🖨️</span>
+            <span>Print Layout</span>
+        </div>
+        <div class="footer-item">
+            <span class="icon-headings">📋</span>
+            <span>Headings</span>
+        </div>
+        <div class="footer-item">
+            <span class="icon-edit">✏️</span>
+            <span>Edit</span>
+        </div>
+        <div class="footer-item">
+            <span class="icon-share">🔗</span>
+            <span>Share</span>
+        </div>
+        <div class="footer-item">
+            <span class="icon-audio">🔊</span>
+            <span>Read Aloud</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Group</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            border-bottom: 1px solid #333;
+        }
+        
+        .status-bar-left {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .status-bar-right {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            position: relative;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 15px;
+            font-size: 24px;
+        }
+        
+        .header-title {
+            font-size: 22px;
+            font-weight: 500;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #aaa;
+            font-size: 16px;
+            padding: 8px 0;
+            outline: none;
+        }
+        
+        .search-icon {
+            font-size: 20px;
+            color: #aaa;
+        }
+        
+        .content {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .keyboard {
+            background-color: #121212;
+            padding: 10px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-top-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px 10px 10px;
+        }
+        
+        .keyboard-top-row button {
+            background: #2d2d2d;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-keys {
+            padding: 0 10px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .key {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 20px;
+            min-width: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .key:active {
+            background-color: #444;
+        }
+        
+        .key-space {
+            flex: 1;
+            min-width: 200px;
+            border-radius: 8px;
+        }
+        
+        .key-enter {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .key-shift {
+            width: 50px;
+        }
+        
+        .key-backspace {
+            width: 50px;
+        }
+        
+        .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            margin-top: 10px;
+        }
+        
+        .keyboard-bottom-row button {
+            background: #2d2d2d;
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+            font-size: 18px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-enter {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-space {
+            flex: 1;
+            min-width: 200px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-voice {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-search {
+            background-color: #a0c4ff;
+            color: #000;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom-row .key-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row .key-123 {
+            width: 50px;
+            background-color: #555;
+        }
+        
+        .keyboard-bottom-row .key-dot {
+            width: 50px;
+        }
+        
+        .keyboard-bottom-row

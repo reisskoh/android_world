@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Items</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .section {
+            padding: 20px 20px 10px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 0;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .select-circle {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 24px;
+            height: 24px;
+            border: 2px solid white;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-indicator {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2px 6px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-duration {
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        
+        .play-icon {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1e1e1e;
+            padding: 15px 20px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+            border: 1px solid #333;
+        }
+        
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .copy-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .move-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .copy-icon::before {
+            content: "📋";
+            font-size: 18px;
+        }
+        
+        .move-icon::before {
+            content: "📁→";
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="header-title">Select items</div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">September</div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/100/FFD700/000000?text=Yellow+Bottle" alt="Yellow Bottle">
+                <div class="select-circle"></div>
+                <div class="video-indicator">
+                    <span class="video-duration">0:12</span>
+                    <div class="play-icon"></div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/100/87CEEB/000000?text=Sky+View" alt="Sky View">
+                <div class="select-circle"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/100/228B22/FFFFFF?text=Plant+View" alt="Plant View">
+                <div class="select-circle"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/100/32CD32/FFFFFF?text=Green+Plants" alt="Green Plants">
+                <div class="select-circle"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">August</div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/100/F5F5F5/000000?text=Text+Image" alt="Text Image">
+                <div class="select-circle"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/100/FFFFFF/000000?text=Triangle" alt="Triangle">
+                <div class="select-circle"></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/100/FFFFFF/FF0000?text=Heart" alt="Heart">
+                <div class="select-circle"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">July</div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/100/87CEEB/000000?text=July+View" alt="July View">
+                <div class="select-circle"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <button class="action-btn">
+            <div class="copy-icon"></div>
+            Copy
+        </button>
+        <button class="action-btn">
+            <div class="move-icon"></div>
+            Move
+        </button>
+    </div>
+</body>
+</html>

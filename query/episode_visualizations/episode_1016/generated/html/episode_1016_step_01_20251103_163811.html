@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopsy - Shopping App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .status-bar {
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .logo {
+            color: #5e35b1;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .login-btn {
+            color: #1976d2;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .promo-banner {
+            background: linear-gradient(90deg, #ffd700, #ffeb3b);
+            padding: 15px;
+            margin: 10px 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .promo-left {
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-right: 10px;
+            text-align: center;
+        }
+        
+        .promo-left .percent {
+            color: #5e35b1;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .promo-left .text {
+            color: #5e35b1;
+            font-size: 14px;
+        }
+        
+        .promo-right {
+            flex: 1;
+        }
+        
+        .promo-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .promo-subtitle {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .promo-terms {
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .promo-arrow {
+            background-color: #5e35b1;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .sale-banner {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .sale-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+        
+        .sale-tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .sale-title {
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin: 10px 0;
+        }
+        
+        .sale-subtitle {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        
+        .sale-price {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .sale-image {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        
+        .category-section {
+            display: flex;
+            overflow-x: auto;
+            padding: 15px;
+            background-color: white;
+            gap: 10px;
+        }
+        
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+        }
+        
+        .category-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .category-name {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: #5e35b1;
+            color: white;
+            border-radius: 10px;
+            margin: 10px 15px;
+        }
+        
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .feature-text {
+            font-size: 12px;
+        }
+        
+        .loot-stores {
+            background: linear-gradient(135deg, #4527a0, #283593);
+            padding: 20px 15px;
+            margin: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        
+        .loot-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .loot-subtitle {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .loot-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .loot-card {
+            background: linear-gradient(135deg, #00c853, #64dd17);
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            text-align: center;
+            color: white;
+        }
+        
+        .loot-price {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .loot-store {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .shop-now {
+            background-color: white;
+            color: #5e35b1;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        .hot-deals {
+            background: linear-gradient(135deg, #673ab7, #9c27b0);
+            padding: 20px 15px;
+            margin: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        
+        .hot-deals-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hot-deals-subtitle {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .hot-deals-items {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px 0;
+        }
+        
+        .hot-item {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .free-delivery {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background-color: #ff9800;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-text {
+            margin-top: 5px;
+        }
+        
+        .nav-active {
+            color: #5e35b1;
+        }
+        
+        .notification-dot {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            width: 8px;
+            height: 8px;
+            background-color: #ff4081;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>10:23</span>
+        <div>
+            <span>📶</span>
+            <span>🔋 92%</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="logo">shopsy</div>
+        <div class="login-btn">Log in</div>
+    </div>
+    
+    <div class="promo-banner">
+        <div class="promo-left">
+            <div class="percent">25%</div>
+            <div class="text">OFF</div>
+        </div>
+        <div class="promo-right">
+            <div class="promo-title">Limited Time Offer,</div>
+            <div class="promo-subtitle">Save Big on Your First order!</div>
+            <div class="promo-terms">*T&C Apply. Up to ₹40 on your first order!</div>
+        </div>
+        <div class="promo-arrow">›</div>
+    </div>
+    
+    <div class="sale-banner">
+        <div class="sale-content">
+            <div class="sale-tag">SHOPS BACHAT MELA</div>
+            <div class="sale-title">SALE IS LIVE</div>
+            <div class="sale-subtitle">Fashion, Home, Beauty & more</div>
+            <div class="sale-price">STARTING FROM ₹9</div>
+        </div>
+        <img src="https://via.placeholder.com/150x200" alt="Sale Image" class="sale-image">
+    </div>
+    
+    <div class="category-section">
+        <div class="category-item">
+            <div class="category-img">❄️</div>
+            <div class="category-name">Winter Store</div>
+        </div>
+        <div class="category-item">
+            <div class="category-img">👗</div>
+            <div class="category-name">Women's Fashion</div>
+        </div>
+        <div class="category-item">
+            <div class="category-img">👕</div>
+            <div class="category-name">Men's Fashion</div>
+        </div>
+        <div class="category-item">
+            <div class="category-img">🛋️</div>
+            <div class="category-name">Home</div>
+        </div>
+        <div class="category-item">
+            <div class="category-img">💄</div>
+            <div class="category-name">Beauty & more</div>
+        </div>
+        <div class="category-item">
+            <div class="category-img">📱</div>
+            <div class="category-name">Elect</div>
+        </div>
+    </div>
+    
+    <div class="features">
+        <div class="feature">
+            <div class="feature-icon">₹</div>
+            <div class="feature-text">Affordable Prices</div>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">✅</div>
+            <div class="feature-text">Good Quality</div>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">🚚</div>
+            <div class="feature-text">Free Delivery</div>
+        </div>
+    </div>
+    
+    <div class="loot-stores">
+        <div class="loot-title">THE LOOT STORES</div>
+        <div class="loot-subtitle">SALE VALID FOR 1 UNIT PER CUSTOMER</div>
+        <div class="loot-cards">
+            <div class="loot-card">
+                <div class="loot-price">₹45</div>
+                <div class="loot-store">UNDER 45 STORE</div>
+                <div class="shop-now">SHOP NOW</div>
+            </div>
+            <div class="loot-card">
+                <div class="loot-price">₹95</div>
+                <div class="loot-store">UNDER 95 STORE</div>
+                <div class="shop-now">SHOP NOW</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hot-deals">
+        <div class="free-delivery">FREE DELIVERY</div>
+        <div class="hot-deals-title">HOT DEALS</div>
+        <div class="hot-deals-subtitle">New Deals Daily at 12 PM</div>
+        <div class="hot-deals-items">
+            <div class="hot-item">👩</div>
+            <div class="hot-item">🧴</div>
+            <div class="hot-item">👟</div>
+            <div class="hot-item">🔌</div>
+        </div>
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item nav-active">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">Home</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-text">Search</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🧩</div>
+            <div class="nav-text">Categories</div>
+            <div class="notification-dot"></div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">👤</div>
+            <div class="nav-text">Account</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🛒</div>
+            <div class="nav-text">Cart</div>
+        </div>
+    </div>
+</body>
+</html>

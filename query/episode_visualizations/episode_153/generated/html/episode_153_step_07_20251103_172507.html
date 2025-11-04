@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Picker</title>
+    <style>
+        body {
+            background-color: #0f0e17;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            padding: 20px 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .date-selector {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .date-label {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .active {
+            border-bottom: 2px solid #4f8bff;
+            color: #4f8bff;
+        }
+        
+        .arrow {
+            font-size: 20px;
+            margin: 0 10px;
+        }
+        
+        .calendar-container {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        .month-header {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0 15px;
+            font-weight: 500;
+        }
+        
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+        
+        .day {
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .day:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .day.disabled {
+            color: #555;
+            pointer-events: none;
+        }
+        
+        .done-btn {
+            background-color: #4f8bff;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 20px;
+            cursor: pointer;
+            width: calc(100% - 40px);
+        }
+        
+        .done-btn:active {
+            background-color: #3a75e8;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #0f0e17;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 100;
+        }
+        
+        .status-bar span {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>11:57</span>
+        <span>84°</span>
+        <span>▶️</span>
+        <span>📶</span>
+        <span>🔋</span>
+    </div>
+    
+    <div class="header">
+        <button class="close-btn">×</button>
+    </div>
+    
+    <div class="date-selector">
+        <div class="date-label active">Start date</div>
+        <div class="arrow">→</div>
+        <div class="date-label">End date</div>
+    </div>
+    
+    <div class="calendar-container">
+        <div class="month-header">October 2023</div>
+        <div class="weekdays">
+            <div>S</div>
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
+        </div>
+        <div class="days">
+            <div class="day">1</div>
+            <div class="day">2</div>
+            <div class="day">3</div>
+            <div class="day">4</div>
+            <div class="day">5</div>
+            <div class="day">6</div>
+            <div class="day">7</div>
+            <div class="day">8</div>
+            <div class="day">9</div>
+            <div class="day">10</div>
+            <div class="day">11</div>
+            <div class="day">12</div>
+            <div class="day">13</div>
+            <div class="day">14</div>
+            <div class="day">15</div>
+            <div class="day">16</div>
+            <div class="day">17</div>
+            <div class="day">18</div>
+            <div class="day">19</div>
+            <div class="day">20</div>
+            <div class="day">21</div>
+            <div class="day">22</div>
+            <div class="day">23</div>
+            <div class="day">24</div>
+            <div class="day">25</div>
+            <div class="day">26</div>
+            <div class="day">27</div>
+            <div class="day">28</div>
+            <div class="day">29</div>
+            <div class="day">30</div>
+            <div class="day">31</div>
+        </div>
+        
+        <div class="month-header">November 2023</div>
+        <div class="weekdays">
+            <div>S</div>
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
+        </div>
+        <div class="days">
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day">1</div>
+            <div class="day">2</div>
+            <div class="day">3</div>
+            <div class="day">4</div>
+            <div class="day">5</div>
+            <div class="day">6</div>
+            <div class="day">7</div>
+            <div class="day">8</div>
+            <div class="day">9</div>
+            <div class="day">10</div>
+            <div class="day">11</div>
+            <div class="day">12</div>
+            <div class="day">13</div>
+            <div class="day">14</div>
+            <div class="day">15</div>
+            <div class="day">16</div>
+            <div class="day">17</div>
+            <div class="day">18</div>
+            <div class="day">19</div>
+            <div class="day">20</div>
+            <div class="day">21</div>
+            <div class="day">22</div>
+            <div class="day">23</div>
+            <div class="day">24</div>
+            <div class="day">25</div>
+            <div class="day">26</div>
+            <div class="day">27</div>
+            <div class="day">28</div>
+            <div class="day">29</div>
+            <div class="day">30</div>
+        </div>
+        
+        <div class="month-header">December 2023</div>
+        <div class="weekdays">
+            <div>S</div>
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
+        </div>
+        <div class="days">
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+            <div class="day disabled"></div>
+        </div>
+    </div>
+    
+    <button class="done-btn">Done</button>
+</body>
+</html>

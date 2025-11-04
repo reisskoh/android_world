@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Departing Flight</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0f0d17;
+            color: white;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .sub-title {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        .promo-section {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #151321;
+            border-radius: 10px;
+        }
+        
+        .promo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #4a55ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .promo-text {
+            font-size: 16px;
+        }
+        
+        .price-tracking {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .price-tracking h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .current-price {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .price-label {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        .price-graph {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #151321;
+            border-radius: 10px;
+        }
+        
+        .price-line {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .price-value {
+            width: 80px;
+            text-align: right;
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        .price-line-divider {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #333;
+            position: relative;
+        }
+        
+        .price-graph-icon {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #4a55ff;
+            font-size: 18px;
+        }
+        
+        .watch-prices {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #151321;
+            border-radius: 10px;
+        }
+        
+        .watch-prices-text {
+            flex-grow: 1;
+        }
+        
+        .watch-prices-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .watch-prices-subtitle {
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        .toggle-switch {
+            width: 50px;
+            height: 28px;
+            background-color: #333;
+            border-radius: 14px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: #666;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s;
+        }
+        
+        .toggle-switch.active {
+            background-color: #4a55ff;
+        }
+        
+        .toggle-switch.active::after {
+            left: 24px;
+            background-color: white;
+        }
+        
+        .disclaimer {
+            font-size: 14px;
+            color: #cccccc;
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+        
+        .fare-card {
+            background-color: #151321;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #333;
+        }
+        
+        .fare-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .fare-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .fare-price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .fare-details {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 10px;
+        }
+        
+        .flight-info {
+            margin: 20px 0;
+        }
+        
+        .flight-time {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .flight-route {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .flight-duration {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 5px;
+        }
+        
+        .flight-stops {
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 10px;
+        }
+        
+        .airline-info {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #cccccc;
+        }
+        
+        .airline-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        
+        .price-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .availability {
+            font-size: 12px;
+            color: #ff6b6b;
+        }
+        
+        .sort-filter {
+            background-color: #1e1c2e;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+        }
+        
+        .sort-filter-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #0f0d17;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .status-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-time {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .status-temp {
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .status-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-icon {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-info">
+            <span class="status-time">11:59</span>
+            <span class="status-temp">84°</span>
+            <span class="status-icon">▶</span>
+        </div>
+        <div class="status-icons">
+            <span class="status-icon">📶</span>
+            <span class="status-icon">📡</span>
+            <span class="status-icon">🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <span class="back-arrow">←</span>
+        <div>
+            <div class="header-title">Choose departing flight</div>
+            <div class="sub-title">TYS to VCE, Oct 7, 1 traveler</div>
+        </div>
+    </div>
+    
+    <div class="promo-section">
+        <div class="promo-icon">K</div>
+        <div class="promo-text">Earn OneKeyCash on top of airline miles and make your miles go further</div>
+    </div>
+    
+    <div class="price-tracking">
+        <h2>Price tracking</h2>
+        <div class="current-price">$1,869</div>
+        <div class="price-label">Current lowest price</div>
+    </div>
+    
+    <div class="price-graph">
+        <div class="price-line">
+            <div class="price-value">$1,875</div>
+            <div class="price-line-divider"></div>
+        </div>
+        <div class="price-line">
+            <div class="price-value">$1,850</div>
+            <div class="price-line-divider">
+                <div class="price-graph-icon">📈</div>
+            </div>
+        </div>
+        <div class="price-line">
+            <div class="price-value">$1,825</div>
+            <div class="price-line-divider"></div>
+        </div>
+        <div class="price-line">
+            <div class="price-value">$1,800</div>
+            <div class="price-line-divider"></div>
+        </div>
+        <div style="text-align: center; margin-top: 10px; font-size: 16px;">
+            Watch prices and we'll gather data for this search
+        </div>
+    </div>
+    
+    <div class="watch-prices">
+        <div class="watch-prices-text">
+            <div class="watch-prices-title">Watch prices</div>
+            <div class="watch-prices-subtitle">Get push notifications if prices go up or down</div>
+        </div>
+        <div class="toggle-switch"></div>
+    </div>
+    
+    <div class="disclaimer">
+        Prices are not final until you complete your purchase. You can review any additional fees before checkout.
+    </div>
+    
+    <div class="fare-card">
+        <div class="fare-header">
+            <div class="fare-title">Expedia Bargain Fare</div>
+            <div class="fare-price">$1,534</div>
+        </div>
+        <div class="fare-details">
+            Get the flight now and flight details after booking. This is a special fare with restrictions. Airline and flight time revealed after purchase.
+        </div>
+        <div style="text-align: right; font-size: 14px; color: #cccccc; margin-top: 5px;">
+            Roundtrip per traveler
+        </div>
+    </div>
+    
+    <div class="fare-card">
+        <div class="flight-info">
+            <div class="flight-time">2:00pm - 9:55am<span style="color: #ff6b6b; font-size: 14px;">+2</span></div>
+            <div class="flight-route">Knoxville (TYS) - Venice (VCE)</div>
+            <div class="flight-duration">37h 55m (2 stops)</div>
+            <div class="flight-stops">18h 47m in ORD • 7h 14m in YYZ</div>
+            <div class="airline-info">
+                <span class="airline-icon">✈️</span>
+                Multiple airlines
+            </div>
+        </div>
+        <div class="price-info">
+            <div>
+                <div class="availability">1 left at</div>
+                <div class="fare-price">$1,869</div>
+            </div>
+            <div style="font-size: 14px; color: #cccccc;">Roundtrip per traveler</div>
+        </div>
+    </div>
+    
+    <div class="fare-card">
+        <div class="flight-info">
+            <div class="flight-time">2:00pm - 9:05am<span style="color: #ff6b6b; font-size: 14px;">+2</span></div>
+            <div class="flight-route">Knoxville (TYS) - Venice (VCE)</div>
+            <div class="flight-duration">37h 5m (2 stops)</div>
+            <div class="flight-stops">18h 47m in ORD • 6h 14m in YYZ</div>
+            <div class="airline-info">
+                <span class="airline-icon">✈️</span>
+                Multiple airlines
+            </div>
+        </div>
+        <div class="price-info">
+            <div>
+                <div class="availability">1 left at</div>
+                <div class="fare-price">$1,879</div>
+            </div>
+            <div style="font-size: 14px; color: #cccccc;">Roundtrip per traveler</div>
+        </div>
+    </div>
+    
+    <div class="sort-filter">
+        <span class="sort-filter-icon">⚙️</span>
+        Sort & Filter
+    </div>
+</body>
+</html>

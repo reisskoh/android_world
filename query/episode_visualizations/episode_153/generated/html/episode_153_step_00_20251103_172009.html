@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Home Screen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iODAwIj48cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iIzEzMTMxMyIvPjwvc3ZnPg==') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+        
+        .time {
+            font-weight: bold;
+        }
+        
+        .status-icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .weather-info {
+            margin-top: 20px;
+            padding: 15px;
+        }
+        
+        .date {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .temperature {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+        
+        .weather-icon {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .app-icon img {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .app-name {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 4px;
+        }
+        
+        .notification-dot {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 12px;
+            height: 12px;
+            background: #C5A1E0;
+            border-radius: 50%;
+        }
+        
+        .bottom-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .search-bar {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 25px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            margin: 0 20px 20px;
+        }
+        
+        .search-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .search-action {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .home-indicator {
+            height: 4px;
+            width: 120px;
+            background: white;
+            border-radius: 2px;
+            margin: 10px auto 20px;
+        }
+        
+        /* App icons styling */
+        .play-store {
+            background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
+            clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+        }
+        
+        .gmail {
+            background: #4285F4;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .photos {
+            background: #4285F4;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .youtube {
+            background: #FF0000;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .phone {
+            background: #4285F4;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .messages {
+            background: #4285F4;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .chrome {
+            background: #4285F4;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        
+        .camera {
+            background: #4285F4;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        
+        /* Custom styling for icons */
+        .icon-placeholder {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .google-icon {
+            color: #4285F4;
+        }
+        
+        .gmail-icon {
+            color: #EA4335;
+        }
+        
+        .photos-icon {
+            color: #FBBC05;
+        }
+        
+        .youtube-icon {
+            color: white;
+        }
+        
+        .phone-icon {
+            color: #4285F4;
+        }
+        
+        .messages-icon {
+            color: #4285F4;
+        }
+        
+        .chrome-icon {
+            color: #4285F4;
+        }
+        
+        .camera-icon {
+            color: #4285F4;
+        }
+        
+        /* Weather icon styling */
+        .moon-icon {
+            color: #C5A1E0;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="time">11:53</div>
+        <div class="status-icons">
+            <span>84°</span>
+            <span>▶</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="weather-info">
+        <div class="date">Thu, Oct 5</div>
+        <div class="temperature">
+            <span class="weather-icon moon-icon">🌙</span>
+            <span>27°C</span>
+        </div>
+    </div>
+    
+    <div class="app-grid">
+        <div class="app-item">
+            <div class="app-icon">
+                <div class="icon-placeholder google-icon">G</div>
+                <div class="notification-dot"></div>
+            </div>
+            <div class="app-name">Play Store</div>
+        </div>
+        
+        <div class="app-item">
+            <div class="app-icon">
+                <div class="icon-placeholder gmail-icon">M</div>
+            </div>
+            <div class="app-name">Gmail</div>
+        </div>
+        
+        <div class="app-item">
+            <div class="app-icon">
+                <div class="icon-placeholder photos-icon">P</div>
+            </div>
+            <div class="app-name">Photos</div>
+        </div>
+        
+        <div class="app-item">
+            <div class="app-icon">
+                <div class="icon-placeholder youtube-icon">▶</div>
+            </div>
+            <div class="app-name">YouTube</div>
+        </div>
+    </div>
+    
+    <div class="bottom-row">
+        <div class="app-item">
+            <div class="app-icon">
+                <div class="icon-placeholder phone-icon">📞</div>
+            </div>
+            <div class="app-name">Phone</div>
+        </div>
+        
+        <div class="app-item">
+            <div class="app-icon">
+                <div class="icon-placeholder messages-icon">💬</div>
+            </div>
+            <div class="app-name">Messages</div>
+        </div>
+        
+        <div class="app-item">
+            <div class="app-icon">
+                <div class="icon-placeholder chrome-icon">C</div>
+            </div>
+            <div class="app-name">Chrome</div>
+        </div>
+        
+        <div class="app-item">
+            <div class="app-icon">
+                <div class="icon-placeholder camera-icon">📷</div>
+            </div>
+            <div class="app-name">Camera</div>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="search-icon google-icon">G</div>
+        <input type="text" class="search-input" placeholder="Search">
+        <div class="search-actions">
+            <div class="search-action">🎤</div>
+            <div class="search-action">📷</div>
+        </div>
+    </div>
+    
+    <div class="home-indicator"></div>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Document</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background-color: #111;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #fff;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        
+        .location-selector {
+            background-color: #111;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .location-text {
+            font-size: 16px;
+        }
+        
+        .dropdown-arrow {
+            font-size: 16px;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .template-card {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .template-image {
+            width: 100%;
+            height: 150px;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .template-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .template-title {
+            padding: 10px 15px;
+            font-size: 16px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .template-card:hover {
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-button">←</div>
+        <div class="header-title">New</div>
+    </div>
+    
+    <div class="content">
+        <div class="section-title">Create in</div>
+        <div class="location-selector">
+            <div class="location-text">This device > Documents</div>
+            <div class="dropdown-arrow">▼</div>
+        </div>
+        
+        <div class="templates-grid">
+            <!-- Template 1 -->
+            <div class="template-card">
+                <div class="template-image">
+                    <img src="https://via.placeholder.com/150/222222/ffffff?text=Write+a+Journal" alt="Write a Journal">
+                </div>
+                <div class="template-title">Write a Journal</div>
+            </div>
+            
+            <!-- Template 2 -->
+            <div class="template-card">
+                <div class="template-image">
+                    <img src="https://via.placeholder.com/150/222222/ffffff?text=Create+an+Outline" alt="Create an Outline">
+                </div>
+                <div class="template-title">Create an Outline</div>
+            </div>
+            
+            <!-- Template 3 -->
+            <div class="template-card">
+                <div class="template-image">
+                    <img src="https://via.placeholder.com/150/222222/ffffff?text=Newsletter" alt="Newsletter">
+                </div>
+                <div class="template-title">Newsletter</div>
+            </div>
+            
+            <!-- Template 4 -->
+            <div class="template-card">
+                <div class="template-image">
+                    <img src="https://via.placeholder.com/150/222222/ffffff?text=Brochure" alt="Brochure">
+                </div>
+                <div class="template-title">Brochure</div>
+            </div>
+            
+            <!-- Template 5 -->
+            <div class="template-card">
+                <div class="template-image">
+                    <img src="https://via.placeholder.com/150/222222/ffffff?text=Flyer" alt="Flyer">
+                </div>
+                <div class="template-title">Flyer</div>
+            </div>
+            
+            <!-- Template 6 -->
+            <div class="template-card">
+                <div class="template-image">
+                    <img src="https://via.placeholder.com/150/222222/ffffff?text=Paper+with+Cover" alt="Paper with Cover">
+                </div>
+                <div class="template-title">Paper with Cover and...</div>
+            </div>
+            
+            <!-- Template 7 -->
+            <div class="template-card">
+                <div class="template-image">
+                    <img src="https://via.placeholder.com/150/222222/ffffff?text=Document+Template" alt="Document Template">
+                </div>
+                <div class="template-title">Document Template</div>
+            </div>
+            
+            <!-- Template 8 -->
+            <div class="template-card">
+                <div class="template-image">
+                    <img src="https://via.placeholder.com/150/222222/ffffff?text=Academic+Paper" alt="Academic Paper">
+                </div>
+                <div class="template-title">Academic Paper</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

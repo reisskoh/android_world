@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background-color: #1e1e1e;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-button {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .map-container {
+            height: 300px;
+            background-color: #222;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .location-pin {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #1e1e1e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        .start-pin {
+            top: 20px;
+            left: 20px;
+        }
+        
+        .end-pin {
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        .pin-icon {
+            width: 20px;
+            height: 20px;
+            color: #ffffff;
+        }
+        
+        .route-line {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .route-path {
+            stroke: #1e90ff;
+            stroke-width: 4;
+            fill: none;
+        }
+        
+        .google-logo {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .info-panel {
+            background-color: #1e1e1e;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .travel-time {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .arrival-time {
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .transport-options {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #222;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        
+        .transport-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            margin: 0 5px;
+            border-radius: 6px;
+            background-color: #333;
+            font-size: 14px;
+        }
+        
+        .transport-item.active {
+            background-color: #1e90ff;
+            color: white;
+        }
+        
+        .transport-icon {
+            margin-right: 5px;
+            font-size: 16px;
+        }
+        
+        .info-icon {
+            width: 16px;
+            height: 16px;
+            background-color: #ff9800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+        
+        .time-selector {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #222;
+            border-bottom: 1px solid #333;
+        }
+        
+        .time-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-nav button {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        
+        .time-display {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .route-details {
+            padding: 20px;
+        }
+        
+        .route-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .step-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .step-info {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .step-subtitle {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+        
+        .step-time {
+            font-size: 16px;
+            font-weight: 500;
+            text-align: right;
+        }
+        
+        .step-details {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+        
+        .step-details.expandable {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-details.expandable:after {
+            content: ' ▼';
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .footer-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background-color: #1e1e1e;
+            border-top: 1px solid #333;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-start {
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .btn-live {
+            background-color: #2196f3;
+            color: white;
+        }
+        
+        .btn-info {
+            background-color: #1e1e1e;
+            color: #2196f3;
+            border: 2px solid #2196f3;
+        }
+        
+        .btn-share {
+            background-color: #1e1e1e;
+            color: #2196f3;
+            border: 2px solid #2196f3;
+        }
+        
+        .btn-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .location-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .orange-circle {
+            background-color: #ff6b00;
+        }
+        
+        .red-circle {
+            background-color: #ff3b30;
+        }
+        
+        .bus-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #ff3b30;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+        
+        .camera-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-button">←</div>
+        <div class="header-title">Directions</div>
+    </div>
+    
+    <div class="map-container">
+        <img src="https://via.placeholder.com/480x300/222/fff?text=Map+Placeholder" alt="Map" class="map-image">
+        <div class="map-overlay">
+            <div class="location-pin start-pin">
+                <div class="pin-icon">📍</div>
+            </div>
+            <div class="location-pin end-pin">
+                <div class="pin-icon">📍</div>
+            </div>
+            <svg class="route-line">
+                <path class="route-path" d="M50,50 C100,100 200,150 300,200 C350,220 400,250 450,280" />
+            </svg>
+        </div>
+        <div class="google-logo">Google</div>
+    </div>
+    
+    <div class="info-panel">
+        <div class="travel-time">3 hr 3 min</div>
+        <div class="arrival-time">Arrival time: 6:50 AM</div>
+        
+        <div class="transport-options">
+            <div class="transport-item">
+                <div class="transport-icon">🚶</div>
+            </div>
+            <div class="transport-item active">
+                <div class="transport-icon">🚌</div>
+                N44 / N11
+                <div class="info-icon">i</div>
+            </div>
+            <div class="transport-item">
+                <div class="transport-icon">🚶</div>
+            </div>
+            <div class="transport-item active">
+                <div class="transport-icon">🚇</div>
+                TUBE
+            </div>
+            <div class="transport-item">
+                <div class="transport-icon">🚶</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="time-selector">
+        <div class="time-nav">
+            <button>← Earlier</button>
+        </div>
+        <div class="time-display">3:47 AM - 6:50 AM</div>
+        <div class="time-nav">
+            <button>Later →</button>
+        </div>
+    </div>
+    
+    <div class="route-details">
+        <div class="route-step">
+            <div class="step-icon">
+                <div class="location-circle orange-circle"></div>
+            </div>
+            <div class="step-info">
+                <div class="step-title">London</div>
+                <div class="step-subtitle">UK</div>
+            </div>
+            <div class="step-time">3:47 AM</div>
+            <div class="step-subtitle" style="font-size: 12px; margin-top: 5px;">Leave at</div>
+        </div>
+        
+        <div class="route-step">
+            <div class="step-icon">
+                <div class="transport-icon">🚶</div>
+            </div>
+            <div class="step-info">
+                <div class="step-title">Walk 110 m | 1 min</div>
+            </div>
+            <div class="step-details expandable">Details</div>
+        </div>
+        
+        <div class="route-step">
+            <div class="step-icon">
+                <div class="bus-icon">N</div>
+            </div>
+            <div class="step-info">
+                <div class="step-title">Whitehall / Trafalgar Square (N)</div>
+                <div class="step-subtitle">Bus stop</div>
+            </div>
+            <div class="camera-icon">📷</div>
+        </div>
+    </div>
+    
+    <div class="footer-buttons">
+        <button class="btn btn-start">
+            <div class="btn-icon">▶</div>
+            Start
+        </button>
+        <button class="btn btn-live">
+            <div class="btn-icon">📡</div>
+            Live location
+        </button>
+        <button class="btn btn-info">
+            <div class="btn-icon">ℹ️</div>
+        </button>
+        <button class="btn btn-share">
+            <div class="btn-icon">🔗</div>
+        </button>
+    </div>
+</body>
+</html>

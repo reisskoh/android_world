@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0f0f15;
+            color: white;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #0f0f15;
+            border-bottom: 1px solid #2d2d3a;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #0f0f15;
+        }
+        
+        .search-input {
+            flex: 1;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            padding: 5px 0;
+            outline: none;
+        }
+        
+        .clear-button {
+            color: #6699ff;
+            font-size: 24px;
+            margin-left: 10px;
+        }
+        
+        .results {
+            padding: 10px 0;
+        }
+        
+        .result-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px 20px;
+            border-bottom: 1px solid #2d2d3a;
+            cursor: pointer;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .location-icon {
+            margin-right: 15px;
+            color: #999;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+        
+        .result-text {
+            flex: 1;
+        }
+        
+        .result-title {
+            font-weight: 500;
+            font-size: 16px;
+            margin: 0 0 5px 0;
+        }
+        
+        .result-subtitle {
+            font-size: 14px;
+            color: #ccc;
+            margin: 0;
+        }
+        
+        .keyboard {
+            background-color: #1a1a1a;
+            padding: 10px 10px 20px 10px;
+            border-top: 1px solid #2d2d3a;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-top button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            padding: 5px 10px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .keyboard-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .key {
+            width: 50px;
+            height: 50px;
+            background-color: #2d2d3a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 4px;
+            font-size: 20px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .key.wide {
+            width: 100px;
+        }
+        
+        .key.double {
+            width: 100px;
+        }
+        
+        .key.search {
+            width: 60px;
+            height: 60px;
+            background-color: #6699ff;
+            border-radius: 50%;
+            color: #0f0f15;
+            font-size: 24px;
+        }
+        
+        .key.shift {
+            width: 60px;
+        }
+        
+        .key.space {
+            width: 200px;
+        }
+        
+        .key.delete {
+            width: 60px;
+        }
+        
+        .key.numeric {
+            width: 60px;
+            background-color: #555;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 15px;
+            background-color: #0f0f15;
+            font-size: 14px;
+        }
+        
+        .status-icons {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>11:55</div>
+        <div>84°</div>
+        <div class="status-icons">
+            <span>📶</span>
+            <span>📡</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-button">←</div>
+        <div class="search-container">
+            <input type="text" class="search-input" value="Knoxville." id="searchInput">
+            <div class="clear-button">×</div>
+        </div>
+    </div>
+    
+    <div class="results">
+        <div class="result-item">
+            <div class="location-icon">📍</div>
+            <div class="result-text">
+                <h3 class="result-title">Knoxville (TYS - McGhee Tyson)</h3>
+                <p class="result-subtitle">Tennessee, United States</p>
+            </div>
+        </div>
+        
+        <div class="result-item">
+            <div class="location-icon">📍</div>
+            <div class="result-text">
+                <h3 class="result-title">Des Moines (DSM - Des Moines Intl.)</h3>
+                <p class="result-subtitle">Near Knoxville, Iowa, United States</p>
+            </div>
+        </div>
+        
+        <div class="result-item">
+            <div class="location-icon">📍</div>
+            <div class="result-text">
+                <h3 class="result-title">Pittsburgh (PIT - Pittsburgh Intl.)</h3>
+                <p class="result-subtitle">Near Knoxville, Pittsburgh, Pennsylvania, United States</p>
+            </div>
+        </div>
+        
+        <div class="result-item">
+            <div class="location-icon">📍</div>
+            <div class="result-text">
+                <h3 class="result-title">Macon (MCN - Middle Georgia Regional)</h3>
+                <p class="result-subtitle">Near Knoxville, Georgia, United States</p>
+            </div>
+        </div>
+        
+        <div class="result-item">
+            <div class="location-icon">📍</div>
+            <div class="result-text">
+                <h3 class="result-title">Fort Smith (FSM - Fort Smith Regional)</h3>
+                <p class="result-subtitle">Near Knoxville, Arkansas, United States</p>
+            </div>
+        </div>
+        
+        <div class="result-item">
+            <div class="location-icon">📍</div>
+            <div class="result-text">
+                <h3 class="result-title">Washington (WAS - All Airports)</h3>
+                <p class="result-subtitle">Near Knoxville, Maryland, United States</p>
+            </div>
+        </div>
+        
+        <div class="result-item">
+            <div class="location-icon">📍</div>
+            <div class="result-text">
+                <h3 class="result-title">Columbus (GTR - Golden Triangle Regional)</h3>
+                <p class="result-subtitle">Near Knoxville, Alabama, United States</p>
+            </div>
+        </div>
+        
+        <div class="result-item">
+            <div class="location-icon">📍</div>
+            <div class="result-text">
+                <h3 class="result-title">Peoria (PIA - Greater Peoria Regional)</h3>
+                <p class="result-subtitle">Near Knoxville, Illinois, United States</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <button>🔢</button>
+            <button>😊</button>
+            <button>GIF</button>
+            <button>⚙️</button>
+            <button>🎨</button>
+            <button>🎤</button>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key">q</div>
+            <div class="key">w</div>
+            <div class="key">e</div>
+            <div class="key">r</div>
+            <div class="key">t</div>
+            <div class="key">y</div>
+            <div class="key">u</div>
+            <div class="key">i</div>
+            <div class="key">o</div>
+            <div class="key">p</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key">a</div>
+            <div class="key">s</div>
+            <div class="key">d</div>
+            <div class="key">f</div>
+            <div class="key">g</div>
+            <div class="key">h</div>
+            <div class="key">j</div>
+            <div class="key">k</div>
+            <div class="key">l</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key shift">⇧</div>
+            <div class="key">z</div>
+            <div class="key">x</div>
+            <div class="key">c</div>
+            <div class="key">v</div>
+            <div class="key">b</div>
+            <div class="key">n</div>
+            <div class="key">m</div>
+            <div class="key delete">⌫</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="key numeric">?123</div>
+            <div class="key">,</div>
+            <div class="key">😊</div>
+            <div class="key space"></div>
+            <div class="key">.</div>
+            <div class="key search">🔍</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Pants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #ccc;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        
+        .menu-icon div {
+            width: 24px;
+            height: 2px;
+            background-color: black;
+            margin: 4px 0;
+        }
+        
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -8px;
+            width: 8px;
+            height: 8px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        
+        .search-icon, .user-icon, .heart-icon, .cart-icon {
+            width: 24px;
+            height: 24px;
+            stroke: black;
+            fill: none;
+            stroke-width: 2px;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .department {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .dropdown-arrow {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid black;
+            margin-left: 8px;
+        }
+        
+        .filter-sort {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .filter-icon {
+            width: 20px;
+            height: 20px;
+            margin-left: 8px;
+        }
+        
+        .tabs {
+            display: flex;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tab {
+            padding: 8px 12px;
+            font-size: 16px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            border-bottom: 2px solid red;
+            color: red;
+        }
+        
+        .item-count {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .view-icons {
+            display: flex;
+        }
+        
+        .view-icon {
+            width: 20px;
+            height: 20px;
+            margin-left: 8px;
+            stroke: black;
+            fill: none;
+            stroke-width: 2px;
+        }
+        
+        .view-icon.grid {
+            stroke: red;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 15px;
+        }
+        
+        .product {
+            background-color: white;
+            padding: 10px;
+            position: relative;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .discount {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .heart-icon-small {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            stroke: black;
+            fill: none;
+            stroke-width: 2px;
+            cursor: pointer;
+        }
+        
+        .product-info {
+            padding: 10px 0;
+        }
+        
+        .product-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        
+        .color-dots {
+            display: flex;
+            margin-top: 5px;
+        }
+        
+        .color-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .color-dot.black {
+            background-color: black;
+        }
+        
+        .color-dot.gray {
+            background-color: #666;
+        }
+        
+        .footer {
+            height: 50px;
+            background-color: black;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>8:47</span>
+        <div>
+            <span>ovo</span>
+            <span>88°</span>
+            <span>fc</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>track pants</h1>
+        <div style="display: flex; gap: 20px;">
+            <svg class="search-icon" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <svg class="user-icon" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-5.656-3.656L12 17l-2.344-2.344A4 4 0 0 0 4 17v2" />
+                <circle cx="12" cy="9" r="4" />
+            </svg>
+            <svg class="heart-icon" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+            <svg class="cart-icon" viewBox="0 0 24 24">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+        </div>
+    </div>
+    
+    <div class="nav">
+        <div class="department">
+            DEPARTMENT
+            <div class="dropdown-arrow"></div>
+        </div>
+        <div class="filter-sort">
+            FILTER & SORT
+            <svg class="filter-icon" viewBox="0 0 24 24">
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+                <circle cx="18" cy="12" r="2" />
+                <circle cx="18" cy="6" r="2" />
+                <circle cx="18" cy="18" r="2" />
+            </svg>
+        </div>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab">Model</div>
+        <div class="tab active">Product</div>
+        <div style="margin-left: auto; display: flex; align-items: center;">
+            <span class="item-count">566 Items</span>
+            <div class="view-icons">
+                <svg class="view-icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" />
+                    <rect x="14" y="3" width="7" height="7" />
+                    <rect x="3" y="14" width="7" height="7" />
+                    <rect x="14" y="14" width="7" height="7" />
+                </svg>
+                <svg class="view-icon grid" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                    <line x1="8" y1="3" x2="8" y2="21" />
+                    <line x1="16" y1="3" x2="16" y2="21" />
+                    <line x1="3" y1="8" x2="21" y2="8" />
+                    <line x1="3" y1="16" x2="21" y2="16" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    
+    <div class="products">
+        <!-- Product 1 -->
+        <div class="product">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/200x250/1a1a1a/ffffff?text=Track+Pants" alt="Track Pants">
+                <svg class="heart-icon-small" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Track Pants</div>
+                <div class="product-price">$34.99</div>
+                <div class="color-dots">
+                    <div class="color-dot black"></div>
+                    <div class="color-dot gray"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/200x250/1a1a1a/ffffff?text=Track+Pants" alt="Track Pants">
+                <div class="discount">-40%</div>
+                <svg class="heart-icon-small" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Track Pants</div>
+                <div class="product-price">
+                    <span style="color: red;">$14.99</span>
+                    <span class="original-price">$24.99</span>
+                </div>
+                <div class="color-dots">
+                    <div class="color-dot black"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/200x250/1a1a1a/ffffff?text=Track+Pants" alt="Track Pants">
+                <svg class="heart-icon-small" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Track Pants</div>
+                <div class="product-price">$29.99</div>
+                <div class="color-dots">
+                    <div class="color-dot black"></div>
+                    <div class="color-dot gray"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/200x250/1a1a1a/ffffff?text=Track+Pants" alt="Track Pants">
+                <svg class="heart-icon-small" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Track Pants</div>
+                <div class="product-price">$24.99</div>
+                <div class="color-dots">
+                    <div class="color-dot black"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

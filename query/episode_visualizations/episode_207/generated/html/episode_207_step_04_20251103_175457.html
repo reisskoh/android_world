@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .create-in {
+            margin: 20px 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .location-selector {
+            background-color: #111;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .location-text {
+            font-size: 16px;
+        }
+        
+        .dropdown-arrow {
+            font-size: 16px;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .template-card {
+            background-color: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .template-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #222;
+        }
+        
+        .template-title {
+            padding: 12px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #111;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .status-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .status-time {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .template-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 180px;
+            background-color: #222;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .template-placeholder p {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-time">10:50</div>
+        <div class="status-icons">
+            <span>🌙</span>
+            <span>📁</span>
+            <span>●</span>
+            <span>▶</span>
+            <span>•</span>
+            <span>📍</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="header-title">New</div>
+    </div>
+    
+    <div class="create-in">Create in</div>
+    
+    <div class="location-selector">
+        <div class="location-text">This device > Documents</div>
+        <div class="dropdown-arrow">▼</div>
+    </div>
+    
+    <div class="templates-grid">
+        <!-- Research Paper -->
+        <div class="template-card">
+            <div class="template-image">
+                <img src="https://via.placeholder.com/300x180/222/fff?text=Research+Paper" alt="Research Paper">
+            </div>
+            <div class="template-title">Research Paper</div>
+        </div>
+        
+        <!-- APA Style Paper -->
+        <div class="template-card">
+            <div class="template-image">
+                <img src="https://via.placeholder.com/300x180/222/fff?text=APA+Style+Paper" alt="APA Style Paper">
+            </div>
+            <div class="template-title">APA Style Paper</div>
+        </div>
+        
+        <!-- MLA Style Paper -->
+        <div class="template-card">
+            <div class="template-image">
+                <img src="https://via.placeholder.com/300x180/222/fff?text=MLA+Style+Paper" alt="MLA Style Paper">
+            </div>
+            <div class="template-title">MLA Style Paper</div>
+        </div>
+        
+        <!-- Modern Paper -->
+        <div class="template-card">
+            <div class="template-image">
+                <img src="https://via.placeholder.com/300x180/222/fff?text=Modern+Paper" alt="Modern Paper">
+            </div>
+            <div class="template-title">Modern Paper</div>
+        </div>
+        
+        <!-- Trip Journal -->
+        <div class="template-card">
+            <div class="template-image">
+                <img src="https://via.placeholder.com/300x180/222/fff?text=Trip+Journal" alt="Trip Journal">
+            </div>
+            <div class="template-title">Trip Journal</div>
+        </div>
+        
+        <!-- Catalog -->
+        <div class="template-card">
+            <div class="template-image">
+                <img src="https://via.placeholder.com/300x180/222/fff?text=Catalog" alt="Catalog">
+            </div>
+            <div class="template-title">Catalog</div>
+        </div>
+        
+        <!-- Resume 1 -->
+        <div class="template-card">
+            <div class="template-image">
+                <img src="https://via.placeholder.com/300x180/222/fff?text=Resume+1" alt="Resume 1">
+            </div>
+            <div class="template-title">Resume</div>
+        </div>
+        
+        <!-- Resume 2 -->
+        <div class="template-card">
+            <div class="template-image">
+                <img src="https://via.placeholder.com/300x180/222/fff?text=Resume+2" alt="Resume 2">
+            </div>
+            <div class="template-title">Resume</div>
+        </div>
+    </div>
+</body>
+</html>

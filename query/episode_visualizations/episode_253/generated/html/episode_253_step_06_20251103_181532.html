@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            padding: 16px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .menu-icon span {
+            height: 3px;
+            background-color: #333;
+            width: 100%;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 12px;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .seller-info {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        .seller-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 16px;
+        }
+        
+        .seller-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .seller-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .seller-name {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        
+        .seller-feedback {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .save-seller {
+            display: flex;
+            align-items: center;
+            color: #0066ff;
+            font-size: 14px;
+        }
+        
+        .save-seller::before {
+            content: "♥";
+            margin-right: 4px;
+        }
+        
+        .button {
+            width: 100%;
+            padding: 16px;
+            border-radius: 24px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 12px 0;
+            cursor: pointer;
+        }
+        
+        .primary-button {
+            background-color: #4267B2;
+            color: white;
+            border: none;
+        }
+        
+        .secondary-button {
+            background-color: white;
+            color: #4267B2;
+            border: 2px solid #4267B2;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 24px 0 16px;
+        }
+        
+        .dropdown {
+            padding: 12px 16px;
+            border: 1px solid #ccc;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .dropdown::after {
+            content: "▼";
+            font-size: 12px;
+        }
+        
+        .feedback-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .feedback-rating {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .feedback-user {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .feedback-text {
+            margin: 12px 0;
+            font-size: 16px;
+        }
+        
+        .feedback-item-name {
+            color: #0066ff;
+            text-decoration: underline;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        
+        .footer {
+            margin-top: 24px;
+            padding-bottom: 20px;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 16px;
+            background-color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .status-bar .time {
+            font-size: 14px;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .status-bar .icon {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span class="time">12:29</span>
+        <div class="icons">
+            <div class="icon" style="background-color: #666; width: 20px; height: 20px;"></div>
+            <span>ovo</span>
+            <span>99</span>
+            <div class="icon" style="background-color: #666; width: 20px; height: 20px;"></div>
+            <div class="icon" style="background-color: #666; width: 20px; height: 20px;"></div>
+            <div class="icon" style="background-color: #666; width: 20px; height: 20px;"></div>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="title">Item</div>
+        <div class="header-icons">
+            <div class="icon">🔍</div>
+            <div class="icon">🛒</div>
+            <div class="icon">🔗</div>
+            <div class="icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="seller-info">
+        <div class="seller-avatar">
+            <img src="https://via.placeholder.com/80" alt="Seller Avatar">
+        </div>
+        <div class="seller-details">
+            <div class="seller-name">montez (822)</div>
+            <div class="seller-feedback">100% positive feedback</div>
+            <div class="save-seller">Save seller</div>
+        </div>
+    </div>
+    
+    <button class="button primary-button">Seller's other items</button>
+    <button class="button secondary-button">Contact seller</button>
+    
+    <div class="section-title">Seller feedback (256)</div>
+    
+    <div class="dropdown">All ratings</div>
+    
+    <div class="feedback-item">
+        <div class="feedback-header">
+            <div class="feedback-rating">+</div>
+            <div class="feedback-user">9***2 (1118) • Past 6 months</div>
+        </div>
+        <div class="feedback-text">Thank you!</div>
+        <div class="feedback-item-name">Everlast boxing gloves 8oz (#256069290645)</div>
+    </div>
+    
+    <div class="feedback-item">
+        <div class="feedback-header">
+            <div class="feedback-rating">+</div>
+            <div class="feedback-user">v***s (57) • Past 6 months</div>
+        </div>
+        <div class="feedback-text">Great gloves. Super fast shipping. Thanks!</div>
+        <div class="feedback-item-name">cleto reyes boxing gloves 8oz (#256094319820)</div>
+    </div>
+    
+    <div class="feedback-item">
+        <div class="feedback-header">
+            <div class="feedback-rating">+</div>
+            <div class="feedback-user">n***y (747) • Past 6 months</div>
+        </div>
+        <div class="feedback-text">Good</div>
+        <div class="feedback-item-name">Everlast MX Professional 10 oz Gloves (#255954381256)</div>
+    </div>
+    
+    <button class="button secondary-button">See all feedback</button>
+    
+    <div class="section-title">Visually similar items</div>
+    
+    <div style="height: 20px; background-color: #666; width: 60px; margin: 10px auto; border-radius: 10px;"></div>
+</body>
+</html>

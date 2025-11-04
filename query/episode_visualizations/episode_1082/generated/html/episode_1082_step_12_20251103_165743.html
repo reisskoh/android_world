@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIQLO Masterpiece</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .status-bar span {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .back-btn {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .logo {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 30px;
+        }
+        
+        .logo-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .menu-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        
+        .menu-btn span {
+            width: 20px;
+            height: 2px;
+            background-color: #333;
+        }
+        
+        .menu-btn .menu-label {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 3px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Content Section */
+        .content-section {
+            padding: 20px 15px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .headline {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background-color: #f5f5f5;
+            padding: 10px;
+        }
+        
+        .product-name {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .read-story {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .read-story:after {
+            content: "→";
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ccc;
+        }
+        
+        .indicator.active {
+            background-color: #e60000;
+        }
+        
+        /* Product Image */
+        .product-image {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .scroll-up {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+        
+        .scroll-up:before {
+            content: "↑";
+            font-size: 18px;
+            color: #333;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .nav-item.active {
+            color: #000;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active .nav-icon {
+            color: #000;
+        }
+        
+        /* Footer */
+        .footer {
+            height: 20px;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span>8:38</span>
+        <div class="icons">
+            <span>ib</span>
+            <span>•</span>
+            <span>ovo</span>
+            <span>•</span>
+        </div>
+        <div class="icons">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="back-btn">←</div>
+        <div class="logo">
+            <div class="logo-text">UNIQLO</div>
+            <div class="logo-text">Masterpiece</div>
+        </div>
+        <div class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="menu-label">MENU</div>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <div class="hero">
+        <img src="https://via.placeholder.com/480x300?text=Model+Walking" alt="Model Walking">
+    </div>
+    
+    <!-- Content Section -->
+    <div class="content-section">
+        <div class="section-title">OUTERWEAR</div>
+        <div class="headline">Outstandingly light and comfortable.</div>
+        <div class="product-name">AirSense Jacket</div>
+        <a href="#" class="read-story">Read the story</a>
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <div class="indicator active"></div>
+            <div class="indicator"></div>
+            <div class="indicator"></div>
+        </div>
+    </div>
+    
+    <!-- Product Image -->
+    <div class="product-image">
+        <img src="https://via.placeholder.com/480x600?text=White+Shirt" alt="White Shirt">
+        <div class="scroll-up"></div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🔍</div>
+            <div>Category</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">❤️</div>
+            <div>Wish list</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🔔</div>
+            <div>Notification</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🎫</div>
+            <div>Membership</div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer"></div>
+</body>
+</html>

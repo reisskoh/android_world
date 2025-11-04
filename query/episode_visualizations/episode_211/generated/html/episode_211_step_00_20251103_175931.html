@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heinz Chicken Soup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            background-color: #e0e0e0;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .status-bar .time {
+            font-weight: bold;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header .back-arrow {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #2d5096;
+        }
+        
+        .header .search-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin: 0 10px;
+        }
+        
+        .header .search-container input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            padding: 5px;
+        }
+        
+        .header .close-btn {
+            font-size: 24px;
+            color: #2d5096;
+        }
+        
+        /* Filter and Sort */
+        .filter-sort {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .filter-sort button {
+            padding: 8px 15px;
+            border: 2px solid #2d5096;
+            border-radius: 20px;
+            background: white;
+            color: #2d5096;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* Product Banner */
+        .product-banner {
+            padding: 15px;
+            background-color: white;
+            margin: 10px 0;
+        }
+        
+        .banner-images {
+            display: flex;
+            position: relative;
+        }
+        
+        .banner-images img {
+            width: 33%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .banner-images .arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: black;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .clubcard-price {
+            background-color: #0057b8;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .clubcard-price .price {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .clubcard-price .regular-price {
+            font-size: 12px;
+            text-decoration: line-through;
+            margin-top: 5px;
+        }
+        
+        /* Product List */
+        .product-list {
+            padding: 0 15px;
+        }
+        
+        .product-item {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .product-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-info h3 {
+            font-size: 16px;
+            color: #2d5096;
+            margin-bottom: 5px;
+        }
+        
+        .product-info .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .product-info .per-100g {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .product-info .aldiprice {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .add-button {
+            background-color: #2d5096;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* Clubcard Offer */
+        .clubcard-offer {
+            background-color: #ffd700;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .clubcard-offer .badge {
+            background-color: #2d5096;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .clubcard-offer .text {
+            flex: 1;
+        }
+        
+        .clubcard-offer .text h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .clubcard-offer .text p {
+            font-size: 12px;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px 0;
+            border-top: 1px solid #e0e0e0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .nav-item i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active i {
+            color: #e63946;
+        }
+        
+        .nav-item.active span {
+            color: #e63946;
+        }
+        
+        /* Icons using Unicode or simple SVG */
+        .icon-home::before {
+            content: "🏠";
+        }
+        
+        .icon-fav::before {
+            content: "❤️";
+        }
+        
+        .icon-search::before {
+            content: "🔍";
+        }
+        
+        .icon-clubcard::before {
+            content: "💳";
+        }
+        
+        .icon-basket::before {
+            content: "🛒";
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span class="time">9:16</span>
+        <div class="icons">
+            <span>LR</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <span class="back-arrow">←</span>
+        <div class="search-container">
+            <input type="text" value="heinz chicken soup">
+        </div>
+        <span class="close-btn">✕</span>
+    </div>
+    
+    <!-- Filter and Sort -->
+    <div class="filter-sort">
+        <span>10 products</span>
+        <button>Filter</button>
+        <button>Sort</button>
+    </div>
+    
+    <!-- Product Banner -->
+    <div class="product-banner">
+        <div class="banner-images">
+            <img src="https://via.placeholder.com/100x100?text=Heinz+Broccoli" alt="Heinz Broccoli">
+            <img src="https://via.placeholder.com/100x100?text=Heinz+Spicy" alt="Heinz Spicy">
+            <img src="https://via.placeholder.com/100x100?text=Soup+Bowl" alt="Soup Bowl">
+            <div class="arrow">›</div>
+        </div>
+        <div class="clubcard-price">
+            <div class="price">8 for £7</div>
+            <div class="regular-price">Clubcard Price</div>
+            <div>Regular Price £1.70</div>
+        </div>
+    </div>
+    
+    <!-- Product List -->
+    <div class="product-list">
+        <!-- Product 1 -->
+        <div class="product-item">
+            <img src="https://via.placeholder.com/80x80?text=Heinz+4Pack" alt="Heinz 4 Pack">
+            <div class="product-info">
+                <h3>Heinz Cream Of Chicken Soup 4 X 400G</h3>
+                <div class="price">£3.75</div>
+                <div class="per-100g">£0.23/100g</div>
+                <div class="aldiprice">Aldi Price Match.</div>
+            </div>
+            <button class="add-button">Add</button>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product-item">
+            <img src="https://via.placeholder.com/80x80?text=Heinz+Cup" alt="Heinz Cup">
+            <div class="product-info">
+                <h3>Heinz Cream Of Chicken Cup Soup 4 Pack 68G</h3>
+                <div class="price">£1.50</div>
+                <div class="per-100g">£2.21/100g</div>
+            </div>
+            <button class="add-button">Add</button>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product-item">
+            <img src="https://via.placeholder.com/80x80?text=Heinz+Mushroom" alt="Heinz Mushroom">
+            <div class="product-info">
+                <h3>Heinz Cream Of Chicken & Mushroom Soup 400G</h3>
+                <div class="price">£1.70</div>
+                <div class="per-100g">£0.42/100g</div>
+            </div>
+            <button class="add-button">Add</button>
+        </div>
+        
+        <!-- Clubcard Offer -->
+        <div class="clubcard-offer">
+            <div class="badge">Clubcard Price</div>
+            <div class="text">
+                <h4>5 for £5 or 8 for £7 Clubcard Price - ...</h4>
+                <p>Valid for delivery until 26/12/40</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item">
+            <span class="icon-home"></span>
+            <span>Home</span>
+        </div>
+        <div class="nav-item">
+            <span class="icon-fav"></span>
+            <span>Favourites</span>
+        </div>
+        <div class="nav-item active">
+            <span class="icon-search"></span>
+            <span>Search</span>
+        </div>
+        <div class="nav-item">
+            <span class="icon-clubcard"></span>
+            <span>Clubcard</span>
+        </div>
+        <div class="nav-item">
+            <span class="icon-basket"></span>
+            <span>Basket</span>
+        </div>
+    </div>
+</body>
+</html>

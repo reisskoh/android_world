@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Voice</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .save-button {
+            color: #888;
+            font-size: 16px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .save-button.active {
+            color: white;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 20px 30px;
+        }
+        
+        .voice-list {
+            padding: 0 20px;
+        }
+        
+        .voice-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .voice-name {
+            font-size: 18px;
+        }
+        
+        .radio-button {
+            width: 24px;
+            height: 24px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .radio-button.checked {
+            background-color: white;
+        }
+        
+        .radio-button.checked::after {
+            content: '✓';
+            color: #1e1e1e;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .status-bar {
+            background-color: black;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-time {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-time">9:22</div>
+        <div class="status-icons">
+            <span>🛒</span>
+            <span>📶</span>
+            <span>👻</span>
+            <span>👻</span>
+            <span>•</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <button class="back-button">←</button>
+        <button class="save-button">SAVE</button>
+    </div>
+    
+    <div class="title">Select Voice</div>
+    
+    <div class="voice-list">
+        <div class="voice-item">
+            <div class="voice-name">Joanna</div>
+            <div class="radio-button checked"></div>
+        </div>
+        <div class="voice-item">
+            <div class="voice-name">Amy</div>
+            <div class="radio-button"></div>
+        </div>
+        <div class="voice-item">
+            <div class="voice-name">Brian</div>
+            <div class="radio-button"></div>
+        </div>
+        <div class="voice-item">
+            <div class="voice-name">Salli</div>
+            <div class="radio-button"></div>
+        </div>
+        <div class="voice-item">
+            <div class="voice-name">Joey</div>
+            <div class="radio-button"></div>
+        </div>
+    </div>
+</body>
+</html>

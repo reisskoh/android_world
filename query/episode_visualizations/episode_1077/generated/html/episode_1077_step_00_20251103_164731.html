@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Home Screen</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iODAwIj48cmVjdCB3aWR0aD0iNDgwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iIzAwMDAwMCIvPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDAgTCAxMDAgMTAwIEwgMCAxMDAgTCAwIDAgWiIgZmlsbD0iIzAwMDAwMCIvPjwvcGF0dGVybj48L3N2Zz4=') repeat;
+            color: white;
+            padding-top: 20px;
+            padding-bottom: 80px;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            z-index: 1000;
+        }
+        
+        .status-bar .time {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            margin-left: auto;
+        }
+        
+        .status-bar .icons img {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 0 15px;
+        }
+        
+        .app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        
+        .app-icon img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        
+        .app-name {
+            font-size: 14px;
+            max-width: 80px;
+            word-wrap: break-word;
+        }
+        
+        .dock {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 15px;
+            z-index: 1000;
+        }
+        
+        .dock-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dock-item img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .search-bar {
+            position: fixed;
+            bottom: 80px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: rgba(50, 50, 50, 0.8);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            margin: 0 15px;
+            z-index: 999;
+        }
+        
+        .search-bar .google-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .search-bar .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .search-bar .voice-search {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        
+        .search-bar .camera-search {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        
+        .home-indicator {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background-color: white;
+            border-radius: 2.5px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="time">9:26</div>
+        <div class="icons">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48cGF0aCBkPSJNMTAgMjBjLTUuNTIgMC0xMC00LjQ4LTEwLTEwUzQuNDggMCAxMCAwczEwIDQuNDggMTAgMTBzLTQuNDggMTAtMTAgMTB6bTAgLTJjMy44NyAwIDcuMDQtMi4zMyA4LjI0LTUuNzVjLTAuMzYtMC4xOC0wLjctMC4zNi0xLjA2LTAuNTFjLTAuMzYtMC4xNS0wLjczLTAuMjktMS4xLTAuNDFjLTAuMzctMC4xMi0wLjc1LTAuMjItMS4xMy0wLjMxYy0wLjM4LTAuMDktMC43Ny0wLjE2LTEuMTctMC4yMWMtMC40LTAuMDUtMC44LTAuMDktMS4yLTAuMTFjLTAuNC0wLjAxLTEuMjEtMC4wMS0xLjYxIDAuMDFjLTAuNC0wLjAxLTAuOC0wLjAxLTEuMiAwLjAxYy0wLjQgMC4wMi0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4wMS0xLjIgMC4wMWwtMC4xMiAwLjAxYy0wLjQgMC4wNS0wLjgtMC4w

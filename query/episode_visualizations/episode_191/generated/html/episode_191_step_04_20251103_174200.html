@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walk Activity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .action-icon {
+            font-size: 24px;
+            color: #666;
+        }
+        
+        .map-container {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+            height: 300px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+        }
+        
+        .google-logo {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        .tracking-info {
+            text-align: center;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .tracking-info .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 8px;
+        }
+        
+        .toggle-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .toggle-button {
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+        
+        .toggle-button.active {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .activity-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+        }
+        
+        .activity-meta {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .activity-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .footer {
+            height: 10px;
+            background-color: #666;
+            border-radius: 5px;
+            margin: 20px auto 0;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-button">←</div>
+        <div class="action-buttons">
+            <div class="action-icon">🔗</div>
+            <div class="action-icon">✏️</div>
+            <div class="action-icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="map-container">
+        <div class="map-image">
+            <!-- Map would be rendered here -->
+            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9;">
+                <svg width="80%" height="80%" viewBox="0 0 200 200">
+                    <path d="M50,100 C70,80 90,60 110,80 C130,100 150,120 170,100" 
+                          stroke="#aaa" stroke-width="4" fill="none"/>
+                    <path d="M110,80 C120,70 130,60 140,70" 
+                          stroke="#aaa" stroke-width="4" fill="none"/>
+                    <path d="M110,80 C100,90 90,100 80,110" 
+                          stroke="#aaa" stroke-width="4" fill="none"/>
+                    <path d="M80,110 C70,120 60,130 50,140" 
+                          stroke="#aaa" stroke-width="4" fill="none"/>
+                    <circle cx="140" cy="70" r="4" fill="#333"/>
+                    <circle cx="80" cy="110" r="8" fill="white" stroke="#333" stroke-width="2"/>
+                    <rect x="76" y="106" width="8" height="8" fill="#333"/>
+                </svg>
+            </div>
+        </div>
+        <div class="google-logo">Google</div>
+    </div>
+    
+    <div class="tracking-info">
+        <span class="dot"></span>No zones tracked
+    </div>
+    
+    <div class="toggle-buttons">
+        <div class="toggle-button active">
+            ✓ Heart rate zones
+        </div>
+        <div class="toggle-button">
+            Pace
+        </div>
+    </div>
+    
+    <div class="activity-title">Walk</div>
+    <div class="activity-meta">Today • 8:07 AM • Fitbit for Android</div>
+    
+    <div class="activity-stats">
+        <div class="stat-label">Duration</div>
+        <div class="stat-value">16 min</div>
+    </div>
+    
+    <div class="activity-stats">
+        <div class="stat-label">Distance</div>
+        <div class="stat-value">0.08 km</div>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

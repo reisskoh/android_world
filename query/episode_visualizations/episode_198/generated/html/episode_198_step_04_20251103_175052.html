@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes - Myntra</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+        
+        .back-btn {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .header-title {
+            flex: 1;
+            margin: 0 15px;
+        }
+        
+        .header-title h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .header-title p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-icons i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .filters {
+            display: flex;
+            overflow-x: auto;
+            padding: 15px 10px;
+            background-color: white;
+            gap: 10px;
+            scrollbar-width: none;
+        }
+        
+        .filters::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: white;
+        }
+        
+        .filter-btn i {
+            font-size: 16px;
+        }
+        
+        .promo-banner {
+            background: linear-gradient(90deg, #f8e1e7, #fff8e1);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .promo-icon {
+            font-size: 30px;
+            color: #333;
+        }
+        
+        .promo-text {
+            flex: 1;
+        }
+        
+        .promo-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .promo-text p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .promo-offer {
+            background-color: white;
+            padding: 10px;
+            border: 2px dashed #ff6b6b;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .promo-offer h4 {
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .promo-offer p {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+        
+        .discount-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        
+        .product-rating {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 2px 8px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+        }
+        
+        .product-info {
+            padding: 10px;
+        }
+        
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .product-subtitle {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .discounted-price {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .discount-tag-small {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        
+        .best-price {
+            color: #00b894;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .delivery-info {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .express {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            background-color: white;
+            border-top: 1px solid #ddd;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .footer-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .footer-btn i {
+            font-size: 20px;
+        }
+        
+        .heart-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: #666;
+        }
+        
+        .only-on-myntra {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+        
+        .fwd-tag {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-btn">←</div>
+        <div class="header-title">
+            <h1>SHOES</h1>
+            <p>131585 Items</p>
+        </div>
+        <div class="header-icons">
+            <i>🔍</i>
+            <i>♥</i>
+            <i>🛒</i>
+        </div>
+    </div>
+    
+    <div class="filters">
+        <div class="filter-btn">
+            <i>⚡</i>
+            <span>Crazy Deal</span>
+        </div>
+        <div class="filter-btn">
+            <i>⭐</i>
+            <span>Top Brands</span>
+        </div>
+        <div class="filter-btn">
+            <span>fwd</span>
+            <span>Hot Trends</span>
+            <i>🔥</i>
+        </div>
+        <div class="filter-btn">
+            <i>⭐</i>
+            <span>Top</span>
+        </div>
+    </div>
+    
+    <div class="promo-banner">
+        <div class="promo-icon">🚚</div>
+        <div class="promo-text">
+            <h3>Free Shipping on your first order</h3>
+        </div>
+        <div class="promo-offer">
+            <h4>₹200 off for you</h4>
+            <p>MYNTRA200</p>
+        </div>
+    </div>
+    
+    <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/200x200?text=Shoe+1" alt="Shoe">
+                <div class="only-on-myntra">ONLY ON MYNTRA</div>
+                <div class="product-rating">
+                    <span>4.4</span>
+                    <span>★</span>
+                    <span>5.2k</span>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">HRX by Hrithik Roshan</div>
+                <div class="product-subtitle">Men Memory Foam Running Shoes</div>
+                <div class="product-price">
+                    <span class="original-price">₹2,999</span>
+                    <span class="discounted-price">₹999</span>
+                    <span class="discount-tag-small">Rs.2000 OFF!</span>
+                </div>
+                <div class="best-price">Best Price ₹772 with coupon</div>
+                <div class="delivery-info">Likely to be sold out in 3 days</div>
+                <div class="heart-icon">♥</div>
+            </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/200x200?text=Shoe+2" alt="Shoe">
+                <div class="fwd-tag">FWD</div>
+                <div class="product-rating">
+                    <span>3.5</span>
+                    <span>★</span>
+                    <span>2.8k</span>
+                </div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Roadster</div>
+                <div class="product-subtitle">Men Colourblocked Sneakers</div>
+                <div class="product-price">
+                    <span class="original-price">₹2,199</span>
+                    <span class="discounted-price">₹829</span>
+                    <span class="discount-tag-small">Rs.1370 OFF!</span>
+                </div>
+                <div class="best-price">Best Price ₹640 with coupon</div>
+                <div class="delivery-info">
+                    <span class="express">EXPRESS</span>
+                    <span>3 Day Delivery</span>
+                </div>
+                <div class="heart-icon">♥</div>
+            </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/200x200?text=Shoe+3" alt="Shoe">
+                <div class="only-on-myntra">ONLY ON MYNTRA</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">HRX by Hrithik Roshan</div>
+                <div class="product-subtitle">Men Memory Foam Running Shoes</div>
+                <div class="product-price">
+                    <span class="original-price">₹2,999</span>
+                    <span class="discounted-price">₹999</span>
+                    <span class="discount-tag-small">Rs.2000 OFF!</span>
+                </div>
+                <div class="best-price">Best Price ₹772 with coupon</div>
+                <div class="delivery-info">Likely to be sold out in 3 days</div>
+                <div class="heart-icon">♥</div>
+            </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/200x200?text=Shoe+4" alt="Shoe">
+                <div class="only-on-myntra">ONLY ON MYNTRA</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">HRX by Hrithik Roshan</div>
+                <div class="product-subtitle">Men Memory Foam Running Shoes</div>
+                <div class="product-price">
+                    <span class="original-price">₹2,999</span>
+                    <span class="discounted-price">₹999</span>
+                    <span class="discount-tag-small">Rs.2000 OFF!</span>
+                </div>
+                <div class="best-price">Best Price ₹772 with coupon</div>
+                <div class="delivery-info">Likely to be sold out in 3 days</div>
+                <div class="heart-icon">♥</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-btn">
+            <i>♂️</i>
+            <span>GENDER</span>
+        </div>
+        <div class="footer-btn">
+            <i>↕️</i>
+            <span>SORT</span>
+        </div>
+        <div class="footer-btn">
+            <i>▽</i>
+            <span>FILTER</span>
+        </div>
+    </div>
+</body>
+</html>

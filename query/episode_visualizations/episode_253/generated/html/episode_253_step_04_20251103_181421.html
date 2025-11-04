@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .menu-icon span {
+            height: 3px;
+            background-color: #333;
+            width: 100%;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+        
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .heart-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #3b82f6;
+            font-size: 18px;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .product-original-price {
+            font-size: 14px;
+            color: #888;
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+        
+        .product-shipping {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .product-status {
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .see-all-btn {
+            border: 1px solid #888;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 16px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .sponsored {
+            font-size: 14px;
+            color: #888;
+            padding: 0 20px 10px;
+        }
+        
+        .inspired-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 0 20px 20px;
+        }
+        
+        .status-badge {
+            font-size: 12px;
+            color: #3b82f6;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="title">Item</div>
+        <div class="header-icons">
+            <div class="icon">🔍</div>
+            <div class="icon">🛒</div>
+            <div class="icon">🔗</div>
+            <div class="icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/150/000000/FFFFFF?text=Everlast" alt="Everlast Gloves">
+                <div class="heart-icon">♥</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Everlast 10oz. Powerlock2 Training Boxing Gloves in Black/Grey</div>
+                <div class="product-price">$61.21</div>
+                <div class="product-original-price">US $66.54 8% off</div>
+                <div class="product-shipping">+ US $16.64 shipping</div>
+                <div class="product-status">Last one</div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/150/000000/FFFFFF?text=Everlast+Elite" alt="Everlast Elite Gloves">
+                <div class="heart-icon">♥</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Everlast Elite Pro Style Training Gloves, Black, 16 oz</div>
+                <div class="product-price">$31.30</div>
+                <div class="product-shipping">+ US $53.71 shipping</div>
+                <div class="product-status">36 sold</div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/150/808080/FFFFFF?text=Rival" alt="Rival Boxing">
+                <div class="heart-icon">♥</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Rival Boxing Evolution Loop Bag Silver</div>
+                <div class="product-price">$70.00</div>
+                <div class="product-status">0 bids</div>
+                <div class="product-shipping">+ US $114.35</div>
+                <div class="status-badge">Seller with a</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-header">
+        <div>
+            <div class="section-title">Inspired by your recent views</div>
+            <div class="sponsored">Sponsored</div>
+        </div>
+        <div class="see-all-btn">See all →</div>
+    </div>
+    
+    <div class="inspired-grid">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/150/000080/FFFFFF?text=Winning" alt="Winning Gloves">
+                <div class="heart-icon">♥</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Boxing Gloves Training Leather Thai Punching Muay Mma Sparring Bag Kickboxing</div>
+                <div class="product-price">$80.00</div>
+                <div class="product-shipping">+ US $5.00 shipping</div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/150/4B0082/FFFFFF?text=Custom" alt="Custom Gloves">
+                <div class="heart-icon">♥</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Customize Leather Boxing Gloves Sparring Set Print Logo Name. Winning No Grant</div>
+                <div class="product-price">$170.00</div>
+                <div class="product-shipping">+ US $20.00 shipping</div>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/150/8B4513/FFFFFF?text=Forza" alt="Forza Gloves">
+                <div class="heart-icon">♥</div>
+            </div>
+            <div class="product-info">
+                <div class="product-title">Forza Sports Up Mini Boxing Realistic Detail</div>
+                <div class="product-price">$8.39</div>
+                <div class="product-shipping">+ US $4.52 shipping</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

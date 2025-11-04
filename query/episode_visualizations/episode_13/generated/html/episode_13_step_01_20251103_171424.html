@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruise Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #344148;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            background-color: #344148;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        /* Header */
+        .header {
+            background-color: #2d3a40;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #44555c;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Cruise Card */
+        .cruise-card {
+            background-color: white;
+            margin: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .cruise-image {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .cruise-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cruise-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.3);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        .cruise-details {
+            display: flex;
+            padding: 15px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .cruise-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cruise-logo {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .cruise-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nights {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .nights-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .destination {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .date {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .price {
+            background-color: #4cd964;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px 0 0 20px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .price-arrow {
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid #4cd964;
+            margin-left: -5px;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #2d3a40;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            width: 33.33%;
+            text-align: center;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-text {
+            font-size: 12px;
+        }
+        
+        .nav-item.active {
+            color: #ff4081;
+        }
+        
+        /* Status bar icons */
+        .status-icons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div>12:34</div>
+        <div class="status-icons">
+            <span>👤</span>
+            <span>👻</span>
+            <span>32°</span>
+            <span>M</span>
+            <span>•</span>
+        </div>
+        <div class="status-icons">
+            <span>📶</span>
+            <span>📡</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <h1>Cruise Search</h1>
+        <div class="menu-icon">⋮</div>
+    </div>
+    
+    <!-- Cruise Card -->
+    <div class="cruise-card">
+        <div class="cruise-image">
+            <img src="https://placehold.co/480x200?text=Lighthouse+Scene" alt="Cruise Destination">
+            <div class="cruise-title">Canada, New England, New York</div>
+        </div>
+        <div class="cruise-details">
+            <div class="cruise-info">
+                <div class="cruise-logo">🌊</div>
+                <div class="cruise-text">
+                    <div class="nights">4 <span class="nights-label">nights</span></div>
+                    <div class="destination">New York, New York</div>
+                    <div class="date">October 17, 2023</div>
+                </div>
+            </div>
+            <div class="price">
+                <span>$762</span>
+                <div class="price-arrow"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item">
+            <div class="nav-icon">⭐</div>
+            <div class="nav-text">Top Deals</div>
+        </div>
+        <div class="nav-item active">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-text">Cruise Search</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">ℹ️</div>
+            <div class="nav-text">Contact Us</div>
+        </div>
+    </div>
+</body>
+</html>

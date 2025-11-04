@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Fair Event</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .settings-icon {
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #666;
+            margin: 0 5px;
+        }
+        
+        .dot.active {
+            background-color: #fff;
+        }
+        
+        .section {
+            margin: 25px 0;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .duration-options {
+            display: flex;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        .duration-btn {
+            flex: 1;
+            padding: 10px 15px;
+            text-align: center;
+            border: 1px solid #444;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .duration-btn:first-child {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        
+        .duration-btn:last-child {
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        
+        .duration-btn.selected {
+            background-color: #225544;
+            color: #fff;
+        }
+        
+        .custom-duration {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .custom-duration input {
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #444;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .custom-duration select {
+            width: 40%;
+            padding: 10px;
+            border: 1px solid #444;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        
+        .start-time-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .date-info {
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .date-info .month {
+            color: #888;
+        }
+        
+        .date-info .day {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .date-info .weekday {
+            color: #888;
+        }
+        
+        .time-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #444;
+            background-color: #000;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .delete-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #882222;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+        }
+        
+        .add-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #2255aa;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 18px;
+        }
+        
+        .preview-btn {
+            width: 100%;
+            padding: 15px;
+            border-radius: 20px;
+            background-color: #225544;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 40px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="title">EMPLOYMENT FAIR EVENT</div>
+        <div class="settings-icon">⚙️</div>
+    </div>
+    
+    <div class="progress-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot active"></div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">Duration</div>
+        <div class="duration-options">
+            <div class="duration-btn">30 min</div>
+            <div class="duration-btn">60 min</div>
+            <div class="duration-btn">All day</div>
+            <div class="duration-btn selected">Custom</div>
+        </div>
+        
+        <div class="section-title" style="margin-top: 25px;">Custom duration</div>
+        <div class="custom-duration">
+            <input type="number" value="90">
+            <select>
+                <option>min</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">Start time</div>
+        <div class="start-time-section">
+            <div class="date-info">
+                <div class="month">Dec</div>
+                <div class="day">28</div>
+                <div class="weekday">Thu</div>
+            </div>
+            <input type="text" class="time-input" value="09:30 AM">
+            <div class="action-buttons">
+                <div class="delete-btn">🗑️</div>
+                <div class="add-btn">➕</div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="preview-btn">Preview and update</button>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0f0f1a;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #0f0f1a;
+            font-size: 14px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px 15px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #ffd700;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .greeting {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            margin: 20px 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #1a1a2e;
+        }
+        
+        .category-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1a1a2e;
+            border: 1px solid #2d2d42;
+            cursor: pointer;
+        }
+        
+        .category-item:hover {
+            background-color: #2d2d42;
+        }
+        
+        .category-icon {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .category-text {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .promo-card {
+            margin: 20px 15px;
+            padding: 20px;
+            background-color: #1a1a2e;
+            border-radius: 12px;
+            border: 1px solid #2d2d42;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .promo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .promo-content {
+            flex: 1;
+        }
+        
+        .promo-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .promo-subtitle {
+            font-size: 14px;
+            color: #60a5fa;
+        }
+        
+        .section-title {
+            margin: 30px 15px 15px;
+            font-size: 24px;
+            font-weight: 500;
+        }
+        
+        .city-card {
+            margin: 0 15px;
+            background-color: #1a1a2e;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #2d2d42;
+        }
+        
+        .city-header {
+            padding: 15px 20px;
+        }
+        
+        .city-category {
+            font-size: 12px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .city-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .city-description {
+            font-size: 14px;
+            color: #9ca3af;
+            line-height: 1.4;
+        }
+        
+        .city-image {
+            width: 100%;
+            height: 200px;
+            background-color: #374151;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            background-color: #0f0f1a;
+            border-top: 1px solid #2d2d42;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            color: #9ca3af;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .nav-item.active {
+            color: #60a5fa;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+        }
+        
+        .chat-button {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        
+        .chat-icon {
+            font-size: 24px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>11:53</div>
+        <div>84°</div>
+        <div>📶 📶 🔋</div>
+    </div>
+    
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">↗</div>
+            <div class="logo-text">Expedia</div>
+        </div>
+        <div class="greeting">Hi, lucas</div>
+    </div>
+    
+    <div class="category-grid">
+        <div class="category-item">
+            <div class="category-icon">🏢</div>
+            <div class="category-text">Stays</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">✈️</div>
+            <div class="category-text">Flights</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">🧳</div>
+            <div class="category-text">Packages</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">🚗</div>
+            <div class="category-text">Cars</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">🎟️</div>
+            <div class="category-text">Things to do</div>
+        </div>
+        <div class="category-item">
+            <div class="category-icon">🚢</div>
+            <div class="category-text">Cruises</div>
+        </div>
+    </div>
+    
+    <div class="promo-card">
+        <div class="promo-icon">💬</div>
+        <div class="promo-content">
+            <div class="promo-title">Planning a new escape? Let's chat.</div>
+            <div class="promo-subtitle">Explore trip ideas with ChatGPT</div>
+        </div>
+    </div>
+    
+    <div class="promo-card">
+        <div class="promo-icon">K</div>
+        <div class="promo-content">
+            <div class="promo-title">lucas, you'll save 10% on thousands of hotels because you're Blue</div>
+            <div class="promo-subtitle">Explore One Key perks</div>
+        </div>
+    </div>
+    
+    <div class="section-title">Popular cities to explore</div>
+    
+    <div class="city-card">
+        <div class="city-header">
+            <div class="city-category">TRAVEL GUIDE</div>
+            <div class="city-name">New York City</div>
+            <div class="city-description">Skyscraper views, Broadway shows, Famous I...</div>
+        </div>
+        <div class="city-image" style="background-image: url('https://placehold.co/400x200/FFD700/000000?text=NYC+Taxi')"></div>
+    </div>
+    
+    <div class="nav-bar">
+        <div class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🔍</div>
+            <div>Search</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🧳</div>
+            <div>Trips</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🔔</div>
+            <div>Notifications</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">👤</div>
+            <div>Account</div>
+        </div>
+    </div>
+    
+    <div class="chat-button">
+        <div class="chat-icon">💬</div>
+    </div>
+</body>
+</html>

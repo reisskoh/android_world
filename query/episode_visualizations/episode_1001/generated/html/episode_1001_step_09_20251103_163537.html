@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: white;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .selected-count {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .section {
+            padding: 20px 15px 10px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            padding: 0 5px;
+        }
+        
+        .photo-item {
+            position: relative;
+            height: 0;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+            background-color: #333;
+        }
+        
+        .photo-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .selection-circle {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .selection-circle.selected {
+            background-color: #4a90e2;
+            border-color: #4a90e2;
+        }
+        
+        .selection-circle.selected::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .video-indicator {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2px 6px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 2;
+        }
+        
+        .video-indicator span {
+            font-size: 12px;
+            color: white;
+        }
+        
+        .video-play-icon {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-play-icon::after {
+            content: '▶';
+            color: black;
+            font-size: 10px;
+            margin-left: 1px;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1e1e1e;
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .copy-btn {
+            background-color: #1e1e1e;
+            color: #4a90e2;
+            border: 1px solid #4a90e2;
+        }
+        
+        .move-btn {
+            background-color: #4a90e2;
+            color: white;
+        }
+        
+        .icon {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <button class="close-btn">×</button>
+            <span class="selected-count">2</span>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">September</h2>
+        <div class="gallery">
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/100/FFD700/000000?text=Yellow+Bottle" alt="Yellow Bottle">
+                <div class="selection-circle"></div>
+                <div class="video-indicator">
+                    <span>0:12</span>
+                    <div class="video-play-icon"></div>
+                </div>
+            </div>
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/100/87CEEB/000000?text=City+View" alt="City View">
+                <div class="selection-circle"></div>
+            </div>
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/100/228B22/FFFFFF?text=Plant+View" alt="Plant View">
+                <div class="selection-circle selected"></div>
+            </div>
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/100/32CD32/FFFFFF?text=Green+Plants" alt="Green Plants">
+                <div class="selection-circle selected"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">August</h2>
+        <div class="gallery">
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/100/F5F5F5/000000?text=Text+Note" alt="Text Note">
+                <div class="selection-circle"></div>
+            </div>
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/100/FFFFFF/000000?text=Triangle" alt="Triangle">
+                <div class="selection-circle"></div>
+            </div>
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/100/FFFFFF/FF0000?text=Heart" alt="Heart">
+                <div class="selection-circle"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">July</h2>
+        <div class="gallery">
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/100/87CEEB/000000?text=Sky+View" alt="Sky View">
+                <div class="selection-circle"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <button class="action-btn copy-btn">
+            <span class="icon">📋</span>
+            <span>Copy</span>
+        </button>
+        <button class="action-btn move-btn">
+            <span class="icon">📁→</span>
+            <span>Move</span>
+        </button>
+    </div>
+</body>
+</html>

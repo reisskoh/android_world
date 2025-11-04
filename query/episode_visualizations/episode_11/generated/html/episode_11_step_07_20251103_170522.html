@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Interface</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-left: 10px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .tab.active {
+            color: #fff;
+            border-bottom: 2px solid #3b82f6;
+        }
+        
+        .hide-markdown {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            color: #aaa;
+            font-size: 16px;
+        }
+        
+        .hide-markdown input {
+            margin-right: 8px;
+        }
+        
+        .content {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .task-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .task-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .task-date {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .task-source {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .task-source a {
+            color: #888;
+            text-decoration: none;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px 0;
+            background-color: #111;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 10px;
+        }
+        
+        .footer-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .google {
+            background-color: #fff;
+        }
+        
+        .email {
+            background-color: #4285f4;
+        }
+        
+        .copy {
+            background-color: #f4b400;
+        }
+        
+        .more {
+            background-color: #4cd964;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        
+        .toast-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+        }
+        
+        .toast-icon img {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 15px;
+            background-color: #000;
+            font-size: 14px;
+        }
+        
+        .status-icons {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>8:06</div>
+        <div class="status-icons">
+            <span>△</span>
+            <span>📶</span>
+            <span>🌙</span>
+            <span>📁</span>
+            <span>•</span>
+        </div>
+        <div class="status-icons">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="tabs">
+            <div class="tab active">Text</div>
+            <div class="tab">Image</div>
+        </div>
+    </div>
+    
+    <div class="hide-markdown">
+        <input type="checkbox" id="hide-markdown">
+        <label for="hide-markdown">Hide Markdown</label>
+    </div>
+    
+    <div class="content">
+        <div class="task-card">
+            <div class="task-title">Weeding plan</div>
+            <div class="task-date">Due Date: Jul 19, 12:30pm</div>
+            <div class="task-source">
+                From TickTick:<br>
+                <a href="www.ticktick.com">www.ticktick.com</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-item">
+            <div class="footer-icon twitter">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                    <path d="M23.953 4.57a10 10 0 00-5.942-5.942C12.5 0 8.5 0 4.5 0 3.5 0 2.5 0 1.5 0 0 0 0 0 0 0v1.5C0 2.5 0 3.5 0 4.5c0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0h1.5c1 0 2 0 3 0 4 0 8 0 12 0 1 0 2 0 3 0 0 0 0 0 0 0v-1.5c0-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0h-1.5c-1 0-2 0-3 0-4 0-8 0-12 0-1 0-2 0-3 0 0 0 0 0 0 0V4.5c0 1 0 2

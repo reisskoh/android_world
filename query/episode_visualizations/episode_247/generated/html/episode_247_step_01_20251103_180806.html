@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Books</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #121212;
+            font-size: 14px;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            border-radius: 10px;
+            margin: 20px 15px;
+            padding: 10px 15px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 5px;
+        }
+        
+        .search-bar input::placeholder {
+            color: #aaa;
+        }
+        
+        .search-icon {
+            margin-right: 10px;
+            color: #aaa;
+        }
+        
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .welcome-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .welcome-section h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .welcome-section p {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            background-color: #5aaaff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #333;
+            margin: 20px 0;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #aaa;
+        }
+        
+        .tab.active {
+            color: #5aaaff;
+            border-bottom: 2px solid #5aaaff;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 15px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .section-subtitle {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .books-container {
+            display: flex;
+            overflow-x: scroll;
+            padding: 0 15px 20px;
+            gap: 15px;
+        }
+        
+        .book-card {
+            width: 180px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+        
+        .book-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        
+        .book-title {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .book-author {
+            padding: 0 10px 10px;
+            color: #aaa;
+            font-size: 12px;
+        }
+        
+        .nav-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #121212;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            color: #aaa;
+            font-size: 12px;
+        }
+        
+        .nav-item.active {
+            color: #5aaaff;
+        }
+        
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .arrow {
+            color: #5aaaff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>3:50</span>
+        <div>
+            <span>LR</span>
+            <span>Q</span>
+            <span>S</span>
+            <span>•</span>
+        </div>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="search-icon">🔍</div>
+        <input type="text" placeholder="Search Play Books">
+        <div class="profile-icon">F</div>
+    </div>
+    
+    <div class="welcome-section">
+        <h1>Ready to read?</h1>
+        <p>Get started with a book from your library</p>
+        <button class="btn">Go to Library</button>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab active">Ebooks</div>
+        <div class="tab">Audiobooks</div>
+    </div>
+    
+    <div class="section-header">
+        <div>
+            <div class="section-title">हिंदी में बेस्टसेलर</div>
+            <div class="section-subtitle">लोकप्रिय किताबें पढ़ें</div>
+        </div>
+        <div class="arrow">→</div>
+    </div>
+    
+    <div class="books-container">
+        <div class="book-card">
+            <img src="https://via.placeholder.com/180x240/333/fff?text=Book+Cover" alt="Book Cover" class="book-image">
+            <div class="book-title">राकेश झुनझुनवाला से सीखें शेयर मार्केटिंग टिप्स</div>
+            <div class="book-author">प्रभात</div>
+        </div>
+        
+        <div class="book-card">
+            <img src="https://via.placeholder.com/180x240/333/fff?text=Book+Cover" alt="Book Cover" class="book-image">
+            <div class="book-title">RSMSSB/KVS/NVS/UKSSSC/DSSSB पुस्तकालय एवं सूचना विज्ञान परीक्षा ज्ञान कोश सॉल्व्ड पेपर्स एवं प्रैक्टिस बुक</div>
+            <div class="book-author">Paperwise & Chapterwise Solved Papers</div>
+        </div>
+        
+        <div class="book-card">
+            <img src="https://via.placeholder.com/180x240/333/fff?text=Book+Cover" alt="Book Cover" class="book-image">
+            <div class="book-title">Another Book Title</div>
+            <div class="book-author">Author Name</div>
+        </div>
+    </div>
+    
+    <div class="nav-bar">
+        <div class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">📚</div>
+            <div>Library</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🔖</div>
+            <div>Wishlist</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🛒</div>
+            <div>Shop</div>
+        </div>
+    </div>
+</body>
+</html>

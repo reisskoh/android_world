@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #121212;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #000;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-button {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .location-input {
+            flex: 1;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        
+        .location-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .location-text {
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .swap-icon {
+            font-size: 20px;
+            color: #888;
+        }
+        
+        .depart-section {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .depart-button {
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .preferences-button {
+            background-color: #1e1e1e;
+            border: 1px solid #555;
+            border-radius: 8px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .time-selector {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .time-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-nav button {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .current-time {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        
+        .section-header {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .map-button {
+            background-color: #4285f4;
+            border-radius: 20px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .taxi-section {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .taxi-duration {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .taxi-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .taxi-company {
+            background-color: #1e1e1e;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+        
+        .order-button {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .price-tag {
+            background-color: #1e1e1e;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        
+        .pickup-info {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 10px;
+        }
+        
+        .route-section {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .route-duration {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .route-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .route-steps {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+        }
+        
+        .route-step {
+            display: flex;
+            align-items: center;
+            margin: 0 5px;
+        }
+        
+        .walk-icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 5px;
+        }
+        
+        .bus-icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 5px;
+        }
+        
+        .tube-icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 5px;
+        }
+        
+        .route-info {
+            font-size: 14px;
+            color: #aaa;
+            margin: 10px 0;
+        }
+        
+        .info-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #ff9800;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+        
+        .route-number {
+            background-color: #333;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 14px;
+            margin: 0 2px;
+        }
+        
+        .route-number.highlight {
+            border-bottom: 2px solid #ff5722;
+        }
+        
+        .route-number.tube {
+            border-bottom: 2px solid #4285f4;
+        }
+        
+        .arrow-icon {
+            width: 20px;
+            height: 20px;
+            color: #888;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>9:03</div>
+        <div>🌙 ▶️ ▶️ ▶️</div>
+        <div>📍 📶 🔋</div>
+    </div>
+    
+    <div class="header">
+        <div class="back-button">←</div>
+        <div class="location-input">
+            <div class="location-icon" style="background-color: #888;"></div>
+            <div class="location-text">London, UK</div>
+            <div class="swap-icon">↕️</div>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="location-input">
+            <div class="location-icon" style="background-color: #ff6600;"></div>
+            <div class="location-text">Blenheim Palace, Woodstock, UK</div>
+        </div>
+    </div>
+    
+    <div class="depart-section">
+        <button class="depart-button">
+            ⏱️ Depart now ▼
+        </button>
+        <button class="preferences-button">
+            ⚙️ Preferences
+        </button>
+    </div>
+    
+    <div class="time-selector">
+        <div class="time-nav">
+            <button>‹</button>
+            <span>- 15 min</span>
+        </div>
+        <div class="current-time">8:43 AM</div>
+        <div class="time-nav">
+            <span>+ 15 min</span>
+            <button>›</button>
+        </div>
+    </div>
+    
+    <div class="section-header">
+        <div class="section-title">Taxi & Ride Hailing</div>
+        <button class="map-button">🗺️ Map</button>
+    </div>
+    
+    <div class="taxi-section">
+        <div class="taxi-duration">2 hr 2 min</div>
+        <div class="taxi-details">
+            <div>Arrival time: 5:15 AM • 🚶</div>
+            <button class="order-button">Order</button>
+        </div>
+        <div class="taxi-company">Uber</div>
+        <div class="price-tag">£106-117</div>
+        <div class="pickup-info">Pickup in 1 min</div>
+    </div>
+    
+    <div class="section-header">
+        <div class="section-title">Suggested Routes</div>
+        <button class="map-button">🗺️ Map</button>
+    </div>
+    
+    <div class="route-section">
+        <div class="route-duration">3 hr 3 min</div>
+        <div class="route-details">
+            <div>Arrival time: 6:50 AM</div>
+        </div>
+        <div class="route-steps">
+            <div class="route-step">
+                <div class="walk-icon">🚶</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="bus-icon">🚌</div>
+                <div class="route-number highlight">N44 / N11</div>
+                <div class="info-icon">i</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="walk-icon">🚶</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="tube-icon">🚇</div>
+                <div class="route-number tube">TUBE</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="walk-icon">🚶</div>
+                <div>›</div>
+            </div>
+        </div>
+        <div class="route-info">Leaves at 3:50 AM from Whitehall / Trafalgar Square (N)</div>
+    </div>
+    
+    <div class="route-section">
+        <div class="route-duration">2 hr 48 min</div>
+        <div class="route-details">
+            <div>Arrival time: 6:50 AM</div>
+        </div>
+        <div class="route-steps">
+            <div class="route-step">
+                <div class="walk-icon">🚶</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="bus-icon">🚌</div>
+                <div class="route-number highlight">24 / N44 / N11 / N26 / N136</div>
+                <div class="info-icon">i</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="walk-icon">🚶</div>
+                <div>5</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="bus-icon">🚌</div>
+            </div>
+        </div>
+        <div class="route-info">Leaves at 4:04 AM from Whitehall / Trafalgar Square (N)</div>
+    </div>
+    
+    <div class="route-section">
+        <div class="route-duration">2 hr 48 min</div>
+        <div class="route-details">
+            <div>Arrival time: 6:50 AM</div>
+        </div>
+        <div class="route-steps">
+            <div class="route-step">
+                <div class="walk-icon">🚶</div>
+                <div>24</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="tube-icon">🚇</div>
+                <div class="route-number tube">TUBE</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="walk-icon">🚶</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="bus-icon">🚌</div>
+                <div class="route-number tube">S7 / S3</div>
+                <div>›</div>
+            </div>
+            <div class="route-step">
+                <div class="walk-icon">🚶</div>
+                <div>12</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

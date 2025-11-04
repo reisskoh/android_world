@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #666;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+        
+        .location-input {
+            position: relative;
+        }
+        
+        .loading-spinner {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ff3b30;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .date-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .date-box {
+            width: 80px;
+            padding: 10px;
+            border: 1px solid #666;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .date-box .month {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .date-box .day {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .date-box .weekday {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .add-button {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed #666;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #007AFF;
+        }
+        
+        .delete-icon {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ff3b30;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .save-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #ccc;
+            color: #666;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+        
+        @keyframes spin {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <h1>Preview</h1>
+    </div>
+    
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" value="EMPLOYMENT FAIR EVENT">
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Description (optional)</label>
+        <textarea id="description" placeholder="Here you can include things like an agenda, instructions, or other details"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="location">Location (optional)</label>
+        <div class="location-input">
+            <input type="text" id="location" value="Canada">
+            <div class="loading-spinner"></div>
+            <div class="search-icon">🔍</div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="timezone">Timezone</label>
+        <select id="timezone">
+            <option value="Atikokan">Atikokan</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Video conferencing</label>
+        <div class="toggle-switch">
+            <input type="checkbox" id="video-conferencing">
+            <span class="slider"></span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="date-container">
+            <div class="date-box">
+                <div class="delete-icon">🗑️</div>
+                <div class="month">Dec</div>
+                <div class="day">28</div>
+                <div class="weekday">Thu</div>
+            </div>
+            <div class="add-button">+</div>
+        </div>
+    </div>
+    
+    <button class="save-button">Save</button>
+</body>
+</html>

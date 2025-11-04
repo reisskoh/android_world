@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Fair Event</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .settings-icon {
+            font-size: 24px;
+        }
+        
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #666;
+            margin: 0 5px;
+        }
+        
+        .dot.active {
+            background-color: #fff;
+        }
+        
+        .question {
+            font-size: 24px;
+            margin: 30px 0 20px;
+            font-weight: bold;
+        }
+        
+        .calendar-container {
+            margin: 20px 0;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .month-year {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #666;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .day {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 16px;
+        }
+        
+        .day.disabled {
+            color: #666;
+        }
+        
+        .day.selected {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #007AFF;
+        }
+        
+        .day.today {
+            color: #007AFF;
+        }
+        
+        .button {
+            width: 100%;
+            padding: 15px;
+            border-radius: 30px;
+            background-color: #2E6D57;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 40px;
+            cursor: pointer;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .status-icons {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>1:56</div>
+        <div class="status-icons">
+            <span>🔔</span>
+            <span>⭕</span>
+            <span>🔍</span>
+            <span>LR</span>
+            <span>•</span>
+        </div>
+        <div class="status-icons">
+            <span>🔔</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="title">EMPLOYMENT FAIR EVENT</div>
+        <div class="settings-icon">⚙️</div>
+    </div>
+    
+    <div class="progress-dots">
+        <div class="dot"></div>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+    </div>
+    
+    <div class="question">When should it take place?</div>
+    
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <div class="nav-button">‹</div>
+            <div class="month-year">December 2023</div>
+            <div class="nav-button">›</div>
+        </div>
+        
+        <div class="weekdays">
+            <div>Su</div>
+            <div>Mo</div>
+            <div>Tu</div>
+            <div>We</div>
+            <div>Th</div>
+            <div>Fr</div>
+            <div>Sa</div>
+        </div>
+        
+        <div class="days">
+            <!-- Week 1 -->
+            <div class="day disabled">26</div>
+            <div class="day disabled">27</div>
+            <div class="day disabled">28</div>
+            <div class="day disabled">29</div>
+            <div class="day disabled">30</div>
+            <div class="day">1</div>
+            <div class="day">2</div>
+            
+            <!-- Week 2 -->
+            <div class="day">3</div>
+            <div class="day">4</div>
+            <div class="day">5</div>
+            <div class="day">6</div>
+            <div class="day">7</div>
+            <div class="day">8</div>
+            <div class="day">9</div>
+            
+            <!-- Week 3 -->
+            <div class="day">10</div>
+            <div class="day">11</div>
+            <div class="day">12</div>
+            <div class="day">13</div>
+            <div class="day">14</div>
+            <div class="day">15</div>
+            <div class="day">16</div>
+            
+            <!-- Week 4 -->
+            <div class="day">17</div>
+            <div class="day">18</div>
+            <div class="day">19</div>
+            <div class="day">20</div>
+            <div class="day">21</div>
+            <div class="day">22</div>
+            <div class="day">23</div>
+            
+            <!-- Week 5 -->
+            <div class="day">24</div>
+            <div class="day">25</div>
+            <div class="day">26</div>
+            <div class="day today">27</div>
+            <div class="day selected">28</div>
+            <div class="day">29</div>
+            <div class="day">30</div>
+            
+            <!-- Week 6 -->
+            <div class="day">31</div>
+            <div class="day disabled">1</div>
+            <div class="day disabled">2</div>
+            <div class="day disabled">3</div>
+            <div class="day disabled">4</div>
+            <div class="day disabled">5</div>
+            <div class="day disabled">6</div>
+        </div>
+    </div>
+    
+    <div class="button">Set duration & time</div>
+</body>
+</html>

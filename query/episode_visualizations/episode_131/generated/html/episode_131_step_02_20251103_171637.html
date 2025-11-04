@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Deal Sharing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #0a0a1a;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        
+        .status-bar span {
+            font-size: 14px;
+        }
+        
+        .header {
+            margin-top: 60px;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header h1 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .trip-details {
+            background-color: #2d2d2d;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .trip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .trip-header span {
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+        
+        .trip-header span::before {
+            content: "✓";
+            margin-right: 5px;
+            color: #4CAF50;
+        }
+        
+        .trip-time {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .trip-route {
+            font-size: 14px;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+        
+        .trip-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .class-selection {
+            margin: 20px 0;
+        }
+        
+        .class-selection h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .class-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .class-option {
+            flex: 1;
+            background-color: #333;
+            border: 2px solid #444;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .class-option.selected {
+            border-color: #4CAF50;
+            background-color: #2d2d2d;
+        }
+        
+        .class-option h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .class-option .price {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .share-modal {
+            background-color: #1a1a1a;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-handle {
+            width: 40px;
+            height: 5px;
+            background-color: #555;
+            border-radius: 3px;
+            margin: 0 auto 15px;
+        }
+        
+        .modal-content {
+            margin-bottom: 20px;
+        }
+        
+        .modal-content p {
+            font-size: 16px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .modal-button {
+            flex: 1;
+            background-color: #2d2d2d;
+            border: 2px solid #4CAF50;
+            border-radius: 12px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+        }
+        
+        .modal-button i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .no-recommended {
+            text-align: center;
+            color: #888;
+            margin: 20px 0;
+        }
+        
+        .share-options {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+        }
+        
+        .share-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .share-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+        }
+        
+        .share-icon img {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .share-label {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #121212;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #333;
+        }
+        
+        .bottom-bar .indicator {
+            width: 40px;
+            height: 5px;
+            background-color: #555;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>1:21</span>
+        <span>100%</span>
+    </div>
+    
+    <div class="header">
+        <h1>Gothenburg → Groningen</h1>
+        <p>Sun, Nov 5, 1 passenger</p>
+    </div>
+    
+    <div class="trip-details">
+        <div class="trip-header">
+            <span>OUTBOUND</span>
+        </div>
+        <div class="trip-time">Sun, Nov 05 8:40 AM - 10:25 PM</div>
+        <div class="trip-route">Gothenburg Centralstation → Groningen, Hoofdstation</div>
+        <div class="trip-info">
+            <div>
+                <span>DB</span>
+                <span>🚆</span>
+            </div>
+            <div>13h 45m • 5 transfers</div>
+        </div>
+    </div>
+    
+    <div class="class-selection">
+        <h2>Select your class</h2>
+        <div class="class-options">
+            <div class="class-option selected">
+                <h3>2nd Class</h3>
+                <div class="price">+$0</div>
+            </div>
+            <div class="class-option">
+                <h3>1st Class</h3>
+                <div class="price">+$136.75</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="share-modal">
+        <div class="modal-handle"></div>
+        <div class="modal-content">
+            <p>Oh wow, look at this deal I found! I think you should lock it down before it's gone. ...</p>
+            <div class="modal-buttons">
+                <div class="modal-button">
+                    <i>📋</i> Copy
+                </div>
+                <div class="modal-button">
+                    <i>📡</i> Nearby
+                </div>
+            </div>
+            <div class="no-recommended">No recommended people to share with</div>
+        </div>
+        <div class="share-options">
+            <div class="share-option">
+                <div class="share-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail">
+                </div>
+                <div class="share-label">Gmail</div>
+            </div>
+            <div class="share-option">
+                <div class="share-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon.svg" alt="Drive">
+                </div>
+                <div class="share-label">Drive</div>
+            </div>
+            <div class="share-option">
+                <div class="share-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Apple_Messages_app_icon.svg" alt="Messages">
+                </div>
+                <div class="share-label">Messages</div>
+            </div>
+            <div class="share-option">
+                <div class="share-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Discord_logo.svg" alt="Discord">
+                </div>
+                <div class="share-label">Discord</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-bar">
+        <div class="indicator"></div>
+    </div>
+</body>
+</html>

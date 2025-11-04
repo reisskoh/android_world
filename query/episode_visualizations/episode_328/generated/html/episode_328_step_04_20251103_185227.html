@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .search-container {
+            background-color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .back-button {
+            margin-right: 10px;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .search-box {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+        }
+        
+        .search-icon {
+            margin-right: 8px;
+            color: #777;
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .clear-button {
+            color: #2e7d32;
+            font-size: 20px;
+            margin-left: 8px;
+        }
+        
+        .search-suggestion {
+            background-color: white;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .suggestion-text {
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .suggestion-icon {
+            color: #777;
+            font-size: 18px;
+        }
+        
+        .trending-section {
+            padding: 20px 15px;
+            background-color: #fff;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 16px;
+        }
+        
+        .section-title .trending-icon {
+            margin-right: 8px;
+            color: #777;
+        }
+        
+        .trending-items {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 0;
+        }
+        
+        .trending-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+        }
+        
+        .item-image {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .item-name {
+            font-size: 14px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .keyboard {
+            background-color: #1e1e1e;
+            padding: 10px 15px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-key {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin: 5px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-wide {
+            width: 60px;
+            height: 40px;
+        }
+        
+        .keyboard-space {
+            width: 200px;
+            height: 40px;
+        }
+        
+        .keyboard-search {
+            width: 60px;
+            height: 60px;
+            background-color: #cce5ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2e7d32;
+            font-size: 24px;
+            margin: 5px;
+        }
+        
+        .keyboard-emoji {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin: 5px;
+        }
+        
+        .keyboard-num {
+            width: 60px;
+            height: 40px;
+            background-color: #555;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin: 5px;
+        }
+        
+        .keyboard-mic {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin: 5px;
+        }
+        
+        .keyboard-suggestions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+        
+        .suggestion {
+            color: white;
+            font-size: 16px;
+        }
+        
+        .suggestion-divider {
+            color: #777;
+            font-size: 16px;
+        }
+        
+        .keyboard-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .keyboard-down {
+            width: 40px;
+            height: 40px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>11:04</span>
+        <div class="icons">
+            <span>🔍</span>
+            <span>▶️</span>
+            <span>▶️</span>
+            <span>🔍</span>
+            <span>•</span>
+        </div>
+    </div>
+    
+    <div class="search-container">
+        <div class="back-button">←</div>
+        <div class="search-box">
+            <div class="search-icon">🔍</div>
+            <input type="text" class="search-input" value="baking powder" placeholder="Search...">
+            <div class="clear-button">✕</div>
+        </div>
+    </div>
+    
+    <div class="search-suggestion">
+        <div class="suggestion-text">baking powder</div>
+        <div class="suggestion-icon">↗️</div>
+    </div>
+    
+    <div class="trending-section">
+        <div class="section-title">
+            <span class="trending-icon">📈</span>
+            <span>Trending in your area</span>
+        </div>
+        <div class="trending-items">
+            <div class="trending-item">
+                <div class="item-image">Oil</div>
+                <div class="item-name">Oil</div>
+            </div>
+            <div class="trending-item">
+                <div class="item-image">Ghee</div>
+                <div class="item-name">Ghee</div>
+            </div>
+            <div class="trending-item">
+                <div class="item-image">Sugar</div>
+                <div class="item-name">Sugar</div>
+            </div>
+            <div class="trending-item">
+                <div class="item-image">Rice</div>
+                <div class="item-name">Rice</div>
+            </div>
+            <div class="trending-item">
+                <div class="item-image">Biscuits</div>
+                <div class="item-name">Biscuits</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <div class="keyboard-key">🌐</div>
+            <div class="keyboard-suggestions">
+                <span class="suggestion">powder</span>
+                <span class="suggestion-divider">|</span>
+                <span class="suggestion">Powder</span>
+                <span class="suggestion-divider">|</span>
+                <span class="suggestion">powdered</span>
+            </div>
+            <div class="keyboard-mic">🎤</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">q</div>
+            <div class="keyboard-key">w</div>
+            <div class="keyboard-key">e</div>
+            <div class="keyboard-key">r</div>
+            <div class="keyboard-key">t</div>
+            <div class="keyboard-key">y</div>
+            <div class="keyboard-key">u</div>
+            <div class="keyboard-key">i</div>
+            <div class="keyboard-key">o</div>
+            <div class="keyboard-key">p</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">a</div>
+            <div class="keyboard-key">s</div>
+            <div class="keyboard-key">d</div>
+            <div class="keyboard-key">f</div>
+            <div class="keyboard-key">g</div>
+            <div class="keyboard-key">h</div>
+            <div class="keyboard-key">j</div>
+            <div class="keyboard-key">k</div>
+            <div class="keyboard-key">l</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">⇧</div>
+            <div class="keyboard-key">z</div>
+            <div class="keyboard-key">x</div>
+            <div class="keyboard-key">c</div>
+            <div class="keyboard-key">v</div>
+            <div class="keyboard-key">b</div>
+            <div class="keyboard-key">n</div>
+            <div class="keyboard-key">m</div>
+            <div class="keyboard-key">⌫</div>
+        </div>
+        
+        <div class="keyboard-bottom">
+            <div class="keyboard-num">?123</div>
+            <div class="keyboard-key">,</div>
+            <div class="keyboard-emoji">😊</div>
+            <div class="keyboard-space"></div>
+            <div class="keyboard-key">.</div>
+            <div class="keyboard-search">🔍</div>
+        </div>
+        
+        <div class="keyboard-down">↓</div>
+    </div>
+</body>
+</html>

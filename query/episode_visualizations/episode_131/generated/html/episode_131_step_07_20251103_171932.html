@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            font-size: 14px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-button {
+            color: white;
+            font-size: 24px;
+            padding: 5px 10px;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .field-label {
+            width: 60px;
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .email-input {
+            flex: 1;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .recipient {
+            display: flex;
+            align-items: center;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 5px;
+            font-size: 14px;
+        }
+        
+        .recipient-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #2e8b57;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .subject-field {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .subject-input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            color: #aaa;
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        
+        .email-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .email-body textarea {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            resize: none;
+            padding: 0;
+        }
+        
+        .keyboard {
+            background-color: #121212;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .keyboard-top button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            padding: 5px;
+        }
+        
+        .keyboard-keys {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            padding: 10px 0;
+        }
+        
+        .key {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 20px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .key.wide {
+            grid-column: span 2;
+        }
+        
+        .key.space {
+            grid-column: span 5;
+        }
+        
+        .key.enter {
+            background-color: #90ee90;
+            color: #000;
+        }
+        
+        .key.shift, .key.symbol, .key.emoji {
+            background-color: #808080;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-button {
+            color: white;
+            font-size: 20px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>1:22</div>
+        <div>📶 📱 📧</div>
+        <div>🔋 100%</div>
+    </div>
+    
+    <div class="header">
+        <div class="header-button">←</div>
+        <div>
+            <div class="header-button">📎</div>
+            <div class="header-button" style="color: #90ee90;">➤</div>
+            <div class="header-button">⋮</div>
+        </div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">From</div>
+        <div class="email-input">dbwscratch.test.id10@gmail.com</div>
+        <div class="header-button">▼</div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">To</div>
+        <div class="email-input">
+            <div class="recipient">
+                <div class="recipient-avatar">n</div>
+                <div>naomi.rousseau@example.com</div>
+            </div>
+        </div>
+        <div class="header-button">▼</div>
+    </div>
+    
+    <div class="subject-field">
+        <input type="text" class="subject-input" placeholder="Subject">
+    </div>
+    
+    <div class="email-body">
+        <textarea rows="10" placeholder="Type your message here...">Oh wow, look at this deal I found! I think you should lock it down before it's gone.
+
+Book now with Omio!
+https://www.omio.com/app/search-frontend/journey/train/298726869/EE75695E83FB940B3A00186CC3C6124A1/5459094890253041526?locale=en&utm_source=share&utm_medium=ticket-confi-page</textarea>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <button>🔢</button>
+            <button>😊</button>
+            <button>GIF</button>
+            <button>⚙️</button>
+            <button>🌐</button>
+            <button>🎨</button>
+            <button>🎤</button>
+        </div>
+        
+        <div class="keyboard-keys">
+            <div class="key">q</div>
+            <div class="key">w</div>
+            <div class="key">e</div>
+            <div class="key">r</div>
+            <div class="key">t</div>
+            <div class="key">y</div>
+            <div class="key">u</div>
+            <div class="key">i</div>
+            <div class="key">o</div>
+            <div class="key">p</div>
+            
+            <div class="key">a</div>
+            <div class="key">s</div>
+            <div class="key">d</div>
+            <div class="key">f</div>
+            <div class="key">g</div>
+            <div class="key">h</div>
+            <div class="key">j</div>
+            <div class="key">k</div>
+            <div class="key">l</div>
+            
+            <div class="key shift">⇧</div>
+            <div class="key">z</div>
+            <div class="key">x</div>
+            <div class="key">c</div>
+            <div class="key">v</div>
+            <div class="key">b</div>
+            <div class="key">n</div>
+            <div class="key">m</div>
+            <div class="key">⌫</div>
+            
+            <div class="key symbol">?123</div>
+            <div class="key">@</div>
+            <div class="key emoji">😊</div>
+            <div class="key space"></div>
+            <div class="key">.</div>
+            <div class="key enter">→</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-button">˅</div>
+    </div>
+</body>
+</html>

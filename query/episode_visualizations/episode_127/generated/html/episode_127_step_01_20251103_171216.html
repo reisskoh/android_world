@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background-color: #f5f5f5;
+            padding: 20px 15px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .back-btn {
+            color: #2962ff;
+            font-size: 24px;
+        }
+        
+        .edit-btn {
+            color: #2962ff;
+            font-size: 24px;
+        }
+        
+        .more-btn {
+            color: #2962ff;
+            font-size: 24px;
+        }
+        
+        .profile-section {
+            text-align: center;
+            padding: 20px 15px;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #dcdcdc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .nickname {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .contact-list {
+            background-color: white;
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .contact-icon {
+            color: #2962ff;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .phone-number {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .phone-type {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+        }
+        
+        .message-icon {
+            color: #2962ff;
+            font-size: 24px;
+        }
+        
+        .ad-section {
+            background-color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .ad-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #b2ebf2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #ff9800;
+            font-size: 24px;
+        }
+        
+        .ad-content {
+            flex: 1;
+        }
+        
+        .ad-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .ad-description {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .install-btn {
+            color: #2962ff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .info-icon {
+            color: #888;
+            font-size: 16px;
+        }
+        
+        .footer {
+            padding: 20px 15px;
+            background-color: white;
+        }
+        
+        .footer-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .footer-icon {
+            color: #2962ff;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .footer-text {
+            font-size: 16px;
+        }
+        
+        .footer-subtext {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+        }
+        
+        .status-bar {
+            background-color: #f5f5f5;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .status-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-icon {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>12:35</div>
+        <div class="status-icons">
+            <div class="status-icon">M</div>
+            <div class="status-icon">🔒</div>
+            <div class="status-icon">▶️</div>
+            <div class="status-icon">📅</div>
+            <div class="status-icon">📶</div>
+            <div class="status-icon">🔋 100%</div>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-btn">←</div>
+        <div class="edit-btn">✏️</div>
+        <div class="more-btn">⋮</div>
+    </div>
+    
+    <div class="profile-section">
+        <div class="avatar">RS</div>
+        <div class="name">Rahul Sharma</div>
+        <div class="nickname">abcd</div>
+    </div>
+    
+    <div class="contact-list">
+        <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-info">
+                <div class="phone-number">11 0022 3344</div>
+                <div class="phone-type">MOBILE</div>
+            </div>
+            <div class="message-icon">💬</div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-info">
+                <div class="phone-number">1100223366</div>
+                <div class="phone-type">MOBILE</div>
+            </div>
+            <div class="message-icon">💬</div>
+        </div>
+    </div>
+    
+    <div class="ad-section">
+        <div class="ad-icon">Yo!</div>
+        <div class="ad-content">
+            <div class="ad-title">YoYo - Voice Chat Room, Games</div>
+            <div class="ad-description">Ad | अपनी आवाज से दमदार मनोरंजन करें आपकी ...</div>
+        </div>
+        <div class="install-btn">INSTALL</div>
+        <div class="info-icon">ℹ️</div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-item">
+            <div class="footer-icon">✉️</div>
+            <div>
+                <div class="footer-text">xyz@gmail.com</div>
+                <div class="footer-subtext">OTHER</div>
+            </div>
+        </div>
+        <div class="footer-item">
+            <div class="footer-icon">📍</div>
+            <div>
+                <div class="footer-text">Flat No.- 000, pqrs apartments</div>
+                <div class="footer-subtext">OTHER</div>
+            </div>
+        </div>
+        <div class="footer-item">
+            <div class="footer-icon">💼</div>
+            <div class="footer-text">abcd</div>
+        </div>
+    </div>
+</body>
+</html>

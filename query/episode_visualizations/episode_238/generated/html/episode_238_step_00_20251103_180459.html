@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .back-btn {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .search-bar {
+            flex: 1;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .search-input {
+            border: none;
+            background: transparent;
+            outline: none;
+            flex: 1;
+        }
+        
+        .camera-icon, .menu-icon {
+            margin-left: 15px;
+            font-size: 24px;
+        }
+        
+        .tabs {
+            display: flex;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #333;
+            margin-right: 20px;
+        }
+        
+        .tab.active {
+            border-bottom: 2px solid #000;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .moq {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .customizable {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .customize-btn {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #000;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            margin: 30px 20px 20px;
+            font-weight: bold;
+        }
+        
+        .reviews-section {
+            padding: 0 20px;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .rating-number {
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .stars {
+            display: flex;
+        }
+        
+        .star {
+            color: #FFA500;
+            font-size: 24px;
+            margin-right: 2px;
+        }
+        
+        .star.empty {
+            color: #ccc;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .reviewer-name {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .reviewer-flag {
+            width: 24px;
+            height: 16px;
+            margin-right: 10px;
+        }
+        
+        .review-date {
+            color: #888;
+        }
+        
+        .review-text {
+            margin: 15px 0;
+            line-height: 1.4;
+        }
+        
+        .store-reviews {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .store-rating {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .store-rating-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #FF6B00;
+            margin-right: 5px;
+        }
+        
+        .store-rating-total {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .store-rating-text {
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .rating-label {
+            width: 150px;
+            font-size: 16px;
+        }
+        
+        .rating-progress {
+            flex: 1;
+            height: 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .rating-fill {
+            height: 100%;
+            background-color: #FF6B00;
+            border-radius: 4px;
+        }
+        
+        .rating-value {
+            width: 30px;
+            text-align: right;
+            font-size: 16px;
+        }
+        
+        .footer {
+            display: flex;
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            background-color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .store-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .chat-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #000;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .inquiry-btn {
+            flex: 1;
+            padding: 12px 20px;
+            background-color: #FF6B00;
+            color: white;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 20px;
+            background-color: #fff;
+            font-size: 14px;
+        }
+        
+        .status-icons {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>11:22</span>
+        <div class="status-icons">
+            <span>🌙</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-btn">←</div>
+        <div class="search-bar">
+            <div class="search-icon">🔍</div>
+            <input type="text" class="search-input" value="king bed frame">
+        </div>
+        <div class="camera-icon">📷</div>
+        <div class="menu-icon">⋮</div>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab active">Overview</div>
+        <div class="tab">Details</div>
+        <div class="tab">Recommended</div>
+    </div>
+    
+    <div class="product-info">
+        <div class="moq">MOQ 20 Pieces</div>
+        <div class="customizable">Customizable: Logo/Text,Feature</div>
+        <div class="customize-btn">Customize now</div>
+    </div>
+    
+    <div class="section-title">Reviews</div>
+    
+    <div class="reviews-section">
+        <div class="review-header">
+            <div>Product reviews</div>
+            <div>›</div>
+        </div>
+        
+        <div class="rating">
+            <div class="rating-number">4.0</div>
+            <div class="stars">
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star">★</div>
+                <div class="star empty">★</div>
+            </div>
+        </div>
+        
+        <div class="reviewer">
+            <div class="reviewer-name">S***n</div>
+            <div class="reviewer-flag">🇺🇸</div>
+            <div class="review-date">April 14, 2023</div>
+        </div>
+        
+        <div class="stars">
+            <div class="star">★</div>
+            <div class="star empty">★</div>
+            <div class="star empty">★</div>
+            <div class="star empty">★</div>
+            <div class="star empty">★</div>
+        </div>
+        
+        <div class="review-text">
+            they send up broken pieces even they don't want to replace the set Either. they did sent us the Instructions/
+        </div>
+    </div>
+    
+    <div class="store-reviews">
+        <div class="review-header">
+            <div>Store reviews</div>
+            <div>›</div>
+        </div>
+        
+        <div class="store-rating">
+            <div class="store-rating-number">4.5</div>
+            <div class="store-rating-total">/5.0</div>
+            <div class="store-rating-text">Satisfied</div>
+        </div>
+        
+        <div class="rating-bar">
+            <div class="rating-label">Product quality</div>
+            <div class="rating-progress">
+                <div class="rating-fill" style="width: 94%;"></div>
+            </div>
+            <div class="rating-value">4.7</div>
+        </div>
+        
+        <div class="rating-bar">
+            <div class="rating-label">Supplier service</div>
+            <div class="rating-progress">
+                <div class="rating-fill" style="width: 88%;"></div>
+            </div>
+            <div class="rating-value">4.4</div>
+        </div>
+        
+        <div class="rating-bar">
+            <div class="rating-label">On-time shipment</div>
+            <div class="rating-progress">
+                <div class="rating-fill" style="width: 88%;"></div>
+            </div>
+            <div class="rating-value">4.4</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="store-icon">🏪</div>
+        <div class="chat-btn">Chat now</div>
+        <div class="inquiry-btn">Send inquiry</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain & Thunder Sound Therapy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            position: relative;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .top-section {
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px 0;
+        }
+        
+        .follow-btn {
+            background-color: #5DADE2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .timer {
+            font-size: 48px;
+            font-weight: 300;
+            text-align: center;
+            margin: 40px 0;
+            letter-spacing: 2px;
+        }
+        
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .track-info {
+            flex: 1;
+            margin-right: 15px;
+        }
+        
+        .track-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .artist {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        
+        .progress-container {
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 15%;
+            background-color: white;
+            border-radius: 2px;
+        }
+        
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 0;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .pause-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: white;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-bottom: 15px;
+        }
+        
+        .more-options {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .recommend {
+            padding: 15px 0;
+            font-weight: bold;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: white;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="top-section">
+            <button class="follow-btn">Follow</button>
+        </div>
+        
+        <div class="timer">1:24:29</div>
+        
+        <div class="content">
+            <div class="track-info">
+                <h1 class="track-title">Rain & Thunder Sound Therapy</h1>
+                <p class="artist">Desh</p>
+            </div>
+            <div class="control-buttons">
+                <div class="more-options">
+                    <span>...</span>
+                </div>
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-pic">
+                <button class="pause-btn">||</button>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="time-info">
+                <span>7:45</span>
+                <span>-1:24:29</span>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn">↻</button>
+            <button class="action-btn">≡+</button>
+            <button class="action-btn">🔖</button>
+            <button class="action-btn">↺</button>
+            <button class="action-btn">↻</button>
+        </div>
+        
+        <div class="recommend">+ RECOMMEND</div>
+    </div>
+    <div class="bottom-bar"></div>
+</body>
+</html>

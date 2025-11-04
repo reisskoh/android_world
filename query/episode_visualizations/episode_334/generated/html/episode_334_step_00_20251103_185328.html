@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0;
+            position: relative;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 16px;
+            background-color: #fff;
+            font-size: 14px;
+        }
+        
+        .status-bar .time {
+            font-weight: bold;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-radius: 24px;
+            padding: 8px 16px;
+            margin: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .search-bar .menu-icon {
+            font-size: 24px;
+            margin-right: 12px;
+            color: #555;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+            padding: 4px 0;
+            outline: none;
+        }
+        
+        .search-bar .view-icon {
+            font-size: 24px;
+            margin-right: 12px;
+            color: #555;
+        }
+        
+        .search-bar .profile-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #8d6e63;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .note-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .note-card .title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .note-card .date {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0;
+            box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .bottom-bar .icon {
+            font-size: 24px;
+            color: #555;
+            padding: 8px;
+        }
+        
+        .add-button {
+            position: absolute;
+            bottom: 70px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .add-button .plus {
+            font-size: 28px;
+            color: #555;
+        }
+        
+        .add-button .plus::before {
+            content: '+';
+            color: #4285F4;
+            position: absolute;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .add-button .plus::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(45deg, #FBBC05, #FBBC05);
+            border-radius: 4px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .add-button .plus span {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(45deg, #34A853, #34A853);
+            border-radius: 4px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .add-button .plus span:nth-child(2) {
+            background: linear-gradient(45deg, #EA4335, #EA4335);
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+        
+        .add-button .plus span:nth-child(3) {
+            background: linear-gradient(45deg, #4285F4, #4285F4);
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+        
+        .add-button .plus span:nth-child(4) {
+            background: linear-gradient(45deg, #FBBC05, #FBBC05);
+            transform: translate(-50%, -50%) rotate(270deg);
+        }
+        
+        .navigation-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .navigation-bar .nav-indicator {
+            width: 40px;
+            height: 6px;
+            background-color: #aaa;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span class="time">1:17</span>
+        <div class="icons">
+            <span>🔒</span>
+            <span>📁</span>
+            <span>▶️</span>
+            <span>📶</span>
+            <span>🔋 100%</span>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="menu-icon">≡</div>
+        <input type="text" placeholder="Search your notes">
+        <div class="view-icon">≡</div>
+        <div class="profile-icon">C</div>
+    </div>
+    
+    <div class="note-card">
+        <div class="title">hello</div>
+        <div class="date">07 june 2023</div>
+    </div>
+    
+    <div class="bottom-bar">
+        <div class="icon">✓</div>
+        <div class="icon">✏️</div>
+        <div class="icon">🎤</div>
+        <div class="icon">🖼️</div>
+    </div>
+    
+    <div class="add-button">
+        <div class="plus">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    
+    <div class="navigation-bar">
+        <div class="nav-indicator"></div>
+    </div>
+</body>
+</html>

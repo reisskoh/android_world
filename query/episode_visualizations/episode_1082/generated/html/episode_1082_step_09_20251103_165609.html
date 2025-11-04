@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: #fff;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+        }
+        
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .time {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .status-icons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .status-icon {
+            width: 16px;
+            height: 16px;
+            background-color: #666;
+            border-radius: 50%;
+        }
+        
+        .status-icon.ovo {
+            width: 24px;
+            height: 16px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-right {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .wifi-icon, .battery-icon {
+            width: 16px;
+            height: 16px;
+            background-color: #666;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .back-button {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .back-arrow {
+            width: 16px;
+            height: 16px;
+            border-left: 2px solid #666;
+            border-bottom: 2px solid #666;
+            transform: rotate(45deg);
+            margin-left: 4px;
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            height: 4px;
+            background-color: #ddd;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 90%;
+            background-color: #000;
+        }
+        
+        /* Loading Spinner */
+        .loading-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #ddd;
+            border-top: 4px solid #000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            padding: 12px 0;
+            box-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px;
+        }
+        
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .nav-text {
+            font-size: 12px;
+            margin-top: 4px;
+            color: #999;
+        }
+        
+        .nav-item.active .nav-icon,
+        .nav-item.active .nav-text {
+            color: #000;
+            font-weight: 500;
+        }
+        
+        .home-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            clip-path: polygon(0 0, 100% 0, 100% 60%, 50% 100%, 0 60%);
+        }
+        
+        .category-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+        }
+        
+        .category-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #999;
+        }
+        
+        .category-icon::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #999;
+        }
+        
+        .search-icon {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #999;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .search-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: -4px;
+            width: 8px;
+            height: 2px;
+            background-color: #999;
+            transform: rotate(45deg);
+        }
+        
+        .heart-icon {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #999;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            position: relative;
+        }
+        
+        .heart-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #999;
+            border-radius: 50% 50% 0 50%;
+            transform: rotate(90deg);
+        }
+        
+        .bell-icon {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #999;
+            border-radius: 50% 50% 0 0;
+            position: relative;
+        }
+        
+        .bell-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 4px;
+            width: 12px;
+            height: 4px;
+            background-color: #999;
+            border-radius: 2px;
+        }
+        
+        .membership-icon {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #999;
+            border-radius: 4px;
+            position: relative;
+        }
+        
+        .membership-icon::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 4px;
+            height: 4px;
+            background-color: #999;
+            border-radius: 2px;
+        }
+        
+        .membership-icon::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 4px;
+            height: 4px;
+            background-color: #999;
+            border-radius: 2px;
+        }
+        
+        .membership-icon span {
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            width: 4px;
+            height: 4px;
+            background-color: #999;
+            border-radius: 2px;
+        }
+        
+        .membership-icon span:nth-child(2) {
+            right: 4px;
+            left: auto;
+        }
+        
+        /* iPhone Home Indicator */
+        .home-indicator {
+            height: 5px;
+            width: 120px;
+            background-color: #ddd;
+            border-radius: 2.5px;
+            margin: 8px auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <div class="time">8:36</div>
+            <div class="status-icons">
+                <div class="status-icon"></div>
+                <div class="status-icon"></div>
+                <div class="status-icon ovo">ovo</div>
+            </div>
+        </div>
+        <div class="status-right">
+            <div class="wifi-icon"></div>
+            <div class="battery-icon"></div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="back-button">
+            <div class="back-arrow"></div>
+        </div>
+        <div></div>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+    
+    <!-- Loading Spinner -->
+    <div class="loading-container">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon">
+                <div class="home-icon"></div>
+            </div>
+            <div class="nav-text">Home</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <div class="category-icon">
+                    <div class="search-icon"></div>
+                </div>
+            </div>
+            <div class="nav-text">Category</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <div class="heart-icon"></div>
+            </div>
+            <div class="nav-text">Wish list</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <div class="bell-icon"></div>
+            </div>
+            <div class="nav-text">Notification</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <div class="membership-icon">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="nav-text">Membership</div>
+        </div>
+    </div>
+    
+    <!-- iPhone Home Indicator -->
+    <div class="home-indicator"></div>
+</body>
+</html>

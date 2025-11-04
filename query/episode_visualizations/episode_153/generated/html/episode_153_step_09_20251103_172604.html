@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0f0e17;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #0f0e17;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: #0f0e17;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #aaa;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .tab.active {
+            color: #60a5fa;
+            border-bottom: 2px solid #60a5fa;
+        }
+        
+        .form-container {
+            padding: 20px;
+        }
+        
+        .form-field {
+            background-color: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-field.selected {
+            border: 1px solid #60a5fa;
+        }
+        
+        .form-field i {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #aaa;
+        }
+        
+        .form-field .field-content {
+            flex: 1;
+        }
+        
+        .form-field .field-label {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+        
+        .form-field .field-value {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .search-btn {
+            background-color: #60a5fa;
+            color: #0f0e17;
+            border: none;
+            border-radius: 30px;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #0f0e17;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .status-bar .time {
+            font-size: 16px;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .status-bar .icons i {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span class="time">11:58</span>
+        <span>84°</span>
+        <div class="icons">
+            <i>📶</i>
+            <i>📡</i>
+            <i>🔋</i>
+        </div>
+    </div>
+    
+    <div class="header">
+        <button class="close-btn">×</button>
+        <h1>Flights</h1>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab active">Roundtrip</div>
+        <div class="tab">One way</div>
+        <div class="tab">Multi-city</div>
+    </div>
+    
+    <div class="form-container">
+        <div class="form-field">
+            <i>✈️</i>
+            <div class="field-content">
+                <div class="field-label">Flying from</div>
+                <div class="field-value">Knoxville (TYS - McGhee Tyson)</div>
+            </div>
+        </div>
+        
+        <div class="form-field">
+            <i>✈️</i>
+            <div class="field-content">
+                <div class="field-label">Flying to</div>
+                <div class="field-value">Venice (VCE - All Airports)</div>
+            </div>
+        </div>
+        
+        <div class="form-field selected">
+            <i>📅</i>
+            <div class="field-content">
+                <div class="field-label">Select dates</div>
+                <div class="field-value">Sat, Oct 7 – Select return date</div>
+            </div>
+        </div>
+        
+        <div class="form-field">
+            <i>👤</i>
+            <div class="field-content">
+                <div class="field-label">Travelers</div>
+                <div class="field-value">1 traveler</div>
+            </div>
+        </div>
+        
+        <div class="form-field">
+            <i>💺</i>
+            <div class="field-content">
+                <div class="field-label">Preferred class</div>
+                <div class="field-value">Economy</div>
+            </div>
+        </div>
+    </div>
+    
+    <button class="search-btn">Search</button>
+</body>
+</html>

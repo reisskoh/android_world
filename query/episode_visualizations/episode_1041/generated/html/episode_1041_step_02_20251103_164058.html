@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            background-color: #121212;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .status-bar .time {
+            font-size: 16px;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .toolbar {
+            background-color: #121212;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .toolbar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .toolbar button:first-child {
+            font-size: 28px;
+        }
+        
+        .presentation-header {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .presentation-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+        
+        .presentation-title .icon {
+            width: 20px;
+            height: 20px;
+            background-color: #888;
+            border-radius: 3px;
+        }
+        
+        .last-modified {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .slide-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background-color: #000;
+        }
+        
+        .slide-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(45deg, #0a0a2a, #0a0a1a);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .video-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 150px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMTUwIiB2aWV3Qm94PSIwIDAgMjAwIDE1MCI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIxNTAiIGZpbGw9IiMzMDMwMzAiLz48cGF0aCBkPSJNMTAwIDUwTDE1MCA4MFYxMjBMMTAwIDE1MEw1MCAxMjBWNjBMMTAwIDUweiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=') no-repeat center;
+            background-size: contain;
+            border: 2px dashed #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-play-button {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        
+        .video-play-button::after {
+            content: '▶';
+            font-size: 32px;
+            color: #333;
+            margin-left: 4px;
+        }
+        
+        .text-placeholder {
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            width: 80%;
+            padding: 10px;
+            border: 2px dashed #666;
+            background-color: rgba(0,0,0,0.3);
+        }
+        
+        .text-placeholder h2 {
+            color: #FFC107;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .text-placeholder p {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .play-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #121212;
+            color: white;
+            border: 2px solid #FF5722;
+            border-radius: 8px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .play-button::before {
+            content: '▶';
+            color: #FF5722;
+            font-size: 20px;
+        }
+        
+        .slide-thumbnails {
+            background-color: #1a1a1a;
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            border-top: 1px solid #333;
+        }
+        
+        .slide-thumbnail {
+            width: 100px;
+            height: 60px;
+            background-color: #333;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .slide-thumbnail.active {
+            border-color: #FF5722;
+        }
+        
+        .slide-thumbnail .number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background-color: #222;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        .slide-thumbnail .preview {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a2a, #0a0a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #888;
+        }
+        
+        .add-slide {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .bottom-menu {
+            background-color: #1a1a1a;
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #333;
+        }
+        
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .menu-item .icon {
+            font-size: 24px;
+        }
+        
+        .menu-item .label {
+            font-size: 14px;
+        }
+        
+        .bottom-bar {
+            height: 5px;
+            background-color: #333;
+            margin: 0 20px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span class="time">7:55</span>
+        <div class="icons">
+            <span>📱</span>
+            <span>☁️</span>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="toolbar">
+        <button>✓</button>
+        <button>↩️</button>
+        <button>↪️</button>
+        <button>➕</button>
+        <button>▶️</button>
+        <button>🔗</button>
+    </div>
+    
+    <div class="presentation-header">
+        <div class="presentation-title">
+            <div class="icon"></div>
+            <span>Untitled Presentation</span>
+        </div>
+        <div class="last-modified">Last modified on 7:53:20 AM</div>
+    </div>
+    
+    <div class="slide-container">
+        <div class="slide-content">
+            <div class="text-placeholder">
+                <h2>Double tap to a</h2>
+                <p>Double tap to add text</p>
+            </div>
+            <div class="video-placeholder">
+                <div class="video-play-button"></div>
+            </div>
+        </div>
+        <div class="play-button">Play</div>
+    </div>
+    
+    <div class="slide-thumbnails">
+        <div class="slide-thumbnail">
+            <div class="number">1</div>
+            <div class="preview">Slide 1</div>
+        </div>
+        <div class="slide-thumbnail">
+            <div class="number">2</div>
+            <div class="preview">Slide 2</div>
+        </div>
+        <div class="slide-thumbnail active">
+            <div class="number">3</div>
+            <div class="preview">Slide 3</div>
+        </div>
+        <div class="add-slide">+</div>
+    </div>
+    
+    <div class="bottom-menu">
+        <div class="menu-item">
+            <div class="icon">→</div>
+            <div class="label">Animate</div>
+        </div>
+        <div class="menu-item">
+            <div class="icon">A≡</div>
+            <div class="label">Format</div>
+        </div>
+        <div class="menu-item">
+            <div class="icon">📝</div>
+            <div class="label">Review</div>
+        </div>
+    </div>
+    
+    <div class="bottom-bar"></div>
+</body>
+</html>

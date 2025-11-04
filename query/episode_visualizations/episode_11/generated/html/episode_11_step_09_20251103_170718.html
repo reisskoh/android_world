@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .header-title {
+            font-size: 22px;
+            font-weight: 500;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon {
+            font-size: 24px;
+            margin: 0 15px;
+            cursor: pointer;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .field-label {
+            width: 80px;
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .field-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .subject-field {
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .subject-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #aaa;
+            font-size: 16px;
+            outline: none;
+            font-weight: 500;
+        }
+        
+        .email-body {
+            padding: 20px;
+            min-height: 300px;
+        }
+        
+        .email-content {
+            font-size: 16px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        
+        .keyboard {
+            background-color: #222;
+            padding: 10px 15px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-key {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin: 0 3px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .keyboard-key.wide {
+            width: 60px;
+        }
+        
+        .keyboard-key.extra-wide {
+            width: 120px;
+        }
+        
+        .keyboard-key.pink {
+            background-color: #e6c2c2;
+            color: #333;
+        }
+        
+        .keyboard-key.special {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji {
+            width: 50px;
+        }
+        
+        .keyboard-key.delete {
+            width: 50px;
+        }
+        
+        .keyboard-key.space {
+            width: 180px;
+        }
+        
+        .keyboard-key.shift {
+            width: 50px;
+        }
+        
+        .keyboard-key.symbol {
+            width: 50px;
+        }
+        
+        .keyboard-key.at {
+            width: 50px;
+        }
+        
+        .keyboard-key.enter {
+            width: 60px;
+            background-color: #e6c2c2;
+            color: #333;
+        }
+        
+        .keyboard-key.mic {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.apps {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50px;
+        }
+        
+        .keyboard-key.emoji-btn {
+            width: 50px;
+        }
+        
+        .keyboard-key.gift {
+            width: 50px;
+        }
+        
+        .keyboard-key.gif {
+            width: 50px;
+        }
+        
+        .keyboard-key.globe {
+            width: 50px;
+        }
+        
+        .keyboard-key.settings {
+            width: 50

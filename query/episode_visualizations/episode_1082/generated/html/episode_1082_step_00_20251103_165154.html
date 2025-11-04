@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #333;
+        }
+        
+        .header-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .logo-container {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 40px;
+            background-color: #e60000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text {
+            margin-left: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #e60000;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .tab {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #000;
+        }
+        
+        .tab.active {
+            color: #000;
+        }
+        
+        .tab:not(.active) {
+            color: #666;
+        }
+        
+        .login-form {
+            padding: 20px;
+        }
+        
+        .form-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .info-icon {
+            float: right;
+            font-size: 20px;
+            color: #666;
+        }
+        
+        .required {
+            color: #4a8f9e;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000;
+        }
+        
+        .required-label {
+            color: #000;
+        }
+        
+        .required-label::after {
+            content: "*";
+            color: #e60000;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #f5f5f5;
+        }
+        
+        .password-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .show-password {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .show-password input {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .show-password label {
+            font-size: 16px;
+            color: #000;
+        }
+        
+        .links {
+            margin-bottom: 20px;
+        }
+        
+        .link {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+        
+        .create-account-section {
+            padding: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        
+        .create-account-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+            text-transform: uppercase;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .status-bar .time {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .status-bar .icon {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="time">8:31</div>
+        <div class="icons">
+            <div class="icon">ib</div>
+            <div class="icon">●</div>
+            <div class="icon">ovo</div>
+            <div class="icon">●</div>
+            <div class="icon">📶</div>
+            <div class="icon">🔋</div>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="header-title">Cart</div>
+    </div>
+    
+    <div class="logo-container">
+        <div class="logo">UNIQLO</div>
+    </div>
+    
+    <div class="tabs">
+        <div class="tab active">LOGIN</div>
+        <div class="tab">CREATE AN ACCOUNT</div>
+    </div>
+    
+    <div class="login-form">
+        <div class="form-title">
+            Log in with your email address and password.
+            <div class="info-icon">ℹ️</div>
+        </div>
+        <div class="required">Required*</div>
+        
+        <div class="form-group">
+            <label class="label required-label">EMAIL ADDRESS</label>
+            <input type="email" class="input-field" placeholder="Enter a valid email">
+        </div>
+        
+        <div class="form-group">
+            <label class="label required-label">PASSWORD</label>
+            <input type="password" class="input-field">
+            <div class="password-info">
+                Password must be at least 8 characters, and contain both letters and numbers. Only these symbols can be used -_@ 
+            </div>
+            <div class="show-password">
+                <input type="checkbox" id="showPassword">
+                <label for="showPassword">Show my password</label>
+            </div>
+        </div>
+        
+        <div class="links">
+            <a href="#" class="link">TERMS OF USE</a>
+            <a href="#" class="link">PRIVACY POLICY</a>
+        </div>
+        
+        <button class="login-button">LOG IN</button>
+        <div class="forgot-password">FORGOT YOUR PASSWORD?</div>
+    </div>
+    
+    <div class="create-account-section">
+        <div class="create-account-title">CREATE AN ACCOUNT</div>
+    </div>
+</body>
+</html>

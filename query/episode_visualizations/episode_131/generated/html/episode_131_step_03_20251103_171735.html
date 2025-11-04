@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Composition</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            font-size: 14px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-button {
+            color: white;
+            font-size: 24px;
+            padding: 5px 10px;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .field-label {
+            width: 80px;
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .field-value {
+            flex: 1;
+            font-size: 16px;
+            color: white;
+            padding: 5px 0;
+        }
+        
+        .field-value select {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        
+        .email-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .keyboard {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-top button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            padding: 5px 10px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .keyboard-key {
+            width: 45px;
+            height: 45px;
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 3px;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .keyboard-key.wide {
+            width: 60px;
+        }
+        
+        .keyboard-key.space {
+            width: 200px;
+        }
+        
+        .keyboard-key.enter {
+            width: 60px;
+            background-color: #90ee90;
+            color: #000;
+        }
+        
+        .keyboard-key.shift {
+            width: 60px;
+        }
+        
+        .keyboard-key.symbol {
+            width: 60px;
+            background-color: #888;
+        }
+        
+        .keyboard-key.backspace {
+            width: 60px;
+        }
+        
+        .keyboard-key.emoji {
+            width: 60px;
+        }
+        
+        .keyboard-key.at {
+            width: 60px;
+        }
+        
+        .keyboard-key.dot {
+            width: 60px;
+        }
+        
+        .keyboard-key.zero {
+            width: 60px;
+        }
+        
+        .keyboard-key.arrow {
+            width: 60px;
+            background-color: #90ee90;
+            color: #000;
+        }
+        
+        .keyboard-key:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.enter:active {
+            background-color: #77dd77;
+        }
+        
+        .keyboard-key.symbol:active {
+            background-color: #777;
+        }
+        
+        .keyboard-key.backspace:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.emoji:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.at:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.dot:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.zero:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.arrow:active {
+            background-color: #77dd77;
+        }
+        
+        .keyboard-key.shift:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.space:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.wide:active {
+            background-color: #444;
+        }
+        
+        .keyboard-key.enter {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.symbol {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.backspace {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.emoji {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.at {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.dot {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.zero {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.arrow {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.shift {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.space {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key.wide {
+            border-radius: 50%;
+        }
+        
+        .keyboard-key:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.enter:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.symbol:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.backspace:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.emoji:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.at:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.dot:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.zero:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.arrow:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.shift:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.space:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key.wide:active {
+            transform: scale(0.95);
+        }
+        
+        .keyboard-key {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.enter {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.symbol {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.backspace {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.emoji {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.at {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.dot {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.zero {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.arrow {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.shift {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.space {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.wide {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.enter:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.symbol:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.backspace:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.emoji:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.at:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.dot:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.zero:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.arrow:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.shift:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.space:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key.wide:active {
+            transition: all 0.1s ease;
+        }
+        
+        .keyboard-key {
+            user-select: none;
+        }
+        
+        .keyboard-key.enter {
+            user-select: none;
+        }
+        
+        .keyboard-key.symbol {
+            user-select: none;
+        }
+        
+        .keyboard-key.backspace {
+            user-select: none;
+        }
+        
+        .keyboard-key.emoji {
+            user-select: none;
+        }
+        
+        .keyboard-key.at {
+            user-select: none;
+        }
+        
+        .keyboard-key.dot {
+            user-select: none;
+        }
+        
+        .keyboard-key.zero {
+            user-select: none;
+        }
+        
+        .keyboard-key.arrow {
+            user-select: none;
+        }
+        
+        .keyboard-key.shift {
+            user-select: none;
+        }
+        
+        .keyboard-key.space {
+            user-select: none;
+        }
+        
+        .keyboard-key.wide {
+            user-select: none;
+        }
+        
+        .keyboard-key:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.enter:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.symbol:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.backspace:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.emoji:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.at:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.dot:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.zero:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.arrow:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.shift:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.space:active {
+            user-select: none;
+        }
+        
+        .keyboard-key.wide:active {
+            user-select: none;
+        }
+        
+        .keyboard-key {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.enter {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.symbol {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.backspace {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.emoji {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.at {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.dot {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.zero {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.arrow {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.shift {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.space {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.wide {
+            cursor: pointer;
+        }
+        
+        .keyboard-key:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.enter:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.symbol:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.backspace:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.emoji:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.at:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.dot:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.zero:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.arrow:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.shift:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.space:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key.wide:active {
+            cursor: pointer;
+        }
+        
+        .keyboard-key {
+            outline: none;
+        }
+        
+        .keyboard-key.enter {
+            outline: none;
+        }
+        
+        .keyboard-key.symbol {
+            outline: none;
+        }
+        
+        .keyboard-key.backspace {
+            outline: none;
+        }
+        
+        .keyboard-key.emoji {
+            outline: none;
+        }
+        
+        .keyboard-key.at {
+            outline: none;
+        }
+        
+        .keyboard-key.dot {
+            outline: none;
+        }
+        
+        .keyboard-key.zero {
+            outline: none;
+        }
+        
+        .keyboard-key.arrow {
+            outline: none;
+        }
+        
+        .keyboard-key.shift {
+            outline: none;
+        }
+        
+        .keyboard-key.space {
+            outline: none;
+        }
+        
+        .keyboard-key.wide {
+            outline: none;
+        }
+        
+        .keyboard-key:active {
+            outline: none;
+        }
+        
+        .keyboard-key.enter:active {
+            outline: none;
+        }
+        
+        .keyboard-key.symbol:active {
+            outline: none;
+        }
+        
+        .keyboard-key.backspace:active {
+            outline: none;
+        }
+        
+        .keyboard-key.emoji:active {
+            outline: none;
+        }
+        
+        .keyboard-key.at:active {
+            outline: none;
+        }
+        
+        .keyboard-key.dot:active {
+            outline: none;
+        }
+        
+        .keyboard-key.zero:active {
+            outline: none;
+        }
+        
+        .keyboard-key.arrow:active {
+            outline: none;
+        }
+        
+        .keyboard-key.shift:active {
+            outline: none;
+        }
+        
+        .keyboard-key.space:active {
+            outline: none;
+        }
+        
+        .keyboard-key.wide:active {
+            outline: none;
+        }
+        
+        .keyboard-key {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.enter {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.symbol {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.backspace {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.emoji {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.at {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.dot {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.zero {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.arrow {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.shift {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.space {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.wide {
+            box-shadow: none;
+        }
+        
+        .keyboard-key:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.enter:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.symbol:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.backspace:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.emoji:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.at:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.dot:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.zero:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.arrow:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.shift:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.space:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key.wide:active {
+            box-shadow: none;
+        }
+        
+        .keyboard-key {
+            border: none;
+        }
+        
+        .keyboard-key.enter {
+            border: none;
+        }
+        
+        .keyboard-key.symbol {
+            border: none;
+        }
+        
+        .keyboard-key.backspace {
+            border: none;
+        }
+        
+        .keyboard-key.emoji {
+            border: none;
+        }
+        
+        .keyboard-key.at {
+            border: none;
+        }
+        
+        .keyboard-key.dot {
+            border: none;
+        }
+        
+        .keyboard-key.zero {
+            border: none;
+        }
+        
+        .keyboard-key.arrow {
+            border: none;
+        }
+        
+        .keyboard-key.shift {
+            border: none;
+        }
+        
+        .keyboard-key.space {
+            border: none;
+        }
+        
+        .keyboard-key.wide {
+            border: none;
+        }
+        
+        .keyboard-key:active {
+            border: none;
+        }
+        
+        .keyboard-key.enter:active {
+            border: none;
+        }
+        
+        .keyboard-key.symbol:active {
+            border: none;
+        }
+        
+        .keyboard-key.backspace:active {
+            border: none;
+        }
+        
+        .keyboard-key.emoji:active {
+            border: none;
+        }
+        
+        .keyboard-key.at:active {
+            border: none;
+        }
+        
+        .keyboard-key.dot:active {
+            border: none;
+        }
+        
+        .keyboard-key.zero:active {
+            border: none;
+        }
+        
+        .keyboard-key.arrow:active {
+            border: none;
+        }
+        
+        .keyboard-key.shift:active {
+            border: none;
+        }
+        
+        .keyboard-key.space:active {
+            border: none;
+        }
+        
+        .keyboard-key.wide:active {
+            border: none;
+        }
+        
+        .keyboard-key {
+            padding: 0;
+        }
+        
+        .keyboard-key.enter {
+            padding: 0;
+        }
+        
+        .keyboard-key.symbol {
+            padding: 0;
+        }
+        
+        .keyboard-key.backspace {
+            padding: 0;
+        }
+        
+        .keyboard-key.emoji {
+            padding: 0;
+        }

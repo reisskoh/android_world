@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: white;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .selected-count {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .section {
+            padding: 20px 20px 10px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            padding: 0 8px;
+        }
+        
+        .photo-item {
+            position: relative;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .selection-circle {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .selected {
+            border: 2px solid #4a90e2;
+            background-color: rgba(74, 144, 226, 0.3);
+        }
+        
+        .selected .checkmark {
+            color: white;
+            font-weight: bold;
+        }
+        
+        .video-indicator {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2px 6px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .video-duration {
+            font-size: 12px;
+            color: white;
+        }
+        
+        .video-play-icon {
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-play-icon::after {
+            content: '▶';
+            color: black;
+            font-size: 10px;
+            margin-left: 1px;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1e1e1e;
+            padding: 15px 20px;
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .action-btn {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .copy-btn {
+            border: 2px solid #4a90e2;
+            color: #4a90e2;
+            background-color: transparent;
+        }
+        
+        .move-btn {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+        }
+        
+        .icon {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="close-btn">×</div>
+            <div class="selected-count">1</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">September</div>
+        <div class="gallery">
+            <div class="photo-item">
+                <div class="selection-circle">○</div>
+                <img src="https://via.placeholder.com/100x100/FFD700/000000?text=Yellow+Bottle" alt="Yellow Bottle">
+                <div class="video-indicator">
+                    <span class="video-duration">0:12</span>
+                    <div class="video-play-icon"></div>
+                </div>
+            </div>
+            <div class="photo-item">
+                <div class="selection-circle">○</div>
+                <img src="https://via.placeholder.com/100x100/87CEEB/000000?text=Sky+View" alt="Sky View">
+            </div>
+            <div class="photo-item">
+                <div class="selection-circle">○</div>
+                <img src="https://via.placeholder.com/100x100/228B22/FFFFFF?text=Plant+View" alt="Plant View">
+            </div>
+            <div class="photo-item selected">
+                <div class="selection-circle">
+                    <span class="checkmark">✓</span>
+                </div>
+                <img src="https://via.placeholder.com/100x100/32CD32/FFFFFF?text=Green+Plants" alt="Green Plants">
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">August</div>
+        <div class="gallery">
+            <div class="photo-item">
+                <div class="selection-circle">○</div>
+                <img src="https://via.placeholder.com/100x100/F5F5F5/000000?text=Text+Note" alt="Text Note">
+            </div>
+            <div class="photo-item">
+                <div class="selection-circle">○</div>
+                <img src="https://via.placeholder.com/100x100/FFFFFF/000000?text=Triangle" alt="Triangle">
+            </div>
+            <div class="photo-item">
+                <div class="selection-circle">○</div>
+                <img src="https://via.placeholder.com/100x100/FFFFFF/FF0000?text=Heart" alt="Heart">
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">July</div>
+        <div class="gallery">
+            <div class="photo-item">
+                <div class="selection-circle">○</div>
+                <img src="https://via.placeholder.com/100x100/87CEEB/000000?text=Sky+View" alt="Sky View">
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="action-btn copy-btn">
+            <div class="icon">📋</div>
+            <span>Copy</span>
+        </div>
+        <div class="action-btn move-btn">
+            <div class="icon">📁→</div>
+            <span>Move</span>
+        </div>
+    </div>
+</body>
+</html>

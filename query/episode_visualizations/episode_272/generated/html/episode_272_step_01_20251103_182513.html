@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #12181b;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background-color: #12181b;
+            font-size: 14px;
+        }
+        
+        .status-icons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .settings-header {
+            padding: 24px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .settings-title {
+            font-size: 32px;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .profile-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #3a867a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            margin: 16px;
+            padding: 12px 16px;
+            background-color: #2a3235;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-icon {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .settings-list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .settings-item {
+            padding: 16px;
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px solid #1e2528;
+        }
+        
+        .settings-icon {
+            margin-right: 16px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .settings-content {
+            flex: 1;
+        }
+        
+        .settings-title-text {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 0 4px 0;
+        }
+        
+        .settings-subtitle {
+            font-size: 14px;
+            color: #9aa0a6;
+            margin: 0;
+        }
+        
+        .battery-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .battery-level {
+            width: 16px;
+            height: 16px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        .battery-level::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #12181b;
+            border-radius: 2px;
+        }
+        
+        .storage-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .storage-line {
+            width: 16px;
+            height: 2px;
+            background-color: #ffffff;
+            margin: 2px 0;
+        }
+        
+        .sound-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sound-wave {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+        
+        .sound-wave::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 16px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+        
+        .sound-wave::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 4px;
+            height: 16px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+        
+        .notification-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .notification-bell {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+        
+        .notification-bell::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top: none;
+            border-left: none;
+        }
+        
+        .notification-bell::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 12px;
+            width: 8px;
+            height: 4px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+        
+        .apps-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .app-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            margin: 1px;
+        }
+        
+        .connected-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .connected-device {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+        
+        .connected-device::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-radius: 2px;
+        }
+        
+        .connected-device::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 50%;
+        }
+        
+        .network-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .network-signal {
+            width: 16px;
+            height: 16px;
+            position: relative;
+        }
+        
+        .network-signal::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-bottom: none;
+            border-right: none;
+        }
+        
+        .network-signal::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            width: 8px;
+            height: 8px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-bottom: none;
+            border-right: none;
+        }
+        
+        .home-indicator {
+            height: 5px;
+            width: 120px;
+            background-color: #ffffff;
+            border-radius: 2.5px;
+            margin: 16px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-icons">
+            <span>1:37</span>
+            <span>📧</span>
+            <span>📧</span>
+            <span>⚠️</span>
+            <span>⚙️</span>
+        </div>
+        <div class="status-icons">
+            <span>📶</span>
+            <span>🔋 100%</span>
+        </div>
+    </div>
+    
+    <div class="settings-header">
+        <h1 class="settings-title">Settings</h1>
+        <div class="profile-circle">C</div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="search-icon">🔍</div>
+        <input type="text" class="search-input" placeholder="Search settings">
+    </div>
+    
+    <ul class="settings-list">
+        <li class="settings-item">
+            <div class="settings-icon">
+                <div class="network-icon">
+                    <div class="network-signal"></div>
+                </div>
+            </div>
+            <div class="settings-content">
+                <h2 class="settings-title-text">Network & internet</h2>
+                <p class="settings-subtitle">Mobile, Wi-Fi, hotspot</p>
+            </div>
+        </li>
+        
+        <li class="settings-item">
+            <div class="settings-icon">
+                <div class="connected-icon">
+                    <div class="connected-device"></div>
+                </div>
+            </div>
+            <div class="settings-content">
+                <h2 class="settings-title-text">Connected devices</h2>
+                <p class="settings-subtitle">Bluetooth, pairing</p>
+            </div>
+        </li>
+        
+        <li class="settings-item">
+            <div class="settings-icon">
+                <div class="apps-icon">
+                    <div class="app-dot"></div><div class="app-dot"></div><div class="app-dot"></div>
+                    <div class="app-dot"></div><div class="app-dot"></div><div class="app-dot"></div>
+                    <div class="app-dot"></div><div class="app-dot"></div><div class="app-dot"></div>
+                </div>
+            </div>
+            <div class="settings-content">
+                <h2 class="settings-title-text">Apps</h2>
+                <p class="settings-subtitle">Assistant, recent apps, default apps</p>
+            </div>
+        </li>
+        
+        <li class="settings-item">
+            <div class="settings-icon">
+                <div class="notification-icon">
+                    <div class="notification-bell"></div>
+                </div>
+            </div>
+            <div class="settings-content">
+                <h2 class="settings-title-text">Notifications</h2>
+                <p class="settings-subtitle">Notification history, conversations</p>
+            </div>
+        </li>
+        
+        <li class="settings-item">
+            <div class="settings-icon">
+                <div class="battery-icon">
+                    <div class="battery-level"></div>
+                </div>
+            </div>
+            <div class="settings-content">
+                <h2 class="settings-title-text">Battery</h2>
+                <p class="settings-subtitle">100%</p>
+            </div>
+        </li>
+        
+        <li class="settings-item">
+            <div class="settings-icon">
+                <div class="storage-icon">
+                    <div class="storage-line"></div>
+                    <div class="storage-line"></div>
+                    <div class="storage-line"></div>
+                </div>
+            </div>
+            <div class="settings-content">
+                <h2 class="settings-title-text">Storage</h2>
+                <p class="settings-subtitle">29% used - 90.48 GB free</p>
+            </div>
+        </li>
+        
+        <li class="settings-item">
+            <div class="settings-icon">
+                <div class="sound-icon">
+                    <div class="sound-wave"></div>
+                </div>
+            </div>
+            <div class="settings-content">
+                <h2 class="settings-title-text">Sound & vibration</h2>
+                <p class="settings-subtitle">Volume, haptics, Do Not Disturb</p>
+            </div>
+        </li>
+    </ul>
+    
+    <div class="home-indicator"></div>
+</body>
+</html>

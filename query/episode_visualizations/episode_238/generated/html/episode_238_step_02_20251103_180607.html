@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .status-bar span {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-icons img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .welcome-section {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .avatar span {
+            font-size: 24px;
+            color: #666;
+        }
+        
+        .welcome-text {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .welcome-subtext {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        
+        .emoji {
+            font-size: 20px;
+            margin-top: 5px;
+        }
+        
+        .product-inquiry {
+            background-color: white;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .inquiry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .inquiry-title {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .close-button {
+            font-size: 20px;
+            color: #666;
+        }
+        
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .product-image {
+            width: 60px;
+            height: 60px;
+            background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-details {
+            flex: 1;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .delivery-guarantee {
+            font-size: 14px;
+            color: #e67e22;
+            font-weight: bold;
+        }
+        
+        .send-button {
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .action-button {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        .message-input {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: white;
+            border-top: 1px solid #eee;
+        }
+        
+        .add-button {
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .input-field {
+            flex: 1;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #666;
+            border: none;
+            outline: none;
+        }
+        
+        .emoji-button, .attachment-button {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .emoji-button img, .attachment-button img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>11:23</span>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-button">←</div>
+        <div class="header-title">Peter Ou</div>
+        <div class="header-icons">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMjRjNS41MjIgMCAxMC00LjQ3OCAxMC0xMHMtNC40NzgtMTAtMTAtMTBzLTEwIDQuNDc4LTEwIDEwczQuNDc4IDEwIDEwIDEweiIvPjxwYXRoIGQ9Ik0xMiA4YzIuMjA5IDAgNC0xLjc5MSA0LTQgMC0yLjIwOS0xLjc5MS00LTQtNHMtMi4yMDkgMC00IDEuNzkxLTQgNHMyLjIwOSAwIDQgMS43OTEgNCA0eiIvPjwvc3ZnPg==" alt="Shop">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMjRjNS41MjIgMCAxMC00LjQ3OCAxMC0xMHMtNC40NzgtMTAtMTAtMTBzLTEwIDQuNDc4LTEwIDEwczQuNDc4IDEwIDEwIDEweiIvPjxwYXRoIGQ9Ik0xMiA4YzIuMjA5IDAgNC0xLjc5MSA0LTQgMC0yLjIwOS0xLjc5MS00LTQtNHMtMi4yMDkgMC00IDEuNzkxLTQgNHMyLjIwOSAwIDQgMS43OTEgNCA0eiIvPjwvc3ZnPg==" alt="User">
+        </div>
+    </div>
+    
+    <div class="welcome-section">
+        <div class="avatar">
+            <span>P</span>
+        </div>
+        <div class="welcome-text">Welcome!</div>
+        <div class="welcome-subtext">Want to learn more about our products? Start chatting</div>
+        <div class="emoji">😊</div>
+    </div>
+    
+    <div class="product-inquiry">
+        <div class="inquiry-header">
+            <div class="inquiry-title">Inquire about this product:</div>
+            <div class="close-button">×</div>
+        </div>
+        
+        <div class="product-info">
+            <div class="product-image">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiM5OTkiLz48dGV4dCB4PSIzMCIgeT0iMzAiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgdGV4dC1hbGlnbj0iY2VudGVyIj5JbWFnZTwvdGV4dD48L3N2Zz4=" alt="Product">
+            </div>
+            <div class="product-details">
+                <div class="product-price">$298.60 - $384.00</div>
+                <div class="delivery-guarantee">On-time Delivery Guarantee</div>
+            </div>
+        </div>
+        
+        <button class="send-button">Send</button>
+        
+        <div class="action-buttons">
+            <button class="action-button">Send order request</button>
+            <button class="action-button">File a complaint</button>
+            <button class="action-button">Mini-site</button>
+            <button class="action-button">Login</button>
+        </div>
+    </div>
+    
+    <div class="message-input">
+        <div class="add-button">+</div>
+        <input type="text" class="input-field" placeholder="Enter your message...">
+        <div class="emoji-button">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjkuNSIgY3k9IjkuNSIgcj0iMSIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjE0LjUiIGN5PSI5LjUiIHI9IjEiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMTIgMTZjMiAwIDMuNS0xLjUgMy0zIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+" alt="Emoji">
+        </div>
+        <div class="attachment-button">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMjRjNS41MjIgMCAxMC00LjQ3OCAxMC0xMHMtNC40NzgtMTAtMTAtMTBzLTEwIDQuNDc4LTEwIDEwczQuNDc4IDEwIDEwIDEweiIvPjxwYXRoIGQ9Ik0xMiA4YzIuMjA5IDAgNC0xLjc5MSA0LTQgMC0yLjIwOS0xLjc5MS00LTQtNHMtMi4yMDkgMC00IDEuNzkxLTQgNHMyLjIwOSAwIDQgMS43OTEgNCA0eiIvPjwvc3ZnPg==" alt="Attachment">
+        </div>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

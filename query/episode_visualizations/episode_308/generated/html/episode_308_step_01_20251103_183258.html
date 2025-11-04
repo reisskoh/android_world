@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skyscanner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0a0a10;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #0a0a10;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-bar span {
+            font-size: 16px;
+        }
+        
+        .header {
+            padding: 30px 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .main-menu {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 10px;
+        }
+        
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .menu-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #87cefa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: #0a0a10;
+        }
+        
+        .menu-label {
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .secondary-menu {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 10px;
+        }
+        
+        .secondary-item {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .secondary-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #475569;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .secondary-icon svg {
+            width: 25px;
+            height: 25px;
+            fill: #667eea;
+        }
+        
+        .secondary-label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .deal-banner {
+            margin: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .deal-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/480x300/ff9900/ffffff?text=Sunset+View');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        
+        .deal-title {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .deal-heading {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .deal-badge {
+            background-color: white;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .badge-icon {
+            width: 40px;
+            height: 40px;
+            fill: #667eea;
+        }
+        
+        .badge-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .badge-percentage {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .bottom-nav {
+            background-color: #1e293b;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            padding: 10px;
+        }
+        
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #667eea;
+        }
+        
+        .nav-label {
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .nav-item.active .nav-icon svg {
+            fill: #667eea;
+        }
+        
+        .nav-item.active .nav-label {
+            color: #667eea;
+        }
+        
+        .notification-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #667eea;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>10:29</span>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L14 6H18L14.5 9L16 13L12 11L8 13L9.5 9L6 6H10L12 2Z" />
+                </svg>
+            </div>
+            <div class="logo-text">Skyscanner</div>
+        </div>
+    </div>
+    
+    <div class="main-menu">
+        <div class="menu-item">
+            <div class="menu-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M21 16V8H3V16H21ZM12 10H10V14H12V10ZM14 10H16V14H14V10Z" />
+                </svg>
+            </div>
+            <div class="menu-label">Flights</div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 12H6V10H18V12ZM18 16H6V14H18V16ZM18 20H6V18H18V20ZM20 4H4V2H20V4Z" />
+                </svg>
+            </div>
+            <div class="menu-label">Hotels</div>
+        </div>
+        <div class="menu-item">
+            <div class="menu-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5H6.5C5.84 5 5.28 5.42 5.08 6.01L3 12V20H21V12L18.92 6.01ZM12 17C10.34 17 9 15.66 9 14C9 12.34 10.34 11 12 11C13.66 11 15 12.34 15 14C15 15.66 13.66 17 12 17ZM15.5 8C16.33 8 17 7.33 17 6.5C17 5.67 16.33 5 15.5 5C14.67 5 14 5.67 14 6.5C14 7.33 14.67 8 15.5 8ZM8.5 8C9.33 8 10 7.33 10 6.5C10 5.67 9.33 5 8.5 5C7.67 5 7 5.67 7 6.5C7 7.33 7.67 8 8.5 8Z" />
+                </svg>
+            </div>
+            <div class="menu-label">Car Rental</div>
+        </div>
+    </div>
+    
+    <div class="secondary-menu">
+        <div class="secondary-item">
+            <div class="secondary-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-2-2v-4h2v4l2 2h-4z" />
+                </svg>
+            </div>
+            <div class="secondary-label">Explore everywhere</div>
+        </div>
+        <div class="secondary-item">
+            <div class="secondary-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.41 4.06L12 12.47l-8.41-8.41C3.17 3.64 2.58 3.64 2.17 4.06L1 5.23C0.59 5.64 0.59 6.23 1 6.64L9.36 15h1.5L12 16.12l1.12-1.12h1.5L23 6.64c0.41-0.41 0.41-1 0-1.41L20.41 4.06z" />
+                </svg>
+            </div>
+            <div class="secondary-label">Hot hotel deals</div>
+        </div>
+        <div class="secondary-item">
+            <div class="secondary-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+            </div>
+            <div class="secondary-label">12 ways we help you</div>
+        </div>
+    </div>
+    
+    <div class="deal-banner">
+        <div class="deal-image">
+            <div class="deal-title">Discover a deal</div>
+            <div class="deal-heading">Save on your next stay</div>
+            <div class="deal-badge">
+                <svg class="badge-icon" viewBox="0 0 24 24">
+                    <path d="M18 12H6V10H18V12ZM18 16H6V14H18V16ZM18 20H6V18H18V20ZM20 4H4V2H20V4Z" />
+                </svg>
+                <div>
+                    <div class="badge-text">up to</div>
+                    <div class="badge-percentage">35% off</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L14 6H18L14.5 9L16 13L12 11L8 13L9.5 9L6 6H10L12 2Z" />
+                </svg>
+            </div>
+            <div class="nav-label">Explore</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 12H6V10H18V12ZM18 16H6V14H18V16ZM18 20H6V18H18V20ZM20 4H4V2H20V4Z" />
+                </svg>
+            </div>
+            <div class="nav-label">Trips</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 14c-2.67 0-8-1.34-8-4v-6h16v6c0 2.66-5.33 4-8 4z" />
+                </svg>
+                <div class="notification-dot"></div>
+            </div>
+            <div class="nav-label">Profile</div>
+        </div>
+    </div>
+</body>
+</html>

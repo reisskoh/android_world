@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Grid</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff0ed;
+            margin: 0;
+            padding: 0;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff0ed;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .status-bar .time {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .status-bar .icons img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .search-bar {
+            background-color: white;
+            border-radius: 25px;
+            padding: 10px 15px;
+            margin: 15px 15px 25px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .search-bar .google-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .search-bar .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        
+        .search-bar .mic-icon {
+            width: 25px;
+            height: 25px;
+            margin: 0 10px;
+        }
+        
+        .search-bar .camera-icon {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .app-grid {
+            padding: 0 15px;
+        }
+        
+        .app-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .app-item {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .app-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .app-name {
+            font-size: 12px;
+            text-align: center;
+            color: #333;
+            margin: 0;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        .divider {
+            height: 2px;
+            background-color: #ccc;
+            width: 60%;
+            margin: 15px auto 25px;
+            border-radius: 1px;
+        }
+        
+        .app-icon.round {
+            border-radius: 50%;
+        }
+        
+        .app-icon.round img {
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 480px) {
+            .app-item {
+                width: 25%;
+            }
+            
+            .app-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .app-icon img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="time">10:22</div>
+        <div class="icons">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Do Not Disturb">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIwIDEySDR2LTJIMjB2MnoiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=" alt="Wi-Fi">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIwIDEySDR2LTJIMjB2MnoiIGZpbGw9IiMwMDAwMDAiLz48L3N2Zz4=" alt="Battery">
+            <span>92%</span>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <img class="google-logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Google">
+        <input type="text" class="search-input" placeholder="">
+        <img class="mic-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Mic">
+        <img class="camera-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Camera">
+    </div>
+    
+    <div class="app-grid">
+        <div class="app-row">
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="X">
+                </div>
+                <p class="app-name">X</p>
+            </div>
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Amazon">
+                </div>
+                <p class="app-name">Amazon</p>
+            </div>
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Hardware">
+                </div>
+                <p class="app-name">Hardware...</p>
+            </div>
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Currency">
+                </div>
+                <p class="app-name">Currency...</p>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="app-row">
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="ABC News">
+                </div>
+                <p class="app-name">ABC News</p>
+            </div>
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="ABC News">
+                </div>
+                <p class="app-name">ABC News</p>
+            </div>
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="adidas">
+                </div>
+                <p class="app-name">adidas</p>
+            </div>
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Adobe Acrobat">
+                </div>
+                <p class="app-name">Adobe Ac...</p>
+            </div>
+        </div>
+        
+        <div class="app-row">
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQuNSAxNEwxNiAxMi41TDE0LjUgMTFMMTMgMTIuNUwxMS41IDEyWiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="Adobe Scan">
+                </div>
+                <p class="app-name">Adobe Scan</p>
+            </div>
+            <div class="app-item">
+                <div class="app-icon round">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTExLjUgMTJMMTAgMTMuNUwxMS41IDE0TDEzIDEyLjVMMTQu

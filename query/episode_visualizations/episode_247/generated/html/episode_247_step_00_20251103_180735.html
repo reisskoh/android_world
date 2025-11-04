@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorder Plus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #1e1e1e;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-bar .time {
+            font-weight: bold;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .ad-banner {
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ad-image {
+            width: 100px;
+            height: 60px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .ad-content {
+            flex: 1;
+        }
+        
+        .ad-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .ad-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .install-btn {
+            background-color: #2962ff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .header {
+            background-color: #1e1e1e;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .app-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .app-title span {
+            color: #ff6b6b;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .recordings-list {
+            padding: 15px;
+        }
+        
+        .recording-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 12px solid #ff6b6b;
+            margin-left: 5px;
+        }
+        
+        .recording-info {
+            flex: 1;
+        }
+        
+        .recording-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .recording-date {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .recording-duration {
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .more-options {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .record-btn-container {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .record-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+        
+        .record-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ff6b6b;
+        }
+        
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        
+        .home-indicator {
+            width: 120px;
+            height: 5px;
+            background-color: white;
+            border-radius: 2.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span class="time">3:49</span>
+        <div class="icons">
+            <span>LR</span>
+            <span>Q</span>
+            <span>S</span>
+            <span>•</span>
+        </div>
+    </div>
+    
+    <div class="ad-banner">
+        <div class="ad-image">
+            <img src="https://via.placeholder.com/100x60" alt="Ad Image">
+        </div>
+        <div class="ad-content">
+            <div class="ad-title">Kuku FM</div>
+            <div class="ad-rating">
+                <span>4.5</span>
+                <span>⭐</span>
+                <span>FREE</span>
+            </div>
+        </div>
+        <button class="install-btn">INSTALL</button>
+    </div>
+    
+    <div class="header">
+        <div class="menu-icon">☰</div>
+        <div class="app-title">RECORDER <span>PLUS</span></div>
+        <div class="header-icons">
+            <span>🔍</span>
+            <span>⋮</span>
+        </div>
+    </div>
+    
+    <div class="recordings-list">
+        <div class="recording-item">
+            <div class="play-btn">
+                <div class="play-icon"></div>
+            </div>
+            <div class="recording-info">
+                <div class="recording-title">My Voice</div>
+                <div class="recording-date">Dec 14, 11:57</div>
+            </div>
+            <div class="recording-duration">00:32</div>
+            <div class="more-options">⋮</div>
+        </div>
+    </div>
+    
+    <div class="record-btn-container">
+        <div class="record-btn">
+            <div class="record-dot"></div>
+        </div>
+    </div>
+    
+    <div class="bottom-bar">
+        <div class="home-indicator"></div>
+    </div>
+</body>
+</html>

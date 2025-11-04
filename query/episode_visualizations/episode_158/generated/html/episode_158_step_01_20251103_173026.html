@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin Garrix - Spotify</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: white;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            font-size: 14px;
+        }
+        
+        .header {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+        
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .artist-name {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .listener-count {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin-bottom: 15px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .follow-button {
+            padding: 8px 16px;
+            border: 1px solid #b3b3b3;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+        
+        .more-options {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .shuffle-button {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .play-button {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #1db954;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal {
+            background-color: #181818;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.5);
+        }
+        
+        .modal-handle {
+            width: 40px;
+            height: 5px;
+            background-color: #555;
+            border-radius: 3px;
+            margin: 0 auto 20px;
+        }
+        
+        .song-info {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #282828;
+        }
+        
+        .song-cover {
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+        
+        .song-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .song-artist-album {
+            font-size: 14px;
+            color: #b3b3b3;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #282828;
+            cursor: pointer;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-text {
+            font-size: 16px;
+        }
+        
+        .premium-badge {
+            background-color: #1db954;
+            color: black;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .premium-icon {
+            width: 12px;
+            height: 12px;
+        }
+        
+        .footer {
+            height: 30px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-handle {
+            width: 40px;
+            height: 5px;
+            background-color: #555;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>8:33</div>
+        <div>Q T ● M</div>
+        <div>○ 📶 🔋</div>
+    </div>
+    
+    <div class="header">
+        <div class="back-button">←</div>
+        <h1 class="artist-name">Martin Garrix</h1>
+        <div class="listener-count">21.6M monthly listeners</div>
+        <div class="action-buttons">
+            <div class="follow-button">Following</div>
+            <div class="more-options">⋯</div>
+            <div class="shuffle-button">🔀</div>
+            <div class="play-button">▶</div>
+        </div>
+    </div>
+    
+    <div class="modal">
+        <div class="modal-handle"></div>
+        
+        <div class="song-info">
+            <img src="https://via.placeholder.com/50" alt="Album Cover" class="song-cover">
+            <div>
+                <div class="song-title">Real Love</div>
+                <div class="song-artist-album">Martin Garrix • Real Love</div>
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">⊕</div>
+            <div class="menu-text">Add to other playlist</div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">💎</div>
+            <div class="menu-text">Listen to music ad-free</div>
+            <div class="premium-badge">
+                <img src="https://via.placeholder.com/12" alt="Spotify" class="premium-icon">
+                Premium
+            </div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">➕▶</div>
+            <div class="menu-text">Add to queue</div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">○</div>
+            <div class="menu-text">View album</div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">🔗</div>
+            <div class="menu-text">Share</div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">📡</div>
+            <div class="menu-text">Go to song radio</div>
+        </div>
+        
+        <div class="menu-item">
+            <div class="menu-icon">👤➕</div>
+            <div class="menu-text">Show credits</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-handle"></div>
+    </div>
+</body>
+</html>

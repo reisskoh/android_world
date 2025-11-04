@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #e0e0e0;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .back-arrow {
+            color: #1a5276;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: auto;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .share-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #1a5276;
+            font-size: 24px;
+        }
+        
+        .zoom-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: #1a5276;
+            font-size: 24px;
+        }
+        
+        .product-info {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .price-per-unit {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .add-button {
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+            margin-left: auto;
+            display: block;
+        }
+        
+        .price-match {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .section-divider {
+            height: 10px;
+            background-color: #f0f0f0;
+            margin: 15px 0;
+        }
+        
+        .section-title {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .product-description {
+            padding: 15px;
+            line-height: 1.5;
+            color: #666;
+        }
+        
+        .read-more {
+            color: #1a5276;
+            text-decoration: underline;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .active {
+            color: #e74c3c;
+        }
+        
+        .active .nav-icon {
+            color: #e74c3c;
+        }
+        
+        .search-btn {
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 25px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .search-btn .nav-icon {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>9:16</span>
+        <span>LR</span>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="header-title">Product details</div>
+    </div>
+    
+    <div class="product-image">
+        <img src="https://via.placeholder.com/480x300?text=Heinz+Soup+Image" alt="Heinz Cream of Chicken Soup">
+        <div class="share-icon">🔗</div>
+        <div class="zoom-icon">🔍</div>
+    </div>
+    
+    <div class="product-info">
+        <div class="product-title">Heinz Cream Of Chicken Soup 4 X 400G</div>
+        <div class="price">£3.75</div>
+        <div class="price-per-unit">£0.23/100g</div>
+        <button class="add-button">Add</button>
+        <div class="price-match">Aldi Price Match.</div>
+    </div>
+    
+    <div class="section-divider"></div>
+    
+    <div class="section-title">Product description</div>
+    
+    <div class="product-description">
+        <p>Cream of Chicken Soup.</p>
+        <p>Check out our soup recipes at Heinz.co.uk</p>
+        <p>Nothing says home like a deliciously warming bowlful of Heinz soup.</p>
+        <p>Prepared to a time-honoured recipe and finished off with tender pieces of chicken, this is one rich and creamy blend that will never get old. Wit...</p>
+        <div class="read-more">Read more</div>
+    </div>
+    
+    <div class="bottom-nav">
+        <a href="#" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">❤️</div>
+            <div>Favourites</div>
+        </a>
+        <a href="#" class="nav-item active">
+            <div class="search-btn">
+                <div class="nav-icon">🔍</div>
+            </div>
+            <div>Search</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">💳</div>
+            <div>Clubcard</div>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">🛒</div>
+            <div>Basket</div>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying From</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #0f0f1a;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #0f0f1a;
+            font-size: 14px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #2d2d3a;
+        }
+        
+        .back-button {
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .input-container {
+            flex: 1;
+            padding: 15px;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 10px 15px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            outline: none;
+        }
+        
+        .keyboard {
+            background-color: #1a1a1a;
+            padding: 10px 0;
+            border-top: 1px solid #2d2d3a;
+        }
+        
+        .keyboard-top-row {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 15px;
+        }
+        
+        .keyboard-top-row button {
+            background-color: #2d2d3a;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .keyboard-keys {
+            padding: 0 15px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        
+        .key {
+            width: 45px;
+            height: 45px;
+            background-color: #2d2d3a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 3px;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .key.wide {
+            width: 60px;
+        }
+        
+        .key.space {
+            width: 200px;
+            border-radius: 20px;
+        }
+        
+        .key.search {
+            width: 60px;
+            height: 60px;
+            background-color: #c5d5ff;
+            color: #0f0f1a;
+            border-radius: 50%;
+        }
+        
+        .key.delete {
+            width: 60px;
+            height: 45px;
+            background-color: #2d2d3a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 3px;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .keyboard-bottom-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            margin-top: 10px;
+        }
+        
+        .keyboard-bottom-row .key {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.numeric {
+            width: 60px;
+            height: 60px;
+            background-color: #5a5a6a;
+            border-radius: 20px;
+        }
+        
+        .keyboard-bottom-row .key.space {
+            width: 150px;
+            height: 50px;
+            border-radius: 20px;
+        }
+        
+        .keyboard-bottom-row .key.search {
+            width: 60px;
+            height: 60px;
+            background-color: #c5d5ff;
+            color: #0f0f1a;
+            border-radius: 50%;
+        }
+        
+        .keyboard-bottom-row .key.period {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.shift {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.comma {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.enter {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.delete {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.globe {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.voice {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.settings {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.emoji {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.gif {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.language {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .keyboard-bottom-row .key.paint {
+            width: 50px;

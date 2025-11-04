@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #121212;
+            font-size: 14px;
+        }
+        
+        .search-bar {
+            margin: 15px 15px 20px;
+            padding: 12px 15px;
+            background-color: #2d3134;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            outline: none;
+        }
+        
+        .section-header {
+            padding: 0 15px 10px;
+            color: #888888;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        
+        .setting-item {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #2d2d2d;
+            align-items: flex-start;
+        }
+        
+        .setting-icon {
+            margin-right: 15px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .setting-content {
+            flex: 1;
+        }
+        
+        .setting-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 0 5px 0;
+        }
+        
+        .setting-subtitle {
+            font-size: 14px;
+            color: #888888;
+            margin: 0;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: #121212;
+            margin: 20px 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>1:38 M M ⚠️ ⚙️</div>
+        <div>📶 🔋 100%</div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="search-icon">🔍</div>
+        <input type="text" class="search-input" placeholder="Search settings">
+    </div>
+    
+    <div class="section-header">App security, device lock, permissions</div>
+    
+    <div class="setting-item">
+        <div class="setting-icon">📍</div>
+        <div class="setting-content">
+            <h3 class="setting-title">Location</h3>
+            <p class="setting-subtitle">On - 18 apps have access to location</p>
+        </div>
+    </div>
+    
+    <div class="setting-item">
+        <div class="setting-icon">✳️</div>
+        <div class="setting-content">
+            <h3 class="setting-title">Safety & emergency</h3>
+            <p class="setting-subtitle">Emergency SOS, medical info, alerts</p>
+        </div>
+    </div>
+    
+    <div class="setting-item">
+        <div class="setting-icon">👤</div>
+        <div class="setting-content">
+            <h3 class="setting-title">Passwords & accounts</h3>
+            <p class="setting-subtitle">Saved passwords, autofill, synced accounts</p>
+        </div>
+    </div>
+    
+    <div class="setting-item">
+        <div class="setting-icon">❤️</div>
+        <div class="setting-content">
+            <h3 class="setting-title">Digital Wellbeing & parental controls</h3>
+            <p class="setting-subtitle">Screen time, app timers, bedtime schedules</p>
+        </div>
+    </div>
+    
+    <div class="setting-item">
+        <div class="setting-icon">G</div>
+        <div class="setting-content">
+            <h3 class="setting-title">Google</h3>
+            <p class="setting-subtitle">Services & preferences</p>
+        </div>
+    </div>
+    
+    <div class="setting-item">
+        <div class="setting-icon">ℹ️</div>
+        <div class="setting-content">
+            <h3 class="setting-title">System</h3>
+            <p class="setting-subtitle">Languages, gestures, time, backup</p>
+        </div>
+    </div>
+    
+    <div class="setting-item">
+        <div class="setting-icon">📱</div>
+        <div class="setting-content">
+            <h3 class="setting-title">About phone</h3>
+            <p class="setting-subtitle">Pixel 7</p>
+        </div>
+    </div>
+    
+    <div class="setting-item">
+        <div class="setting-icon">❓</div>
+        <div class="setting-content">
+            <h3 class="setting-title">Tips & support</h3>
+            <p class="setting-subtitle">Help articles, phone & chat</p>
+        </div>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .status-bar {
+            background-color: #fff;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .time {
+            font-weight: bold;
+        }
+        
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .search-bar {
+            background-color: white;
+            border-radius: 24px;
+            margin: 12px 16px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .search-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            background-color: #4285F4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+        
+        .mic-icon {
+            width: 24px;
+            height: 24px;
+            margin: 0 8px;
+            color: #757575;
+        }
+        
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #757575;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .category-buttons {
+            display: flex;
+            overflow-x: auto;
+            padding: 0 16px 8px 16px;
+            gap: 8px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .category-btn {
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .category-icon {
+            font-size: 16px;
+        }
+        
+        .map-container {
+            height: calc(100vh - 180px);
+            background-color: #e5e5e5;
+            position: relative;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://via.placeholder.com/480x800/87CEFA/FFFFFF?text=Map+View') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .map-controls {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .control-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .directions-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 12px;
+            background-color: #4285F4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .directions-icon {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+        
+        .bottom-nav {
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            width: 20%;
+        }
+        
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+            color: #757575;
+        }
+        
+        .nav-text {
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .active {
+            color: #4285F4;
+        }
+        
+        .google-logo {
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+            width: 80px;
+            height: 24px;
+        }
+        
+        .location-marker {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: #4285F4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .place-label {
+            position: absolute;
+            background-color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="time">11:45</span>
+            <span>🔒</span>
+        </div>
+        <div class="status-right">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="search-icon">G</div>
+        <input type="text" class="search-input" placeholder="Search here">
+        <div class="mic-icon">🎤</div>
+        <div class="profile-icon">C</div>
+    </div>
+    
+    <div class="category-buttons">
+        <div class="category-btn">
+            <div class="category-icon">🍴</div>
+            <span>Restaurants</span>
+        </div>
+        <div class="category-btn">
+            <div class="category-icon">🏨</div>
+            <span>Hotels</span>
+        </div>
+        <div class="category-btn">
+            <div class="category-icon">🛒</div>
+            <span>Groceries</span>
+        </div>
+        <div class="category-btn">
+            <div class="category-icon">🛍️</div>
+            <span>Shopping</span>
+        </div>
+    </div>
+    
+    <div class="map-container">
+        <div class="map-overlay">
+            <!-- Map content would be rendered here -->
+        </div>
+        
+        <div class="map-controls">
+            <div class="control-btn">
+                <div class="nav-icon">📍</div>
+            </div>
+            <div class="control-btn">
+                <div class="nav-icon"> layers </div>
+            </div>
+            <div class="directions-btn">
+                <div class="directions-icon">➡️</div>
+            </div>
+        </div>
+        
+        <div class="google-logo">
+            <img src="https://via.placeholder.com/80x24/4285F4/FFFFFF?text=Google" alt="Google">
+        </div>
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon">📍</div>
+            <div class="nav-text">Explore</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🚗</div>
+            <div class="nav-text">Go</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🔖</div>
+            <div class="nav-text">Saved</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">➕</div>
+            <div class="nav-text">Contribute</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🔔</div>
+            <div class="nav-text">Updates</div>
+        </div>
+    </div>
+</body>
+</html>

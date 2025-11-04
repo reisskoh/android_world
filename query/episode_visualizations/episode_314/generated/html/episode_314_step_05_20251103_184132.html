@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Fair Event</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+        }
+        
+        .settings-icon {
+            font-size: 24px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            background-color: #111;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .textarea {
+            height: 150px;
+            resize: none;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+        
+        .next-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #2d5b4a;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .keyboard {
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            box-sizing: border-box;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-key {
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            margin: 2px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .keyboard-wide {
+            width: 60px;
+            height: 50px;
+            line-height: 50px;
+        }
+        
+        .keyboard-space {
+            width: 200px;
+        }
+        
+        .keyboard-enter {
+            width: 60px;
+            background-color: #cce5ff;
+            color: #000;
+        }
+        
+        .keyboard-shift {
+            width: 50px;
+        }
+        
+        .keyboard-emoji {
+            width: 50px;
+        }
+        
+        .keyboard-num {
+            width: 50px;
+            background-color: #888;
+        }
+        
+        .keyboard-mic {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background-color: #333;
+            border-radius: 50%;
+            text-align: center;
+        }
+        
+        .keyboard-suggestions {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px;
+            background-color: #1a1a1a;
+            border-bottom: 1px solid #333;
+        }
+        
+        .suggestion {
+            padding: 5px 10px;
+            background-color: #222;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="title">EMPLOYMENT FAIR EVENT</div>
+        <div class="settings-icon">⚙️</div>
+    </div>
+    
+    <div class="input-group">
+        <input type="text" class="input-field" value="EMPLOYMENT FAIR EVENT" placeholder="Event Title">
+    </div>
+    
+    <div class="input-group">
+        <div class="label">Description (optional)</div>
+        <textarea class="input-field textarea" placeholder="Here you can include things like an agenda, instructions, or other details"></textarea>
+    </div>
+    
+    <div class="input-group">
+        <div class="label">Location (optional)</div>
+        <div style="position: relative;">
+            <input type="text" class="input-field" value="Canada" placeholder="Location">
+            <div class="search-icon">🔍</div>
+        </div>
+    </div>
+    
+    <button class="next-button">Next</button>
+    
+    <div class="keyboard">
+        <div class="keyboard-suggestions">
+            <div class="suggestion">Canada</div>
+            <div style="width: 1px; height: 20px; background-color: #444; margin: 0 10px;"></div>
+            <div class="suggestion">Canada's</div>
+        </div>
+        
+        <div class="keyboard-top">
+            <div class="keyboard-key">123</div>
+            <div class="keyboard-mic">🎤</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">q</div>
+            <div class="keyboard-key">w</div>
+            <div class="keyboard-key">e</div>
+            <div class="keyboard-key">r</div>
+            <div class="keyboard-key">t</div>
+            <div class="keyboard-key">y</div>
+            <div class="keyboard-key">u</div>
+            <div class="keyboard-key">i</div>
+            <div class="keyboard-key">o</div>
+            <div class="keyboard-key">p</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">a</div>
+            <div class="keyboard-key">s</div>
+            <div class="keyboard-key">d</div>
+            <div class="keyboard-key">f</div>
+            <div class="keyboard-key">g</div>
+            <div class="keyboard-key">h</div>
+            <div class="keyboard-key">j</div>
+            <div class="keyboard-key">k</div>
+            <div class="keyboard-key">l</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key keyboard-shift">↑</div>
+            <div class="keyboard-key">z</div>
+            <div class="keyboard-key">x</div>
+            <div class="keyboard-key">c</div>
+            <div class="keyboard-key">v</div>
+            <div class="keyboard-key">b</div>
+            <div class="keyboard-key">n</div>
+            <div class="keyboard-key">m</div>
+            <div class="keyboard-key">⌫</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key keyboard-num">?123</div>
+            <div class="keyboard-key keyboard-emoji">😊</div>
+            <div class="keyboard-key keyboard-space"></div>
+            <div class="keyboard-key">.</div>
+            <div class="keyboard-key keyboard-enter">↵</div>
+        </div>
+    </div>
+</body>
+</html>

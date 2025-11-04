@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://via.placeholder.com/480x800/333/fff?text=Rock+Wall');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+        
+        .date-time {
+            display: flex;
+            flex-direction: column;
+            margin-top: 60px;
+            padding: 15px;
+        }
+        
+        .date {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .weather {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+        
+        .weather-icon {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 100px;
+            padding: 0 20px;
+        }
+        
+        .app-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .icon-circle img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .app-name {
+            font-size: 14px;
+            margin-top: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 80px;
+        }
+        
+        .usb-dialog {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 200;
+        }
+        
+        .dialog-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .dialog-content {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .fingerprint {
+            font-family: monospace;
+            font-size: 12px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dialog-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .dialog-button {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .cancel {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .allow {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .bottom-bar {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 30px;
+            padding: 10px 15px;
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .google-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .mic-icon, .camera-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .nav-icons {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        
+        .nav-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-icon img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+        
+        .home-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>10:29</div>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="date-time">
+        <div class="date">Thu, Oct 26</div>
+        <div class="weather">
+            <span class="weather-icon">〰️</span>
+            <span>26°C</span>
+        </div>
+    </div>
+    
+    <div class="app-grid">
+        <div class="app-icon">
+            <div class="icon-circle">
+                <img src="https://via.placeholder.com/40/3366cc/ffffff?text=SS" alt="Skyscanner">
+            </div>
+            <div class="app-name">Skyscanner</div>
+        </div>
+        <div class="app-icon">
+            <div class="icon-circle">
+                <img src="https://via.placeholder.com/40/cc3333/ffffff?text=JAL" alt="Japan Airlines">
+            </div>
+            <div class="app-name">Japan Airlin...</div>
+        </div>
+    </div>
+    
+    <div class="usb-dialog">
+        <div class="dialog-title">Allow USB debugging?</div>
+        <div class="dialog-content">The computer's RSA key fingerprint is:</div>
+        <div class="fingerprint">D1:9A:7B:90:45:C6:6E:6C:D8:45:AC:8C:E8:98:7C:6F</div>
+        <div class="checkbox-container">
+            <div class="checkbox"></div>
+            <div>Always allow from this computer</div>
+        </div>
+        <div class="dialog-buttons">
+            <div class="dialog-button cancel">Cancel</div>
+            <div class="dialog-button allow">Allow</div>
+        </div>
+    </div>
+    
+    <div class="nav-icons">
+        <div class="nav-icon">
+            <img src="https://via.placeholder.com/30/3366cc/ffffff?text=📞" alt="Phone">
+        </div>
+        <div class="nav-icon">
+            <img src="https://via.placeholder.com/30/3366cc/ffffff?text=💬" alt="Messages">
+        </div>
+        <div class="nav-icon">
+            <img src="https://via.placeholder.com/30/3366cc/ffffff?text=🌐" alt="Chrome">
+        </div>
+        <div class="nav-icon">
+            <img src="https://via.placeholder.com/30/3366cc/ffffff?text=📷" alt="Camera">
+        </div>
+    </div>
+    
+    <div class="bottom-bar">
+        <img class="google-icon" src="https://via.placeholder.com/24/ffffff/000000?text=G" alt="Google">
+        <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.3); margin: 0 10px;"></div>
+        <img class="mic-icon" src="https://via.placeholder.com/24/ffffff/000000?text=🎤" alt="Mic">
+        <img class="camera-icon" src="https://via.placeholder.com/24/ffffff/000000?text=📷" alt="Camera">
+    </div>
+    
+    <div class="home-indicator"></div>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #121212;
+            border-bottom: 1px solid #333;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: #121212;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header .left {
+            font-size: 24px;
+        }
+        
+        .header .right {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .email-field label {
+            width: 80px;
+            font-weight: 500;
+        }
+        
+        .email-field input, .email-field select {
+            flex: 1;
+            background-color: #121212;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .email-field select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        
+        .subject {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .subject input {
+            width: 100%;
+            background-color: #121212;
+            color: white;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .body textarea {
+            width: 100%;
+            height: 100%;
+            background-color: #121212;
+            color: white;
+            border: none;
+            font-size: 16px;
+            resize: none;
+        }
+        
+        .keyboard {
+            background-color: #121212;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        
+        .keyboard-top button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .keyboard-keys {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            padding: 5px 0;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .key {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 20px;
+            flex: 1;
+            min-width: 30px;
+        }
+        
+        .key:active {
+            background-color: #444;
+        }
+        
+        .key-space {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            font-size: 20px;
+            flex: 3;
+        }
+        
+        .key-enter {
+            background-color: #a0c4ff;
+            border-radius: 50%;
+            padding: 12px;
+            text-align: center;
+            font-size: 20px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .key-shift, .key-backspace, .key-emoji, .key-123, .key-at {
+            background-color: #2d2d2d;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .key-123 {
+            background-color: #555;
+        }
+        
+        .key-enter {
+            background-color: #a0c4ff;
+        }
+        
+        .keyboard-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        
+        .keyboard-bottom button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="icons">
+            <span>11:10</span>
+            <span>🔍</span>
+            <span>●</span>
+            <span>🔍</span>
+            <span>▶️</span>
+        </div>
+        <div class="icons">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="left">←</div>
+        <div class="right">
+            <span>📎</span>
+            <span>➤</span>
+            <span>⋮</span>
+        </div>
+    </div>
+    
+    <div class="email-field">
+        <label>From</label>
+        <input type="text" value="ffionh41@gmail.com" readonly>
+        <span>▼</span>
+    </div>
+    
+    <div class="email-field">
+        <label>To</label>
+        <input type="text" placeholder="">
+        <span>▼</span>
+    </div>
+    
+    <div class="subject">
+        <input type="text" value="Look at this... 👀">
+    </div>
+    
+    <div class="body">
+        <textarea>Look at this video... 👀 https://pin.it/CNGlvOC</textarea>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <button>🔢</button>
+            <button>😊</button>
+            <button>GIF</button>
+            <button>⚙️</button>
+            <button>🌐</button>
+            <button>🎨</button>
+            <button>🎤</button>
+        </div>
+        
+        <div class="keyboard-keys">
+            <div class="keyboard-row">
+                <div class="key">q</div>
+                <div class="key">w</div>
+                <div class="key">e</div>
+                <div class="key">r</div>
+                <div class="key">t</div>
+                <div class="key">y</div>
+                <div class="key">u</div>
+                <div class="key">i</div>
+                <div class="key">o</div>
+                <div class="key">p</div>
+            </div>
+            <div class="keyboard-row">
+                <div class="key">a</div>
+                <div class="key">s</div>
+                <div class="key">d</div>
+                <div class="key">f</div>
+                <div class="key">g</div>
+                <div class="key">h</div>
+                <div class="key">j</div>
+                <div class="key">k</div>
+                <div class="key">l</div>
+            </div>
+            <div class="keyboard-row">
+                <div class="key-shift">⇧</div>
+                <div class="key">z</div>
+                <div class="key">x</div>
+                <div class="key">c</div>
+                <div class="key">v</div>
+                <div class="key">b</div>
+                <div class="key">n</div>
+                <div class="key">m</div>
+                <div class="key-backspace">⌫</div>
+            </div>
+            <div class="keyboard-row">
+                <div class="key-123">?123</div>
+                <div class="key-at">@</div>
+                <div class="key-emoji">😊</div>
+                <div class="key-space"></div>
+                <div class="key">.</div>
+                <div class="key-enter">→</div>
+            </div>
+        </div>
+        
+        <div class="keyboard-bottom">
+            <button>↓</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document (1) - Saved</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #1e1e1e;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .document-title {
+            color: #4d90fe;
+            font-size: 16px;
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .header-icon {
+            color: #ffffff;
+            font-size: 20px;
+        }
+        
+        .document-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .document-content p {
+            margin: 15px 0;
+        }
+        
+        .document-content .misspelled {
+            text-decoration: underline;
+            text-decoration-color: #ff4d4d;
+            text-decoration-style: wavy;
+        }
+        
+        .toolbar {
+            background-color: #1e1e1e;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #333;
+        }
+        
+        .toolbar-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .toolbar-button {
+            color: #ffffff;
+            font-size: 20px;
+            padding: 5px 10px;
+        }
+        
+        .toolbar-button.active {
+            color: #ff4d4d;
+            border-bottom: 2px solid #ff4d4d;
+        }
+        
+        .keyboard {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .keyboard-key {
+            background-color: #333;
+            color: #ffffff;
+            border-radius: 5px;
+            padding: 10px 12px;
+            text-align: center;
+            font-size: 18px;
+            min-width: 30px;
+        }
+        
+        .keyboard-key.wide {
+            min-width: 60px;
+        }
+        
+        .keyboard-key.extra-wide {
+            min-width: 120px;
+        }
+        
+        .keyboard-key.special {
+            background-color: #4d4d4d;
+        }
+        
+        .keyboard-key.backspace {
+            background-color: #4d4d4d;
+        }
+        
+        .keyboard-key.return {
+            background-color: #e6c0c0;
+            color: #000;
+        }
+        
+        .keyboard-key.shift {
+            background-color: #4d4d4d;
+        }
+        
+        .keyboard-key.numeric {
+            background-color: #b39999;
+            color: #000;
+        }
+        
+        .keyboard-key.mic {
+            background-color: #333;
+        }
+        
+        .keyboard-key.emoji {
+            background-color: #333;
+        }
+        
+        .keyboard-key.space {
+            background-color: #333;
+        }
+        
+        .keyboard-key.arrow {
+            background-color: #e6c0c0;
+            color: #000;
+        }
+        
+        .keyboard-key.globe {
+            background-color: #333;
+        }
+        
+        .keyboard-key.dot {
+            background-color: #333;
+        }
+        
+        .keyboard-key.comma {
+            background-color: #333;
+        }
+        
+        .keyboard-key.question {
+            background-color: #b39999;
+            color: #000;
+        }
+        
+        .keyboard-key.hash {
+            background-color: #b39999;
+            color: #000;
+        }
+        
+        .keyboard-key.number {
+            background-color: #333;
+        }
+        
+        .keyboard-key.letter {
+            background-color: #333;
+        }
+        
+        .keyboard-key.function {
+            background-color: #333;
+        }
+        
+        .keyboard-key.symbol {
+            background-color: #333;
+        }
+        
+        .keyboard-key.capital {
+            background-color: #333;
+        }
+        
+        .keyboard-key.delete {
+            background-color: #4d4d4d;
+        }
+        
+        .keyboard-key.enter {
+            background-color: #e6c0c0;
+            color: #000;
+        }
+        
+        .keyboard-key.tab {
+            background-color: #333;
+        }
+        
+        .keyboard-key.capslock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.shift-left {
+            background-color: #333;
+        }
+        
+        .keyboard-key.shift-right {
+            background-color: #333;
+        }
+        
+        .keyboard-key.ctrl {
+            background-color: #333;
+        }
+        
+        .keyboard-key.alt {
+            background-color: #333;
+        }
+        
+        .keyboard-key.win {
+            background-color: #333;
+        }
+        
+        .keyboard-key.fn {
+            background-color: #333;
+        }
+        
+        .keyboard-key.esc {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f1 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f2 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f3 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f4 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f5 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f6 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f7 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f8 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f9 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f10 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f11 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.f12 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.printscreen {
+            background-color: #333;
+        }
+        
+        .keyboard-key.scrolllock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.pause {
+            background-color: #333;
+        }
+        
+        .keyboard-key.insert {
+            background-color: #333;
+        }
+        
+        .keyboard-key.home {
+            background-color: #333;
+        }
+        
+        .keyboard-key.pageup {
+            background-color: #333;
+        }
+        
+        .keyboard-key.delete-key {
+            background-color: #333;
+        }
+        
+        .keyboard-key.end {
+            background-color: #333;
+        }
+        
+        .keyboard-key.pagedown {
+            background-color: #333;
+        }
+        
+        .keyboard-key.arrow-up {
+            background-color: #333;
+        }
+        
+        .keyboard-key.arrow-left {
+            background-color: #333;
+        }
+        
+        .keyboard-key.arrow-down {
+            background-color: #333;
+        }
+        
+        .keyboard-key.arrow-right {
+            background-color: #333;
+        }
+        
+        .keyboard-key.numlock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.divide {
+            background-color: #333;
+        }
+        
+        .keyboard-key.multiply {
+            background-color: #333;
+        }
+        
+        .keyboard-key.subtract {
+            background-color: #333;
+        }
+        
+        .keyboard-key.add {
+            background-color: #333;
+        }
+        
+        .keyboard-key.enter-num {
+            background-color: #333;
+        }
+        
+        .keyboard-key.decimal {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num0 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num1 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num2 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num3 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num4 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num5 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num6 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num7 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num8 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num9 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-dot {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-enter {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-plus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-minus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-multiply {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-divide {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-lock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-0 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-1 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-2 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-3 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-4 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-5 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-6 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-7 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-8 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-9 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-dot {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-enter {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-plus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-minus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-multiply {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-divide {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-lock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-0 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-1 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-2 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-3 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-4 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-5 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-6 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-7 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-8 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-9 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-dot {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-enter {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-plus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-minus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-multiply {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-divide {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-lock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-0 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-1 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-2 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-3 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-4 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-5 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-6 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-7 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-8 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-9 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-dot {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-enter {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-plus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-minus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-multiply {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-divide {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-lock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-0 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-1 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-2 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-3 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-4 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-5 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-6 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-7 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-8 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-9 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-dot {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-enter {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-plus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-minus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-multiply {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-divide {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-lock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-0 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-1 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-2 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-3 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-4 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-5 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-6 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-7 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-8 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-9 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-dot {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-enter {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-plus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-minus {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-multiply {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-divide {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-lock {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-0 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-1 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-2 {
+            background-color: #333;
+        }
+        
+        .keyboard-key.num-3 {
+            background-color: #333

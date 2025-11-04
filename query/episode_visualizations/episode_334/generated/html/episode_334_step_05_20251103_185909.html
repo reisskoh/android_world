@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            max-width: 480px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            background-color: #fff;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .status-bar span {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .header {
+            background-color: #fff;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .header-actions i {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .email-field {
+            background-color: #fff;
+            padding: 16px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .field-label {
+            width: 80px;
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .field-input {
+            flex: 1;
+            font-size: 16px;
+            border: none;
+            outline: none;
+        }
+        
+        .email-body {
+            flex: 1;
+            background-color: #fff;
+            padding: 16px;
+            overflow-y: auto;
+        }
+        
+        .email-body p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .keyboard {
+            background-color: #f0f0f0;
+            padding: 16px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .keyboard-top i {
+            font-size: 20px;
+            color: #333;
+            padding: 8px;
+        }
+        
+        .keyboard-top .active {
+            background-color: #c8b6ff;
+            border-radius: 50%;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        
+        .keyboard-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .key {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            border-radius: 8px;
+            margin: 0 4px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .key:active {
+            background-color: #e0e0e0;
+        }
+        
+        .key-space {
+            width: 60%;
+            background-color: #d0c8e0;
+            border-radius: 20px;
+        }
+        
+        .key-enter {
+            width: 60px;
+            background-color: #c8b6ff;
+            border-radius: 20px;
+            color: #fff;
+        }
+        
+        .keyboard-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
+        
+        .keyboard-bottom .key {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom .key:nth-child(1) {
+            background-color: #d0c8e0;
+            border-radius: 20px;
+        }
+        
+        .keyboard-bottom .key:nth-child(2) {
+            font-size: 28px;
+        }
+        
+        .keyboard-bottom .key:nth-child(3) {
+            font-size: 28px;
+        }
+        
+        .keyboard-bottom .key:nth-child(4) {
+            width: 60px;
+            background-color: #c8b6ff;
+            border-radius: 20px;
+            color: #fff;
+        }
+        
+        .keyboard-bottom .key:nth-child(5) {
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom .key:nth-child(6) {
+            font-size: 24px;
+        }
+        
+        .keyboard-bottom .key:nth-child(7) {
+            width: 60px;
+            background-color: #c8b6ff;
+            border-radius: 20px;
+            color: #fff;
+        }
+        
+        .nav-bar {
+            background-color: #fff;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .nav-bar i {
+            font-size: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>1:19</span>
+        <span>100%</span>
+    </div>
+    
+    <div class="header">
+        <div class="header-title">Compose</div>
+        <div class="header-actions">
+            <i>📎</i>
+            <i>➤</i>
+            <i>⋮</i>
+        </div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">From</div>
+        <div class="field-input">dbwscratch.test.id2@gmail.com</div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">To</div>
+        <div class="field-input" contenteditable="true"></div>
+    </div>
+    
+    <div class="email-body">
+        <p>hello</p>
+        <p>07 june 2023</p>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <i class="active">←</i>
+            <i>⚙️</i>
+            <i>🌐</i>
+            <i>🎨</i>
+            <i>📋</i>
+            <span>│</span>
+            <i>⋯</i>
+            <i>🔇</i>
+        </div>
+        
+        <div class="keyboard-row">
+            <button class="key">1</button>
+            <button class="key">2</button>
+            <button class="key">3</button>
+            <button class="key">4</button>
+            <button class="key">5</button>
+            <button class="key">6</button>
+            <button class="key">7</button>
+            <button class="key">8</button>
+            <button class="key">9</button>
+            <button class="key">0</button>
+        </div>
+        
+        <div class="keyboard-row">
+            <button class="key">q</button>
+            <button class="key">w</button>
+            <button class="key">e</button>
+            <button class="key">r</button>
+            <button class="key">t</button>
+            <button class="key">y</button>
+            <button class="key">u</button>
+            <button class="key">i</button>
+            <button class="key">o</button>
+            <button class="key">p</button>
+        </div>
+        
+        <div class="keyboard-row">
+            <button class="key">a</button>
+            <button class="key">s</button>
+            <button class="key">d</button>
+            <button class="key">f</button>
+            <button class="key">g</button>
+            <button class="key">h</button>
+            <button class="key">j</button>
+            <button class="key">k</button>
+            <button class="key">l</button>
+        </div>
+        
+        <div class="keyboard-row">
+            <button class="key">↑</button>
+            <button class="key">z</button>
+            <button class="key">x</button>
+            <button class="key">c</button>
+            <button class="key">v</button>
+            <button class="key">b</button>
+            <button class="key">n</button>
+            <button class="key">m</button>
+            <button class="key">⌫</button>
+        </div>
+        
+        <div class="keyboard-bottom">
+            <button class="key">?123</button>
+            <button class="key">@</button>
+            <button class="key">😊</button>
+            <button class="key key-space"></button>
+            <button class="key">.</button>
+            <button class="key key-enter">→</button>
+        </div>
+    </div>
+    
+    <div class="nav-bar">
+        <i>↓</i>
+    </div>
+</body>
+</html>

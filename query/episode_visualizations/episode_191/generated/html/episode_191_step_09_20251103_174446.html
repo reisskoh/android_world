@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Compose</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            font-size: 14px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header-button {
+            color: white;
+            font-size: 24px;
+            padding: 5px 15px;
+        }
+        
+        .email-field {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .field-label {
+            width: 60px;
+            font-size: 16px;
+            color: #aaa;
+        }
+        
+        .email-input {
+            flex: 1;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .recipient {
+            display: flex;
+            align-items: center;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 5px 10px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .recipient-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #555;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+        
+        .subject-field {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .subject-input {
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            color: #aaa;
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        
+        .subject-input:focus {
+            outline: none;
+            color: white;
+        }
+        
+        .attachment {
+            margin: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #1e1e1e;
+        }
+        
+        .attachment-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .attachment-info {
+            padding: 10px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .keyboard {
+            background-color: #1e1e1e;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .keyboard-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        
+        .keyboard-key {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin: 2px;
+        }
+        
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        
+        .keyboard-wide {
+            width: 60px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin: 2px;
+        }
+        
+        .keyboard-space {
+            width: 200px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin: 2px;
+        }
+        
+        .keyboard-enter {
+            width: 60px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: #e0e0e0;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin: 2px;
+        }
+        
+        .keyboard-special {
+            width: 50px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin: 2px;
+        }
+        
+        .keyboard-special.active {
+            background-color: #444;
+        }
+        
+        .keyboard-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        
+        .keyboard-bottom .keyboard-key {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .keyboard-bottom .keyboard-special {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .keyboard-bottom .keyboard-space {
+            width: 150px;
+            height: 40px;
+        }
+        
+        .keyboard-bottom .keyboard-enter {
+            width: 60px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>8:55</div>
+        <div>100%</div>
+    </div>
+    
+    <div class="header">
+        <div class="header-button">←</div>
+        <div>
+            <div class="header-button">📎</div>
+            <div class="header-button">➤</div>
+            <div class="header-button">⋮</div>
+        </div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">From</div>
+        <div class="email-input">fabiotexeira00123@gmail.com</div>
+        <div class="header-button">∨</div>
+    </div>
+    
+    <div class="email-field">
+        <div class="field-label">To</div>
+        <div style="flex: 1; display: flex; flex-wrap: wrap; align-items: center;">
+            <div class="recipient">
+                <div class="recipient-avatar">C</div>
+                <div>Carlos3345@gmail.com</div>
+            </div>
+            <input type="text" class="email-input" style="flex: 1; min-width: 50px;" placeholder="">
+        </div>
+        <div class="header-button">∨</div>
+    </div>
+    
+    <div class="subject-field">
+        <input type="text" class="subject-input" placeholder="Subject">
+    </div>
+    
+    <div class="attachment">
+        <img src="https://via.placeholder.com/300x150/123456/FFFFFF?text=Fitbit+Stats" alt="Fitbit Stats" class="attachment-image">
+        <div class="attachment-info">fitbitshare_1272361138.PNG</div>
+    </div>
+    
+    <div class="keyboard">
+        <div class="keyboard-top">
+            <div class="keyboard-key">🔢</div>
+            <div class="keyboard-key">😊</div>
+            <div class="keyboard-key">GIF</div>
+            <div class="keyboard-key">⚙️</div>
+            <div class="keyboard-key">🌐</div>
+            <div class="keyboard-key">🎨</div>
+            <div class="keyboard-key">🎤</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">q</div>
+            <div class="keyboard-key">w</div>
+            <div class="keyboard-key">e</div>
+            <div class="keyboard-key">r</div>
+            <div class="keyboard-key">t</div>
+            <div class="keyboard-key">y</div>
+            <div class="keyboard-key">u</div>
+            <div class="keyboard-key">i</div>
+            <div class="keyboard-key">o</div>
+            <div class="keyboard-key">p</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-key">a</div>
+            <div class="keyboard-key">s</div>
+            <div class="keyboard-key">d</div>
+            <div class="keyboard-key">f</div>
+            <div class="keyboard-key">g</div>
+            <div class="keyboard-key">h</div>
+            <div class="keyboard-key">j</div>
+            <div class="keyboard-key">k</div>
+            <div class="keyboard-key">l</div>
+        </div>
+        
+        <div class="keyboard-row">
+            <div class="keyboard-wide">⇧</div>
+            <div class="keyboard-key">z</div>
+            <div class="keyboard-key">x</div>
+            <div class="keyboard-key">c</div>
+            <div class="keyboard-key">v</div>
+            <div class="keyboard-key">b</div>
+            <div class="keyboard-key">n</div>
+            <div class="keyboard-key">m</div>
+            <div class="keyboard-wide">⌫</div>
+        </div>
+        
+        <div class="keyboard-bottom">
+            <div class="keyboard-special">?123</div>
+            <div class="keyboard-special">@</div>
+            <div class="keyboard-special">😊</div>
+            <div class="keyboard-space"></div>
+            <div class="keyboard-special">.</div>
+            <div class="keyboard-enter">→</div>
+        </div>
+    </div>
+</body>
+</html>

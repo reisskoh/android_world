@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Home Screen</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            font-family: Arial, sans-serif;
+            color: white;
+            padding-top: 20px;
+            padding-bottom: 80px;
+        }
+        
+        .status-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #121212;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 0 15px;
+        }
+        
+        .app-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .app-icon img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        
+        .app-name {
+            font-size: 12px;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 70px;
+        }
+        
+        .dock {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dock-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dock-item img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+        
+        .search-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 15px;
+            background: rgba(50, 50, 50, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .search-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .search-icons img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+        }
+        
+        .home-indicator {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-left">
+            <span>6:26</span>
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48cGF0aCBkPSJNMTAgMjBjNS41MjMgMCAxMC00LjQ3NyAxMC0xMC0xLjIzOSAwLTIuNDIzLTAuMzEzLTMuNDY4LTAuODQzTDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEwIDEw
