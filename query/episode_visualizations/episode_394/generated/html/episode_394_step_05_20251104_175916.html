@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Costco UK</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .costco-logo {
+      height: 50px;
+    }
+    .search-bar {
+      border: 2px solid #f0a000;
+      border-radius: 5px;
+    }
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      z-index: 1000;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .search-result-item {
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+    }
+    .search-result-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+    .keyboard {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #222;
+      padding: 10px;
+      border-top: 1px solid #444;
+    }
+    .keyboard-row {
+      display: flex;
+      justify-content: center;
+      margin: 5px 0;
+    }
+    .key {
+      width: 50px;
+      height: 50px;
+      background: #333;
+      color: white;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 5px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .key-wide {
+      width: 80px;
+    }
+    .key-enter {
+      width: 100px;
+      background: #d0d0ff;
+      color: #333;
+    }
+    .key-space {
+      width: 200px;
+    }
+    .navbar {
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #ddd;
+    }
+    .nav-item {
+      padding: 10px 15px;
+      text-align: center;
+    }
+    .dropdown-toggle {
+      background-color: #2a6496;
+      color: white;
+      border: none;
+    }
+    .dropdown-menu {
+      min-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid p-0">
+    <!-- Header -->
+    <div class="navbar d-flex justify-content-between align-items-center px-3">
+      <img src="https://via.placeholder.com/150x50?text=Costco+Logo" alt="Costco Logo" class="costco-logo">
+      <div class="d-flex">
+        <div class="nav-item d-flex align-items-center">
+          <i class="bi bi-geo-alt fs-4 me-2"></i>
+          <div>
+            <div class="small">Warehouses</div>
+          </div>
+        </div>
+        <div class="nav-item d-flex align-items-center">
+          <i class="bi bi-person fs-4 me-2"></i>
+          <div>
+            <div class="small">My Account</div>
+          </div>
+        </div>
+        <div class="nav-item d-flex align-items-center">
+          <i class="bi bi-cart fs-4 me-2"></i>
+          <div>
+            <div class="small">All</div>
+            <div class="small">Cart(s)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu and Search -->
+    <div class="d-flex p-2">
+      <button class="btn btn-primary me-2">☰ Menu</button>
+      <div class="dropdown me-2">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          All
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">All Categories</a></li>
+          <li><a class="dropdown-item" href="#">Electronics</a></li>
+          <li><a class="dropdown-item" href="#">Home</a></li>
+        </ul>
+      </div>
+      <div class="flex-grow-1 position-relative">
+        <input type="text" class="form-control search-bar" value="Automatic Garage door" placeholder="Search...">
+        <button class="btn position-absolute" style="right: 5px; top: 50%; transform: translateY(-50%);">
+          <i class="bi bi-search"></i>
+        </button>
+        <div class="search-results">
+          <div class="search-result-item">
+            <div>Automatic Garage door</div>
+          </div>
+          <div class="search-result-item d-flex align-items-center">
+            <img src="https://via.placeholder.com/60x60?text=Doorbell" alt="Product">
+            <div>
+              <div>eufy Video Doorbell E340 with Chime</div>
+            </div>
+          </div>
+          <div class="search-result-item d-flex align-items-center">
+            <img src="https://via.placeholder.com/60x60?text=Doorbell" alt="Product">
+            <div>
+              <div>eufy Video Doorbell E340 with Chime</div>
+            </div>
+          </div>
+          <div class="search-result-item d-flex align-items-center">
+            <img src="https://via.placeholder.com/60x60?text=Garage" alt="Product">
+            <div>
+              <div>Birkdale Automatic Premium Roller Garage Door with Installation up to 5m Wide</div>
+            </div>
+          </div>
+          <div class="search-result-item d-flex align-items-center">
+            <img src="https://via.placeholder.com/60x60?text=Garage" alt="Product">
+            <div>
+              <div>Birkdale Automatic Premium Roller Garage Door with Installation up to 5m Wide</div>
+            </div>
+          </div>
+          <div class="search-result-item">
+            <div>Birkdale Automatic Premium Sectional...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Placeholder -->
+    <div class="position-relative" style="height: 200px; background: #333;">
+      <img src="https://via.placeholder.com/480x200?text=Product+Image" alt="Product" class="w-100 h-100 object-fit-cover">
+      <div class="position-absolute bottom-0 start-50 translate-middle-x d-flex">
+        <div class="bg-white rounded-circle mx-1" style="width: 10px; height: 10px;"></div>
+        <div class="bg-white rounded-circle mx-1" style="width: 10px; height: 10px; opacity: 0.5;"></div>
+      </div>
+    </div>
+
+    <!-- Keyboard -->
+    <div class="keyboard">
+      <div class="d-flex justify-content-between mb-2">
+        <div class="key">1</div>
+        <div class="key">2</div>
+        <div class="key">3</div>
+        <div class="key">4</div>
+        <div class="key">5</div>
+        <div class="key">6</div>
+        <div class="key">7</div>
+        <div class="key">8</div>
+        <div class="key">9</div>
+        <div class="key">0</div>
+      </div>
+      <div class="keyboard-row">
+        <div class="key">q</div>
+        <div class="key">w</div>
+        <div class="key">e</div>
+        <div class="key">r</div>
+        <div class="key">t</div>
+        <div class="key">y</div>
+        <div class="key">u</div>
+        <div class="key">i</div>
+        <div class="key">o</div>
+        <div class="key">p</div>
+      </div>
+      <div class="keyboard-row">
+        <div class="key">a</div>
+        <div class="key">s</div>
+        <div class="key">d</div>
+        <div class="key">f</div>
+        <div class="key">g</div>
+        <div class="key">h</div>
+        <div class="key">j</div>
+        <div class="key">k</div>
+        <div class="key">l</div>
+      </div>
+      <div class="keyboard-row">
+        <div class="key">↑</div>
+        <div class="key">z</div>
+        <div class="key">x</div>
+        <div class="key">c</div>
+        <div class="key">v</div>
+        <div class="key">b</div>
+        <div class="key">n</div>
+        <div class="key">m</div>
+        <div class="key">⌫</div>
+      </div>
+      <div class="keyboard-row">
+        <div class="key key-wide">?123</div>
+        <div class="key key-wide">,</div>
+        <div class="key key-wide">😊</div>
+        <div class="key key-space"></div>
+        <div class="key key-wide">.</div>
+        <div class="key key-enter">→</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"></script>
+</body>
+</html>

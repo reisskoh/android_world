@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .status-bar {
+            background-color: #000;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .search-bar {
+            background-color: #333;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-bar .back-arrow {
+            color: white;
+            font-size: 24px;
+        }
+        
+        .search-input {
+            flex: 1;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-icon, .mic-icon {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .search-icon-large {
+            color: #4ECDC4;
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            color: #4ECDC4;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 16px;
+            line-height: 1.4;
+            max-width: 80%;
+        }
+        
+        .bottom-nav {
+            background-color: #fff;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+            font-size: 12px;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>12:32</span>
+        <div class="icons">
+            <span>🔒</span>
+            <span>📱</span>
+            <span>🍽️</span>
+            <span>•</span>
+        </div>
+        <div class="icons">
+            <span>📶</span>
+            <span>🔋 100%</span>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <div class="back-arrow">←</div>
+        <div class="search-icon">🔍</div>
+        <input type="text" class="search-input" placeholder="Buscar por">
+        <div class="mic-icon">🎤</div>
+    </div>
+    
+    <div class="content">
+        <div class="search-icon-large">🔍</div>
+        <h1 class="title">Nova busca</h1>
+        <p class="subtitle">Aqui você encontra os produtos que procura e as melhores ofertas.</p>
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <span>Home</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">≡</div>
+            <span>Menu</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🛍️</div>
+            <span>Carrinho</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">❤️</div>
+            <span>Favoritos</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">👤</div>
+            <span>Perfil</span>
+        </div>
+    </div>
+</body>
+</html>

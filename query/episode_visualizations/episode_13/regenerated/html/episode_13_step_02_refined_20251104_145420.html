@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney Cruise Line</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+        }
+        
+        .status-bar {
+            background-color: #333;
+            color: white;
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+        }
+        
+        .cruise-image {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cruise-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cruise-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .price-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .price {
+            color: #2ecc71;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .price-label {
+            color: #2ecc71;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .cabin-prices {
+            text-align: right;
+        }
+        
+        .cabin-prices div {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        .cabin-prices .price-value {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-icon {
+            margin-right: 15px;
+            font-size: 24px;
+            color: #555;
+        }
+        
+        .info-text {
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .itinerary {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .itinerary-day {
+            margin-bottom: 15px;
+        }
+        
+        .day-label {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        
+        .day-location {
+            font-size: 16px;
+            color: #333;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .check-availability {
+            background-color: #2ecc71;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            background-color: #333;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            color: white;
+        }
+        
+        .footer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .footer-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .footer-item.active {
+            color: #e74c3c;
+        }
+        
+        /* Icons using Unicode characters */
+        .ship-icon::before {
+            content: "🚢";
+        }
+        
+        .calendar-icon::before {
+            content: "📅";
+        }
+        
+        .clock-icon::before {
+            content: "⏰";
+        }
+        
+        .location-icon::before {
+            content: "📍";
+        }
+        
+        .itinerary-icon::before {
+            content: "🗓️";
+        }
+        
+        .star-icon::before {
+            content: "⭐";
+        }
+        
+        .search-icon::before {
+            content: "🔍";
+        }
+        
+        .info-icon::before {
+            content: "ℹ️";
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <span>12:35</span>
+        <span>32°</span>
+        <span>📶 🔋</span>
+    </div>
+    
+    <div class="header">
+        <h1>Disney Cruise Line</h1>
+        <div class="menu-icon">⋮</div>
+    </div>
+    
+    <div class="cruise-image">
+        <img src="https://placehold.co/480x200" alt="Cruise Destination">
+        <div class="cruise-title">4 Night Halloween On The High Seas Canada (New York Roundtrip)</div>
+    </div>
+    
+    <div class="price-section">
+        <div>
+            <div class="price">$190.00</div>
+            <div class="price-label">price per day</div>
+        </div>
+        <div class="cabin-prices">
+            <div>Cabin <span class="price-value">$762</span></div>
+            <div>Balcony <span class="price-value">$858</span></div>
+            <div>Suite <span class="price-value">n/a</span></div>
+        </div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon ship-icon"></div>
+        <div class="info-text">Disney Dream</div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon calendar-icon"></div>
+        <div class="info-text">October 17, 2023</div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon clock-icon"></div>
+        <div class="info-text">4 Days</div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon location-icon"></div>
+        <div class="info-text">New York, New York</div>
+    </div>
+    
+    <div class="info-item">
+        <div class="info-icon itinerary-icon"></div>
+        <div class="info-text">Itinerary</div>
+    </div>
+    
+    <div class="itinerary">
+        <div class="itinerary-day">
+            <div class="day-label">Day: 1</div>
+            <div class="day-location">New York, New York</div>
+        </div>
+        <div class="itinerary-day">
+            <div class="day-label">Day: 2</div>
+        </div>
+    </div>
+    
+    <div class="check-availability">Check Availability</div>
+    
+    <div class="footer">
+        <div class="footer-item">
+            <div class="footer-icon star-icon"></div>
+            <div>Top Deals</div>
+        </div>
+        <div class="footer-item active">
+            <div class="footer-icon search-icon"></div>
+            <div>Cruise Search</div>
+        </div>
+        <div class="footer-item">
+            <div class="footer-icon info-icon"></div>
+            <div>Contact Us</div>
+        </div>
+    </div>
+</body>
+</html>

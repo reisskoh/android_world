@@ -1,0 +1,505 @@
+{
+  "total_episodes": 1111,
+  "episodes_processed": 39,
+  "episodes_skipped": 1072,
+  "total_steps_processed": 15,
+  "total_steps_skipped": 231,
+  "episode_details": [
+    {
+      "episode_id": 11,
+      "steps_processed": 9,
+      "steps_skipped": 3,
+      "errors": []
+    },
+    {
+      "episode_id": 13,
+      "steps_processed": 3,
+      "steps_skipped": 0,
+      "errors": []
+    },
+    {
+      "episode_id": 27,
+      "steps_processed": 3,
+      "steps_skipped": 3,
+      "errors": [
+        "Error processing episode_27_step_03: Connection error.",
+        "Error processing episode_27_step_04: Connection error.",
+        "Error processing episode_27_step_05: Connection error."
+      ]
+    },
+    {
+      "episode_id": 118,
+      "steps_processed": 0,
+      "steps_skipped": 3,
+      "errors": [
+        "Error processing episode_118_step_00: Connection error.",
+        "Error processing episode_118_step_01: Connection error.",
+        "Error processing episode_118_step_02: Connection error."
+      ]
+    },
+    {
+      "episode_id": 127,
+      "steps_processed": 0,
+      "steps_skipped": 4,
+      "errors": [
+        "Error processing episode_127_step_00: Connection error.",
+        "Error processing episode_127_step_01: Connection error.",
+        "Error processing episode_127_step_02: Connection error.",
+        "Error processing episode_127_step_03: Connection error."
+      ]
+    },
+    {
+      "episode_id": 131,
+      "steps_processed": 0,
+      "steps_skipped": 8,
+      "errors": [
+        "Error processing episode_131_step_00: Connection error.",
+        "Error processing episode_131_step_01: Connection error.",
+        "Error processing episode_131_step_02: Connection error.",
+        "Error processing episode_131_step_03: Connection error.",
+        "Error processing episode_131_step_04: Connection error.",
+        "Error processing episode_131_step_05: Connection error.",
+        "Error processing episode_131_step_06: Connection error.",
+        "Error processing episode_131_step_07: Connection error."
+      ]
+    },
+    {
+      "episode_id": 153,
+      "steps_processed": 0,
+      "steps_skipped": 16,
+      "errors": [
+        "Error processing episode_153_step_00: Connection error.",
+        "Error processing episode_153_step_01: Connection error.",
+        "Error processing episode_153_step_02: Connection error.",
+        "Error processing episode_153_step_03: Connection error.",
+        "Error processing episode_153_step_04: Connection error.",
+        "Error processing episode_153_step_05: Connection error.",
+        "Error processing episode_153_step_06: Connection error.",
+        "Error processing episode_153_step_07: Connection error.",
+        "Error processing episode_153_step_08: Connection error.",
+        "Error processing episode_153_step_09: Connection error.",
+        "Error processing episode_153_step_10: Connection error.",
+        "Error processing episode_153_step_11: Connection error.",
+        "Error processing episode_153_step_12: Connection error.",
+        "Error processing episode_153_step_13: Connection error.",
+        "Error processing episode_153_step_14: Connection error.",
+        "Error processing episode_153_step_15: Connection error."
+      ]
+    },
+    {
+      "episode_id": 158,
+      "steps_processed": 0,
+      "steps_skipped": 6,
+      "errors": [
+        "Error processing episode_158_step_00: Connection error.",
+        "Error processing episode_158_step_01: Connection error.",
+        "Error processing episode_158_step_02: Connection error.",
+        "Error processing episode_158_step_03: Connection error.",
+        "Error processing episode_158_step_04: Connection error.",
+        "Error processing episode_158_step_05: Connection error."
+      ]
+    },
+    {
+      "episode_id": 167,
+      "steps_processed": 0,
+      "steps_skipped": 5,
+      "errors": [
+        "Error processing episode_167_step_00: Connection error.",
+        "Error processing episode_167_step_01: Connection error.",
+        "Error processing episode_167_step_02: Connection error.",
+        "Error processing episode_167_step_03: Connection error.",
+        "Error processing episode_167_step_04: Connection error."
+      ]
+    },
+    {
+      "episode_id": 173,
+      "steps_processed": 0,
+      "steps_skipped": 4,
+      "errors": [
+        "Error processing episode_173_step_00: Connection error.",
+        "Error processing episode_173_step_01: Connection error.",
+        "Error processing episode_173_step_02: Connection error.",
+        "Error processing episode_173_step_03: Connection error."
+      ]
+    },
+    {
+      "episode_id": 178,
+      "steps_processed": 0,
+      "steps_skipped": 3,
+      "errors": [
+        "Error processing episode_178_step_00: Connection error.",
+        "Error processing episode_178_step_01: Connection error.",
+        "Error processing episode_178_step_02: Connection error."
+      ]
+    },
+    {
+      "episode_id": 191,
+      "steps_processed": 0,
+      "steps_skipped": 10,
+      "errors": [
+        "Error processing episode_191_step_00: Connection error.",
+        "Error processing episode_191_step_01: Connection error.",
+        "Error processing episode_191_step_02: Connection error.",
+        "Error processing episode_191_step_03: Connection error.",
+        "Error processing episode_191_step_04: Connection error.",
+        "Error processing episode_191_step_05: Connection error.",
+        "Error processing episode_191_step_06: Connection error.",
+        "Error processing episode_191_step_07: Connection error.",
+        "Error processing episode_191_step_08: Connection error.",
+        "Error processing episode_191_step_09: Connection error."
+      ]
+    },
+    {
+      "episode_id": 193,
+      "steps_processed": 0,
+      "steps_skipped": 4,
+      "errors": [
+        "Error processing episode_193_step_00: Connection error.",
+        "Error processing episode_193_step_01: Connection error.",
+        "Error processing episode_193_step_02: Connection error.",
+        "Error processing episode_193_step_03: Connection error."
+      ]
+    },
+    {
+      "episode_id": 198,
+      "steps_processed": 0,
+      "steps_skipped": 9,
+      "errors": [
+        "Error processing episode_198_step_00: Connection error.",
+        "Error processing episode_198_step_01: Connection error.",
+        "Error processing episode_198_step_02: Connection error.",
+        "Error processing episode_198_step_03: Connection error.",
+        "Error processing episode_198_step_04: Connection error.",
+        "Error processing episode_198_step_05: Connection error.",
+        "Error processing episode_198_step_06: Connection error.",
+        "Error processing episode_198_step_07: Connection error.",
+        "Error processing episode_198_step_08: Connection error."
+      ]
+    },
+    {
+      "episode_id": 207,
+      "steps_processed": 0,
+      "steps_skipped": 11,
+      "errors": [
+        "Error processing episode_207_step_00: Connection error.",
+        "Error processing episode_207_step_01: Connection error.",
+        "Error processing episode_207_step_02: Connection error.",
+        "Error processing episode_207_step_03: Connection error.",
+        "Error processing episode_207_step_04: Connection error.",
+        "Error processing episode_207_step_05: Connection error.",
+        "Error processing episode_207_step_06: Connection error.",
+        "Error processing episode_207_step_07: Connection error.",
+        "Error processing episode_207_step_08: Connection error.",
+        "Error processing episode_207_step_09: Connection error.",
+        "Error processing episode_207_step_10: Connection error."
+      ]
+    },
+    {
+      "episode_id": 211,
+      "steps_processed": 0,
+      "steps_skipped": 2,
+      "errors": [
+        "Error processing episode_211_step_00: Connection error.",
+        "Error processing episode_211_step_01: Connection error."
+      ]
+    },
+    {
+      "episode_id": 227,
+      "steps_processed": 0,
+      "steps_skipped": 3,
+      "errors": [
+        "Error processing episode_227_step_00: Connection error.",
+        "Error processing episode_227_step_01: Connection error.",
+        "Error processing episode_227_step_02: Connection error."
+      ]
+    },
+    {
+      "episode_id": 233,
+      "steps_processed": 0,
+      "steps_skipped": 6,
+      "errors": [
+        "Error processing episode_233_step_00: Connection error.",
+        "Error processing episode_233_step_01: Connection error.",
+        "Error processing episode_233_step_02: Connection error.",
+        "Error processing episode_233_step_03: Connection error.",
+        "Error processing episode_233_step_04: Connection error.",
+        "Error processing episode_233_step_05: Connection error."
+      ]
+    },
+    {
+      "episode_id": 238,
+      "steps_processed": 0,
+      "steps_skipped": 5,
+      "errors": [
+        "Error processing episode_238_step_00: Connection error.",
+        "Error processing episode_238_step_01: Connection error.",
+        "Error processing episode_238_step_02: Connection error.",
+        "Error processing episode_238_step_03: Connection error.",
+        "Error processing episode_238_step_04: Connection error."
+      ]
+    },
+    {
+      "episode_id": 247,
+      "steps_processed": 0,
+      "steps_skipped": 5,
+      "errors": [
+        "Error processing episode_247_step_00: Connection error.",
+        "Error processing episode_247_step_01: Connection error.",
+        "Error processing episode_247_step_02: Connection error.",
+        "Error processing episode_247_step_03: Connection error.",
+        "Error processing episode_247_step_04: Connection error."
+      ]
+    },
+    {
+      "episode_id": 253,
+      "steps_processed": 0,
+      "steps_skipped": 7,
+      "errors": [
+        "Error processing episode_253_step_00: Connection error.",
+        "Error processing episode_253_step_01: Connection error.",
+        "Error processing episode_253_step_02: Connection error.",
+        "Error processing episode_253_step_03: Connection error.",
+        "Error processing episode_253_step_04: Connection error.",
+        "Error processing episode_253_step_05: Connection error.",
+        "Error processing episode_253_step_06: Connection error."
+      ]
+    },
+    {
+      "episode_id": 258,
+      "steps_processed": 0,
+      "steps_skipped": 5,
+      "errors": [
+        "Error processing episode_258_step_00: Connection error.",
+        "Error processing episode_258_step_01: Connection error.",
+        "Error processing episode_258_step_02: Connection error.",
+        "Error processing episode_258_step_03: Connection error.",
+        "Error processing episode_258_step_04: Connection error."
+      ]
+    },
+    {
+      "episode_id": 267,
+      "steps_processed": 0,
+      "steps_skipped": 2,
+      "errors": [
+        "Error processing episode_267_step_00: Connection error.",
+        "Error processing episode_267_step_01: Connection error."
+      ]
+    },
+    {
+      "episode_id": 272,
+      "steps_processed": 0,
+      "steps_skipped": 6,
+      "errors": [
+        "Error processing episode_272_step_00: Connection error.",
+        "Error processing episode_272_step_01: Connection error.",
+        "Error processing episode_272_step_02: Connection error.",
+        "Error processing episode_272_step_03: Connection error.",
+        "Error processing episode_272_step_04: Connection error.",
+        "Error processing episode_272_step_05: Connection error."
+      ]
+    },
+    {
+      "episode_id": 288,
+      "steps_processed": 0,
+      "steps_skipped": 2,
+      "errors": [
+        "Error processing episode_288_step_00: Connection error.",
+        "Error processing episode_288_step_01: Connection error."
+      ]
+    },
+    {
+      "episode_id": 292,
+      "steps_processed": 0,
+      "steps_skipped": 6,
+      "errors": [
+        "Error processing episode_292_step_00: Connection error.",
+        "Error processing episode_292_step_01: Connection error.",
+        "Error processing episode_292_step_02: Connection error.",
+        "Error processing episode_292_step_03: Connection error.",
+        "Error processing episode_292_step_04: Connection error.",
+        "Error processing episode_292_step_05: Connection error."
+      ]
+    },
+    {
+      "episode_id": 308,
+      "steps_processed": 0,
+      "steps_skipped": 12,
+      "errors": [
+        "Error processing episode_308_step_00: Connection error.",
+        "Error processing episode_308_step_01: Connection error.",
+        "Error processing episode_308_step_02: Connection error.",
+        "Error processing episode_308_step_03: Connection error.",
+        "Error processing episode_308_step_04: Connection error.",
+        "Error processing episode_308_step_05: Connection error.",
+        "Error processing episode_308_step_06: Connection error.",
+        "Error processing episode_308_step_07: Connection error.",
+        "Error processing episode_308_step_08: Connection error.",
+        "Error processing episode_308_step_09: Connection error.",
+        "Error processing episode_308_step_10: Connection error.",
+        "Error processing episode_308_step_11: Connection error."
+      ]
+    },
+    {
+      "episode_id": 314,
+      "steps_processed": 0,
+      "steps_skipped": 10,
+      "errors": [
+        "Error processing episode_314_step_00: Connection error.",
+        "Error processing episode_314_step_01: Connection error.",
+        "Error processing episode_314_step_02: Connection error.",
+        "Error processing episode_314_step_03: Connection error.",
+        "Error processing episode_314_step_04: Connection error.",
+        "Error processing episode_314_step_05: Connection error.",
+        "Error processing episode_314_step_06: Connection error.",
+        "Error processing episode_314_step_07: Connection error.",
+        "Error processing episode_314_step_08: Connection error.",
+        "Error processing episode_314_step_09: Connection error."
+      ]
+    },
+    {
+      "episode_id": 328,
+      "steps_processed": 0,
+      "steps_skipped": 5,
+      "errors": [
+        "Error processing episode_328_step_00: Connection error.",
+        "Error processing episode_328_step_01: Connection error.",
+        "Error processing episode_328_step_02: Connection error.",
+        "Error processing episode_328_step_03: Connection error.",
+        "Error processing episode_328_step_04: Connection error."
+      ]
+    },
+    {
+      "episode_id": 334,
+      "steps_processed": 0,
+      "steps_skipped": 7,
+      "errors": [
+        "Error processing episode_334_step_00: Connection error.",
+        "Error processing episode_334_step_01: Connection error.",
+        "Error processing episode_334_step_02: Connection error.",
+        "Error processing episode_334_step_03: Connection error.",
+        "Error processing episode_334_step_04: Connection error.",
+        "Error processing episode_334_step_05: Connection error.",
+        "Error processing episode_334_step_06: Connection error."
+      ]
+    },
+    {
+      "episode_id": 348,
+      "steps_processed": 0,
+      "steps_skipped": 1,
+      "errors": [
+        "Error processing episode_348_step_00: Connection error."
+      ]
+    },
+    {
+      "episode_id": 354,
+      "steps_processed": 0,
+      "steps_skipped": 4,
+      "errors": [
+        "Error processing episode_354_step_00: Connection error."
+      ]
+    },
+    {
+      "episode_id": 1001,
+      "steps_processed": 0,
+      "steps_skipped": 11,
+      "errors": [
+        "Error processing episode_1001_step_00: Connection error.",
+        "Error processing episode_1001_step_01: Connection error.",
+        "Error processing episode_1001_step_02: Connection error.",
+        "Error processing episode_1001_step_03: Connection error.",
+        "Error processing episode_1001_step_04: Connection error.",
+        "Error processing episode_1001_step_05: Connection error.",
+        "Error processing episode_1001_step_06: Connection error.",
+        "Error processing episode_1001_step_07: Connection error.",
+        "Error processing episode_1001_step_08: Connection error.",
+        "Error processing episode_1001_step_09: Connection error.",
+        "Error processing episode_1001_step_10: Connection error."
+      ]
+    },
+    {
+      "episode_id": 1016,
+      "steps_processed": 0,
+      "steps_skipped": 3,
+      "errors": [
+        "Error processing episode_1016_step_00: Connection error.",
+        "Error processing episode_1016_step_01: Connection error.",
+        "Error processing episode_1016_step_02: Connection error."
+      ]
+    },
+    {
+      "episode_id": 1041,
+      "steps_processed": 0,
+      "steps_skipped": 5,
+      "errors": [
+        "Error processing episode_1041_step_00: Connection error.",
+        "Error processing episode_1041_step_01: Connection error.",
+        "Error processing episode_1041_step_02: Connection error.",
+        "Error processing episode_1041_step_03: Connection error.",
+        "Error processing episode_1041_step_04: Connection error."
+      ]
+    },
+    {
+      "episode_id": 1056,
+      "steps_processed": 0,
+      "steps_skipped": 6,
+      "errors": [
+        "Error processing episode_1056_step_00: Connection error.",
+        "Error processing episode_1056_step_01: Connection error.",
+        "Error processing episode_1056_step_02: Connection error.",
+        "Error processing episode_1056_step_03: Connection error.",
+        "Error processing episode_1056_step_04: Connection error.",
+        "Error processing episode_1056_step_05: Connection error."
+      ]
+    },
+    {
+      "episode_id": 1077,
+      "steps_processed": 0,
+      "steps_skipped": 9,
+      "errors": [
+        "Error processing episode_1077_step_00: Connection error.",
+        "Error processing episode_1077_step_01: Connection error.",
+        "Error processing episode_1077_step_02: Connection error.",
+        "Error processing episode_1077_step_03: Connection error.",
+        "Error processing episode_1077_step_04: Connection error.",
+        "Error processing episode_1077_step_05: Connection error.",
+        "Error processing episode_1077_step_06: Connection error.",
+        "Error processing episode_1077_step_07: Connection error.",
+        "Error processing episode_1077_step_08: Connection error."
+      ]
+    },
+    {
+      "episode_id": 1082,
+      "steps_processed": 0,
+      "steps_skipped": 14,
+      "errors": [
+        "Error processing episode_1082_step_00: Connection error.",
+        "Error processing episode_1082_step_01: Connection error.",
+        "Error processing episode_1082_step_02: Connection error.",
+        "Error processing episode_1082_step_03: Connection error.",
+        "Error processing episode_1082_step_04: Connection error.",
+        "Error processing episode_1082_step_05: Connection error.",
+        "Error processing episode_1082_step_06: Connection error.",
+        "Error processing episode_1082_step_07: Connection error.",
+        "Error processing episode_1082_step_08: Connection error.",
+        "Error processing episode_1082_step_09: Connection error.",
+        "Error processing episode_1082_step_10: Connection error.",
+        "Error processing episode_1082_step_11: Connection error.",
+        "Error processing episode_1082_step_12: Connection error.",
+        "Error processing episode_1082_step_13: Connection error."
+      ]
+    },
+    {
+      "episode_id": 1097,
+      "steps_processed": 0,
+      "steps_skipped": 6,
+      "errors": [
+        "Error processing episode_1097_step_00: Connection error.",
+        "Error processing episode_1097_step_01: Connection error.",
+        "Error processing episode_1097_step_02: Connection error.",
+        "Error processing episode_1097_step_03: Connection error.",
+        "Error processing episode_1097_step_04: Connection error.",
+        "Error processing episode_1097_step_05: Connection error."
+      ]
+    }
+  ]
+}

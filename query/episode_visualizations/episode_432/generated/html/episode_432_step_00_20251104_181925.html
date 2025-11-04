@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Training + Gym</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      padding-bottom: 70px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    .product-card {
+      margin: 15px;
+      padding: 15px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .heart-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .best-seller {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #b89a73;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .star-rating {
+      color: #ff9900;
+      font-size: 16px;
+    }
+    .footer-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #fff;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #666;
+    }
+    .nav-item.active {
+      color: #000;
+      font-weight: bold;
+    }
+    .badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: #b89a73;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .sort-btn {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #000;
+      cursor: pointer;
+    }
+    .sort-btn i {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <i class="bi bi-chevron-left" style="font-size: 24px; cursor: pointer;"></i>
+    </div>
+    <div>
+      <h1 style="margin: 0; font-size: 24px; font-weight: bold;">TRAINING + GYM</h1>
+      <p style="margin: 5px 0 0 0; font-size: 14px; color: #666;">14 PRODUCTS</p>
+    </div>
+    <div style="display: flex; gap: 15px;">
+      <i class="bi bi-funnel" style="font-size: 24px; cursor: pointer;"></i>
+      <i class="bi bi-search" style="font-size: 24px; cursor: pointer;"></i>
+    </div>
+  </div>
+
+  <!-- Sort Button -->
+  <div style="text-align: right; padding: 0 20px 10px 0;">
+    <div class="sort-btn">
+      SORT <i class="bi bi-sort-down"></i>
+    </div>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Product 1 -->
+      <div class="col-6">
+        <div class="product-card position-relative">
+          <div class="best-seller">BEST SELLER</div>
+          <div class="heart-icon">
+            <i class="bi bi-heart"></i>
+          </div>
+          <img src="https://via.placeholder.com/300x200?text=Shoe+1" class="product-image" alt="PWRSPIN Indoor Cycling Shoes">
+          <div style="font-size: 12px; color: #666; margin-bottom: 5px;">1 Color</div>
+          <h5 style="font-weight: bold; margin-bottom: 5px;">PWRSPIN Indoor Cycling Shoes</h5>
+          <div style="font-weight: bold; margin-bottom: 5px;">$120.00</div>
+          <div class="star-rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <span style="font-size: 12px; color: #666; margin-left: 5px;">(1)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="col-6">
+        <div class="product-card position-relative">
+          <div class="heart-icon">
+            <i class="bi bi-heart"></i>
+          </div>
+          <img src="https://via.placeholder.com/300x200?text=Shoe+2" class="product-image" alt="Fuse 2.0 Women's Training Shoes">
+          <div style="font-size: 12px; color: #666; margin-bottom: 5px;">1 Color</div>
+          <h5 style="font-weight: bold; margin-bottom: 5px;">Fuse 2.0 Women's Training Shoes</h5>
+          <div style="font-weight: bold; margin-bottom: 5px;">$100.00</div>
+          <div class="star-rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <span style="font-size: 12px; color: #666; margin-left: 5px;">(1)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="col-6">
+        <div class="product-card position-relative">
+          <div class="heart-icon">
+            <i class="bi bi-heart"></i>
+          </div>
+          <img src="https://via.placeholder.com/300x200?text=Shoe+3" class="product-image" alt="PWR XX NITRO™ Luxe Women's Training Shoe">
+          <div style="font-size: 12px; color: #666; margin-bottom: 5px;">1 Color</div>
+          <h5 style="font-weight: bold; margin-bottom: 5px;">PWR XX NITRO™ Luxe Women's Training Shoe</h5>
+          <div style="font-weight: bold; margin-bottom: 5px;">$150.00</div>
+          <div class="star-rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+            <span style="font-size: 12px; color: #666; margin-left: 5px;">(1)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="col-6">
+        <div class="product-card position-relative">
+          <div class="heart-icon">
+            <i class="bi bi-heart"></i>
+          </div>
+          <img src="https://via.placeholder.com/300x200?text=Shoe+4" class="product-image" alt="PWR NITRO™ Squared Women's Training Shoe">
+          <div style="font-size: 12px; color: #666; margin-bottom: 5px;">3 Colors <i class="bi bi-chevron-down"></i></div>
+          <h5 style="font-weight: bold; margin-bottom: 5px;">PWR NITRO™ Squared Women's Training Shoe</h5>
+          <div style="font-weight: bold; margin-bottom: 5px;">$130.00</div>
+          <div class="star-rating">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <span style="font-size: 12px; color: #666; margin-left: 5px;">(2)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Navigation -->
+  <div class="footer-nav">
+    <div class="nav-item">
+      <i class="bi bi-house"></i>
+      <span>HOME</span>
+    </div>
+    <div class="nav-item">
+      <i class="bi bi-calendar"></i>
+      <span>DROPS</span>
+    </div>
+    <div class="nav-item active">
+      <i class="bi bi-search"></i>
+      <span>SHOP</span>
+    </div>
+    <div class="nav-item">
+      <i class="bi bi-cart"></i>
+      <span>CART</span>
+    </div>
+    <div class="nav-item">
+      <div style="position: relative;">
+        <i class="bi bi-person"></i>
+        <div class="badge">2</div>
+      </div>
+      <span>ACCOUNT</span>
+    </div>
+  </div>
+
+  <!-- Bootstrap Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"></script>
+</body>
+</html>

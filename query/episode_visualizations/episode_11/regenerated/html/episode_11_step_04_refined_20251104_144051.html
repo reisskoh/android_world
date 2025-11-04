@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Task</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #000;
+            border-bottom: 1px solid #333;
+        }
+        
+        .status-bar .left {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .status-bar .right {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-left: 15px;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            border-bottom: 2px solid #3b82f6;
+            font-weight: bold;
+        }
+        
+        .tab.inactive {
+            color: #999;
+        }
+        
+        .hide-markdown {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            color: #999;
+        }
+        
+        .hide-markdown input {
+            margin-right: 5px;
+        }
+        
+        .task-card {
+            background-color: #1a1a1a;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .task-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .task-date {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+        
+        .task-source {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .task-source a {
+            color: #999;
+            text-decoration: none;
+        }
+        
+        .share-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px;
+            background-color: #111;
+            border-top: 1px solid #333;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .share-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .share-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .share-icon img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .share-label {
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .google {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        .email {
+            background-color: #4285f4;
+        }
+        
+        .copy {
+            background-color: #f4b400;
+        }
+        
+        .more {
+            background-color: #4cd964;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="left">
+            <span>8:03</span>
+        </div>
+        <div class="right">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="tabs">
+            <div class="tab active">Text</div>
+            <div class="tab inactive">Image</div>
+        </div>
+    </div>
+    
+    <div class="hide-markdown">
+        <input type="checkbox" id="hide-markdown">
+        <label for="hide-markdown">Hide Markdown</label>
+    </div>
+    
+    <div class="task-card">
+        <div class="task-title">Weeding plan</div>
+        <div class="task-date">Due Date: Jul 19, 12:30pm</div>
+        <div class="task-source">
+            From TickTick:<br>
+            <a href="www.ticktick.com">www.ticktick.com</a>
+        </div>
+    </div>
+    
+    <div class="share-bar">
+        <div class="share-option">
+            <div class="share-icon twitter">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIwLjQgNi4xN2MtLjQ0LS42Ni0xLjA3LTEuMTctMS44Mi0xLjUzLjAwLS4wMS0uMDItLjAxLS4wMy0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0LS4wMS0uMDgtLjAxLS4xMi0uMDEtLjA0

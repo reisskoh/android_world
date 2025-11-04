@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>eBay Item Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+    }
+    .navbar {
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+    .seller-info {
+      background-color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .btn-primary {
+      background-color: #3b5998;
+      border-color: #3b5998;
+      font-weight: bold;
+    }
+    .btn-outline-primary {
+      color: #3b5998;
+      border-color: #3b5998;
+      font-weight: bold;
+    }
+    .rating-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .rating-bar span {
+      width: 180px;
+      margin-right: 10px;
+    }
+    .progress {
+      height: 6px;
+      background-color: #e9ecef;
+      border-radius: 3px;
+    }
+    .progress-bar {
+      background-color: #000;
+      border-radius: 3px;
+    }
+    .footer-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+      padding: 10px 0;
+    }
+    .nav-item {
+      text-align: center;
+      font-size: 12px;
+    }
+    .nav-item i {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    .guarantee-section {
+      background-color: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+    .guarantee-icon {
+      margin-right: 10px;
+      color: #007bff;
+    }
+    .save-seller {
+      color: #007bff;
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .save-seller i {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid p-0">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <button class="btn p-0 me-3" onclick="history.back()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0 .5-.5V7a.5.5 0 0 0-.5-.5h-7.086L9.47 4.94a.5.5 0 0 0-.707-.708L6.293 6.707a.5.5 0 0 0-.146.353V7.5a.5.5 0 0 0 .5.5h7.086l-1.56 1.56a.5.5 0 0 0 .707.708l2.474-2.474a.5.5 0 0 0 .146-.353V8a.5.5 0 0 0 .5-.5z"/>
+          </svg>
+        </button>
+        <h1 class="navbar-brand mb-0">Item</h1>
+        <div class="ms-auto d-flex">
+          <button class="btn btn-light me-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 1-1.397-1.397l-1.397 1.397a6.5 6.5 0 0 1 1.397 1.397z"/>
+              <path d="M13.586 13.586a2 2 0 1 1-2.828-2.828l2.828 2.828z"/>
+            </svg>
+          </button>
+          <button class="btn btn-light me-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607l-1.495-1.495A.5.5 0 0 1 0 1.5zm13 0H1.5a.5.5 0 0 0-.5.5.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5.5.5 0 0 0-.5-.5z"/>
+              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 6a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          </button>
+          <button class="btn btn-light me-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+              <path d="M13.5 1a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M11 2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0m-2 6.036a1.5 1.5 0 0 1 0 2.964l1.5 1.5a1.5 1.5 0 0 1-2.121 2.121l-1.5-1.5a1.5 1.5 0 0 1 0-2.964l1.5-1.5a1.5 1.5 0 0 1 2.121 0m-6.036 0a1.5 1.5 0 0 1 2.964 0l1.5 1.5a1.5 1.5 0 0 1-2.121 2.121l-1.5-1.5a1.5 1.5 0 0 1 0-2.964l1.5-1.5a1.5 1.5 0 0 1 2.121 0m6.036 0a1.5 1.5 0 0 1 0 2.964l1.5 1.5a1.5 1.5 0 0 1-2.121 2.121l-1.5-1.5a1.5 1.5 0 0 1 0-2.964l1.5-1.5a1.5 1.5 0 0 1 2.121 0"/>
+            </svg>
+          </button>
+          <button class="btn btn-light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+              <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- eBay Money Back Guarantee -->
+    <div class="container px-3">
+      <div class="guarantee-section">
+        <div class="guarantee-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-currency-pound" viewBox="0 0 16 16">
+            <path d="M7.646 6.854a.5.5 0 0 0 .708 0L10 5.172V10a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V5.172l1.676 1.684a.5.5 0 0 0 .708-.708l-2.5-2.5a.5.5 0 0 0-.708 0l-2.5 2.5a.5.5 0 0 0 0 .708z"/>
+            <path d="M10.5 10.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1z"/>
+            <path d="M10.5 12.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1z"/>
+            <path d="M10.5 14.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1z"/>
+          </svg>
+        </div>
+        <div>
+          <h5 class="mb-1">eBay Money Back Guarantee</h5>
+          <p class="mb-0 text-muted">Get the item you ordered or your money back.</p>
+        </div>
+        <div class="ms-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- About this seller -->
+      <h2 class="section-title">About this seller</h2>
+      <div class="seller-info">
+        <div class="d-flex align-items-center mb-2">
+          <img src="https://via.placeholder.com/60" alt="Seller" class="rounded me-3">
+          <div>
+            <h5 class="mb-0">BreainBrasil (393)</h5>
+            <p class="mb-0 text-muted">100% positive feedback</p>
+          </div>
+        </div>
+        <div class="save-seller">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+            <path d="m8 2.748-.714-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.714 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.14c0 0 5.692 5.692 7.824 1.14C12.46 2.895 15 11 15 11S12.46 2.895 8 15z"/>
+          </svg>
+          Save seller
+        </div>
+        <div class="mt-3 d-flex align-items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+          </svg>
+          <span class="ms-2">Joined May 2020</span>
+        </div>
+      </div>
+
+      <!-- Seller's other items button -->
+      <button class="btn btn-primary w-100 mb-3">Seller's other items</button>
+      
+      <!-- Contact seller button -->
+      <button class="btn btn-outline-primary w-100 mb-3">Contact seller</button>
+      
+      <!-- Registered as private seller info -->
+      <div class="mb-3">
+        <p class="mb-1"><u>Registered as a private seller</u></p>
+        <p class="text-muted mb-0">Thereby, consumer rights stemming from EU consumer protection law do not apply. eBay Money Back Guarantee still

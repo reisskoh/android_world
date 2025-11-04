@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #121212;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .header .icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .search-bar {
+            flex: 1;
+            background-color: #2d2d2d;
+            border-radius: 24px;
+            padding: 8px 15px;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 5px;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-right .icon {
+            margin: 0 10px;
+            font-size: 24px;
+        }
+        
+        .nav {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .nav-item {
+            padding: 10px 15px;
+            font-weight: bold;
+            margin-right: 20px;
+            position: relative;
+        }
+        
+        .nav-item.active {
+            color: #8ab4f8;
+        }
+        
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 3px;
+            background-color: #8ab4f8;
+            border-radius: 3px;
+        }
+        
+        .google-logo {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 60px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .search-box {
+            margin: 20px 15px;
+            background-color: #2d2d2d;
+            border-radius: 24px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-box .icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 5px;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+        }
+        
+        .search-box .voice {
+            margin: 0 10px;
+            color: #4285f4;
+        }
+        
+        .search-box .camera {
+            margin-left: 10px;
+            color: #34a853;
+        }
+        
+        .languages {
+            text-align: center;
+            padding: 20px 15px;
+            font-size: 14px;
+        }
+        
+        .languages .title {
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+        
+        .languages .lang-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .languages .lang {
+            color: #8ab4f8;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .trending {
+            padding: 20px 15px;
+        }
+        
+        .trending .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .trending .title .more {
+            font-size: 20px;
+        }
+        
+        .trending-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .trending-item .trend-icon {
+            margin-right: 10px;
+            color: #8ab4f8;
+            font-size: 18px;
+        }
+        
+        .trending-item .text {
+            font-size: 18px;
+        }
+        
+        .footer {
+            padding: 20px 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>8:56</div>
+        <div>●●●</div>
+    </div>
+    
+    <div class="header">
+        <div class="icon">🏠</div>
+        <div class="search-bar">
+            <input type="text" value="google.com/?sa=X&ved=">
+        </div>
+        <div class="header-right">
+            <div class="icon">➕</div>
+            <div class="icon">4</div>
+            <div class="icon">⋮</div>
+        </div>
+    </div>
+    
+    <div class="nav">
+        <div class="nav-item">☰</div>
+        <div class="nav-item active">ALL</div>
+        <div class="nav-item">IMAGES</div>
+        <div class="nav-item" style="margin-left: auto;">🟩</div>
+        <div class="nav-item" style="background-color: #5c40ff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold;">C</div>
+    </div>
+    
+    <div class="google-logo">Google</div>
+    
+    <div class="search-box">
+        <div class="icon">🔍</div>
+        <input type="text" placeholder="">
+        <div class="voice">🎤</div>
+        <div class="camera">📷</div>
+    </div>
+    
+    <div class="languages">
+        <div class="title">Google offered in:</div>
+        <div class="lang-list">
+            <a href="#" class="lang">हिन्दी</a>
+            <a href="#" class="lang">বাংলা</a>
+            <a href="#" class="lang">తెలుగు</a>
+            <a href="#" class="lang">मराठी</a>
+            <a href="#" class="lang">தமிழ்</a>
+            <a href="#" class="lang">ગુજરાતી</a>
+            <a href="#" class="lang">ಕನ್ನಡ</a>
+            <a href="#" class="lang">മലയാളം</a>
+            <a href="#" class="lang">ਪੰਜਾਬੀ</a>
+        </div>
+    </div>
+    
+    <div class="trending">
+        <div class="title">
+            <span>Trending searches</span>
+            <span class="more">⋮</span>
+        </div>
+        
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="text">world expo 2030 saudi arabia</div>
+        </div>
+        
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="text">krk tweets</div>
+        </div>
+        
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="text">ama bank odisha</div>
+        </div>
+        
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="text">fii dii data today</div>
+        </div>
+        
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="text">december important days</div>
+        </div>
+        
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="text">adani hindenburg supreme court</div>
+        </div>
+        
+        <div class="trending-item">
+            <div class="trend-icon">📈</div>
+            <div class="text">heavy rainfall chennai</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div>Google</div>
+    </div>
+</body>
+</html>

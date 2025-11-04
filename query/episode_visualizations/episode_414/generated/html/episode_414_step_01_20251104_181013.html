@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Account Settings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .header {
+      background-color: #121212;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+    }
+    .avatar-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #333;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .change-avatar {
+      color: #4DA6FF;
+      font-weight: bold;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 5px;
+    }
+    .form-control {
+      background-color: #222;
+      border: 1px solid #444;
+      color: white;
+      border-radius: 10px;
+      padding: 12px 15px;
+      font-size: 16px;
+    }
+    .btn-primary {
+      background-color: #4DA6FF;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      padding: 12px;
+      font-weight: bold;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .btn-outline-primary {
+      border: 1px solid #4DA6FF;
+      color: #4DA6FF;
+      background-color: transparent;
+      border-radius: 10px;
+      padding: 12px;
+      font-weight: bold;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 25px 0 15px 0;
+    }
+    .toggle-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
+      padding: 12px 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #4DA6FF;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #4DA6FF;
+    }
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+    .status-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #121212;
+      padding: 5px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    .status-bar span {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="status-bar">
+    <span>5:16</span>
+    <div>
+      <span>👻</span>
+      <span>21°</span>
+      <span>✓</span>
+      <span>•</span>
+    </div>
+    <div>
+      <span>📶</span>
+      <span>🔋</span>
+    </div>
+  </div>
+
+  <div class="header">
+    <button class="btn btn-link text-white" style="font-size: 24px; padding: 0;">×</button>
+    <span>Account</span>
+    <button class="btn btn-link text-primary" style="font-weight: bold; font-size: 18px;">SAVE</button>
+  </div>
+
+  <div class="container mt-4">
+    <div class="avatar-container">
+      <div class="avatar">
+        <img src="https://via.placeholder.com/80" alt="Avatar">
+      </div>
+      <a href="#" class="change-avatar">CHANGE AVATAR</a>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" value="Maria Rossi">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control" value="MariaRossi645010">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" value="maria.rossi199309@gmail.com">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control" value="••••••••">
+    </div>
+
+    <button class="btn btn-primary">DUOLINGO FOR SCHOOLS</button>
+    <button class="btn btn-outline-primary">SIGN OUT</button>
+
+    <h3 class="section-title">General</h3>
+
+    <div class="toggle-container">
+      <span>Sound effects</span>
+      <label class="toggle-switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div style="height: 20px; background-color: #121212;"></div>
+</body>
+</html>

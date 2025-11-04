@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHgate</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-container {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #666;
+            letter-spacing: -1px;
+        }
+        
+        .logo-g {
+            color: #F0C040;
+            font-size: 60px;
+            font-weight: bold;
+            margin-left: -10px;
+            margin-right: -5px;
+        }
+        
+        .logo-ate {
+            color: #F0C040;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        
+        .airplane {
+            position: absolute;
+            top: 40%;
+            right: 15%;
+            font-size: 24px;
+            color: #F0C040;
+            animation: fly 3s ease-in-out infinite;
+        }
+        
+        @keyframes fly {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-10px) translateY(-5px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+        
+        .map-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            overflow: hidden;
+        }
+        
+        .map {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .map-path {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            stroke: #F0C040;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 5, 5;
+        }
+        
+        .map-pin {
+            position: absolute;
+            color: #F0C040;
+            font-size: 20px;
+        }
+        
+        .center-pin {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #F0C040;
+            font-size: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+        
+        .website {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        .website-g {
+            color: #F0C040;
+        }
+        
+        .copyright {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+        
+        .home-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background-color: #ccc;
+            border-radius: 2.5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo">DH</div>
+        <div class="logo-g">g</div>
+        <div class="logo-ate">ate</div>
+    </div>
+    
+    <div class="airplane">✈</div>
+    
+    <div class="map-container">
+        <div class="map">
+            <!-- Map paths and pins would be drawn here with SVG or canvas in a real implementation -->
+            <div class="center-pin">📍</div>
+            <!-- Additional pins would be positioned around the map -->
+        </div>
+    </div>
+    
+    <div class="website">
+        <span class="logo">DH</span><span class="website-g">g</span><span class="logo-ate">ate.com</span>
+    </div>
+    
+    <div class="copyright">
+        © 2004 - 2023 DHgate.com All Rights Reserved
+    </div>
+    
+    <div class="home-indicator"></div>
+</body>
+</html>

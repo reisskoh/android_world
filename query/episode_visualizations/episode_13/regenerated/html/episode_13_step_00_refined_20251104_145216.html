@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Roboto', Arial, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 16px;
+            background-color: #000;
+            font-size: 14px;
+        }
+        
+        .status-bar .left {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .status-bar .right {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .header {
+            padding: 20px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .home-icon {
+            font-size: 24px;
+        }
+        
+        .user-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #d32f2f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .tabs-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+        }
+        
+        .google-logo {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 64px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .search-bar {
+            margin: 0 16px 20px;
+            padding: 10px 16px;
+            background-color: #2d2d2d;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            padding: 4px 0;
+        }
+        
+        .search-input::placeholder {
+            color: #aaa;
+        }
+        
+        .search-icons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .search-icon, .mic-icon, .camera-icon {
+            font-size: 20px;
+            color: #aaa;
+        }
+        
+        .shortcuts {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 16px;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .shortcut {
+            width: calc(20% - 8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: #1a1a1a;
+        }
+        
+        .shortcut img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+        }
+        
+        .shortcut-text {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 4px;
+        }
+        
+        .quick-access {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 16px 20px;
+        }
+        
+        .quick-access-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+        }
+        
+        .quick-access-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        
+        .quick-access-text {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 4px;
+        }
+        
+        .discover-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px 10px;
+            margin-top: 20px;
+        }
+        
+        .discover-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .settings-icon {
+            font-size: 20px;
+        }
+        
+        .discover-card {
+            margin: 0 16px 20px;
+            padding: 16px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .discover-content {
+            flex: 1;
+        }
+        
+        .discover-title-text {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .discover-description {
+            font-size: 14px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .discover-source {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .discover-source img {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+        
+        .discover-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #333;
+            margin: 0 16px 20px;
+        }
+        
+        .city-view {
+            margin: 0 16px 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .city-view img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .nav-indicator {
+            width: 120px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="left">
+            <span>12:34</span>
+            <span>👻</span>
+            <span>32°</span>
+            <span>M</span>
+        </div>
+        <div class="right">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="home-icon">🏠</div>
+        <div class="user-icon">C</div>
+        <div class="tabs-icon">1</div>
+        <div class="menu-icon">⋮</div>
+    </div>
+    
+    <div class="google-logo">Google</div>
+    
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search or type web address">
+        <div class="search-icons">
+            <div class="mic-icon">🎤</div>
+            <div class="camera-icon">📷</div>
+        </div>
+    </div>
+    
+    <div class="shortcuts">
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/48" alt="News">
+            <div class="shortcut-text">News</div>
+        </div>
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/48" alt="Recipes">
+            <div class="shortcut-text">Recipes</div>
+        </div>
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/48" alt="Films">
+            <div class="shortcut-text">Films</div>
+        </div>
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/48" alt="Auto mobile">
+            <div class="shortcut-text">Auto mobile</div>
+        </div>
+        <div class="shortcut">
+            <img src="https://via.placeholder.com/48" alt="Music">
+            <div class="shortcut-text">Music</div>
+        </div>
+    </div>
+    
+    <div class="quick-access">
+        <div class="quick-access-item">
+            <div class="quick-access-icon">f</div>
+            <div class="quick-access-text">Facebook</div>
+        </div>
+        <div class="quick-access-item">
+            <div class="quick-access-icon">C</div>
+            <div class="quick-access-text">Cricbuzz.c...</div>
+        </div>
+        <div class="quick-access-item">
+            <div class="quick-access-icon">▶️</div>
+            <div class="quick-access-text">YouTube</div>
+        </div>
+        <div class="quick-access-item">
+            <div class="quick-access-icon">W</div>
+            <div class="quick-access-text">Wikipedia</div>
+        </div>
+    </div>
+    
+    <div class="discover-header">
+        <div class="discover-title">Discover</div>
+        <div class="settings-icon">⚙️</div>
+    </div>
+    
+    <div class="discover-card">
+        <div class="discover-content">
+            <div class="discover-title-text">IGNOU Marksheet 2023</div>
+            <div class="discover-description">Download, Check Online Dispatch Status @ www.ignou.ac.in</div>
+            <div class="discover-source">
+                <img src="https://via.placeholder.com/16" alt="IGNOU">
+                <span>ignou · 2d</span>
+            </div>
+        </div>
+        <div class="discover-image">
+            <img src="https://via.placeholder.com/80" alt="IGNOU Marksheet">
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="city-view">
+        <img src="https://via.placeholder.com/480x240" alt="City View">
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-indicator"></div>
+    </div>
+</body>
+</html>

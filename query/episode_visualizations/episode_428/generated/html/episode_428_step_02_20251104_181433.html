@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Prep</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 480px;
+      margin: 0 auto;
+      background-color: #fff;
+    }
+    .header {
+      padding: 15px 20px;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+    }
+    .back-arrow {
+      color: #0066ff;
+      font-size: 24px;
+      margin-right: 15px;
+    }
+    .test-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .test-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+    }
+    .sat-icon {
+      background-color: #6c5ce7;
+      color: white;
+    }
+    .lsat-icon, .praxis-icon, .digital-sat-icon {
+      background-color: #f9c74f;
+      color: #333;
+    }
+    .mcats-icon {
+      background-color: #6c5ce7;
+      color: white;
+    }
+    .nav-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 480px;
+      background-color: white;
+      border-top: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+      color: #666;
+      font-size: 12px;
+    }
+    .nav-item.active {
+      color: #0066ff;
+    }
+    .nav-icon {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="back-arrow">←</div>
+    <h1 class="h5 mb-0">Test prep</h1>
+  </div>
+
+  <div class="container-fluid">
+    <div class="test-item">
+      <div class="test-icon sat-icon">SAT</div>
+      <span>SAT (Fall 2023)</span>
+    </div>
+    <div class="test-item">
+      <div class="test-icon lsat-icon">📄</div>
+      <span>LSAT</span>
+    </div>
+    <div class="test-item">
+      <div class="test-icon praxis-icon">📄</div>
+      <span>Praxis Core Math</span>
+    </div>
+    <div class="test-item">
+      <div class="test-icon praxis-icon">📄</div>
+      <span>Praxis Core Writing</span>
+    </div>
+    <div class="test-item">
+      <div class="test-icon praxis-icon">📄</div>
+      <span>Praxis Core Reading</span>
+    </div>
+    <div class="test-item">
+      <div class="test-icon mcats-icon">MCAT</div>
+      <span>MCAT</span>
+    </div>
+    <div class="test-item">
+      <div class="test-icon digital-sat-icon">📄</div>
+      <span>Digital SAT Math</span>
+    </div>
+    <div class="test-item">
+      <div class="test-icon digital-sat-icon">📄</div>
+      <span>Digital SAT Reading and Writing</span>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <div class="nav-item">
+      <div class="nav-icon">⬣</div>
+      <span>Home</span>
+    </div>
+    <div class="nav-item active">
+      <div class="nav-icon">🔍</div>
+      <span>Explore</span>
+    </div>
+    <div class="nav-item">
+      <div class="nav-icon">🔖</div>
+      <span>Bookmarks</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            background-color: #e0e0e0;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .status-bar .time {
+            font-weight: bold;
+        }
+        
+        .status-bar .icons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .header {
+            background-color: #f0f0f0;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .header .back {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+        
+        .header .title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .header .menu {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .header .menu i {
+            font-size: 24px;
+        }
+        
+        .breadcrumb {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .breadcrumb .icon {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        
+        .breadcrumb .separator {
+            margin: 0 8px;
+            color: #888;
+        }
+        
+        .file-list {
+            list-style: none;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            background-color: white;
+        }
+        
+        .file-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+        
+        .folder-icon {
+            background-color: #f0c850;
+            color: #333;
+            font-size: 20px;
+        }
+        
+        .video-icon {
+            background-color: #e0e0e0;
+            color: #333;
+            font-size: 20px;
+        }
+        
+        .text-icon {
+            background-color: #4267b2;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .image-icon {
+            background-color: #e0e0e0;
+            color: #333;
+            font-size: 20px;
+        }
+        
+        .apk-icon {
+            background-color: #4caf50;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .file-info {
+            flex: 1;
+            margin-right: 12px;
+        }
+        
+        .file-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .file-size {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .checkbox.selected {
+            background-color: #4267b2;
+            border-color: #4267b2;
+        }
+        
+        .checkbox.selected::after {
+            content: "✓";
+            color: white;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .file-item .file-icon .icon-text {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-info .file-name {
+            font-size: 16px;
+        }
+        
+        .file-item .file-info .file-size {
+            font-size: 14px;
+        }
+        
+        .file-item .file-icon .video-play {
+            width: 20px;
+            height: 20px;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+        
+        .file-item .file-icon .video-play::before {
+            content: "▶";
+        }
+        
+        .file-item .file-icon .text-lines {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .file-item .file-icon .text-lines div {
+            width: 16px;
+            height: 2px;
+            background-color: white;
+            margin: 2px 0;
+        }
+        
+        .file-item .file-icon .apk-icon-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .file-item .file-icon .image-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .file-item .file-icon .apk-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .file-item .file-icon .apk-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text::before {
+            content: "AA";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span {
+            font-size: 12px;
+            font-weight: normal;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::after {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::before {
+            content: " ";
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter::first-letter {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .file-item .file-icon .apk-preview .apk-icon-text span::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter::last-letter {
+            font-size: 16px

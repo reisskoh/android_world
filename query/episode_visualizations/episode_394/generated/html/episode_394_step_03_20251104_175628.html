@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Costco UK</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar-custom {
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #ddd;
+    }
+    .search-bar {
+      border: 1px solid #0056b3;
+      border-radius: 4px;
+    }
+    .banner {
+      background: linear-gradient(90deg, #003366, #0056b3);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .banner h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    .banner .savings {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #ffd700;
+    }
+    .product-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .hot-buy {
+      background: #ff6b6b;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #0056b3;
+      margin: 20px 0 10px 0;
+    }
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .carousel-item img {
+      height: 150px;
+      object-fit: cover;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #d9534f;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 0.9rem;
+    }
+    .shop-now {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .shop-now:hover {
+      background-color: #004494;
+    }
+  </style>
+</head>
+<body>
+  <!-- Status Bar -->
+  <div class="bg-dark text-white p-2 d-flex justify-content-between align-items-center">
+    <div>8:36</div>
+    <div>
+      <span class="me-2">📶</span>
+      <span>🔋</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="navbar-custom p-3 d-flex justify-content-between align-items-center">
+    <img src="https://via.placeholder.com/150x50?text=COSTCO.CO.UK" alt="Costco UK" class="img-fluid" style="max-height: 50px;">
+    <div class="d-flex">
+      <div class="text-center mx-2">
+        <i class="bi bi-geo-alt fs-3 text-primary"></i>
+        <div class="small">Warehouses</div>
+      </div>
+      <div class="text-center mx-2">
+        <i class="bi bi-person fs-3 text-primary"></i>
+        <div class="small">My Account</div>
+      </div>
+      <div class="text-center mx-2">
+        <i class="bi bi-cart fs-3 text-primary"></i>
+        <div class="small">Cart(s)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="d-flex p-2 bg-white">
+    <button class="btn btn-primary me-2 d-flex align-items-center">
+      <i class="bi bi-list me-2"></i> Menu
+    </button>
+    <div class="dropdown me-2">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        All
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">All Categories</a></li>
+        <li><a class="dropdown-item" href="#">Electronics</a></li>
+        <li><a class="dropdown-item" href="#">Home</a></li>
+        <li><a class="dropdown-item" href="#">Grocery</a></li>
+      </ul>
+    </div>
+    <div class="input-group search-bar">
+      <input type="text" class="form-control" placeholder="Search Costco">
+      <button class="btn btn-outline-primary" type="button">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Member-Only Savings Banner -->
+  <div class="container mt-3">
+    <div class="banner text-center p-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <img src="https://via.placeholder.com/100x40?text=COSTCO+WHOLESALE" alt="Costco Wholesale" class="img-fluid" style="max-height: 40px;">
+        <div>
+          <h2>MEMBER-ONLY</h2>
+          <div class="savings">SAVINGS</div>
+        </div>
+        <div class="text-end">
+          <div>Valid Until</div>
+          <div>17/12/2023</div>
+        </div>
+      </div>
+      
+      <!-- Carousel -->
+      <div id="savingsCarousel" class="carousel slide mt-3" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="d-flex justify-content-around">
+              <div class="text-center">
+                <img src="https://via.placeholder.com/120x100?text=Hot+Tub" alt="Hot Tub" class="img-fluid">
+                <div class="mt-2">£2,000 OFF</div>
+              </div>
+              <div class="text-center">
+                <img src="https://via.placeholder.com/120x100?text=Exercise+Machine" alt="Exercise Machine" class="img-fluid">
+                <div class="mt-2">£800 OFF</div>
+              </div>
+              <div class="text-center">
+                <img src="https://via.placeholder.com/120x100?text=Kitchen+Unit" alt="Kitchen Unit" class="img-fluid">
+                <div class="mt-2">£350 OFF</div>
+              </div>
+              <div class="text-center">
+                <img src="https://via.placeholder.com/120x100?text=Wine+Cooler" alt="Wine Cooler" class="img-fluid">
+                <div class="mt-2">£250 OFF</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#savingsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#savingsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Silentnight Promotion -->
+    <div class="mt-4">
+      <div class="bg-dark text-white p-3 rounded" style="background: linear-gradient(90deg, #004d00, #003300);">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <img src="https://via.placeholder.com/80x40?text=Silentnight" alt="Silentnight" class="img-fluid me-3" style="max-height: 40px;">
+            <div>
+              <h3 class="mb-0">up to £320 off</h3>
+              <h4 class="mb-0">all Silentnight</h4>
+              <div class="small">mattresses, divan sets & headboards</div>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="hot-buy mb-2">HOT BUY</div>
+            <div class="bg-danger rounded-circle p-2 mb-2">
+              <i class="bi bi-truck text-white"></i>
+            </div>
+            <div class="small">DELIVERY & ASSEMBLY</div>
+            <div class="bg-danger rounded-circle p-2 mt-2">
+              <i class="bi bi-recycle text-white"></i>
+            </div>
+            <div class="small">DISPOSAL +£24.99</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wood's Dehumidifier -->
+    <div class="mt-4 product-card">
+      <div class="row">
+        <div class="col-6">
+          <h4>Wood's</h4>
+          <h5>25L Dehumidifier in White</h5>
+          <ul class="list-unstyled small">
+            <li>• Suitable for room size 120m²</li>
+            <li>• Exhaust on top to blow dry clothes</li>
+            <li>• 4L water tank</li>
+          </ul>
+          <div class="d-flex align-items-center">
+            <div class="price me-2">£224.99</div>
+            <div class="original-price">After £65 OFF</div>
+          </div>
+          <button class="btn shop-now mt-2">SHOP NOW</button>
+          <div class="small mt-2">While stocks last | Valid until 17/12/23</div>
+        </div>
+        <div class="col-6">
+          <div class="d-flex justify-content-between">
+            <img src="https://via.placeholder.com/100x150?text=White+Dehumidifier" alt="White Dehumidifier" class="img-fluid">
+            <img src="https://via.placeholder.com/100x150?text=Black+Dehumidifier" alt="Black Dehumidifier" class="img-fluid">
+          </div>
+          <div class="text-center mt-2">
+            <div class="hot-buy">HOT BUY</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hot Buys & What's New -->
+    <div class="mt-4 d-flex justify-content-between">
+      <div class="d-flex align-items-center">
+        <div class="me-2">
+          <h3 class="text-orange mb-0">HOT BUYS</h3>
+          <div class="small">Shop the hottest deals</div>
+        </div>
+        <div class="hot-buy">HOT BUY</div>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="me-2">
+          <h3 class="text-primary mb-0">WHAT'S NEW</h3>
+          <div class="small">Shop the latest items</div>
+        </div>
+        <div class="bg-primary text-white rounded-circle p-2">
+          <div class="small">NEW</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="bg-dark text-white text-center p-3 mt-4">
+    <div>© 2023 Costco UK</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</body>
+</html>

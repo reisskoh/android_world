@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calendar App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .header {
+      background-color: #1a2b1a;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .date-section {
+      padding: 20px;
+      border-bottom: 1px solid #333;
+    }
+    .date-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .date-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #4cd964;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: #121212;
+      font-weight: bold;
+    }
+    .event-card {
+      background-color: #5aa897;
+      border-radius: 12px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      color: white;
+    }
+    .event-card.blue {
+      background-color: #5a8fd8;
+    }
+    .month-header {
+      background-color: #fff;
+      color: #121212;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .month-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .floating-button {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #2d3e2d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .day-label {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 5px;
+    }
+    .date-number {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .event-time {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div style="display: flex; align-items: center;">
+      <button class="btn btn-link text-white" style="padding: 0; font-size: 24px;">☰</button>
+      <h5 class="mb-0 ms-3">August</h5>
+      <span class="ms-1">▼</span>
+    </div>
+    <div style="display: flex; gap: 20px;">
+      <button class="btn btn-link text-white" style="padding: 0; font-size: 24px;">🔍</button>
+      <button class="btn btn-link text-white" style="padding: 0; font-size: 24px;">📅</button>
+      <button class="btn btn-circle text-white" style="width: 40px; height: 40px; border-radius: 50%; background-color: #4cd964; padding: 0; font-weight: bold;">C</button>
+    </div>
+  </div>
+
+  <div class="date-section">
+    <div style="text-align: center; color: #888; margin-bottom: 15px;">Aug 27 – Sep 2</div>
+    
+    <div class="date-item">
+      <div>
+        <div class="day-label">Tue</div>
+        <div class="date-circle">29</div>
+      </div>
+      <div class="event-card" style="flex: 1;">
+        <div>Onam</div>
+      </div>
+    </div>
+    
+    <div class="date-item">
+      <div>
+        <div class="day-label">Wed</div>
+        <div class="date-number">30</div>
+      </div>
+      <div class="event-card" style="flex: 1;">
+        <div>Raksha Bandhan (Rakhi)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="month-header">September 2023</div>
+  <img src="https://via.placeholder.com/480x150/ffeb99/121212?text=Autumn+Scene" class="month-image" alt="Autumn scene">
+
+  <div class="date-section">
+    <div class="date-item">
+      <div>
+        <div class="day-label">Fri</div>
+        <div class="date-number">1</div>
+      </div>
+      <div class="event-card" style="flex: 1; background-color: #4a6fa5; position: relative; overflow: hidden;">
+        <div style="position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url('https://via.placeholder.com/400x100/4a6fa5/ffffff?text=Yoga+Mat') no-repeat center; background-size: cover; opacity: 0.3;"></div>
+        <div style="position: relative; z-index: 1;">
+          <div>yoga session</div>
+          <div class="event-time">11 AM – 2 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="date-section">
+    <div style="text-align: center; color: #888; margin-bottom: 15px;">Sep 3 – 9</div>
+    
+    <div class="date-item">
+      <div>
+        <div class="day-label">Wed</div>
+        <div class="date-number">6</div>
+      </div>
+      <div class="event-card" style="flex: 1;">
+        <div>Janmashtami (Smarta)</div>
+      </div>
+    </div>
+    
+    <div class="date-item">
+      <div>
+        <div class="day-label">Thu</div>
+        <div class="date-number">7</div>
+      </div>
+      <div class="event-card" style="flex: 1;">
+        <div>Janmashtami</div>
+      </div>
+    </div>
+    
+    <div class="date-item">
+      <div>
+        <div class="day-label">Thu</div>
+        <div class="date-number">7</div>
+      </div>
+      <div class="event-card blue" style="flex: 1;">
+        <div>Delhi event</div>
+        <div class="event-time">11 AM – 12 PM</div>
+      </div>
+    </div>
+    
+    <div class="date-item">
+      <div>
+        <div class="day-label">Fri</div>
+        <div class="date-number">8</div>
+      </div>
+      <div class="event-card blue" style="flex: 1;">
+        <div>Priya</div>
+        <div class="event-time">11 AM – 12 PM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="floating-button">+</div>
+
+  <div style="height: 80px;"></div> <!-- Bottom padding for floating button -->
+</body>
+</html>

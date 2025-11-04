@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TickTick App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 15px;
+            background-color: #000;
+            border-bottom: 1px solid #333;
+        }
+        
+        .status-bar-left {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .status-bar-right {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .back-arrow {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .inbox {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .menu-dots {
+            font-size: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 20px;
+        }
+        
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+        
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #666;
+            margin-right: 10px;
+        }
+        
+        .date {
+            color: #ff5555;
+            font-size: 16px;
+        }
+        
+        .flag {
+            width: 20px;
+            height: 20px;
+            background-color: #ff5555;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 100%);
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 0 15px;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #888;
+            padding: 0 15px;
+            margin-bottom: 20px;
+        }
+        
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .bottom-icon {
+            font-size: 24px;
+            color: #888;
+        }
+        
+        .tag-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #ffcc80;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .list-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .list-icon::after {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 2px;
+            background-color: #888;
+            margin: 2px 0;
+        }
+        
+        .list-icon::before {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 2px;
+            background-color: #888;
+            margin: 2px 0;
+        }
+        
+        .image-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #ffcc80;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-icon::after {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 12px;
+            background: linear-gradient(to bottom, #87ceeb, #228b22);
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-bar-left">
+            <span>8:02</span>
+            <span>△</span>
+            <span>📶</span>
+            <span>🌙</span>
+            <span>📁</span>
+        </div>
+        <div class="status-bar-right">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="back-arrow">←</div>
+        <div class="inbox">Inbox</div>
+        <div class="menu-dots">
+            <div>•</div>
+            <div>•</div>
+            <div>•</div>
+        </div>
+    </div>
+    
+    <div class="task-header">
+        <div class="checkbox"></div>
+        <div class="date">Last Wed, Jul 19, 12:30pm</div>
+        <div class="flag"></div>
+    </div>
+    
+    <div class="title">Weeding plan</div>
+    <div class="description">Description</div>
+    
+    <div class="bottom-bar">
+        <div class="tag-icon"></div>
+        <div class="list-icon"></div>
+        <div class="image-icon"></div>
+    </div>
+</body>
+</html>

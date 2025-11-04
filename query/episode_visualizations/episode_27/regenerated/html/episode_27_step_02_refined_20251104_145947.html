@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #f5f5f5;
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            background-color: #666;
+            color: white;
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .status-icons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        /* Header */
+        .header {
+            background-color: #666;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .icon-btn {
+            font-size: 24px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: #666;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        
+        .breadcrumb-icon {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 3px;
+        }
+        
+        /* File List */
+        .file-list {
+            background-color: white;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            background-color: white;
+        }
+        
+        .file-item.selected {
+            background-color: #8a9eff;
+        }
+        
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+        
+        .folder-icon {
+            background-color: #f0c84a;
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .video-icon {
+            background-color: #333;
+            color: white;
+            font-size: 20px;
+            position: relative;
+        }
+        
+        .video-icon::after {
+            content: "▶";
+            position: absolute;
+            font-size: 16px;
+        }
+        
+        .text-icon {
+            background-color: #3a57b5;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .image-icon {
+            background-color: #333;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .apk-icon {
+            background-color: #3a9eff;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .file-info {
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        .file-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .file-size {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #999;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .checkbox.checked {
+            background-color: #007aff;
+            border-color: #007aff;
+        }
+        
+        .checkbox.checked::after {
+            content: "✓";
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Action Bar */
+        .action-bar {
+            background-color: #666;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+            padding: 5px;
+        }
+        
+        .action-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .rename-icon {
+            position: relative;
+        }
+        
+        .rename-icon::after {
+            content: "T";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span>3:27</span>
+        <div class="status-icons">
+            <span>🔔</span>
+            <span>🔔</span>
+            <span>📝</span>
+            <span>■</span>
+            <span>•</span>
+        </div>
+        <div class="status-icons">
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <span class="close-btn">×</span>
+            <span>1/16</span>
+        </div>
+        <div class="header-right">
+            <span class="icon-btn">□</span>
+            <span class="icon-btn">↔</span>
+        </div>
+    </div>
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <span>🏠</span>
+        <span>></span>
+        <span>📱</span>
+        <span>></span>
+        <span>Download</span>
+    </div>
+    
+    <!-- File List -->
+    <div class="file-list">
+        <div class="file-item">
+            <div class="file-icon folder-icon">📁</div>
+            <div class="file-info">
+                <div class="file-name">Favorite Song</div>
+                <div class="file-size">0 items</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item selected">
+            <div class="file-icon folder-icon">📁</div>
+            <div class="file-info">
+                <div class="file-name">Flowers</div>
+                <div class="file-size">7 items</div>
+            </div>
+            <div class="checkbox checked"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon folder-icon">📁</div>
+            <div class="file-info">
+                <div class="file-name">MEGA Downloads</div>
+                <div class="file-size">0 items</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon folder-icon">📁</div>
+            <div class="file-info">
+                <div class="file-name">TeraBox</div>
+                <div class="file-size">1 item</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon video-icon">🎬</div>
+            <div class="file-info">
+                <div class="file-name">beach waves.mp4</div>
+                <div class="file-size">3.29 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon video-icon">🎬</div>
+            <div class="file-info">
+                <div class="file-name">beach-1.mp4</div>
+                <div class="file-size">1.78 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon video-icon">🎬</div>
+            <div class="file-info">
+                <div class="file-name">beach.mp4</div>
+                <div class="file-size">1.78 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon text-icon">📝</div>
+            <div class="file-info">
+                <div class="file-name">Copy of screenshot-1.txt</div>
+                <div class="file-size">0.91 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon text-icon">📝</div>
+            <div class="file-info">
+                <div class="file-name">Copy of screenshot.txt</div>
+                <div class="file-size">0.91 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon image-icon">🖼️</div>
+            <div class="file-info">
+                <div class="file-name">images~2.jpeg</div>
+                <div class="file-size">22.48 kB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon image-icon">🖼️</div>
+            <div class="file-info">
+                <div class="file-name">Maki-zushi.jpg</div>
+                <div class="file-size">197 kB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+        
+        <div class="file-item">
+            <div class="file-icon apk-icon">🤖</div>
+            <div class="file-info">
+                <div class="file-name">showcase_android_prod_arm64-v8a.apk</div>
+                <div class="file-size">1.78 MB</div>
+            </div>
+            <div class="checkbox"></div>
+        </div>
+    </div>
+    
+    <!-- Action Bar -->
+    <div class="action-bar">
+        <div class="action-btn">
+            <div class="action-icon">📋</div>
+            <div>Copy</div>
+        </div>
+        <div class="action-btn">
+            <div class="action-icon">✂️</div>
+            <div>Move</div>
+        </div>
+        <div class="action-btn">
+            <div class="action-icon rename-icon">T</div>
+            <div>Rename</div>
+        </div>
+        <div class="action-btn">
+            <div class="action-icon">🗑️</div>
+            <div>Delete</div>
+        </div>
+        <div class="action-btn">
+            <div class="action-icon">⋮</div>
+            <div>More</div>
+        </div>
+    </div>
+</body>
+</html>

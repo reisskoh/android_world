@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Task</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #e0e0e8;
+            max-width: 480px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: #3f5169;
+            padding: 20px 15px;
+            color: white;
+        }
+        
+        .back-button {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: none;
+            border-bottom: 1px solid #999;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .mic-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 20px;
+        }
+        
+        .details-section {
+            background-color: #d9dce5;
+            padding: 20px 15px;
+            flex: 1;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #c5c5d0;
+        }
+        
+        .detail-label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .detail-value {
+            font-size: 16px;
+            color: #3f5169;
+            font-weight: 500;
+        }
+        
+        .icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .star-icon {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .save-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #3f5169;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+        }
+        
+        .save-button::before {
+            content: "✓";
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-button">←</div>
+        <div class="form-group">
+            <label class="form-label">Title</label>
+            <input type="text" class="form-input" value="Learning" placeholder="Enter title">
+            <div class="mic-icon">🎤</div>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Description</label>
+            <input type="text" class="form-input" value="Power Bi" placeholder="Enter description">
+            <div class="mic-icon">🎤</div>
+        </div>
+    </div>
+    
+    <div class="details-section">
+        <div class="detail-row">
+            <div class="detail-label">
+                <span class="icon">📅</span>
+                <span>Date</span>
+            </div>
+            <div class="detail-value">20/06/2023</div>
+        </div>
+        
+        <div class="detail-row">
+            <div class="detail-label">
+                <span class="icon">⏰</span>
+                <span>Time</span>
+            </div>
+            <div class="detail-value">7:00 am</div>
+        </div>
+        
+        <div class="detail-row">
+            <div class="detail-label">
+                <span class="icon">🔁</span>
+                <span>Repeat</span>
+            </div>
+            <div class="detail-value">No Repetition</div>
+        </div>
+        
+        <div class="detail-row">
+            <div class="detail-label">
+                <span class="icon">A⁺</span>
+                <span>Adv. reminder</span>
+            </div>
+            <div class="detail-value">None</div>
+        </div>
+        
+        <div class="star-icon">★</div>
+    </div>
+    
+    <div class="save-button"></div>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHgate Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin: 15px;
+            padding: 8px 12px;
+            background-color: white;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 5px;
+            font-size: 16px;
+        }
+        
+        .search-bar button {
+            background: none;
+            border: none;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        
+        .icons {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            margin-bottom: 15px;
+        }
+        
+        .icon {
+            font-size: 24px;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background-color: white;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .feature img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+        }
+        
+        .feature p {
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: center;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #e6eef7;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .section-title span {
+            color: #ff5722;
+        }
+        
+        .countdown {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .countdown-item {
+            background-color: black;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        
+        .products {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 15px;
+            gap: 10px;
+        }
+        
+        .product {
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            width: 140px;
+            flex-shrink: 0;
+        }
+        
+        .product img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .product-old-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .coupon {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin: 10px 15px;
+            color: white;
+        }
+        
+        .coupon-price {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .coupon-button {
+            background-color: white;
+            color: #ff5722;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .section {
+            padding: 15px;
+            background-color: white;
+            margin-top: 15px;
+        }
+        
+        .section-title-large {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            margin-bottom: 15px;
+        }
+        
+        .category {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .flash-deals {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 15px;
+        }
+        
+        .flash-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .flash-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .feedback {
+            position: fixed;
+            bottom: 60px;
+            left: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .feedback-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .feedback-button {
+            background-color: #ffca28;
+            color: black;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-badge {
+            position: absolute;
+            top: 10px;
+            right: 35px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+        }
+        
+        .dh-logo {
+            background-color: #ffd700;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>8:57</div>
+        <div>● ● ●</div>
+        <div>📶 🔋</div>
+    </div>
+    
+    <div class="search-bar">
+        <input type="text" placeholder="designer bag">
+        <button>📷</button>
+        <button>🔍</button>
+    </div>
+    
+    <div class="icons">
+        <div class="icon">❤️</div>
+        <div class="icon">🇬🇧</div>
+    </div>
+    
+    <div class="features">
+        <div class="feature">
+            <div>🛡️</div>
+            <p>Buyer protection</p>
+        </div>
+        <div class="feature">
+            <div>🌐</div>
+            <p>Worldwide Delivery</p>
+        </div>
+        <div class="feature">
+            <div>💳</div>
+            <p>Secure Payment</p>
+        </div>
+    </div>
+    
+    <div class="features">
+        <div class="feature">
+            <img src="https://via.placeholder.com/60" alt="Top Ranking">
+            <p>Top Ranking</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/60" alt="Local Warehouse">
+            <p>Local Warehouse</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/60" alt="DHgate Selected">
+            <p>DHgate Selected</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/60" alt="Share For Rewards">
+            <p>Share For Rewards</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/60" alt="Top Brands">
+            <p>Top Brands</p>
+        </div>
+        <div class="feature">
+            <img src="https://via.placeholder.com/60" alt="Top Rated">
+            <p>Top Rated</p>
+        </div>
+    </div>
+    
+    <div class="section-header">
+        <div class="section-title">First come, <span>From $1.01</span> →</div>
+        <div class="countdown">
+            <div class="countdown-item">15</div>
+            <div class="countdown-item">02</div>
+            <div class="countdown-item">13</div>
+        </div>
+    </div>
+    
+    <div class="coupon">
+        <div>£31.5...</div>
+        <div>Coupon Pack</div>
+        <button class="coupon-button">Get Now</button>
+    </div>
+    
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/140x120" alt="Product">
+            <div class="product-price">£0.82</div>
+            <div class="product-old-price">£11.59</div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/140x120" alt="Product">
+            <div class="product-price">£0.82</div>
+            <div class="product-old-price">£7.31</div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/140x120" alt="Product">
+            <div class="product-price">£0.82</div>
+            <div class="product-old-price">£5.74</div>
+        </div>
+    </div>
+    
+    <div class="section-header">
+        <div class="section-title">Free Shipping Today →</div>
+        <div class="countdown">
+            <div class="countdown-item">15</div>
+            <div class="countdown-item">02</div>
+            <div class="countdown-item">13</div>
+        </div>
+    </div>
+    
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/140x120" alt="Product">
+            <div class="product-price">£8.01</div>
+            <div class="product-old-price">£12.67</div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/140x120" alt="Product">
+            <div class="product-price">£8.01</div>
+            <div class="product-old-price">£11.15</div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/140x120" alt="Product">
+            <div class="product-price">£8.01</div>
+            <div class="product-old-price">£14.06</div>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/140x120" alt="Product">
+            <div class="product-price">£16.11</div>
+            <div class="product-old-price">£18.50</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title-large">More to love</div>
+        <div class="categories">
+            <div class="category">Go Outdoors!</div>
+            <div class="category">Business & Inc</div>
+            <div class="category">❤️+</div>
+        </div>
+        
+        <div class="flash-deals">
+            <div class="flash-title">$4 OFF EVERY</div>
+            <div class="flash-subtitle">Lowest price in 60 days</div>
+        </div>
+    </div>
+    
+    <div class="feedback">
+        <button class="feedback-close">×</button>
+        <div>Leave your valuable suggestions and help DHGATE serve you better!</div>
+        <button class="feedback-button">OK</button>
+    </div>
+    
+    <div class="bottom-nav">
+        <div class="nav-item">
+            <div class="dh-logo">DH</div>
+            <div>Home</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">≡</div>
+            <div>Categories</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">💬</div>
+            <div>Message</div>
+            <div class="nav-badge">•</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">🛒</div>
+            <div>Cart</div>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">👤</div>
+            <div>Account</div>
+        </div>
+    </div>
+</body>
+</html>

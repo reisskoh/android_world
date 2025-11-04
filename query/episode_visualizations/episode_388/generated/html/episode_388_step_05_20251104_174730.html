@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Item Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar {
+      background-color: white;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .item-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .item-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .heart-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border-radius: 50%;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .footer-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #e0e0e0;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: #333;
+    }
+    .nav-item.active {
+      color: #0d6efd;
+    }
+    .nav-icon {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-weight: bold;
+      font-size: 20px;
+      margin: 20px 0 5px 0;
+    }
+    .section-subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    .see-all-btn {
+      border: 1px solid #666;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .price {
+      font-weight: bold;
+      font-size: 18px;
+      margin: 8px 0;
+    }
+    .shipping {
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid p-3">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="d-flex align-items-center">
+        <a href="#" class="me-3"><i class="bi bi-arrow-left" style="font-size: 24px;"></i></a>
+        <h4 class="mb-0">Item</h4>
+      </div>
+      <div class="d-flex">
+        <button class="btn btn-light me-2"><i class="bi bi-search" style="font-size: 20px;"></i></button>
+        <button class="btn btn-light me-2"><i class="bi bi-cart" style="font-size: 20px;"></i></button>
+        <button class="btn btn-light me-2"><i class="bi bi-share" style="font-size: 20px;"></i></button>
+        <button class="btn btn-light"><i class="bi bi-three-dots" style="font-size: 20px;"></i></button>
+      </div>
+    </div>
+
+    <!-- See full description -->
+    <div class="mb-3">
+      <a href="#" class="text-decoration-underline">See full description</a>
+    </div>
+
+    <!-- More like this -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div>
+        <h4 class="section-title mb-0">More like this</h4>
+        <p class="section-subtitle mb-0">Sponsored</p>
+      </div>
+      <button class="see-all-btn">See all <i class="bi bi-arrow-right"></i></button>
+    </div>
+
+    <!-- Items grid -->
+    <div class="row g-3">
+      <div class="col-6">
+        <div class="item-card">
+          <div style="position: relative;">
+            <img src="https://via.placeholder.com/300x200" class="item-image" alt="Item">
+            <div class="heart-icon">
+              <i class="bi bi-heart" style="color: #333;"></i>
+            </div>
+          </div>
+          <div class="p-3">
+            <p class="mb-1">AGOLDE Toni Slim Straight Jeans SIZE 32 NEW</p>
+            <p class="text-muted mb-1">New • Brand</p>
+            <p class="price">GBP 61.07</p>
+            <p class="shipping">+ GBP 41.07 shipping</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="item-card">
+          <div style="position: relative;">
+            <img src="https://via.placeholder.com/300x200" class="item-image" alt="Item">
+            <div class="heart-icon">
+              <i class="bi bi-heart" style="color: #333;"></i>
+            </div>
+          </div>
+          <div class="p-3">
+            <p class="mb-1">AGOLDE Black Recycled Leather Lyle Low Rise Slim</p>
+            <p class="text-muted mb-1">New • Brand</p>
+            <p class="price">GBP 159.04</p>
+            <p class="shipping">+ GBP 25.91 shipping</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visually similar items -->
+    <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
+      <div>
+        <h4 class="section-title mb-0">Visually similar items</h4>
+        <p class="section-subtitle mb-0">Sponsored</p>
+      </div>
+      <button class="see-all-btn">See all <i class="bi bi-arrow-right"></i></button>
+    </div>
+
+    <!-- Similar items grid -->
+    <div class="row g-3">
+      <div class="col-6">
+        <div class="item-card">
+          <div style="position: relative;">
+            <img src="https://via.placeholder.com/300x200" class="item-image" alt="Item">
+            <div class="heart-icon">
+              <i class="bi bi-heart" style="color: #333;"></i>
+            </div>
+          </div>
+          <div class="p-3">
+            <p class="mb-1">Light Wash Straight Jeans</p>
+            <p class="text-muted mb-1">New • Brand</p>
+            <p class="price">GBP 58.99</p>
+            <p class="shipping">+ GBP 35.00 shipping</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="item-card">
+          <div style="position: relative;">
+            <img src="https://via.placeholder.com/300x200" class="item-image" alt="Item">
+            <div class="heart-icon">
+              <i class="bi bi-heart" style="color: #333;"></i>
+            </div>
+          </div>
+          <div class="p-3">
+            <p class="mb-1">Black Slim Fit Jeans</p>
+            <p class="text-muted mb-1">New • Brand</p>
+            <p class="price">GBP 65.50</p>
+            <p class="shipping">+ GBP 28.00 shipping</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Navigation -->
+  <div class="footer-nav">
+    <div class="nav-item">
+      <i class="bi bi-house nav-icon"></i>
+      <span>Home</span>
+    </div>
+    <div class="nav-item">
+      <i class="bi bi-person nav-icon"></i>
+      <span>My eBay</span>
+    </div>
+    <div class="nav-item active">
+      <i class="bi bi-search nav-icon"></i>
+      <span>Search</span>
+    </div>
+    <div class="nav-item">
+      <i class="bi bi-bell nav-icon"></i>
+      <span>Inbox</span>
+    </div>
+    <div class="nav-item">
+      <i class="bi bi-tag nav-icon"></i>
+      <span>Selling</span>
+    </div>
+  </div>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

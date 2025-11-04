@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Item Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar {
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .item-image {
+      max-width: 100%;
+      height: auto;
+      margin: 15px 0;
+    }
+    .heart-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border-radius: 50%;
+      padding: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: #666;
+    }
+    .savings {
+      color: #e60000;
+      font-weight: bold;
+    }
+    .footer-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 10px 0;
+    }
+    .nav-item {
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .nav-item i {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .active {
+      color: #0d6efd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid p-0">
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0 .5-.5V7.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h11zm-11-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-11zm0 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-11z"/>
+          </svg>
+          Item
+        </a>
+        <div class="d-flex">
+          <button class="btn btn-light me-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 1-1.397-1.398h-.001c1.18.22 2.37.44 3.57 1.398a6.5 6.5 0 1 1-1.397-1.398h-.001zm-1.397-1.398a5.5 5.5 0 1 0 0 11.001 5.5 5.5 0 0 0 0-11.001z"/>
+            </svg>
+          </button>
+          <button class="btn btn-light me-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.592l-1.5-8A.5.5 0 0 1 2 3H0.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm7 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/>
+            </svg>
+          </button>
+          <button class="btn btn-light me-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+              <path d="M13.5 1a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M11 2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0m-2 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2m4 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2m-4 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2m4 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+            </svg>
+          </button>
+          <button class="btn btn-light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+              <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Product Image -->
+    <div class="position-relative">
+      <img src="https://via.placeholder.com/400x600" alt="AGOLDE Wyman Jeans" class="item-image">
+      <div class="heart-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" class="bi bi-heart" viewBox="0 0 16 16">
+          <path d="M8 2.748C5.75 2.748 4 4.5 4 6.748v11.004c0 1.268 1.03 2.25 2.25 2.25h3.5c1.22 0 2.25-.982 2.25-2.25V6.748C12 4.5 10.25 2.748 8 2.748zm0 13.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+        </svg>
+      </div>
+      <div class="position-absolute top-0 end-0 m-3 text-muted">1 of 7</div>
+      <div class="d-flex justify-content-center mt-2">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-sm btn-secondary active">•</button>
+          <button type="button" class="btn btn-sm btn-secondary">•</button>
+          <button type="button" class="btn btn-sm btn-secondary">•</button>
+          <button type="button" class="btn btn-sm btn-secondary">•</button>
+          <button type="button" class="btn btn-sm btn-secondary">•</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="container mt-3">
+      <h1 class="h4">AGOLDE Wyman Jeans Straight Leg Jeans Size 32 Black</h1>
+      
+      <div class="d-flex align-items-center mt-3">
+        <div class="me-3">
+          <div class="rounded-circle bg-light" style="width: 50px; height: 50px;"></div>
+        </div>
+        <div>
+          <div class="fw-bold">BreainBrasil (393)</div>
+          <div class="text-muted">100% positive feedback</div>
+        </div>
+        <div class="ms-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <div class="price">$110.40</div>
+        <div class="text-muted">+ $35.69 shipping</div>
+        <div class="text-muted">approx £87.79 + £28.38 shipping</div>
+        <div class="text-muted">or Best Offer</div>
+        <div class="d-flex align-items-center">
+          <span class="original-price me-2">Was $138.00</span>
+          <span class="savings">Save $27.60 (20% off)</span>
+        </div>
+        <div class="mt-2">Est. delivery <strong>Thu, Dec 28 - Mon, Jan 8</strong></div>
+      </div>
+
+      <div class="mt-4 p-3 bg-light rounded">
+        <div class="d-flex align-items-center">
+          <span>No additional import charges upon delivery</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle ms-2" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 7 7m0 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m0-13a1 1 0 0 1 1 1v4h-2V4a1 1 0 0 1 1-1m0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="mt-3 d-flex justify-content-between">
+        <div>
+          <span class="text-muted">Condition</span>
+          <div class="fw-bold">Used</div>
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 7 7m0 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m0-13a1 1 0 0 1 1 1v4h-2V4a1 1 0 0 1 1-1m0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <div class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+              </svg>
+              Home
+            </div>
+          </div>
+          <div class="col text-center">
+            <div class="nav-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h15.524Z"/>
+              </svg>
+              My eBay
+            </div>
+          </div>
+          <div class="col text-center">
+            <div class="nav-item

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Item Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .navbar {
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .item-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+    .item-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .shipping {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 24px 0 16px 0;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .info-label {
+      font-weight: 500;
+      color: #666;
+    }
+    .payment-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .payment-icon {
+      width: 60px;
+      height: 40px;
+      object-fit: contain;
+    }
+    .reward-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 8px;
+    }
+    .footer-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      border-top: 1px solid #dee2e6;
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #666;
+    }
+    .nav-item.active {
+      color: #0d6efd;
+    }
+    .nav-icon {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+    .back-arrow {
+      font-size: 1.5rem;
+      margin-right: 8px;
+    }
+    .header-actions {
+      display: flex;
+      gap: 12px;
+    }
+    .action-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid p-0">
+    <!-- Header -->
+    <div class="navbar d-flex align-items-center justify-content-between px-3 py-2">
+      <div class="d-flex align-items-center">
+        <span class="back-arrow">←</span>
+        <h1 class="h5 mb-0">Item</h1>
+      </div>
+      <div class="header-actions">
+        <div class="action-btn">🔍</div>
+        <div class="action-btn">🛒</div>
+        <div class="action-btn">🔗</div>
+        <div class="action-btn">⋮</div>
+      </div>
+    </div>
+
+    <!-- Item Cards -->
+    <div class="row mx-0">
+      <div class="col-6 px-2">
+        <div class="item-card">
+          <img src="https://via.placeholder.com/150" alt="Item" class="item-image mb-2">
+          <div class="item-title">Agolde 100% Organic Cotton Straight Leg Denim Jeans Lig...</div>
+          <div class="item-condition text-muted">Pre-owned</div>
+          <div class="price">GBP 84.93</div>
+          <div class="shipping">+ GBP 25.14 shipping</div>
+        </div>
+      </div>
+      <div class="col-6 px-2">
+        <div class="item-card">
+          <img src="https://via.placeholder.com/150" alt="Item" class="item-image mb-2">
+          <div class="item-title">JEN7 By 7 For All Mankind Coated Ankle Straight Leg</div>
+          <div class="item-condition text-muted">New</div>
+          <div class="price">GBP 49.62</div>
+          <div class="shipping">+ GBP 23.87 shipping</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shipping, Returns, and Payments -->
+    <div class="px-3">
+      <h2 class="section-title">Shipping, returns, and payments</h2>
+      
+      <div class="info-row">
+        <div class="info-label">Est. delivery</div>
+        <div class="text-end">
+          <div>Thu, Dec 28 - Mon, Jan 8</div>
+          <div class="text-muted">From Staten Island, New York, United States</div>
+          <div class="text-muted">eBay International Shipping</div>
+          <div class="text-muted">Authorities may apply duties, fees, and taxes upon delivery</div>
+        </div>
+      </div>
+      
+      <div class="info-row">
+        <div class="info-label">Returns</div>
+        <div class="d-flex align-items-center">
+          <div>
+            <div>Accepted within 30 days</div>
+            <div class="text-muted">Buyer pays return shipping</div>
+          </div>
+          <span>→</span>
+        </div>
+      </div>
+      
+      <div class="info-row">
+        <div class="info-label">Payments</div>
+        <div class="payment-icons">
+          <img src="https://via.placeholder.com/60x40?text=PayPal" alt="PayPal" class="payment-icon">
+          <img src="https://via.placeholder.com/60x40?text=G+Pay" alt="Google Pay" class="payment-icon">
+          <img src="https://via.placeholder.com/60x40?text=VISA" alt="VISA" class="payment-icon">
+          <img src="https://via.placeholder.com/60x40?text=MC" alt="Mastercard" class="payment-icon">
+          <img src="https://via.placeholder.com/60x40?text=AMEX" alt="American Express" class="payment-icon">
+        </div>
+      </div>
+      
+      <div class="info-row">
+        <div class="info-label">Rewards</div>
+        <div class="d-flex align-items-center">
+          <img src="https://via.placeholder.com/40x40?text=Nectar" alt="Nectar" class="reward-icon">
+          <div>Collect 87 Nectar points</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shop with confidence -->
+    <div class="px-3">
+      <h2 class="section-title">Shop with confidence</h2>
+      <div class="d-flex align-items-center py-2">
+        <img src="https://via.placeholder.com/30x30?text=EB" alt="eBay" class="me-2">
+        <div>eBay Money Back Guarantee</div>
+        <span class="ms-auto">∨</span>
+      </div>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="footer-nav">
+      <div class="nav-item">
+        <div class="nav-icon">🏠</div>
+        <div>Home</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">👤</div>
+        <div>My eBay</div>
+      </div>
+      <div class="nav-item active">
+        <div class="nav-icon">🔍</div>
+        <div>Search</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">🔔</div>
+        <div>Inbox</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-icon">🏷️</div>
+        <div>Selling</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TickTick Share Interface</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .status-bar {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #000;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .close-btn {
+            font-size: 24px;
+            color: #fff;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-left: 15px;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            font-size: 18px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            color: #fff;
+            border-bottom: 2px solid #4285f4;
+        }
+        
+        .hide-markdown {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .hide-markdown input {
+            margin-right: 5px;
+        }
+        
+        .content {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        
+        .task-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .task-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .task-date {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+        
+        .task-source {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .share-bar {
+            background-color: #1a1a1a;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #333;
+        }
+        
+        .share-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+        
+        .share-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .twitter-icon {
+            background-color: #1da1f2;
+        }
+        
+        .google-icon {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        .email-icon {
+            background-color: #4285f4;
+        }
+        
+        .copy-icon {
+            background-color: #fbbc05;
+        }
+        
+        .more-icon {
+            background-color: #34a853;
+        }
+        
+        .share-label {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 2px;
+        }
+        
+        .share-tooltip {
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .share-tooltip::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px 6px 0 6px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        
+        .share-icon img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .copy-icon img {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .more-icon img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .share-tooltip .check-icon {
+            width: 16px;
+            height: 16px;
+            background-color: #4285f4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>8:04</div>
+        <div>
+            <span>📶</span>
+            <span>🔋</span>
+        </div>
+    </div>
+    
+    <div class="header">
+        <div class="close-btn">×</div>
+        <div class="tabs">
+            <div class="tab active">Text</div>
+            <div class="tab">Image</div>
+        </div>
+    </div>
+    
+    <div class="hide-markdown">
+        <input type="checkbox" id="hide-markdown">
+        <label for="hide-markdown">Hide Markdown</label>
+    </div>
+    
+    <div class="content">
+        <div class="task-card">
+            <div class="task-title">Weeding plan</div>
+            <div class="task-date">Due Date: Jul 19, 12:30pm</div>
+            <div class="task-source">From TickTick: www.ticktick.com</div>
+        </div>
+    </div>
+    
+    <div class="share-bar">
+        <div class="share-option">
+            <div class="share-icon twitter-icon">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIwLjQgNi42Yy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctLjctMi40IDBzLTEuNy43LTIuNCAwYy0uNy0uNy0xLjctL

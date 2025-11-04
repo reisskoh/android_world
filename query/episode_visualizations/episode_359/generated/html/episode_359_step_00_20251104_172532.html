@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atendimento pelo Telefone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #fff;
+        }
+        
+        .status-bar {
+            background-color: #d87a3a;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .header {
+            background-color: #f5944a;
+            padding: 15px 15px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .menu-icon {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .header-title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .cart-icon {
+            position: relative;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #5c33a8;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            margin: 15px 15px 0;
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #888;
+        }
+        
+        .search-icon {
+            color: #d87a3a;
+            font-size: 20px;
+        }
+        
+        .cep-section {
+            background-color: #f5944a;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cep-text {
+            color: white;
+            font-size: 16px;
+        }
+        
+        .dropdown-icon {
+            color: white;
+            font-size: 20px;
+        }
+        
+        .content {
+            padding: 20px 15px;
+            line-height: 1.5;
+        }
+        
+        .content h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .content p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .content .phone-number {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .content .region {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 15px 0 5px;
+        }
+        
+        .footer {
+            height: 20px;
+            background-color: black;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div>12:32</div>
+        <div>• • •</div>
+        <div>100%</div>
+    </div>
+    
+    <div class="header">
+        <div class="menu-icon">≡</div>
+        <div class="header-title">Atendimento pelo Telefone</div>
+        <div class="cart-icon">
+            <span>🛒</span>
+            <div class="cart-badge">1</div>
+        </div>
+    </div>
+    
+    <div class="search-bar">
+        <input type="text" class="search-input" placeholder="busque aqui seu produto">
+        <div class="search-icon">🔍</div>
+    </div>
+    
+    <div class="cep-section">
+        <div class="cep-text">📍 • informe seu CEP</div>
+        <div class="dropdown-icon">∨</div>
+    </div>
+    
+    <div class="content">
+        <div class="region">Capitais e Regiões metropolitanas,</div>
+        <div class="phone-number">4003-9898</div>
+        
+        <div class="region">Estado do Rio de Janeiro</div>
+        <div class="phone-number">0800 229 9898</div>
+        
+        <div class="region">Outras Regiões</div>
+        <div class="phone-number">041 11 4003 9898</div>
+        
+        <p>Atendimento das 9h às 23:30h, de segunda à domingo (exceto feriados)</p>
+        
+        <p>* Ligações para o serviço 4003 feitas de telefone fixo têm custo de ligação local + imposto locais, conforme o Estado de origem; chamadas feitas de celulares têm custo de ligação + imposto para celulares, conforme a operadora. Essas tarifas, cobradas nas respectivas faturas, não são válidas para ligação com DDD.</p>
+        
+        <p>Para verificar se a cidade de onde você está falando permite ligação sem código da operadora, tente discar diretamente o número 4003 9898.</p>
+        
+        <p>Qualquer dúvida sobre a disponibilidade do serviço 4003, entre em contato com a operadora.</p>
+    </div>
+    
+    <div class="footer"></div>
+</body>
+</html>
